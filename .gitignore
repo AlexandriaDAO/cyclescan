@@ -23,3 +23,6 @@ dist/
 
 # environment variables
 .env
+
+# runtime state
+fetcher_state.json
