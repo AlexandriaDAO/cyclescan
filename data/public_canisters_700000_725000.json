@@ -1,0 +1,226 @@
+[
+  {
+    "canister_id": "qqgzi-raaaa-aaaal-qspdq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qquim-7iaaa-aaaar-qaf6a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qrduu-oaaaa-aaaar-qaopa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qrvaw-iaaaa-aaaar-qarkq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qrvfo-5iaaa-aaaaa-qagwq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qrxuz-paaaa-aaaar-qbupq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qsan3-xyaaa-aaaar-qbtsq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qsbdc-viaaa-aaaak-ac5za-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qtqj4-oqaaa-aaaah-qdcva-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qtxrd-gqaaa-aaaar-qbydq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qvafw-yqaaa-aaaak-ac5zq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qvblp-2aaaa-aaaar-qbtsa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qvhpv-4qaaa-aaaaa-aaagq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qvx7n-4aaaa-aaaar-qbmxq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qwud2-qqaaa-aaaaa-qagwa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qwugc-fyaaa-aaaar-qarka-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qwwsn-cyaaa-aaaar-qbupa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qwz4m-nyaaa-aaaab-aafaq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qxvoy-sqaaa-aaaar-qaf6q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qxzmw-5aaaa-aaaak-qudza-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "qy6pi-viaaa-aaaal-ad53q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qz3b6-gqaaa-aaaak-qudya-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "qzxdq-jaaaa-aaaar-qaf7q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r22fj-3aaaa-aaaae-qacxq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "r2kaj-2iaaa-aaaae-qfdzq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r3jvx-yaaaa-aaaah-qpwxq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r3mwo-mqaaa-aaaar-qaoia-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "r3ra3-hyaaa-aaaal-qmutq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r4db7-eaaaa-aaaah-arh4q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "r4itd-vyaaa-aaaah-qpwxa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r5fqh-haaaa-aaaam-aefnq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r6knp-qyaaa-aaaao-aatsq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "r6zvn-jyaaa-aaaar-qbyea-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "r7ojv-yqaaa-aaaar-qbtva-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "r7vsk-7iaaa-aaaak-qt3tq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "r7y5x-6qaaa-aaaar-qbmqq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rbbkw-qaaaa-aaaam-aefpq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rbgn3-paaaa-aaaaj-a2haa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rcvlo-fyaaa-aaaac-qa7wa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rdkte-pqaaa-aaaar-qbtxa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rdmx6-jaaaa-aaaaa-aaadq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "re5bs-eiaaa-aaaar-qbmsa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "renrk-eyaaa-aaaaa-aaada-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "reqop-fqaaa-aaaak-qt3ra-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rf4ji-taaaa-aaaar-qbygq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rgamc-5yaaa-aaaam-aefpa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rgbah-hyaaa-aaaal-adwoa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rgjh7-qaaaa-aaaad-qhora-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rgo2y-niaaa-aaaae-qfd3q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rh2pm-ryaaa-aaaan-qeniq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rh4ms-2qaaa-aaaar-qbukq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "ricbk-giaaa-aaaam-aefoa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "rixme-zaaaa-aaaaf-qbfkq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rj6b2-baaaa-aaaar-qbulq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "rjf2f-gyaaa-aaaak-qt4na-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  }
+]

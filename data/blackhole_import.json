@@ -1,0 +1,1312 @@
+[
+  {
+    "canister_id": "22g4r-6yaaa-aaaak-qt2oq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "22hwg-5iaaa-aaaah-arb4q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "22ltm-7aaaa-aaaar-qbnnq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "235yg-kiaaa-aaaaj-qnwlq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2377i-5aaaa-aaaai-q3yua-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "23gat-biaaa-aaaaj-a2bca-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "23k3w-iiaaa-aaaar-qbzza-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "246z4-qyaaa-aaaai-q3yuq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "24t7b-laaaa-aaaak-quf6q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "25jyk-oaaaa-aaaah-adwwa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2664g-ziaaa-aaaai-q3uyq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "267yv-naaaa-aaaar-qapva-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "26biv-aaaaa-aaaal-ad4aa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "26jmx-laaaa-aaaar-qaqqq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "26lyy-maaaa-aaaar-qbvvq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "275ts-ziaaa-aaaaj-qnotq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "27q7f-uiaaa-aaaaj-a2g7q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2apht-sqaaa-aaaar-qbz3q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2bdau-eaaaa-aaaak-qt2ma-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2be6c-nqaaa-aaaaf-qan7q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2bslg-pyaaa-aaaal-ad37a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2bwnk-liaaa-aaaak-quria-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2c2gx-oiaaa-aaaai-q3u2q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2c3ce-2aaaa-aaaar-qapxa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2cpcj-3aaaa-aaaar-qbvxq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2cse4-eyaaa-aaaal-ajvpa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2dso4-giaaa-aaaal-adxta-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2ed46-kaaaa-aaaam-qdo3a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2etii-lqaaa-aaaal-adxtq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2f2eq-xyaaa-aaaar-qapxq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2f3ad-dqaaa-aaaai-q3u2a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2foe5-wyaaa-aaaar-qbvxa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2fytf-maaaa-aaaad-qg65a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2gfyw-aiaaa-aaaaf-qan7a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2gtns-caaaa-aaaal-ad37q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2guii-nqaaa-aaaai-qpkma-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2h5or-paaaa-aaaak-qcjyq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2hobh-7iaaa-aaaar-qbz3a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2hogi-2qaaa-aaaag-at53a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2inev-tqaaa-aaaar-qbnoq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2iwfa-waaaa-aaaai-qpkna-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2jzxy-6qaaa-aaaai-atfya-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2lmjv-niaaa-aaaar-qbvwa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2lpzj-6aaaa-aaaai-q3l6q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2lrpa-sqaaa-aaaal-ajvoq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2lyjy-miaaa-aaaar-qapwq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2lznl-yaaaa-aaaai-q3u3a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2mnpb-aqaaa-aaaar-qbvwq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2mo75-tyaaa-aaaai-q3l6a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2mp3o-hqaaa-aaaar-qaqtq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2myl7-vyaaa-aaaai-q3u3q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2mzpm-bqaaa-aaaar-qapwa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2naxc-4iaaa-aaaam-qdo2q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2ncr2-7iaaa-aaaak-qucaq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2nqdu-5yaaa-aaaal-adxsa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2nvud-4yaaa-aaaal-qjaxa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2obr6-aaaaa-aaaaj-a2bbq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2onk3-jaaaa-aaaar-qbz2q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2onnu-myaaa-aaaag-at52q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2pmcb-6iaaa-aaaar-qbnoa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2q4ro-cyaaa-aaaai-q3uzq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2q5v5-wqaaa-aaaar-qapua-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2qc72-4qaaa-aaaap-qhwqq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2qjvq-xqaaa-aaaar-qbvuq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2qsop-qiaaa-aaaak-qt5sa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2rgll-iiaaa-aaaak-quccq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2rv37-7aaaa-aaaal-ajbyq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2s4l5-eiaaa-aaaai-atf2q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2sjqk-6aaaa-aaaar-qbzyq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2tcj3-baaaa-aaaaf-qan4q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2te52-laaaa-aaaah-arb5a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2tkm7-oiaaa-aaaar-qaija-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2udpp-myaaa-aaaaf-qan4a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2ulkl-dqaaa-aaaar-qaijq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2v3om-2yaaa-aaaah-qczoa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2v5nj-jqaaa-aaaai-atf2a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2vn26-myaaa-aaaao-aanla-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2vqu5-5iaaa-aaaak-quf7a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2whn7-fqaaa-aaaak-qucca-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2wu5l-syaaa-aaaal-ajbya-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2x5x2-paaaa-aaaai-q3uza-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2xite-2iaaa-aaaar-qbvua-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2xkhl-5iaaa-aaaar-qaqra-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2yxsz-4qaaa-aaaal-adxrq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2z66b-ayaaa-aaaar-qapvq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2z72s-uqaaa-aaaai-q3uya-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2zaob-nyaaa-aaaal-ad4aq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2zikd-gyaaa-aaaar-qaqqa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2zk6m-byaaa-aaaar-qbvva-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "2zrft-gaaaa-aaaak-qt5tq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "322ha-cqaaa-aaaah-qqcpq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "325mv-syaaa-aaaak-qt5va-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "32gxk-vaaaa-aaaar-qbvtq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "32sxh-uaaaa-aaaar-qapta-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "33heh-4iaaa-aaaao-qkcra-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "33tnr-7iaaa-aaaae-acxoq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "346vy-oyaaa-aaaan-qzyja-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "353bu-piaaa-aaaah-qqcpa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "35dny-6aaaa-aaaas-akqba-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "35trt-zyaaa-aaaar-qaptq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "36l7l-yqaaa-aaaal-amm5a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "36qi4-aaaaa-aaaar-qbsoa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3a6h2-sqaaa-aaaal-adxvq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3awac-fiaaa-aaaad-qhpkq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3bxlc-oyaaa-aaaar-qaprq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3dewk-oiaaa-aaaah-qddlq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3dgcv-ziaaa-aaaao-aanoa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3ecpo-oiaaa-aaaag-at55q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3gxjf-xiaaa-aaaai-q3u4q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3h7bo-7iaaa-aaaal-adxva-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3hxgw-iqaaa-aaaad-qhpka-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3iua6-yqaaa-aaaar-qapqa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3j5mg-eyaaa-aaaal-adxua-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3kf65-giaaa-aaaak-qcw2q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3lmog-zyaaa-aaaal-amm6q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3lxzr-biaaa-aaaar-qbsnq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3m3ks-paaaa-aaaai-qpkla-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3mnis-uaaaa-aaaal-amm6a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3ng3c-vyaaa-aaaah-qddkq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3o4ks-jaaaa-aaaal-adxuq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3p25y-tqaaa-aaaak-qt5wq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3pdsi-tiaaa-aaaar-qaqva-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3pucz-baaaa-aaaai-q3u5a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3q7qd-yaaaa-aaaai-qpkja-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3qgfz-2qaaa-aaaar-qaipq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3qsfu-3qaaa-aaaar-qbspa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3r4gx-wqaaa-aaaaq-aaaia-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3rf6d-paaaa-aaaag-at56a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3stx4-waaaa-aaaaj-qnoua-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3syqd-6aaaa-aaaal-adxwq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3thnb-raaaa-aaaaa-qahla-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3tr43-ciaaa-aaaar-qapsq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3ttlo-zqaaa-aaaad-qg6ya-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3uglv-4yaaa-aaaaa-qahlq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3uq2p-pqaaa-aaaar-qapsa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3v56e-yqaaa-aaaan-qzyiq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3vzwx-tyaaa-aaaal-adxwa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3wdhh-paaaa-aaaah-qddia-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3wt4i-faaaa-aaaaj-qnwma-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3wzge-xyaaa-aaaal-qbeja-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3x5sf-taaaa-aaaah-aq33q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3xtda-wiaaa-aaaar-qbspq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3ybkp-uqaaa-aaaah-qddja-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3zfof-myaaa-aaaar-qaioa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3zkvx-kaaaa-aaaak-qt2ia-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3zkz7-viaaa-aaaal-amm5q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3zroi-nyaaa-aaaar-qbsoq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "3zwjo-2yaaa-aaaao-qj6xq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "42crl-7yaaa-aaaak-adkzq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "43adh-naaaa-aaaar-qbvdq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "43cxi-kaaaa-aaaar-qaqgq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "43qjv-pyaaa-aaaac-a4wxq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "43udk-maaaa-aaaar-qapda-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "43wu7-xyaaa-aaaad-qg6jq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4426m-haaaa-aaaak-qt5fq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "44bft-ayaaa-aaaar-qbvda-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "44dr4-hyaaa-aaaar-qaqga-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "44jjm-nqaaa-aaaap-ai7jq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "44kxe-zaaaa-aaaal-ajk6a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "44vf6-byaaa-aaaar-qapdq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "44xsl-2aaaa-aaaad-qg6ja-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "454jg-5qaaa-aaaal-adxhq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "45pog-dqaaa-aaaao-a4piq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "466cd-vaaaa-aaaac-aonra-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "46bhg-mqaaa-aaaag-at5pa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "473ia-7yaaa-aaaag-amd5a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "473jg-3qaaa-aaaai-qpkya-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "47ait-6aaaa-aaaar-qbn3q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "47w4r-yaaaa-aaaar-qbs6a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4a6e5-qaaaa-aaaak-qt5hq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4af7c-xyaaa-aaaar-qbvba-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ailt-qaaaa-aaaag-ameca-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4alnw-giaaa-aaaap-abgma-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ar7p-wyaaa-aaaar-qapbq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4azpi-aiaaa-aaaah-qqc5a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4bihb-laaaa-aaaam-qdona-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4biss-cyaaa-aaaah-arneq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4crha-iyaaa-aaaan-qmdia-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4dixi-liaaa-aaaah-arbiq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4dj57-iyaaa-aaaak-qt22q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4dsga-paaaa-aaaar-qbs4a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4dvbg-yaaaa-aaaao-qj6fa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4dyxl-hiaaa-aaaaf-qasmq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4e4d3-wyaaa-aaaao-a44dq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4e6uf-faaaa-aaaag-amd7q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ei3l-faaaa-aaaak-qt22a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ejr4-gqaaa-aaaah-arbia-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4etau-cyaaa-aaaar-qbs4q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4euhs-vyaaa-aaaao-qj6fq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4fe3d-wiaaa-aaaag-at5nq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4fqbu-faaaa-aaaan-qmdiq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4hezw-2aaaa-aaaar-qbvbq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4hqz3-3aaaa-aaaar-qapba-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4hyj4-nqaaa-aaaah-qqc5q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4i22r-jaaaa-aaaal-ajbmq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4idfk-viaaa-aaaak-qiy2q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ilm5-5iaaa-aaaam-qdomq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ilzo-uqaaa-aaaah-arnfa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4j2eu-waaaa-aaaah-qqc4q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4jgu6-bqaaa-aaaar-qbvaq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4jngj-yiaaa-aaaal-ajk5q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4jqdg-3iaaa-aaaad-qg6kq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4jsui-yqaaa-aaaac-aukwa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4kkwd-6qaaa-aaaak-qt23a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4kl4u-5aaaa-aaaah-arbja-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4krn4-ziaaa-aaaar-qbs5q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4l75v-maaaa-aaaal-abfwq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4mhq7-aaaaa-aaaag-at5ma-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4n22d-4yaaa-aaaaf-qasnq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4n3z7-niaaa-aaaal-ajnaa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ngma-kyaaa-aaaak-qaiuq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4nqli-uqaaa-aaaar-qbs5a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4nt3u-hyaaa-aaaai-q3mvq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4o3ca-3yaaa-aaaah-qqc4a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ohsk-miaaa-aaaar-qbvaa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4orfs-wqaaa-aaaad-qg6ka-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4otsh-niaaa-aaaar-qapaq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4p34f-eyaaa-aaaal-ajbma-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4phnc-7aaaa-aaaaj-qnrdq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4q2wu-pqaaa-aaaag-abvbq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4qdko-xaaaa-aaaag-at5oa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4qdnb-syaaa-aaaar-qbzoa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4qxiu-gqaaa-aaaaa-qausq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4rcf3-fqaaa-aaaar-qbn2q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4ribt-uaaaa-aaaah-qqfda-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4rurz-dqaaa-aaaar-qbs7a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4sb4u-4iaaa-aaaar-qaqha-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4sdi3-3iaaa-aaaar-qbvca-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4sv7d-bqaaa-aaaad-qg6ia-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4sxiw-2iaaa-aaaar-qapcq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4tb3r-nyaaa-aaaae-qad5a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4va2a-rqaaa-aaaar-qaqhq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4vcop-wqaaa-aaaar-qbvcq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4vjef-5qaaa-aaaap-qhwgq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4vuzx-miaaa-aaaad-qg6iq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4vwoc-xqaaa-aaaar-qapca-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4vzvq-riaaa-aaaak-qt5ea-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4wjhh-zyaaa-aaaah-qqfdq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4wvxn-oiaaa-aaaar-qbs7q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4x3uo-diaaa-aaaaq-aaayq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4xcm2-2yaaa-aaaag-at5oq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4y5lo-5qaaa-aaaaf-qasoa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4yboh-tyaaa-aaaar-qbn3a-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4yq5d-cyaaa-aaaao-qj6hq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4yx2f-vyaaa-aaaar-qbs6q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4z7ex-yyaaa-aaaac-aonrq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "4zabs-biaaa-aaaag-at5pq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "52miu-vqaaa-aaaag-at5ja-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "53bb2-rqaaa-aaaap-aa3vq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "545sr-3yaaa-aaaao-qj6bq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "54jza-yiaaa-aaaal-artcq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "55e7x-xyaaa-aaaal-qmzsq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "55noa-yiaaa-aaaag-at5jq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "56rc2-4qaaa-aaaal-ajbjq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "57nmv-uaaaa-aaaar-qbvfq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "57py2-taaaa-aaaar-qaqaq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "57q7d-saaaa-aaaaj-az5ua-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "57yxc-oiaaa-aaaai-atjhq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "57zmy-vaaaa-aaaar-qapfa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "5au6n-tqaaa-aaaaf-qaska-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "5beig-wyaaa-aaaag-aapeq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
+    "proxy_type": "Blackhole"
+  },
+  {
+    "canister_id": "5bjur-piaaa-aaaag-at5lq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_type": "Blackhole"
+  }
+]

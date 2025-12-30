@@ -1,39 +1,57 @@
-type CanisterInfo = record {
-    canister_id : principal;
-    proxy_id : principal;
+type ProxyType = variant {
+    Blackhole;
+    SnsRoot;
 };
 
-type Snapshot = record {
+type CanisterImport = record {
     canister_id : principal;
-    timestamp : nat64;
-    cycles : nat;
+    proxy_id : principal;
+    proxy_type : ProxyType;
+};
+
+type LeaderboardEntry = record {
+    canister_id : principal;
+    project : opt text;
+    balance : nat;
+    burn_1h : opt nat;
+    burn_24h : opt nat;
+    burn_7d : opt nat;
 };
 
 type SnapshotResult = record {
-    total_canisters : nat64;
-    successful : nat64;
+    total : nat64;
+    success : nat64;
     failed : nat64;
+    pruned : nat64;
     timestamp : nat64;
 };
 
-type BurnRate = record {
-    canister_id : principal;
-    cycles_per_day : nat;
-    latest_balance : nat;
-    days_until_empty : opt float64;
-    snapshots_used : nat64;
+type Stats = record {
+    canister_count : nat64;
+    snapshot_count : nat64;
+    oldest_snapshot : opt nat64;
+    newest_snapshot : opt nat64;
 };
 
 service : {
-    // Query functions
-    get_canisters : () -> (vec CanisterInfo) query;
+    // Main query - the leaderboard
+    get_leaderboard : () -> (vec LeaderboardEntry) query;
+
+    // Stats
+    get_stats : () -> (Stats) query;
     get_canister_count : () -> (nat64) query;
-    get_snapshots : (principal, nat64, nat64) -> (vec Snapshot) query;
-    get_latest_snapshots : () -> (vec Snapshot) query;
-    get_snapshot_count : () -> (nat64) query;
-    get_burn_rate : (principal) -> (opt BurnRate) query;
-    get_all_burn_rates : () -> (vec BurnRate) query;
+    is_timer_running : () -> (bool) query;
 
     // Snapshot collection (public)
     take_snapshot : () -> (SnapshotResult);
+
+    // Timer control (controller only)
+    start_timer : () -> ();
+    stop_timer : () -> ();
+
+    // Admin functions (controller only)
+    import_canisters : (vec CanisterImport) -> (nat64);
+    set_project : (principal, opt text) -> ();
+    clear_canisters : () -> ();
+    clear_snapshots : () -> ();
 }

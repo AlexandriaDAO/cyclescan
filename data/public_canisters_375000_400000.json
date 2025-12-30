@@ -1,0 +1,242 @@
+[
+  {
+    "canister_id": "g73yw-rqaaa-aaaal-ajeea-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "g7s3w-2aaaa-aaaaa-qajaa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "g7w3i-haaaa-aaaal-qslea-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gagfs-yqaaa-aaaao-aaiva-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gatoo-6iaaa-aaaan-aaacq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gaxj7-gqaaa-aaaar-qaggq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gbavh-xyaaa-aaaar-qanxq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gbh2m-wqaaa-aaaad-aamua-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gbifa-biaaa-aaaah-qqala-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gborr-3iaaa-aaaam-qdhka-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gbuvk-wyaaa-aaaar-qbxxa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gbwe5-eqaaa-aaaaa-qafoa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gcz5a-kiaaa-aaaah-ard6q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gdmst-ryaaa-aaaak-quh4a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "geant-iyaaa-aaaai-athzq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gegiu-saaaa-aaaae-qfy6a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gejgo-faaaa-aaaah-qqmhq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gexbr-jiaaa-aaaad-qhkra-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gfy3u-hqaaa-aaaah-ard6a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gg3c3-6iaaa-aaaah-aq6dq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "ggbtt-2aaaa-aaaar-qanxa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "ggjdu-mqaaa-aaaah-qqalq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "ggpxf-wqaaa-aaaam-qdhkq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "ggvt6-3aaaa-aaaar-qbxxq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "ghhdg-viaaa-aaaao-aaivq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "ghsi2-tqaaa-aaaan-aaaca-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gid63-bqaaa-aaaar-qanwa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gilo4-xaaaa-aaaah-qqakq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "givpb-syaaa-aaaaa-qafpq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gjnxz-siaaa-aaaai-qpebq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gjqfs-iaaaa-aaaan-aaada-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gkd3b-iaaaa-aaaar-qab2a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gkric-gyaaa-aaaae-qct3a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gnc5v-fyaaa-aaaar-qab2q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gnqow-laaaa-aaaae-qct3q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gnukn-7aaaa-aaaad-qhkqq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gnw2x-baaaa-aaaag-at72a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gordg-fyaaa-aaaan-aaadq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gpcyp-miaaa-aaaar-qanwq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gpujv-7aaaa-aaaaa-qafpa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gqiog-baaaa-aaaai-qpipa-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "grbzz-tiaaa-aaaae-qfy5q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "grghe-syaaa-aaaar-qabyq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "grh46-jqaaa-aaaai-ath2a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "grp2l-saaaa-aaaau-acywq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "grqq4-iaaaa-aaaad-qhksq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gs54i-fqaaa-aaaak-quaca-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gsisx-oaaaa-aaaal-aa27q-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gsjos-aqaaa-aaaam-qdt5q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gtgc6-3iaaa-aaaar-qanuq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gurvq-fyaaa-aaaaa-qafnq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gviig-niaaa-aaaam-qdt5a-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gvqys-hyaaa-aaaar-qagfa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gwo47-7yaaa-aaaau-acywa-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gx7ng-kaaaa-aaaap-akpmq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gxyym-baaaa-aaaaf-qap4q-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gy26c-4iaaa-aaaal-ajeeq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gyfmy-eqaaa-aaaar-qabza-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai"
+  },
+  {
+    "canister_id": "gyl55-byaaa-aaaah-arina-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  },
+  {
+    "canister_id": "gyrl2-aiaaa-aaaag-at7zq-cai",
+    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai"
+  }
+]

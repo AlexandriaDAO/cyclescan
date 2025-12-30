@@ -1,0 +1,515 @@
+{
+  "_comment": "Project mappings for trackable canisters. by_canister for individual mappings, by_pattern for regex-based categorization",
+  "by_canister": {
+    "3r4gx-wqaaa-aaaaq-aaaia-cai": "SNS Aggregator (DFINITY)"
+  },
+  "by_token_pattern": {
+    "ODIN": "ODIN.fun (Bioniq)",
+    "WELL": "FomoWell",
+    ".OT": "Ordi Trade"
+  },
+  "icrc1_tokens": {
+    "22g4r-6yaaa-aaaak-qt2oq-cai": {
+      "name": "Token1",
+      "symbol": "TOKEN1",
+      "project": null
+    },
+    "22ltm-7aaaa-aaaar-qbnnq-cai": {
+      "name": "BTHACD",
+      "symbol": "BTHACD",
+      "project": "ODIN.fun"
+    },
+    "23k3w-iiaaa-aaaar-qbzza-cai": {
+      "name": "TKC",
+      "symbol": "TKC",
+      "project": "ODIN.fun"
+    },
+    "267yv-naaaa-aaaar-qapva-cai": {
+      "name": "RUNESFTW",
+      "symbol": "RUNESFTW",
+      "project": "ODIN.fun"
+    },
+    "26jmx-laaaa-aaaar-qaqqq-cai": {
+      "name": "ODINAPE",
+      "symbol": "ODINAPE",
+      "project": "ODIN.fun"
+    },
+    "26lyy-maaaa-aaaar-qbvvq-cai": {
+      "name": "XINGSHI",
+      "symbol": "XINGSHI",
+      "project": "ODIN.fun"
+    },
+    "2apht-sqaaa-aaaar-qbz3q-cai": {
+      "name": "ODINBRAVE",
+      "symbol": "ODINBRAVE",
+      "project": "ODIN.fun"
+    },
+    "2bdau-eaaaa-aaaak-qt2ma-cai": {
+      "name": "MY GIRL",
+      "symbol": "MGL",
+      "project": null
+    },
+    "2c3ce-2aaaa-aaaar-qapxa-cai": {
+      "name": "ALICE",
+      "symbol": "ALICE",
+      "project": "ODIN.fun"
+    },
+    "2cpcj-3aaaa-aaaar-qbvxq-cai": {
+      "name": "ICP",
+      "symbol": "ICP",
+      "project": "ODIN.fun"
+    },
+    "2f2eq-xyaaa-aaaar-qapxq-cai": {
+      "name": "ODINXBT",
+      "symbol": "ODINXBT",
+      "project": "ODIN.fun"
+    },
+    "2foe5-wyaaa-aaaar-qbvxa-cai": {
+      "name": "ODINPIZZA",
+      "symbol": "ODINPIZZA",
+      "project": "ODIN.fun"
+    },
+    "2guii-nqaaa-aaaai-qpkma-cai": {
+      "name": "tttt",
+      "symbol": "TT",
+      "project": null
+    },
+    "2hobh-7iaaa-aaaar-qbz3a-cai": {
+      "name": "TKGM",
+      "symbol": "TKGM",
+      "project": "FomoWell"
+    },
+    "2inev-tqaaa-aaaar-qbnoq-cai": {
+      "name": "BTCHACD",
+      "symbol": "BTCHACD",
+      "project": "ODIN.fun"
+    },
+    "2iwfa-waaaa-aaaai-qpkna-cai": {
+      "name": "fsdf",
+      "symbol": "sad",
+      "project": null
+    },
+    "2lmjv-niaaa-aaaar-qbvwa-cai": {
+      "name": "BTCFI",
+      "symbol": "BTCFI",
+      "project": "ODIN.fun"
+    },
+    "2lpzj-6aaaa-aaaai-q3l6q-cai": {
+      "name": "BullyBucks",
+      "symbol": "HUGO",
+      "project": null
+    },
+    "2lyjy-miaaa-aaaar-qapwq-cai": {
+      "name": "SWB",
+      "symbol": "SWB",
+      "project": "ODIN.fun"
+    },
+    "2mnpb-aqaaa-aaaar-qbvwq-cai": {
+      "name": "TESLA",
+      "symbol": "TESLA",
+      "project": "ODIN.fun"
+    },
+    "2mo75-tyaaa-aaaai-q3l6a-cai": {
+      "name": "8Year Gang",
+      "symbol": "8",
+      "project": null
+    },
+    "2mp3o-hqaaa-aaaar-qaqtq-cai": {
+      "name": "VIKI",
+      "symbol": "VIKI",
+      "project": "ODIN.fun"
+    },
+    "2mzpm-bqaaa-aaaar-qapwa-cai": {
+      "name": "SUPEREX",
+      "symbol": "SUPEREX",
+      "project": "ODIN.fun"
+    },
+    "2ncr2-7iaaa-aaaak-qucaq-cai": {
+      "name": "Clap Hands",
+      "symbol": "CLAPS",
+      "project": null
+    },
+    "2onk3-jaaaa-aaaar-qbz2q-cai": {
+      "name": "ODINZM",
+      "symbol": "ODINZM",
+      "project": "ODIN.fun"
+    },
+    "2pmcb-6iaaa-aaaar-qbnoa-cai": {
+      "name": "COO",
+      "symbol": "COO",
+      "project": "ODIN.fun"
+    },
+    "2q5v5-wqaaa-aaaar-qapua-cai": {
+      "name": "MARS",
+      "symbol": "MARS",
+      "project": "ODIN.fun"
+    },
+    "2qjvq-xqaaa-aaaar-qbvuq-cai": {
+      "name": "PEPE",
+      "symbol": "PEPE",
+      "project": "ODIN.fun"
+    },
+    "2qsop-qiaaa-aaaak-qt5sa-cai": {
+      "name": "Synthetix",
+      "symbol": "SNX",
+      "project": null
+    },
+    "2sjqk-6aaaa-aaaar-qbzyq-cai": {
+      "name": "TKC",
+      "symbol": "TKC",
+      "project": "ODIN.fun"
+    },
+    "2tkm7-oiaaa-aaaar-qaija-cai": {
+      "name": "RUNES X BITCOIN",
+      "symbol": "X.OT",
+      "project": "Ordi Trade"
+    },
+    "2ulkl-dqaaa-aaaar-qaijq-cai": {
+      "name": "BILLION DOLLAR CAT",
+      "symbol": "BDC.OT",
+      "project": "Ordi Trade"
+    },
+    "2vqu5-5iaaa-aaaak-quf7a-cai": {
+      "name": "Adam Computer Protocol",
+      "symbol": "ACP",
+      "project": null
+    },
+    "2xite-2iaaa-aaaar-qbvua-cai": {
+      "name": "WETH",
+      "symbol": "WETH",
+      "project": "ODIN.fun"
+    },
+    "2xkhl-5iaaa-aaaar-qaqra-cai": {
+      "name": "WUKONG",
+      "symbol": "WUKONG",
+      "project": "ODIN.fun"
+    },
+    "2z66b-ayaaa-aaaar-qapvq-cai": {
+      "name": "SNEK",
+      "symbol": "SNEK",
+      "project": "ODIN.fun"
+    },
+    "2zikd-gyaaa-aaaar-qaqqa-cai": {
+      "name": "ODINPEPE",
+      "symbol": "ODINPEPE",
+      "project": "ODIN.fun"
+    },
+    "2zk6m-byaaa-aaaar-qbvva-cai": {
+      "name": "ODINPIZZA",
+      "symbol": "ODINPIZZA",
+      "project": "ODIN.fun"
+    },
+    "2zrft-gaaaa-aaaak-qt5tq-cai": {
+      "name": "Filecoin",
+      "symbol": "FIL",
+      "project": null
+    },
+    "32gxk-vaaaa-aaaar-qbvtq-cai": {
+      "name": "ANI",
+      "symbol": "ANI",
+      "project": "ODIN.fun"
+    },
+    "32sxh-uaaaa-aaaar-qapta-cai": {
+      "name": "MOON",
+      "symbol": "MOON",
+      "project": "ODIN.fun"
+    },
+    "325mv-syaaa-aaaak-qt5va-cai": {
+      "name": "token1",
+      "symbol": "TBTC",
+      "project": null
+    },
+    "33heh-4iaaa-aaaao-qkcra-cai": {
+      "name": "Test14",
+      "symbol": "TST14",
+      "project": null
+    },
+    "35trt-zyaaa-aaaar-qaptq-cai": {
+      "name": "GODSHILLA",
+      "symbol": "GODSHILLA",
+      "project": "ODIN.fun"
+    },
+    "36qi4-aaaaa-aaaar-qbsoa-cai": {
+      "name": "BOBBODIE",
+      "symbol": "BOBBODIE",
+      "project": "ODIN.fun"
+    },
+    "3bxlc-oyaaa-aaaar-qaprq-cai": {
+      "name": "HUGINN",
+      "symbol": "HUGINN",
+      "project": "ODIN.fun"
+    },
+    "3iua6-yqaaa-aaaar-qapqa-cai": {
+      "name": "PEPEGA",
+      "symbol": "PEPEGA",
+      "project": "ODIN.fun"
+    },
+    "3kf65-giaaa-aaaak-qcw2q-cai": {
+      "name": "AVOCADO",
+      "symbol": "AVCD",
+      "project": null
+    },
+    "3lxzr-biaaa-aaaar-qbsnq-cai": {
+      "name": "OSK",
+      "symbol": "OSK",
+      "project": "ODIN.fun"
+    },
+    "3m3ks-paaaa-aaaai-qpkla-cai": {
+      "name": "ada",
+      "symbol": "asda",
+      "project": null
+    },
+    "3p25y-tqaaa-aaaak-qt5wq-cai": {
+      "name": "Avalanche",
+      "symbol": "AVAX",
+      "project": null
+    },
+    "3pdsi-tiaaa-aaaar-qaqva-cai": {
+      "name": "ODINPNUT",
+      "symbol": "ODINPNUT",
+      "project": "ODIN.fun"
+    },
+    "3q7qd-yaaaa-aaaai-qpkja-cai": {
+      "name": "asdd",
+      "symbol": "asdd",
+      "project": null
+    },
+    "3qsfu-3qaaa-aaaar-qbspa-cai": {
+      "name": "MODULEX",
+      "symbol": "MODULEX",
+      "project": "ODIN.fun"
+    },
+    "3tr43-ciaaa-aaaar-qapsq-cai": {
+      "name": "ODINSHADOW",
+      "symbol": "ODINSHADOW",
+      "project": "ODIN.fun"
+    },
+    "3uq2p-pqaaa-aaaar-qapsa-cai": {
+      "name": "HUGINN",
+      "symbol": "HUGINN",
+      "project": "ODIN.fun"
+    },
+    "3xtda-wiaaa-aaaar-qbspq-cai": {
+      "name": "BITNEIRO\u2022ID\u2022ZMEO\u2022ODIN",
+      "symbol": "BITNEIRO\u2022ID\u2022ZMEO\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "3zkvx-kaaaa-aaaak-qt2ia-cai": {
+      "name": "Trump",
+      "symbol": "TRMP",
+      "project": null
+    },
+    "3zroi-nyaaa-aaaar-qbsoq-cai": {
+      "name": "BUTTERFLY\u2022ID\u2022LRWR\u2022ODIN",
+      "symbol": "BUTTERFLY\u2022ID\u2022LRWR\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "43adh-naaaa-aaaar-qbvdq-cai": {
+      "name": "AMANDAXD\u2022ID\u2022DTDV\u2022ODIN",
+      "symbol": "AMANDAXD\u2022ID\u2022DTDV\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "43cxi-kaaaa-aaaar-qaqgq-cai": {
+      "name": "WZRD\u2022ID\u2022HFZK\u2022ODIN",
+      "symbol": "WZRD\u2022ID\u2022HFZK\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "43udk-maaaa-aaaar-qapda-cai": {
+      "name": "ODINAI\u2022ID\u2022VEDI\u2022ODIN",
+      "symbol": "ODINAI\u2022ID\u2022VEDI\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4426m-haaaa-aaaak-qt5fq-cai": {
+      "name": "Aptos",
+      "symbol": "APT",
+      "project": null
+    },
+    "44bft-ayaaa-aaaar-qbvda-cai": {
+      "name": "KEKIUS\u2022ID\u2022EAQQ\u2022ODIN",
+      "symbol": "KEKIUS\u2022ID\u2022EAQQ\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "44dr4-hyaaa-aaaar-qaqga-cai": {
+      "name": "NUKLAI\u2022ID\u2022COFG\u2022ODIN",
+      "symbol": "NUKLAI\u2022ID\u2022COFG\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "44vf6-byaaa-aaaar-qapdq-cai": {
+      "name": "AODINGGOU\u2022ID\u2022EYHK\u2022ODIN",
+      "symbol": "AODINGGOU\u2022ID\u2022EYHK\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "45pog-dqaaa-aaaao-a4piq-cai": {
+      "name": "MyToken",
+      "symbol": "MYTOKEN",
+      "project": null
+    },
+    "473jg-3qaaa-aaaai-qpkya-cai": {
+      "name": "GoldFish",
+      "symbol": "GLDF",
+      "project": null
+    },
+    "47ait-6aaaa-aaaar-qbn3q-cai": {
+      "name": "ODINPOLAR\u2022ID\u2022ZBMN\u2022ODIN",
+      "symbol": "ODINPOLAR\u2022ID\u2022ZBMN\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "47w4r-yaaaa-aaaar-qbs6a-cai": {
+      "name": "MX\u2022ID\u2022MEKD\u2022ODIN",
+      "symbol": "MX\u2022ID\u2022MEKD\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4a6e5-qaaaa-aaaak-qt5hq-cai": {
+      "name": "vyt",
+      "symbol": "HUHH",
+      "project": null
+    },
+    "4af7c-xyaaa-aaaar-qbvba-cai": {
+      "name": "MDOGS\u2022ID\u2022VNFG\u2022ODIN",
+      "symbol": "MDOGS\u2022ID\u2022VNFG\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4ar7p-wyaaa-aaaar-qapbq-cai": {
+      "name": "ODINAPE\u2022ID\u2022CILM\u2022ODIN",
+      "symbol": "ODINAPE\u2022ID\u2022CILM\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4dj57-iyaaa-aaaak-qt22q-cai": {
+      "name": "Hell O",
+      "symbol": "HELLO",
+      "project": null
+    },
+    "4dsga-paaaa-aaaar-qbs4a-cai": {
+      "name": "TERPLAYER\u2022ID\u2022WOUM\u2022ODIN",
+      "symbol": "TERPLAYER\u2022ID\u2022WOUM\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4ei3l-faaaa-aaaak-qt22a-cai": {
+      "name": "Butten Bun",
+      "symbol": "BUBB",
+      "project": null
+    },
+    "4etau-cyaaa-aaaar-qbs4q-cai": {
+      "name": "BTCPEPE\u2022ID\u2022VABY\u2022ODIN",
+      "symbol": "BTCPEPE\u2022ID\u2022VABY\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4hezw-2aaaa-aaaar-qbvbq-cai": {
+      "name": "DOGESHIBA\u2022ID\u2022FENF\u2022ODIN",
+      "symbol": "DOGESHIBA\u2022ID\u2022FENF\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4hqz3-3aaaa-aaaar-qapba-cai": {
+      "name": "PI\u2022ID\u2022XSOJ\u2022ODIN",
+      "symbol": "PI\u2022ID\u2022XSOJ\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4jgu6-bqaaa-aaaar-qbvaq-cai": {
+      "name": "FRANKDEGOD\u2022ID\u2022GLZH\u2022ODIN",
+      "symbol": "FRANKDEGOD\u2022ID\u2022GLZH\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4krn4-ziaaa-aaaar-qbs5q-cai": {
+      "name": "MODULEX\u2022ID\u2022PGMT\u2022ODIN",
+      "symbol": "MODULEX\u2022ID\u2022PGMT\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4nqli-uqaaa-aaaar-qbs5a-cai": {
+      "name": "MODULEX\u2022ID\u2022ZZII\u2022ODIN",
+      "symbol": "MODULEX\u2022ID\u2022ZZII\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4ohsk-miaaa-aaaar-qbvaa-cai": {
+      "name": "GALAXY\u2022ID\u2022WAEX\u2022ODIN",
+      "symbol": "GALAXY\u2022ID\u2022WAEX\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4otsh-niaaa-aaaar-qapaq-cai": {
+      "name": "MOTOKO\u2022ID\u2022RCTM\u2022ODIN",
+      "symbol": "MOTOKO\u2022ID\u2022RCTM\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4qdnb-syaaa-aaaar-qbzoa-cai": {
+      "name": "SOON\u2022ID\u2022RYFW\u2022ODIN",
+      "symbol": "SOON\u2022ID\u2022RYFW\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4qxiu-gqaaa-aaaaa-qausq-cai": {
+      "name": "ToKeN",
+      "symbol": "TKN",
+      "project": null
+    },
+    "4rurz-dqaaa-aaaar-qbs7a-cai": {
+      "name": "KYLIN\u2022ID\u2022GNZW\u2022ODIN",
+      "symbol": "KYLIN\u2022ID\u2022GNZW\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4sb4u-4iaaa-aaaar-qaqha-cai": {
+      "name": "CHEEMS\u2022ID\u2022ITLB\u2022ODIN",
+      "symbol": "CHEEMS\u2022ID\u2022ITLB\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4sdi3-3iaaa-aaaar-qbvca-cai": {
+      "name": "CRYPTOBURG\u2022ID\u2022JQNJ\u2022ODIN",
+      "symbol": "CRYPTOBURG\u2022ID\u2022JQNJ\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4sxiw-2iaaa-aaaar-qapcq-cai": {
+      "name": "CHODIN\u2022ID\u2022OOXT\u2022ODIN",
+      "symbol": "CHODIN\u2022ID\u2022OOXT\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4va2a-rqaaa-aaaar-qaqhq-cai": {
+      "name": "ODOGE\u2022ID\u2022SCWN\u2022ODIN",
+      "symbol": "ODOGE\u2022ID\u2022SCWN\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4vcop-wqaaa-aaaar-qbvcq-cai": {
+      "name": "COCORO\u2022ID\u2022IVPN\u2022ODIN",
+      "symbol": "COCORO\u2022ID\u2022IVPN\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4vwoc-xqaaa-aaaar-qapca-cai": {
+      "name": "TURT\u2022ID\u2022PNLO\u2022ODIN",
+      "symbol": "TURT\u2022ID\u2022PNLO\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4vzvq-riaaa-aaaak-qt5ea-cai": {
+      "name": "XRP",
+      "symbol": "XRP",
+      "project": null
+    },
+    "4wvxn-oiaaa-aaaar-qbs7q-cai": {
+      "name": "MODULEX\u2022ID\u2022UAZV\u2022ODIN",
+      "symbol": "MODULEX\u2022ID\u2022UAZV\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4yboh-tyaaa-aaaar-qbn3a-cai": {
+      "name": "BITCOIN\u2022ID\u2022EWUY\u2022ODIN",
+      "symbol": "BITCOIN\u2022ID\u2022EWUY\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "4yx2f-vyaaa-aaaar-qbs6q-cai": {
+      "name": "CEP\u2022ID\u2022JPYP\u2022ODIN",
+      "symbol": "CEP\u2022ID\u2022JPYP\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "57nmv-uaaaa-aaaar-qbvfq-cai": {
+      "name": "MOGU\u2022ID\u2022EJIE\u2022ODIN",
+      "symbol": "MOGU\u2022ID\u2022EJIE\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "57py2-taaaa-aaaar-qaqaq-cai": {
+      "name": "TOADIN\u2022ID\u2022KXOM\u2022ODIN",
+      "symbol": "TOADIN\u2022ID\u2022KXOM\u2022ODIN",
+      "project": "ODIN.fun"
+    },
+    "57zmy-vaaaa-aaaar-qapfa-cai": {
+      "name": "DOG\u2022ID\u2022ZKJX\u2022ODIN",
+      "symbol": "DOG\u2022ID\u2022ZKJX\u2022ODIN",
+      "project": "ODIN.fun"
+    }
+  },
+  "non_token_canisters": [],
+  "unknown": []
+}
