@@ -1,3 +1,39 @@
+type CanisterInfo = record {
+    canister_id : principal;
+    proxy_id : principal;
+};
+
+type Snapshot = record {
+    canister_id : principal;
+    timestamp : nat64;
+    cycles : nat;
+};
+
+type SnapshotResult = record {
+    total_canisters : nat64;
+    successful : nat64;
+    failed : nat64;
+    timestamp : nat64;
+};
+
+type BurnRate = record {
+    canister_id : principal;
+    cycles_per_day : nat;
+    latest_balance : nat;
+    days_until_empty : opt float64;
+    snapshots_used : nat64;
+};
+
 service : {
-    "greet": (text) -> (text) query;
+    // Query functions
+    get_canisters : () -> (vec CanisterInfo) query;
+    get_canister_count : () -> (nat64) query;
+    get_snapshots : (principal, nat64, nat64) -> (vec Snapshot) query;
+    get_latest_snapshots : () -> (vec Snapshot) query;
+    get_snapshot_count : () -> (nat64) query;
+    get_burn_rate : (principal) -> (opt BurnRate) query;
+    get_all_burn_rates : () -> (vec BurnRate) query;
+
+    // Snapshot collection (public)
+    take_snapshot : () -> (SnapshotResult);
 }

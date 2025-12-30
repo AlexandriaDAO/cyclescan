@@ -1,6 +1,5 @@
 [workspace]
 members = [
     "src/cyclescan_backend",
-    "tools/canister-fetcher",
 ]
 resolver = "2"
