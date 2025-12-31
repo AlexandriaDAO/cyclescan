@@ -139,6 +139,14 @@ tr:hover {
   background: var(--bg-secondary);
 }
 
+tr.clickable {
+  cursor: pointer;
+}
+
+tr.clickable:hover {
+  background: rgba(88, 166, 255, 0.1);
+}
+
 tr:last-child td {
   border-bottom: none;
 }
@@ -153,7 +161,8 @@ tr:last-child td {
   font-size: 13px;
 }
 
-.canister-id a {
+.canister-id a,
+.canister-id .canister-link {
   color: var(--accent);
   text-decoration: none;
 }
@@ -216,6 +225,76 @@ tr:last-child td {
   text-align: center;
   padding: 60px 20px;
   color: var(--text-muted);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-num {
+  min-width: 36px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.page-num:hover {
+  background: var(--bg-secondary);
+  color: var(--text);
+}
+
+.page-num.active {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.ellipsis {
+  color: var(--text-muted);
+  padding: 0 4px;
+}
+
+.page-info {
+  margin-left: 16px;
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
 footer {

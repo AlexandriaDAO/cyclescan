@@ -33,13 +33,33 @@ type Stats = record {
     newest_snapshot : opt nat64;
 };
 
+type SnapshotPoint = record {
+    timestamp : nat64;
+    cycles : nat;
+};
+
+type CanisterHistory = record {
+    canister_id : principal;
+    project : opt text;
+    current_balance : nat;
+    snapshots : vec SnapshotPoint;
+    burn_1h : opt nat;
+    burn_24h : opt nat;
+    burn_7d : opt nat;
+    burn_30d : opt nat;
+    is_24h_actual : bool;
+    is_7d_actual : bool;
+    is_30d_actual : bool;
+};
+
 service : {
     // Main query - the leaderboard
     get_leaderboard : () -> (vec LeaderboardEntry) query;
 
-    // Stats
+    // Stats and history
     get_stats : () -> (Stats) query;
     get_canister_count : () -> (nat64) query;
+    get_canister_history : (principal) -> (opt CanisterHistory) query;
     is_timer_running : () -> (bool) query;
 
     // Snapshot collection (public)

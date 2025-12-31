@@ -17,6 +17,8 @@ use std::time::Duration;
 const NANOS_PER_HOUR: u64 = 3_600_000_000_000;
 const NANOS_PER_DAY: u64 = 86_400_000_000_000;
 const SEVEN_DAYS_NANOS: u64 = 7 * NANOS_PER_DAY;
+const THIRTY_DAYS_NANOS: u64 = 30 * NANOS_PER_DAY;
+const RETENTION_PERIOD: u64 = THIRTY_DAYS_NANOS;
 const BATCH_SIZE: usize = 50;
 const SNAPSHOT_INTERVAL: Duration = Duration::from_secs(3600); // 1 hour
 
@@ -51,13 +53,33 @@ impl Default for ProxyType {
 // Types - API
 // =============================================================================
 
-/// Input for importing canisters
-#[derive(CandidType, Deserialize, Clone, Debug)]
+/// Input for importing canisters (also used for export round-trip)
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
 pub struct CanisterImport {
     pub canister_id: Principal,
     pub proxy_id: Principal,
     #[serde(default)]
     pub proxy_type: ProxyType,
+    #[serde(default)]
+    pub project: Option<String>,
+}
+
+/// Full canister info for queries
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
+pub struct CanisterInfo {
+    pub canister_id: Principal,
+    pub proxy_id: Principal,
+    pub proxy_type: ProxyType,
+    pub project: Option<String>,
+}
+
+/// Partial update for canister metadata
+#[derive(CandidType, Deserialize, Clone, Debug)]
+pub struct CanisterUpdate {
+    pub proxy_id: Option<Principal>,
+    pub proxy_type: Option<ProxyType>,
+    /// None = unchanged, Some(None) = clear, Some(Some(x)) = set to x
+    pub project: Option<Option<String>>,
 }
 
 /// Leaderboard entry - the main output
@@ -88,6 +110,29 @@ pub struct Stats {
     pub snapshot_count: u64,
     pub oldest_snapshot: Option<u64>,
     pub newest_snapshot: Option<u64>,
+}
+
+/// A single snapshot point for history (used by detail modal)
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
+pub struct SnapshotPoint {
+    pub timestamp: u64,
+    pub cycles: u128,
+}
+
+/// Full history for a canister (for detail view modal)
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
+pub struct CanisterHistory {
+    pub canister_id: Principal,
+    pub project: Option<String>,
+    pub current_balance: u128,
+    pub snapshots: Vec<SnapshotPoint>,
+    pub burn_1h: Option<u128>,
+    pub burn_24h: Option<u128>,
+    pub burn_7d: Option<u128>,
+    pub burn_30d: Option<u128>,
+    pub is_24h_actual: bool,
+    pub is_7d_actual: bool,
+    pub is_30d_actual: bool,
 }
 
 // =============================================================================
@@ -291,21 +336,49 @@ fn is_controller() -> bool {
     ic_cdk::api::is_controller(&caller)
 }
 
-/// Calculate burn for a time window. Returns None if insufficient data.
-/// Treats top-ups (cycles increase) as zero burn.
-fn calculate_burn(canister: &PrincipalKey, window_nanos: u64, now: u64) -> Option<u128> {
-    let cutoff = now.saturating_sub(window_nanos);
-
+/// Delete all snapshots for a canister (used for cascade delete)
+fn delete_snapshots_for_canister(canister: &PrincipalKey) -> u64 {
     SNAPSHOTS.with(|s| {
-        let map = s.borrow();
+        let mut map = s.borrow_mut();
 
         let start_key = SnapshotKey {
             canister: canister.clone(),
-            timestamp: cutoff,
+            timestamp: 0,
         };
         let end_key = SnapshotKey {
             canister: canister.clone(),
-            timestamp: now,
+            timestamp: u64::MAX,
+        };
+
+        let keys_to_remove: Vec<_> = map
+            .range(start_key..=end_key)
+            .map(|(k, _)| k.clone())
+            .collect();
+
+        let count = keys_to_remove.len() as u64;
+        for key in keys_to_remove {
+            map.remove(&key);
+        }
+        count
+    })
+}
+
+/// Calculate burn for a time window using hybrid approach:
+/// - If we have actual data spanning the window, sum burns between consecutive snapshots
+///   (ignoring top-ups, which would show as increases)
+/// - Otherwise, extrapolate from the last 2 snapshots
+fn calculate_burn(canister: &PrincipalKey, window_nanos: u64, now: u64) -> Option<u128> {
+    SNAPSHOTS.with(|s| {
+        let map = s.borrow();
+
+        // Get all snapshots for this canister
+        let start_key = SnapshotKey {
+            canister: canister.clone(),
+            timestamp: 0,
+        };
+        let end_key = SnapshotKey {
+            canister: canister.clone(),
+            timestamp: u64::MAX,
         };
 
         let snapshots: Vec<_> = map.range(start_key..=end_key).collect();
@@ -314,13 +387,59 @@ fn calculate_burn(canister: &PrincipalKey, window_nanos: u64, now: u64) -> Optio
             return None;
         }
 
-        let earliest_cycles = snapshots.first().unwrap().1 .0;
-        let latest_cycles = snapshots.last().unwrap().1 .0;
+        // Calculate cutoff for the requested window
+        let cutoff = now.saturating_sub(window_nanos);
 
-        if latest_cycles >= earliest_cycles {
-            Some(0)
-        } else {
-            Some(earliest_cycles - latest_cycles)
+        // Find the first snapshot at or after the cutoff
+        let start_idx = snapshots
+            .iter()
+            .position(|(key, _)| key.timestamp >= cutoff);
+
+        match start_idx {
+            Some(idx) if idx < snapshots.len() - 1 => {
+                // ACTUAL DATA: Sum burns between consecutive snapshots in the window
+                // This correctly handles top-ups by only counting decreases
+                let mut total_burn: u128 = 0;
+
+                for i in idx..snapshots.len() - 1 {
+                    let older_cycles = snapshots[i].1 .0;
+                    let newer_cycles = snapshots[i + 1].1 .0;
+
+                    // Only count burns (decreases), not top-ups (increases)
+                    if older_cycles > newer_cycles {
+                        total_burn += older_cycles - newer_cycles;
+                    }
+                }
+
+                Some(total_burn)
+            }
+            _ => {
+                // EXTRAPOLATE: Not enough historical data, use last 2 snapshots
+                let len = snapshots.len();
+                let (older_key, older_val) = &snapshots[len - 2];
+                let (newer_key, newer_val) = &snapshots[len - 1];
+
+                let older_cycles = older_val.0;
+                let newer_cycles = newer_val.0;
+                let time_elapsed = newer_key.timestamp.saturating_sub(older_key.timestamp);
+
+                if time_elapsed == 0 {
+                    return Some(0);
+                }
+
+                // Handle top-ups
+                if newer_cycles >= older_cycles {
+                    return Some(0);
+                }
+
+                let actual_burn = older_cycles - newer_cycles;
+
+                // Extrapolate to requested window
+                let burn_per_nano = actual_burn as f64 / time_elapsed as f64;
+                let projected_burn = burn_per_nano * window_nanos as f64;
+
+                Some(projected_burn as u128)
+            }
         }
     })
 }
@@ -558,11 +677,123 @@ fn get_canister_count() -> u64 {
     CANISTERS.with(|c| c.borrow().len())
 }
 
+/// Get full details for a single canister
+#[ic_cdk::query]
+fn get_canister(canister_id: Principal) -> Option<CanisterInfo> {
+    let key = PrincipalKey::new(canister_id);
+    CANISTERS.with(|c| {
+        c.borrow().get(&key).map(|meta| CanisterInfo {
+            canister_id,
+            proxy_id: meta.proxy_id,
+            proxy_type: meta.proxy_type,
+            project: meta.project_name,
+        })
+    })
+}
+
+/// List all canisters with full details
+#[ic_cdk::query]
+fn list_canisters() -> Vec<CanisterInfo> {
+    CANISTERS.with(|c| {
+        c.borrow()
+            .iter()
+            .map(|(key, meta)| CanisterInfo {
+                canister_id: key.to_principal(),
+                proxy_id: meta.proxy_id,
+                proxy_type: meta.proxy_type,
+                project: meta.project_name,
+            })
+            .collect()
+    })
+}
+
+/// Export all canisters in import-compatible format (for backup/round-trip)
+#[ic_cdk::query]
+fn export_canisters() -> Vec<CanisterImport> {
+    CANISTERS.with(|c| {
+        c.borrow()
+            .iter()
+            .map(|(key, meta)| CanisterImport {
+                canister_id: key.to_principal(),
+                proxy_id: meta.proxy_id,
+                proxy_type: meta.proxy_type,
+                project: meta.project_name,
+            })
+            .collect()
+    })
+}
+
+/// Get full history for a specific canister (for detail modal)
+#[ic_cdk::query]
+fn get_canister_history(canister_id: Principal) -> Option<CanisterHistory> {
+    let key = PrincipalKey::new(canister_id);
+    let now = now_nanos();
+
+    // Get canister metadata
+    let meta = CANISTERS.with(|c| c.borrow().get(&key))?;
+
+    // Get all snapshots for this canister
+    let snapshots: Vec<SnapshotPoint> = SNAPSHOTS.with(|s| {
+        let map = s.borrow();
+
+        let start_key = SnapshotKey {
+            canister: key.clone(),
+            timestamp: 0,
+        };
+        let end_key = SnapshotKey {
+            canister: key.clone(),
+            timestamp: u64::MAX,
+        };
+
+        map.range(start_key..=end_key)
+            .map(|(k, v)| SnapshotPoint {
+                timestamp: k.timestamp,
+                cycles: v.0,
+            })
+            .collect()
+    });
+
+    if snapshots.is_empty() {
+        return None;
+    }
+
+    let current_balance = snapshots.last().map(|s| s.cycles).unwrap_or(0);
+
+    // Calculate burns
+    let burn_1h = calculate_burn(&key, NANOS_PER_HOUR, now);
+    let burn_24h = calculate_burn(&key, NANOS_PER_DAY, now);
+    let burn_7d = calculate_burn(&key, SEVEN_DAYS_NANOS, now);
+    let burn_30d = calculate_burn(&key, THIRTY_DAYS_NANOS, now);
+
+    // Determine if we have actual data for each window
+    let oldest_timestamp = snapshots.first().map(|s| s.timestamp).unwrap_or(now);
+    let data_span = now.saturating_sub(oldest_timestamp);
+
+    let is_24h_actual = data_span >= NANOS_PER_DAY;
+    let is_7d_actual = data_span >= SEVEN_DAYS_NANOS;
+    let is_30d_actual = data_span >= THIRTY_DAYS_NANOS;
+
+    Some(CanisterHistory {
+        canister_id,
+        project: meta.project_name,
+        current_balance,
+        snapshots,
+        burn_1h,
+        burn_24h,
+        burn_7d,
+        burn_30d,
+        is_24h_actual,
+        is_7d_actual,
+        is_30d_actual,
+    })
+}
+
 // =============================================================================
 // Update Functions
 // =============================================================================
 
 /// Import canisters (controller only)
+/// If project is provided in import, it will be used; otherwise preserves existing project name
 #[ic_cdk::update]
 fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
     if !is_controller() {
@@ -574,13 +805,16 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
         let mut map = c.borrow_mut();
         for import in canisters {
             let key = PrincipalKey::new(import.canister_id);
-            let existing_name = map.get(&key).and_then(|m| m.project_name.clone());
+            // Use provided project, or fall back to existing project name
+            let project_name = import
+                .project
+                .or_else(|| map.get(&key).and_then(|m| m.project_name.clone()));
             map.insert(
                 key,
                 CanisterMeta {
                     proxy_id: import.proxy_id,
                     proxy_type: import.proxy_type,
-                    project_name: existing_name,
+                    project_name,
                 },
             );
             count += 1;
@@ -604,6 +838,106 @@ fn set_project(canister_id: Principal, project: Option<String>) {
             map.insert(key, meta);
         }
     });
+}
+
+/// Set project names in bulk (controller only)
+#[ic_cdk::update]
+fn set_projects(projects: Vec<(Principal, Option<String>)>) -> u64 {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can set project names");
+    }
+
+    let mut count = 0u64;
+    CANISTERS.with(|c| {
+        let mut map = c.borrow_mut();
+        for (canister_id, project) in projects {
+            let key = PrincipalKey::new(canister_id);
+            if let Some(mut meta) = map.get(&key) {
+                meta.project_name = project;
+                map.insert(key, meta);
+                count += 1;
+            }
+        }
+    });
+    count
+}
+
+/// Update canister metadata (controller only)
+/// Only provided fields are updated; None means unchanged
+#[ic_cdk::update]
+fn update_canister(canister_id: Principal, updates: CanisterUpdate) -> bool {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can update canisters");
+    }
+
+    let key = PrincipalKey::new(canister_id);
+    CANISTERS.with(|c| {
+        let mut map = c.borrow_mut();
+        if let Some(mut meta) = map.get(&key) {
+            if let Some(proxy_id) = updates.proxy_id {
+                meta.proxy_id = proxy_id;
+            }
+            if let Some(proxy_type) = updates.proxy_type {
+                meta.proxy_type = proxy_type;
+            }
+            if let Some(project) = updates.project {
+                meta.project_name = project;
+            }
+            map.insert(key, meta);
+            true
+        } else {
+            false
+        }
+    })
+}
+
+/// Remove a single canister and its snapshots (controller only)
+#[ic_cdk::update]
+fn remove_canister(canister_id: Principal) -> bool {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can remove canisters");
+    }
+
+    let key = PrincipalKey::new(canister_id);
+
+    // First check if canister exists
+    let exists = CANISTERS.with(|c| c.borrow().contains_key(&key));
+    if !exists {
+        return false;
+    }
+
+    // Delete snapshots first
+    delete_snapshots_for_canister(&key);
+
+    // Then remove the canister
+    CANISTERS.with(|c| {
+        c.borrow_mut().remove(&key);
+    });
+
+    true
+}
+
+/// Remove multiple canisters and their snapshots (controller only)
+#[ic_cdk::update]
+fn remove_canisters(canister_ids: Vec<Principal>) -> u64 {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can remove canisters");
+    }
+
+    let mut count = 0u64;
+    for canister_id in canister_ids {
+        let key = PrincipalKey::new(canister_id);
+
+        let exists = CANISTERS.with(|c| c.borrow().contains_key(&key));
+        if exists {
+            delete_snapshots_for_canister(&key);
+            CANISTERS.with(|c| {
+                c.borrow_mut().remove(&key);
+            });
+            count += 1;
+        }
+    }
+    count
 }
 
 /// Take a snapshot of all canisters
@@ -721,8 +1055,8 @@ async fn take_snapshot() -> SnapshotResult {
         }
     }
 
-    // Prune old snapshots
-    let cutoff = timestamp.saturating_sub(SEVEN_DAYS_NANOS);
+    // Prune old snapshots (keep RETENTION_PERIOD = 30 days)
+    let cutoff = timestamp.saturating_sub(RETENTION_PERIOD);
     let pruned = SNAPSHOTS.with(|s| {
         let mut map = s.borrow_mut();
         let mut to_remove = Vec::new();

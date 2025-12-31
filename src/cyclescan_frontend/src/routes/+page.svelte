@@ -2,6 +2,7 @@
   import "../index.scss";
   import { onMount } from "svelte";
   import { backend } from "$lib/canisters";
+  import CanisterDetailModal from "$lib/components/CanisterDetailModal.svelte";
 
   let entries = [];
   let stats = null;
@@ -10,7 +11,10 @@
   let searchQuery = "";
   let sortColumn = "burn_24h";
   let sortDirection = "desc";
+  let currentPage = 1;
+  let selectedCanisterId = null;
 
+  const ITEMS_PER_PAGE = 100;
   const TRILLION = 1_000_000_000_000n;
   const BILLION = 1_000_000_000n;
   const MILLION = 1_000_000n;
@@ -92,8 +96,33 @@
     return sortDirection === "desc" ? -cmp : cmp;
   });
 
+  $: totalPages = Math.ceil(sortedEntries.length / ITEMS_PER_PAGE);
+  $: {
+    // Reset to page 1 when filters change
+    searchQuery;
+    sortColumn;
+    sortDirection;
+    currentPage = 1;
+  }
+  $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  $: paginatedEntries = sortedEntries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  function goToPage(page) {
+    if (page >= 1 && page <= totalPages) {
+      currentPage = page;
+    }
+  }
+
   function formatNumber(n) {
     return Number(n).toLocaleString();
+  }
+
+  function openModal(canisterId) {
+    selectedCanisterId = canisterId.toString();
+  }
+
+  function closeModal() {
+    selectedCanisterId = null;
   }
 
   onMount(async () => {
@@ -195,13 +224,13 @@
           </tr>
         </thead>
         <tbody>
-          {#each sortedEntries as entry, i}
-            <tr>
-              <td class="rank">{i + 1}</td>
+          {#each paginatedEntries as entry, i}
+            <tr class="clickable" on:click={() => openModal(entry.canister_id)}>
+              <td class="rank">{startIndex + i + 1}</td>
               <td class="canister-id">
-                <a href={dashboardUrl(entry.canister_id)} target="_blank" rel="noopener">
+                <span class="canister-link">
                   {shortenCanisterId(entry.canister_id)}
-                </a>
+                </span>
               </td>
               <td class="project" class:empty={!entry.project?.[0]}>
                 {entry.project?.[0] ?? "Unknown"}
@@ -215,9 +244,70 @@
         </tbody>
       </table>
     </div>
+
+    {#if totalPages > 1}
+      <div class="pagination">
+        <button
+          class="page-btn"
+          disabled={currentPage === 1}
+          on:click={() => goToPage(1)}
+        >
+          First
+        </button>
+        <button
+          class="page-btn"
+          disabled={currentPage === 1}
+          on:click={() => goToPage(currentPage - 1)}
+        >
+          Prev
+        </button>
+
+        <div class="page-numbers">
+          {#each Array.from({ length: totalPages }, (_, i) => i + 1) as page}
+            {#if page === 1 || page === totalPages || (page >= currentPage - 2 && page <= currentPage + 2)}
+              <button
+                class="page-num"
+                class:active={page === currentPage}
+                on:click={() => goToPage(page)}
+              >
+                {page}
+              </button>
+            {:else if page === currentPage - 3 || page === currentPage + 3}
+              <span class="ellipsis">...</span>
+            {/if}
+          {/each}
+        </div>
+
+        <button
+          class="page-btn"
+          disabled={currentPage === totalPages}
+          on:click={() => goToPage(currentPage + 1)}
+        >
+          Next
+        </button>
+        <button
+          class="page-btn"
+          disabled={currentPage === totalPages}
+          on:click={() => goToPage(totalPages)}
+        >
+          Last
+        </button>
+
+        <span class="page-info">
+          {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, sortedEntries.length)} of {sortedEntries.length.toLocaleString()}
+        </span>
+      </div>
+    {/if}
   {/if}
 
   <footer>
     An <a href="https://alexandriadao.com/" target="_blank" rel="noopener">Alexandria</a> Project
   </footer>
 </div>
+
+{#if selectedCanisterId}
+  <CanisterDetailModal
+    canisterId={selectedCanisterId}
+    onClose={closeModal}
+  />
+{/if}

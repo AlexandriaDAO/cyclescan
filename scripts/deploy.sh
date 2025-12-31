@@ -75,25 +75,43 @@ use_daopad_identity() {
 }
 
 build_backend() {
-    echo "Building..."
+    echo "Building backend..."
     cargo build --release --target wasm32-unknown-unknown --package cyclescan_backend
 
     WASM_PATH="target/wasm32-unknown-unknown/release/cyclescan_backend.wasm"
     if [ -f "$WASM_PATH" ]; then
         WASM_SIZE=$(wc -c < "$WASM_PATH")
-        echo "WASM: $WASM_SIZE bytes"
+        echo "Backend WASM: $WASM_SIZE bytes"
     fi
     echo ""
 }
 
+build_frontend() {
+    echo "Building frontend..."
+    cd "$PROJECT_DIR/src/cyclescan_frontend"
+    npx vite build 2>&1 | tail -5
+    cd "$PROJECT_DIR"
+    echo ""
+}
+
 deploy_backend() {
-    echo "Deploying to mainnet..."
+    echo "Deploying backend to mainnet..."
     dfx deploy cyclescan_backend --network ic
 
     CANISTER_ID=$(dfx canister id cyclescan_backend --network ic)
     echo ""
-    echo "Canister: $CANISTER_ID"
+    echo "Backend: $CANISTER_ID"
     echo "Dashboard: https://dashboard.internetcomputer.org/canister/$CANISTER_ID"
+    echo ""
+}
+
+deploy_frontend() {
+    echo "Deploying frontend to mainnet..."
+    dfx deploy cyclescan_frontend --network ic --upgrade-unchanged
+
+    CANISTER_ID=$(dfx canister id cyclescan_frontend --network ic)
+    echo ""
+    echo "Frontend: https://$CANISTER_ID.icp0.io/"
     echo ""
 }
 
@@ -119,16 +137,20 @@ main() {
     case $DEPLOY_TARGET in
         build)
             build_backend
+            build_frontend
             ;;
         deploy)
             deploy_backend
+            deploy_frontend
             ;;
         snapshot)
             take_snapshot
             ;;
         all)
             build_backend
+            build_frontend
             deploy_backend
+            deploy_frontend
             ;;
     esac
 
@@ -136,9 +158,12 @@ main() {
         run_tests
     fi
 
-    CANISTER_ID=$(dfx canister id cyclescan_backend --network ic 2>/dev/null || echo "not deployed")
+    BACKEND_ID=$(dfx canister id cyclescan_backend --network ic 2>/dev/null || echo "not deployed")
+    FRONTEND_ID=$(dfx canister id cyclescan_frontend --network ic 2>/dev/null || echo "not deployed")
     echo "================================================"
-    echo "Done! Canister: $CANISTER_ID"
+    echo "Done!"
+    echo "Backend:  $BACKEND_ID"
+    echo "Frontend: https://$FRONTEND_ID.icp0.io/"
     echo "================================================"
 }
 

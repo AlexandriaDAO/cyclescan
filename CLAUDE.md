@@ -13,12 +13,12 @@ Cycles burn leaderboard for ICP. Like CoinGecko, but for cycle consumption.
 
 ## Development
 
-**Deploy to mainnet:**
+**Always deploy after changes** (no local dev environment):
 ```bash
 ./scripts/deploy.sh
 ```
 
-No local testing. Uses `daopad` identity.
+Uses `daopad` identity.
 
 ## Architecture
 
