@@ -53,6 +53,14 @@
     return `https://dashboard.internetcomputer.org/canister/${id}`;
   }
 
+  async function copyToClipboard(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  }
+
   function handleKeydown(event) {
     if (event.key === "Escape") {
       onClose();
@@ -188,7 +196,15 @@
     {:else if data}
       <div class="modal-header">
         <h2>{data.project?.[0] || "Unknown Project"}</h2>
-        <p class="canister-id-display">{canisterId}</p>
+        <div class="canister-id-row">
+          <p class="canister-id-display">{canisterId}</p>
+          <button class="copy-btn" on:click={() => copyToClipboard(canisterId)} title="Copy canister ID">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="chart-container" bind:this={chartContainer}></div>
@@ -300,11 +316,35 @@
     margin: 0 0 8px 0;
   }
 
+  .canister-id-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .canister-id-display {
     color: #9ca3af;
     font-family: monospace;
     font-size: 14px;
     margin: 0;
+  }
+
+  .copy-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .copy-btn:hover {
+    background: #2d2d44;
+    color: #00d395;
   }
 
   .close-btn {

@@ -1,0 +1,2002 @@
+Starting batch research for 180 canisters
+
+============================================================
+Researching [1]: 3qgfz-2qaaa-aaaar-qaipq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [2]: 4rcf3-fqaaa-aaaar-qbn2q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [3]: 4dyxl-hiaaa-aaaaf-qasmq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [4]: 4biss-cyaaa-aaaah-arneq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [5]: 4tb3r-nyaaa-aaaae-qad5a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [6]: 3thnb-raaaa-aaaaa-qahla-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [7]: 45pog-dqaaa-aaaao-a4piq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: MyToken (MYTOKEN)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [8]: 55e7x-xyaaa-aaaal-qmzsq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [9]: 2jzxy-6qaaa-aaaai-atfya-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [10]: 2udpp-myaaa-aaaaf-qan4a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 10/180 (0 identified, 10 unknown)
+
+============================================================
+Researching [11]: 4jngj-yiaaa-aaaal-ajk5q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [12]: 33tnr-7iaaa-aaaae-acxoq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ✓ Index canister! Ledger: mg4vy-myaaa-aaaao-qk6lq-cai
+    ✓ Identified as: SHOW Index
+    ✓ Project set in backend
+
+============================================================
+Researching [13]: 235yg-kiaaa-aaaaj-qnwlq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [14]: 57yxc-oiaaa-aaaai-atjhq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [15]: 2377i-5aaaa-aaaai-q3yua-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [16]: 4dvbg-yaaaa-aaaao-qj6fa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [17]: 4dixi-liaaa-aaaah-arbiq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [18]: 52miu-vqaaa-aaaag-at5ja-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [19]: 3zwjo-2yaaa-aaaao-qj6xq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [20]: 4yq5d-cyaaa-aaaao-qj6hq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 20/180 (1 identified, 19 unknown)
+
+============================================================
+Researching [21]: 2gfyw-aiaaa-aaaaf-qan7a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [22]: 4orfs-wqaaa-aaaad-qg6ka-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [23]: 44xsl-2aaaa-aaaad-qg6ja-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [24]: 4sv7d-bqaaa-aaaad-qg6ia-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [25]: 5bjur-piaaa-aaaag-at5lq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [26]: 4zabs-biaaa-aaaag-at5pq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [27]: 4fe3d-wiaaa-aaaag-at5nq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [28]: 4xcm2-2yaaa-aaaag-at5oq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [29]: 3ecpo-oiaaa-aaaag-at55q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [30]: 22hwg-5iaaa-aaaah-arb4q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 30/180 (1 identified, 29 unknown)
+
+============================================================
+Researching [31]: 57q7d-saaaa-aaaaj-az5ua-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [32]: 2z72s-uqaaa-aaaai-q3uya-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [33]: 2f3ad-dqaaa-aaaai-q3u2a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [34]: 466cd-vaaaa-aaaac-aonra-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [35]: 3gxjf-xiaaa-aaaai-q3u4q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [36]: 2lznl-yaaaa-aaaai-q3u3a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [37]: 3hxgw-iqaaa-aaaad-qhpka-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [38]: 4ribt-uaaaa-aaaah-qqfda-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [39]: 27q7f-uiaaa-aaaaj-a2g7q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [40]: 2v5nj-jqaaa-aaaai-atf2a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 40/180 (1 identified, 39 unknown)
+
+============================================================
+Researching [41]: 4n22d-4yaaa-aaaaf-qasnq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [42]: 4n3z7-niaaa-aaaal-ajnaa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [43]: 545sr-3yaaa-aaaao-qj6bq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [44]: 4qxiu-gqaaa-aaaaa-qausq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: ToKeN (TKN)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [45]: 2onnu-myaaa-aaaag-at52q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [46]: 2x5x2-paaaa-aaaai-q3uza-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [47]: 4phnc-7aaaa-aaaaj-qnrdq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [48]: 4azpi-aiaaa-aaaah-qqc5a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [49]: 5au6n-tqaaa-aaaaf-qaska-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [50]: 2whn7-fqaaa-aaaak-qucca-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 50/180 (1 identified, 49 unknown)
+
+============================================================
+Researching [51]: 3mnis-uaaaa-aaaal-amm6a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [52]: 4fqbu-faaaa-aaaan-qmdiq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [53]: 43qjv-pyaaa-aaaac-a4wxq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [54]: 2naxc-4iaaa-aaaam-qdo2q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [55]: 4e4d3-wyaaa-aaaao-a44dq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [56]: 3v56e-yqaaa-aaaan-qzyiq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [57]: 4ilm5-5iaaa-aaaam-qdomq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [58]: 54jza-yiaaa-aaaal-artcq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [59]: 2v3om-2yaaa-aaaah-qczoa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [60]: 36l7l-yqaaa-aaaal-amm5a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 60/180 (1 identified, 59 unknown)
+
+============================================================
+Researching [61]: 3ng3c-vyaaa-aaaah-qddkq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [62]: 3zkvx-kaaaa-aaaak-qt2ia-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: Trump (TRMP)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [63]: 4ei3l-faaaa-aaaak-qt22a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: Butten Bun (BUBB)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [64]: 4dj57-iyaaa-aaaak-qt22q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: Hell O (HELLO)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [65]: 4vzvq-riaaa-aaaak-qt5ea-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: XRP (XRP)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [66]: 4426m-haaaa-aaaak-qt5fq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: Aptos (APT)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [67]: 4a6e5-qaaaa-aaaak-qt5hq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: vyt (HUHH)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [68]: 44jjm-nqaaa-aaaap-ai7jq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [69]: 3wdhh-paaaa-aaaah-qddia-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [70]: 4i22r-jaaaa-aaaal-ajbmq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 70/180 (1 identified, 69 unknown)
+
+============================================================
+Researching [71]: 3dewk-oiaaa-aaaah-qddlq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [72]: 2h5or-paaaa-aaaak-qcjyq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [73]: 2tcj3-baaaa-aaaaf-qan4q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [74]: 4kl4u-5aaaa-aaaah-arbja-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [75]: 2rgll-iiaaa-aaaak-quccq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [76]: 2qc72-4qaaa-aaaap-qhwqq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [77]: 4wvxn-oiaaa-aaaar-qbs7q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: MODULEX•ID•UAZV•ODIN (MODULEX•ID•UAZV•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [78]: 4vwoc-xqaaa-aaaar-qapca-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: TURT•ID•PNLO•ODIN (TURT•ID•PNLO•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [79]: 4sxiw-2iaaa-aaaar-qapcq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: CHODIN•ID•OOXT•ODIN (CHODIN•ID•OOXT•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [80]: 57zmy-vaaaa-aaaar-qapfa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: DOG•ID•ZKJX•ODIN (DOG•ID•ZKJX•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+  💾 Progress saved: 80/180 (5 identified, 75 unknown)
+
+============================================================
+Researching [81]: 4sdi3-3iaaa-aaaar-qbvca-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: CRYPTOBURG•ID•JQNJ•ODIN (CRYPTOBURG•ID•JQNJ•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [82]: 4vcop-wqaaa-aaaar-qbvcq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: COCORO•ID•IVPN•ODIN (COCORO•ID•IVPN•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [83]: 57nmv-uaaaa-aaaar-qbvfq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: MOGU•ID•EJIE•ODIN (MOGU•ID•EJIE•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [84]: 57py2-taaaa-aaaar-qaqaq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: TOADIN•ID•KXOM•ODIN (TOADIN•ID•KXOM•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [85]: 4va2a-rqaaa-aaaar-qaqhq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: ODOGE•ID•SCWN•ODIN (ODOGE•ID•SCWN•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [86]: 4yboh-tyaaa-aaaar-qbn3a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: BITCOIN•ID•EWUY•ODIN (BITCOIN•ID•EWUY•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [87]: 2nqdu-5yaaa-aaaal-adxsa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [88]: 44kxe-zaaaa-aaaal-ajk6a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [89]: 3o4ks-jaaaa-aaaal-adxuq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [90]: 3a6h2-sqaaa-aaaal-adxvq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 90/180 (11 identified, 79 unknown)
+
+============================================================
+Researching [91]: 3syqd-6aaaa-aaaal-adxwq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [92]: 2gtns-caaaa-aaaal-ad37q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [93]: 2zaob-nyaaa-aaaal-ad4aq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [94]: 4yx2f-vyaaa-aaaar-qbs6q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: CEP•ID•JPYP•ODIN (CEP•ID•JPYP•ODIN)
+    ✓ Identified as: ODIN.fun
+    ✓ Project set in backend
+
+============================================================
+Researching [95]: 322ha-cqaaa-aaaah-qqcpq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [96]: 42crl-7yaaa-aaaak-adkzq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [97]: 4idfk-viaaa-aaaak-qiy2q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [98]: 4vjef-5qaaa-aaaap-qhwgq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [99]: 4x3uo-diaaa-aaaaq-aaayq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [100]: 4bihb-laaaa-aaaam-qdona-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 100/180 (12 identified, 88 unknown)
+
+============================================================
+Researching [101]: 2ed46-kaaaa-aaaam-qdo3a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [102]: 3ttlo-zqaaa-aaaad-qg6ya-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [103]: 3uglv-4yaaa-aaaaa-qahlq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [104]: 346vy-oyaaa-aaaan-qzyja-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [105]: 4euhs-vyaaa-aaaao-qj6fq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [106]: 4ilzo-uqaaa-aaaah-arnfa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [107]: 2be6c-nqaaa-aaaaf-qan7q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [108]: 4vuzx-miaaa-aaaad-qg6iq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [109]: 43wu7-xyaaa-aaaad-qg6jq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [110]: 4jqdg-3iaaa-aaaad-qg6kq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 110/180 (12 identified, 98 unknown)
+
+============================================================
+Researching [111]: 4mhq7-aaaaa-aaaag-at5ma-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [112]: 4qdko-xaaaa-aaaag-at5oa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [113]: 46bhg-mqaaa-aaaag-at5pa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [114]: 2hogi-2qaaa-aaaag-at53a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [115]: 3rf6d-paaaa-aaaag-at56a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [116]: 3wt4i-faaaa-aaaaj-qnwma-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [117]: 4ejr4-gqaaa-aaaah-arbia-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [118]: 2te52-laaaa-aaaah-arb5a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [119]: 3awac-fiaaa-aaaad-qhpkq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [120]: 4z7ex-yyaaa-aaaac-aonrq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 120/180 (12 identified, 108 unknown)
+
+============================================================
+Researching [121]: 2664g-ziaaa-aaaai-q3uyq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [122]: 2q4ro-cyaaa-aaaai-q3uzq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [123]: 2c2gx-oiaaa-aaaai-q3u2q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [124]: 2myl7-vyaaa-aaaai-q3u3q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [125]: 4hyj4-nqaaa-aaaah-qqc5q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [126]: 4wjhh-zyaaa-aaaah-qqfdq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [127]: 2bwnk-liaaa-aaaak-quria-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [128]: 246z4-qyaaa-aaaai-q3yuq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [129]: 2s4l5-eiaaa-aaaai-atf2q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [130]: 3pucz-baaaa-aaaai-q3u5a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 130/180 (12 identified, 118 unknown)
+
+============================================================
+Researching [131]: 4y5lo-5qaaa-aaaaf-qasoa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [132]: 24t7b-laaaa-aaaak-quf6q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [133]: 3ybkp-uqaaa-aaaah-qddja-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [134]: 53bb2-rqaaa-aaaap-aa3vq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [135]: 473jg-3qaaa-aaaai-qpkya-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ✓ ICRC-1 Token: GoldFish (GLDF)
+    ⚠ Token found but project unknown
+
+============================================================
+Researching [136]: 2nvud-4yaaa-aaaal-qjaxa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [137]: 25jyk-oaaaa-aaaah-adwwa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [138]: 4crha-iyaaa-aaaan-qmdia-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [139]: 2fytf-maaaa-aaaad-qg65a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [140]: 5beig-wyaaa-aaaag-aapeq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 140/180 (12 identified, 128 unknown)
+
+============================================================
+Researching [141]: 353bu-piaaa-aaaah-qqcpa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [142]: 3wzge-xyaaa-aaaal-qbeja-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [143]: 2vn26-myaaa-aaaao-aanla-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [144]: 3dgcv-ziaaa-aaaao-aanoa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [145]: 4l75v-maaaa-aaaal-abfwq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [146]: 2etii-lqaaa-aaaal-adxtq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [147]: 55noa-yiaaa-aaaag-at5jq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [148]: 4jsui-yqaaa-aaaac-aukwa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [149]: 4q2wu-pqaaa-aaaag-abvbq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [150]: 473ia-7yaaa-aaaag-amd5a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 150/180 (12 identified, 138 unknown)
+
+============================================================
+Researching [151]: 4e6uf-faaaa-aaaag-amd7q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [152]: 4ailt-qaaaa-aaaag-ameca-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [153]: 3x5sf-taaaa-aaaah-aq33q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [154]: 4o3ca-3yaaa-aaaah-qqc4a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [155]: 4j2eu-waaaa-aaaah-qqc4q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [156]: 4nt3u-hyaaa-aaaai-q3mvq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [157]: 2obr6-aaaaa-aaaaj-a2bbq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [158]: 23gat-biaaa-aaaaj-a2bca-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [159]: 275ts-ziaaa-aaaaj-qnotq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [160]: 3stx4-waaaa-aaaaj-qnoua-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 160/180 (12 identified, 148 unknown)
+
+============================================================
+Researching [161]: 4ngma-kyaaa-aaaak-qaiuq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [162]: 4kkwd-6qaaa-aaaak-qt23a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [163]: 454jg-5qaaa-aaaal-adxhq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [164]: 2yxsz-4qaaa-aaaal-adxrq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [165]: 2dso4-giaaa-aaaal-adxta-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [166]: 3j5mg-eyaaa-aaaal-adxua-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [167]: 3h7bo-7iaaa-aaaal-adxva-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [168]: 3vzwx-tyaaa-aaaal-adxwa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [169]: 2bslg-pyaaa-aaaal-ad37a-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [170]: 26biv-aaaaa-aaaal-ad4aa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 170/180 (12 identified, 158 unknown)
+
+============================================================
+Researching [171]: 56rc2-4qaaa-aaaal-ajbjq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [172]: 4p34f-eyaaa-aaaal-ajbma-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [173]: 2wu5l-syaaa-aaaal-ajbya-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [174]: 2rv37-7aaaa-aaaal-ajbyq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [175]: 2lrpa-sqaaa-aaaal-ajvoq-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [176]: 2cse4-eyaaa-aaaal-ajvpa-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [177]: 3zkz7-viaaa-aaaal-amm5q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [178]: 3lmog-zyaaa-aaaal-amm6q-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [179]: 4alnw-giaaa-aaaap-abgma-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ❌ No Candid metadata
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+============================================================
+Researching [180]: 35dny-6aaaa-aaaas-akqba-cai
+============================================================
+  [1/3] Querying Candid metadata...
+    ✓ Candid available
+  [2/3] Trying ICRC-1 token methods...
+    ❌ Not an ICRC-1 token
+  [3/3] Trying index canister methods...
+    ❌ Not an index canister
+  ❌ Unable to auto-identify
+
+  💾 Progress saved: 180/180 (12 identified, 168 unknown)
+
+============================================================
+Research Complete!
+============================================================
+  Total researched: 180
+  Newly identified: 12
+  Newly unknown: 168
+  Total identified in file: 39
+  Total unknown in file: 171
+
+  Results saved to:
+    - /home/theseus/alexandria/cyclescan/data/research_results2.json
+    - /home/theseus/alexandria/cyclescan/data/research_results_unknown.json

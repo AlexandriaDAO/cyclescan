@@ -1,0 +1,1473 @@
+[
+  {
+    "canister_id": "22g4r-6yaaa-aaaak-qt2oq-cai",
+    "burn_rank": 1,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Token1",
+    "token_symbol": "TOKEN1",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Token1 (TOKEN1) - project not identified"
+  },
+  {
+    "canister_id": "2bdau-eaaaa-aaaak-qt2ma-cai",
+    "burn_rank": 2,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "MY GIRL",
+    "token_symbol": "MGL",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token MY GIRL (MGL) - project not identified"
+  },
+  {
+    "canister_id": "2guii-nqaaa-aaaai-qpkma-cai",
+    "burn_rank": 3,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "tttt",
+    "token_symbol": "TT",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token tttt (TT) - project not identified"
+  },
+  {
+    "canister_id": "2iwfa-waaaa-aaaai-qpkna-cai",
+    "burn_rank": 4,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "fsdf",
+    "token_symbol": "sad",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token fsdf (sad) - project not identified"
+  },
+  {
+    "canister_id": "2lpzj-6aaaa-aaaai-q3l6q-cai",
+    "burn_rank": 5,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "BullyBucks",
+    "token_symbol": "HUGO",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token BullyBucks (HUGO) - project not identified"
+  },
+  {
+    "canister_id": "2mo75-tyaaa-aaaai-q3l6a-cai",
+    "burn_rank": 6,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "8Year Gang",
+    "token_symbol": "8",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token 8Year Gang (8) - project not identified"
+  },
+  {
+    "canister_id": "2ncr2-7iaaa-aaaak-qucaq-cai",
+    "burn_rank": 7,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Clap Hands",
+    "token_symbol": "CLAPS",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Clap Hands (CLAPS) - project not identified"
+  },
+  {
+    "canister_id": "2qsop-qiaaa-aaaak-qt5sa-cai",
+    "burn_rank": 8,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Synthetix",
+    "token_symbol": "SNX",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Synthetix (SNX) - project not identified"
+  },
+  {
+    "canister_id": "2vqu5-5iaaa-aaaak-quf7a-cai",
+    "burn_rank": 9,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Adam Computer Protocol ",
+    "token_symbol": "ACP",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Adam Computer Protocol  (ACP) - project not identified"
+  },
+  {
+    "canister_id": "2zrft-gaaaa-aaaak-qt5tq-cai",
+    "burn_rank": 10,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Filecoin",
+    "token_symbol": "FIL",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Filecoin (FIL) - project not identified"
+  },
+  {
+    "canister_id": "325mv-syaaa-aaaak-qt5va-cai",
+    "burn_rank": 11,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "token1",
+    "token_symbol": "TBTC",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token token1 (TBTC) - project not identified"
+  },
+  {
+    "canister_id": "33heh-4iaaa-aaaao-qkcra-cai",
+    "burn_rank": 12,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Test14",
+    "token_symbol": "TST14",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Test14 (TST14) - project not identified"
+  },
+  {
+    "canister_id": "3kf65-giaaa-aaaak-qcw2q-cai",
+    "burn_rank": 13,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "AVOCADO",
+    "token_symbol": "AVCD",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token AVOCADO (AVCD) - project not identified"
+  },
+  {
+    "canister_id": "3m3ks-paaaa-aaaai-qpkla-cai",
+    "burn_rank": 14,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "ada",
+    "token_symbol": "asda",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token ada (asda) - project not identified"
+  },
+  {
+    "canister_id": "3p25y-tqaaa-aaaak-qt5wq-cai",
+    "burn_rank": 15,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Avalanche",
+    "token_symbol": "AVAX",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Avalanche (AVAX) - project not identified"
+  },
+  {
+    "canister_id": "3q7qd-yaaaa-aaaai-qpkja-cai",
+    "burn_rank": 16,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "asdd",
+    "token_symbol": "asdd",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token asdd (asdd) - project not identified"
+  },
+  {
+    "canister_id": "3r4gx-wqaaa-aaaaq-aaaia-cai",
+    "burn_rank": 17,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type Config = record {\n  update_interval_ms : nat64;\n  fast_interval_ms : nat64;\n};\ntype HttpHeader = record { text; text };\ntype HttpRequest = record {\n  url : text;\n  method : text;\n  body : vec nat8;\n  headers : vec HttpHeader;\n};\ntype HttpResponse = record  {\n    status_code: nat16;\n    headers: vec HttpHeader;\n    body: vec nat8;\n};\n\ntype CanisterStatusResultV2 = record {\n  controller : principal;\n  status : CanisterStatusType;\n  freezing_threshold : nat;\n  balance : vec record { vec nat8; ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5cjjm-qiaaa-aaaaj-qnrea-cai",
+    "burn_rank": 18,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5d7b4-zyaaa-aaaad-qg6nq-cai",
+    "burn_rank": 19,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5decv-eyaaa-aaaag-ameeq-cai",
+    "burn_rank": 20,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5djwe-daaaa-aaaar-qbvhq-cai",
+    "burn_rank": 21,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "BUNBUNS\u2022POW\u2022VLSH",
+    "token_symbol": "BUNBUNS\u2022POW\u2022VLSH",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token BUNBUNS\u2022POW\u2022VLSH (BUNBUNS\u2022POW\u2022VLSH) - project not identified"
+  },
+  {
+    "canister_id": "5dufs-faaaa-aaaaj-az5wa-cai",
+    "burn_rank": 22,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5dvgo-uqaaa-aaaah-qqc3q-cai",
+    "burn_rank": 23,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "ToKeN",
+    "token_symbol": "TKN",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token ToKeN (TKN) - project not identified"
+  },
+  {
+    "canister_id": "5e6hi-uaaaa-aaaad-qg6na-cai",
+    "burn_rank": 24,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5etlp-jaaaa-aaaak-qt5bq-cai",
+    "burn_rank": 25,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Please Dont use this token",
+    "token_symbol": "PDUTT",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Please Dont use this token (PDUTT) - project not identified"
+  },
+  {
+    "canister_id": "5evdg-iyaaa-aaaaj-az5wq-cai",
+    "burn_rank": 26,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5gn7y-byaaa-aaaae-qffla-cai",
+    "burn_rank": 27,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "TestWL",
+    "token_symbol": "TESTWL",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token TestWL (TESTWL) - project not identified"
+  },
+  {
+    "canister_id": "5hjo2-iiaaa-aaaak-qaitq-cai",
+    "burn_rank": 28,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type StreamingStrategy = variant {\n                           Callback:\n                            record {\n                              callback: StreamingCallback;\n                              token: StreamingCallbackToken;\n                            };};\ntype StreamingCallbackToken = \n record {\n   content_encoding: text;\n   index: nat;\n   key: text;\n   sha256: opt vec nat8;\n };\ntype StreamingCallbackResponse = \n record {\n   body: blob;\n   token: opt StreamingCallbackToken;\n };\ntype Stream",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5hvyz-6iaaa-aaaaf-qaskq-cai",
+    "burn_rank": 29,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type GameCategory = variant {\n  Adventure;\n  Educational;\n  Competitive;\n  Simulation;\n  Others;\n  Casual;\n  Sports;\n};\ntype GameData = record {\n  id : nat64;\n  total_likes : nat64;\n  created : nat64;\n  sorted : bool;\n  owner : principal;\n  tracks : vec GameUnit;\n  name : text;\n  total_plays : nat64;\n  updated : nat64;\n  game_type : GameType;\n  category : opt GameCategory;\n  image : opt text;\n};\ntype GameMetadata = record { id : nat64; name : text; game_type : GameType };\ntype GameType = variant",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5hyou-baaaa-aaaao-qj6da-cai",
+    "burn_rank": 30,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5ipsq-2iaaa-aaaae-qffka-cai",
+    "burn_rank": 31,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5j2d4-2qaaa-aaaao-qj6ca-cai",
+    "burn_rank": 32,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5jg7f-kiaaa-aaaak-qt25q-cai",
+    "burn_rank": 33,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "KUCOIN",
+    "token_symbol": "KUC",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token KUCOIN (KUC) - project not identified"
+  },
+  {
+    "canister_id": "5jshv-zqaaa-aaaao-a44ea-cai",
+    "burn_rank": 34,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5jxvr-fyaaa-aaaaf-qaslq-cai",
+    "burn_rank": 35,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type Message = record {\n  payload_type : text;\n  msg_id : text;\n  msg_type : MessageType;\n  msg_resource : opt MessageSource;\n  timestamp : nat64;\n  caller : principal;\n  payload : blob;\n};\ntype MessageSizeRecord = record { \"text\" : text; \"nat64\" : nat64 };\ntype MessageSource = record {\n  canister_id : principal;\n  resource_type : text;\n  resource_id : nat64;\n};\ntype MessageType = variant {\n  Replace : text;\n  Delete : text;\n  Create : text;\n  Update : text;\n};\ntype MessageWithPrincipal = record",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5k4ka-pqaaa-aaaad-qg6ma-cai",
+    "burn_rank": 36,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5kjdl-zyaaa-aaaag-aufhq-cai",
+    "burn_rank": 38,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5krgh-sqaaa-aaaak-qt5aq-cai",
+    "burn_rank": 39,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Hut Money",
+    "token_symbol": "HUT",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Hut Money (HUT) - project not identified"
+  },
+  {
+    "canister_id": "5kxoo-tiaaa-aaaaj-az5xq-cai",
+    "burn_rank": 40,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5l4ws-aaaaa-aaaaj-qnoaa-cai",
+    "burn_rank": 41,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5lwtx-5yaaa-aaaal-ajbka-cai",
+    "burn_rank": 42,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type InitArg = record {\n  target_canister: principal;\n};\n\ntype UpgradeParams = record {\n  module: blob;\n  arg: blob;\n};\n\ntype TriggerUpgradeError = variant {\n  NotController;\n  Unauthorized;\n  UnexpectedError: text;\n};\n\ntype TriggerUpgradeResponse = variant {\n  Ok;\n  Err: TriggerUpgradeError;\n};\n\nservice: (InitArg) -> {\n  \"trigger_upgrade\": (UpgradeParams) -> (TriggerUpgradeResponse);\n}\n",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5m5qg-nyaaa-aaaaj-qnoaq-cai",
+    "burn_rank": 43,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5n5mu-ciaaa-aaaad-qg6mq-cai",
+    "burn_rank": 44,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5nwi2-6qaaa-aaaaj-az5xa-cai",
+    "burn_rank": 45,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5o3fi-xiaaa-aaaao-qj6cq-cai",
+    "burn_rank": 46,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5ogqx-qyaaa-aaaap-aa3wa-cai",
+    "burn_rank": 47,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type User = \n variant {\n   address: AccountIdentifier;\n   \"principal\": principal;\n };\ntype TransferResponse = \n variant {\n   err:\n    variant {\n      CannotNotify: AccountIdentifier;\n      InsufficientBalance;\n      InvalidToken: TokenIdentifier;\n      Other: text;\n      Rejected;\n      Unauthorized: AccountIdentifier;\n    };\n   ok: Balance;\n };\ntype TransferRequest = \n record {\n   amount: Balance;\n   from: User;\n   memo: Memo;\n   notify: bool;\n   subaccount: opt SubAccount;\n   to: User;\n   toke",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5pgfo-niaaa-aaaag-aapfq-cai",
+    "burn_rank": 48,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5qp6v-4yaaa-aaaaj-qnrha-cai",
+    "burn_rank": 49,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5rbqy-kyaaa-aaaah-aq4qq-cai",
+    "burn_rank": 50,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "TestToken1",
+    "token_symbol": "TST1",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token TestToken1 (TST1) - project not identified"
+  },
+  {
+    "canister_id": "5rssl-jqaaa-aaaaj-az5va-cai",
+    "burn_rank": 51,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5rzwf-viaaa-aaaad-qg6oq-cai",
+    "burn_rank": 52,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5tpdi-dyaaa-aaaag-at5iq-cai",
+    "burn_rank": 53,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5uof4-oaaaa-aaaag-at5ia-cai",
+    "burn_rank": 54,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5ux5i-xqaaa-aaaaq-aaa6a-cai",
+    "burn_rank": 55,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5vks4-oaaaa-aaaal-artda-cai",
+    "burn_rank": 56,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5vtpa-syaaa-aaaaf-qasjq-cai",
+    "burn_rank": 57,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5wdty-fqaaa-aaaag-ameha-cai",
+    "burn_rank": 58,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5wfnd-jiaaa-aaaap-qhwaa-cai",
+    "burn_rank": 59,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5wnxv-raaaa-aaaai-q3lmq-cai",
+    "burn_rank": 60,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5wtu7-eiaaa-aaaaj-az5vq-cai",
+    "burn_rank": 61,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5wv4w-fqaaa-aaaak-qt5cq-cai",
+    "burn_rank": 62,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Ethereum",
+    "token_symbol": "ETH",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Ethereum (ETH) - project not identified"
+  },
+  {
+    "canister_id": "5wyqr-yqaaa-aaaad-qg6oa-cai",
+    "burn_rank": 63,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5xoyb-raaaa-aaaaj-qnrhq-cai",
+    "burn_rank": 64,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5yc3e-4qaaa-aaaah-aq4ra-cai",
+    "burn_rank": 65,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "TestToken2",
+    "token_symbol": "TST2",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token TestToken2 (TST2) - project not identified"
+  },
+  {
+    "canister_id": "5yrzx-7yaaa-aaaaj-az5uq-cai",
+    "burn_rank": 66,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "5ywgh-saaaa-aaaai-qjdca-cai",
+    "burn_rank": 67,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "62bzv-yqaaa-aaaal-al74q-cai",
+    "burn_rank": 68,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "62eei-piaaa-aaaaj-az57q-cai",
+    "burn_rank": 69,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "63wjf-wqaaa-aaaak-qucya-cai",
+    "burn_rank": 70,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Usual",
+    "token_symbol": "USUAL",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Usual (USUAL) - project not identified"
+  },
+  {
+    "canister_id": "64f57-zyaaa-aaaal-adxka-cai",
+    "burn_rank": 71,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "65a7b-viaaa-aaaal-al74a-cai",
+    "burn_rank": 72,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "65x7l-lqaaa-aaaab-aaeba-cai",
+    "burn_rank": 73,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "667zg-iqaaa-aaaah-ab4ha-cai",
+    "burn_rank": 74,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type StreamingStrategy = variant {\n                           Callback:\n                            record {\n                              callback: StreamingCallback;\n                              token: StreamingCallbackToken;\n                            };};\ntype StreamingCallbackToken = \n record {\n   content_encoding: text;\n   index: nat;\n   key: text;\n };\ntype StreamingCallbackResponse = \n record {\n   body: blob;\n   token: opt StreamingCallbackToken;\n };\ntype StreamingCallback = func (Strea",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "676fz-ciaaa-aaaal-qsj7q-cai",
+    "burn_rank": 75,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "67bot-eaaaa-aaaab-aaxiq-cai",
+    "burn_rank": 76,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "67erj-tiaaa-aaaam-acnxa-cai",
+    "burn_rank": 77,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "67hai-4iaaa-aaaai-ap7mq-cai",
+    "burn_rank": 78,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "67mji-3qaaa-aaaan-qmdhq-cai",
+    "burn_rank": 79,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "DGSelf Token",
+    "token_symbol": "DGSLF",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token DGSelf Token (DGSLF) - project not identified"
+  },
+  {
+    "canister_id": "67vz2-4iaaa-aaaam-ab55q-cai",
+    "burn_rank": 80,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "TOKEN",
+    "token_symbol": "TKN",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token TOKEN (TKN) - project not identified"
+  },
+  {
+    "canister_id": "6abho-oyaaa-aaaal-adxia-cai",
+    "burn_rank": 81,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6aqyz-yqaaa-aaaag-aaxxa-cai",
+    "burn_rank": 82,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type comment_input = record {\n    channel_id: text;\n    message: text;\n    comment_id:  text;\n    parent_id: opt text;\n};\n\ntype page = record {\n    comments: vec comment_output;\n    remaining_count: nat;\n};\n\ntype comment_output = record {\n    id: text;\n    content: text;\n    user_id: text;\n    created_at: nat;\n    replies: page;\n    metadata: vec metadata_output;\n};\n\ntype metadata_output = record {\n    text;\n    nat64;\n    bool;\n};\n\ntype get_thread_param = record {\n    limit: nat8;\n    channel_i",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6asao-qyaaa-aaaao-a4pha-cai",
+    "burn_rank": 83,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6b4l3-tqaaa-aaaar-qbvmq-cai",
+    "burn_rank": 84,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "THE\u2022BTC\u2022CANARY\u2022POW\u2022RRTG",
+    "token_symbol": "THE\u2022BTC\u2022CANARY\u2022POW\u2022RRTG",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token THE\u2022BTC\u2022CANARY\u2022POW\u2022RRTG (THE\u2022BTC\u2022CANARY\u2022POW\u2022RRTG) - project not identified"
+  },
+  {
+    "canister_id": "6btf2-4qaaa-aaaab-aaeda-cai",
+    "burn_rank": 85,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6c3yl-jqaaa-aaaac-a4rfq-cai",
+    "burn_rank": 86,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6crdr-paaaa-aaaah-arbfa-cai",
+    "burn_rank": 87,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6cucu-daaaa-aaaan-q2eqa-cai",
+    "burn_rank": 88,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6df2n-myaaa-aaaap-qpzdq-cai",
+    "burn_rank": 89,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6e3z4-yqaaa-aaaal-qsj5a-cai",
+    "burn_rank": 90,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6eghp-nqaaa-aaaag-aaqkq-cai",
+    "burn_rank": 91,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type comment_input = record {\n    channel_id: text;\n    message: text;\n    comment_id:  text;\n    parent_id: opt text;\n};\n\ntype page = record {\n    comments: vec comment_output;\n    remaining_count: nat;\n};\n\ntype comment_output = record {\n    id: text;\n    content: text;\n    user_id: text;\n    created_at: nat;\n    replies: page;\n    metadata: vec metadata_output;\n};\n\ntype metadata_output = record {\n    text;\n    nat64;\n    bool;\n};\n\ntype get_thread_param = record {\n    limit: nat8;\n    channel_i",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6eqf7-gqaaa-aaaam-ab57a-cai",
+    "burn_rank": 92,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "project": null,
+    "reason": "no_candid_metadata",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6f4ap-aqaaa-aaaar-qbnuq-cai",
+    "burn_rank": 93,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "TESTINGANOTHER",
+    "token_symbol": "TESTINGANOTHER",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token TESTINGANOTHER (TESTINGANOTHER) - project not identified"
+  },
+  {
+    "canister_id": "6fhb2-faaaa-aaaai-qpkxa-cai",
+    "burn_rank": 94,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BlockIndex = nat;\ntype Subaccount = blob;\n// Number of nanoseconds since the UNIX epoch in UTC timezone.\ntype Timestamp = nat64;\n// Number of nanoseconds between two [Timestamp]s.\ntype Duration = nat64;\ntype Tokens = nat;\ntype TxIndex = nat;\ntype Allowance = record { allowance : nat; expires_at : opt Timestamp };\ntype AllowanceArgs = record { account : Account; spender : Account };\ntype Approve = record {\n  fee : opt nat;\n  from : Account;\n  memo : opt blob;\n  created_at_time : opt Timestam",
+    "is_token": true,
+    "token_name": "Yuge",
+    "token_symbol": "Yuge",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token Yuge (Yuge) - project not identified"
+  },
+  {
+    "canister_id": "6fntl-rqaaa-aaaao-qj6ia-cai",
+    "burn_rank": 95,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  // The asset canister from which the chunks are to be retrieved.\n  store_ca",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6fqff-cyaaa-aaaah-arbfq-cai",
+    "burn_rank": 96,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6fvea-oyaaa-aaaan-q2eqq-cai",
+    "burn_rank": 97,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n\n// Generic error type added to responses that can fail.\ntype Error = record {\n  // Error code, added as a string to allow for custom error codes.\n  code : text;\n  // Error message to be displayed to the user.\n  message : opt text;\n  // Error details to be displayed to the user.\n  details : opt vec record { text; text };\n};\n\ntype InitArg = record {\n  target_canister : principal;\n};\n\ntype WasmModuleExtraChunks = record {\n  ",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6g5np-6iaaa-aaaar-qbvma-cai",
+    "burn_rank": 98,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "BABY\u2022BITCOIN\u2022POW\u2022ESDM",
+    "token_symbol": "BABY\u2022BITCOIN\u2022POW\u2022ESDM",
+    "project": null,
+    "reason": "token_unknown_project",
+    "notes": "ICRC-1 token BABY\u2022BITCOIN\u2022POW\u2022ESDM (BABY\u2022BITCOIN\u2022POW\u2022ESDM) - project not identified"
+  },
+  {
+    "canister_id": "6g7l4-viaaa-aaaan-qaxaq-cai",
+    "burn_rank": 99,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type StreamingStrategy = variant {\n                           Callback:\n                            record {\n                              callback: StreamingCallback;\n                              token: StreamingCallbackToken;\n                            };};\ntype StreamingCallbackToken = \n record {\n   content_encoding: text;\n   index: nat32;\n   key: nat32;\n   sha256: opt vec nat8;\n };\ntype StreamingCallbackResponse = \n record {\n   body: blob;\n   token: opt StreamingCallbackToken;\n };\ntype Str",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  },
+  {
+    "canister_id": "6gdk3-2aaaa-aaaap-qa5ma-cai",
+    "burn_rank": 100,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type HttpResponse = \n record {\n   body: blob;\n   headers: vec HeaderField;\n   status_code: nat16;\n };\ntype HttpRequest = \n record {\n   body: blob;\n   headers: vec HeaderField;\n   method: text;\n   url: text;\n };\ntype HeaderField = \n record {\n   text;\n   text;\n };\nservice : {\n  http_request: (HttpRequest) -> (HttpResponse) query;\n  set_last_proposal: (text) -> () oneway;\n}\n",
+    "project": null,
+    "reason": "candid_unrecognizable",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Auto-identification failed - needs manual research"
+  }
+]

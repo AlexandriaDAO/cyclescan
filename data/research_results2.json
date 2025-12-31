@@ -1,0 +1,1399 @@
+[
+  {
+    "canister_id": "5o3fi-xiaaa-aaaao-qj6cq-cai",
+    "project": "Orbit",
+    "notes": "Orbit Station canister - DFINITY's multi-sig wallet/treasury management system. Has companion Upgrader at 5hyou-baaaa-aaaao-qj6da-cai",
+    "category": "infrastructure",
+    "burn_rank": 2
+  },
+  {
+    "canister_id": "vxkom-oyaaa-aaaar-qafda-cai",
+    "project": "ckERC20 Orchestrator",
+    "notes": "NNS system canister that manages ckERC20 token deployments (ckETH, ckUSDC, etc.). Spawns and upgrades ledger/index/archive canisters.",
+    "category": "nns_infrastructure",
+    "burn_rank": 3
+  },
+  {
+    "canister_id": "rkp4c-7iaaa-aaaaa-aaaca-cai",
+    "project": "Cycles Minting Canister (CMC)",
+    "notes": "NNS core canister - handles canister creation and cycles minting. Essential infrastructure.",
+    "category": "nns_infrastructure",
+    "burn_rank": 4
+  },
+  {
+    "canister_id": "kzrva-ziaaa-aaaar-qamyq-cai",
+    "project": "OmniBTC",
+    "notes": "Bitcoin Runes Indexer - indexes Bitcoin Runes data for cross-chain functionality. Part of OmniBTC infrastructure.",
+    "category": "defi",
+    "burn_rank": 5
+  },
+  {
+    "canister_id": "gjnxz-siaaa-aaaai-qpebq-cai",
+    "project": "Unknown",
+    "notes": "No Candid metadata. Controllers: NNS Root, z7voi-tiaaa-aaaai-qa5da-cai, and a principal. High cycle burn.",
+    "category": "unknown",
+    "burn_rank": 6
+  },
+  {
+    "canister_id": "6lnhz-oaaaa-aaaas-aabkq-cai",
+    "project": "BoB (Burn or Burn)",
+    "notes": "BoB/ALICE cycles mining canister. Proof-of-Burn mining mechanism where users burn cycles to mine BOB tokens.",
+    "category": "defi",
+    "burn_rank": 7
+  },
+  {
+    "canister_id": "sv3dd-oaaaa-aaaar-qacoa-cai",
+    "project": "ckETH Minter",
+    "notes": "NNS system canister - mints ckETH tokens when ETH is bridged in. Core ckERC20 infrastructure.",
+    "category": "nns_infrastructure",
+    "burn_rank": 10
+  },
+  {
+    "canister_id": "7wupf-wiaaa-aaaar-qaeya-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC Hub canister - cross-chain bridge handling Bitcoin Runes, EVM chains, Solana, etc.",
+    "category": "defi",
+    "burn_rank": 12
+  },
+  {
+    "canister_id": "7ywcn-nyaaa-aaaar-qaeza-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC ICP Route canister - handles ICP chain routing for cross-chain transfers.",
+    "category": "defi",
+    "burn_rank": 18
+  },
+  {
+    "canister_id": "7rvjr-3qaaa-aaaar-qaeyq-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC Customs canister - Bitcoin cross-chain bridge for Runes and BTC-based tokens.",
+    "category": "defi",
+    "burn_rank": 33
+  },
+  {
+    "canister_id": "xrs4b-hiaaa-aaaar-qafoa-cai",
+    "project": "ckUSDC Index",
+    "notes": "ICRC-1 Index canister for ckUSDC ledger (xevnm-gaaaa-aaaar-qafnq-cai). Part of ckERC20 infrastructure.",
+    "category": "nns_infrastructure",
+    "burn_rank": 39
+  },
+  {
+    "canister_id": "s3zol-vqaaa-aaaar-qacpa-cai",
+    "project": "ckETH Index",
+    "notes": "ICRC-1 Index canister for ckETH ledger (ss2fx-dyaaa-aaaar-qacoq-cai). Part of ckERC20 infrastructure.",
+    "category": "nns_infrastructure",
+    "burn_rank": 40
+  },
+  {
+    "canister_id": "gvqys-hyaaa-aaaar-qagfa-cai",
+    "project": "ckLINK Index",
+    "notes": "ICRC-1 Index canister for ckLINK ledger (g4tto-rqaaa-aaaar-qageq-cai). Part of ckERC20 infrastructure.",
+    "category": "nns_infrastructure",
+    "burn_rank": 50
+  },
+  {
+    "canister_id": "nmhmy-riaaa-aaaar-qah2a-cai",
+    "project": "ckXAUT Index",
+    "notes": "ICRC-1 Index canister for ckXAUT ledger (nza5v-qaaaa-aaaar-qahzq-cai). ckXAUT is tokenized gold (XAUT).",
+    "category": "nns_infrastructure",
+    "burn_rank": 51
+  },
+  {
+    "canister_id": "imymm-naaaa-aaaar-qahhq-cai",
+    "project": "ckUNI Index",
+    "notes": "ICRC-1 Index canister for ckUNI ledger (ilzky-ayaaa-aaaar-qahha-cai). ckUNI is wrapped Uniswap token.",
+    "category": "nns_infrastructure",
+    "burn_rank": 52
+  },
+  {
+    "canister_id": "k54e2-ciaaa-aaaab-aaaka-cai",
+    "project": "TipJar",
+    "notes": "ninegua's TipJar - cycles donation canister. Allows users to donate ICP (converted to cycles) to favorite canisters.",
+    "category": "infrastructure",
+    "burn_rank": 71
+  },
+  {
+    "canister_id": "pd4vj-oqaaa-aaaar-qahwq-cai",
+    "project": "ckEURC Index",
+    "notes": "ICRC-1 Index canister for ckEURC ledger (pe5t5-diaaa-aaaar-qahwa-cai). ckEURC is wrapped Euro Coin.",
+    "category": "nns_infrastructure",
+    "burn_rank": 58
+  },
+  {
+    "canister_id": "eujml-dqaaa-aaaar-qagiq-cai",
+    "project": "ckPEPE Index",
+    "notes": "ICRC-1 Index canister for ckPEPE ledger (etik7-oiaaa-aaaar-qagia-cai). ckPEPE is wrapped PEPE token.",
+    "category": "nns_infrastructure",
+    "burn_rank": 60
+  },
+  {
+    "canister_id": "7pail-xaaaa-aaaas-aabmq-cai",
+    "project": "BOB Token",
+    "notes": "BOB Token ledger - the token minted by the BoB (Burn or Burn) mining mechanism.",
+    "category": "token",
+    "is_token": true,
+    "token_name": "BOB",
+    "token_symbol": "BOB",
+    "burn_rank": 112
+  },
+  {
+    "canister_id": "nlgkm-4qaaa-aaaar-qah2q-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC chain management component - handles chain state and token routing.",
+    "category": "defi",
+    "burn_rank": 113
+  },
+  {
+    "canister_id": "he2gn-7qaaa-aaaar-qagaq-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC EVM route canister - handles EVM chain cross-chain transfers.",
+    "category": "defi",
+    "burn_rank": 78
+  },
+  {
+    "canister_id": "w5t77-riaaa-aaaaj-a2mda-cai",
+    "project": "GRAVE Token",
+    "notes": "Graveyard Trespasser - GRAVE token canister with sacrifice/burn mechanism. Token burning platform.",
+    "category": "token",
+    "is_token": true,
+    "token_name": "GRAVE",
+    "burn_rank": 79
+  },
+  {
+    "canister_id": "kqs64-paaaa-aaaar-qamza-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC Runes Exchange canister - manages Bitcoin Runes UTXO-based exchanges and coin balances.",
+    "category": "defi",
+    "burn_rank": 83
+  },
+  {
+    "canister_id": "3zfof-myaaa-aaaar-qaioa-cai",
+    "project": "OmniBTC",
+    "notes": "OmniBTC Doge chain route canister - handles Dogecoin cross-chain transfers.",
+    "category": "defi",
+    "burn_rank": 85
+  },
+  {
+    "canister_id": "xevnm-gaaaa-aaaar-qafnq-cai",
+    "project": "ckUSDC Ledger",
+    "notes": "ckUSDC token ledger - wrapped USDC on ICP. Part of ckERC20 infrastructure.",
+    "category": "nns_infrastructure",
+    "is_token": true,
+    "token_name": "ckUSDC",
+    "token_symbol": "ckUSDC",
+    "burn_rank": 104
+  },
+  {
+    "canister_id": "ss2fx-dyaaa-aaaar-qacoq-cai",
+    "project": "ckETH Ledger",
+    "notes": "ckETH token ledger - wrapped ETH on ICP. Has separate index at s3zol-vqaaa-aaaar-qacpa-cai.",
+    "category": "nns_infrastructure",
+    "is_token": true,
+    "token_name": "ckETH",
+    "token_symbol": "ckETH",
+    "burn_rank": 106
+  },
+  {
+    "canister_id": "vopxt-5qaaa-aaaar-qajnq-cai",
+    "project": "Unknown",
+    "notes": "Canister is currently DISABLED. No controllers listed. Rust-based. High burn before disabled.",
+    "category": "unknown",
+    "burn_rank": 90
+  },
+  {
+    "canister_id": "33tnr-7iaaa-aaaae-acxoq-cai",
+    "burn_rank": 12,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type Tokens = nat;\n\ntype InitArg = record {\n    ledger_id: principal;\n    // The interval in seconds in which to retrieve blocks from the ledger. A lower value makes the index more\n    // responsive in showing new blocks, but increases the consumption of cycles of both the index and ledger canisters.\n    // A higher values means that it takes longer for new blocks to show up in the index.\n    retrieve_blocks_from_ledger_interval_seconds : opt nat64;\n};\n\ntype UpgradeArg = record {\n    ledger_id: ",
+    "project": "SHOW Index",
+    "category": "nns_infrastructure",
+    "ledger_id": "mg4vy-myaaa-aaaao-qk6lq-cai",
+    "notes": "Index for SHOW ledger"
+  },
+  {
+    "canister_id": "4wvxn-oiaaa-aaaar-qbs7q-cai",
+    "burn_rank": 77,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "MODULEX\u2022ID\u2022UAZV\u2022ODIN",
+    "token_symbol": "MODULEX\u2022ID\u2022UAZV\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified MODULEX\u2022ID\u2022UAZV\u2022ODIN token"
+  },
+  {
+    "canister_id": "4vwoc-xqaaa-aaaar-qapca-cai",
+    "burn_rank": 78,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "TURT\u2022ID\u2022PNLO\u2022ODIN",
+    "token_symbol": "TURT\u2022ID\u2022PNLO\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified TURT\u2022ID\u2022PNLO\u2022ODIN token"
+  },
+  {
+    "canister_id": "4sxiw-2iaaa-aaaar-qapcq-cai",
+    "burn_rank": 79,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "CHODIN\u2022ID\u2022OOXT\u2022ODIN",
+    "token_symbol": "CHODIN\u2022ID\u2022OOXT\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified CHODIN\u2022ID\u2022OOXT\u2022ODIN token"
+  },
+  {
+    "canister_id": "57zmy-vaaaa-aaaar-qapfa-cai",
+    "burn_rank": 80,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "DOG\u2022ID\u2022ZKJX\u2022ODIN",
+    "token_symbol": "DOG\u2022ID\u2022ZKJX\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified DOG\u2022ID\u2022ZKJX\u2022ODIN token"
+  },
+  {
+    "canister_id": "4sdi3-3iaaa-aaaar-qbvca-cai",
+    "burn_rank": 81,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "CRYPTOBURG\u2022ID\u2022JQNJ\u2022ODIN",
+    "token_symbol": "CRYPTOBURG\u2022ID\u2022JQNJ\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified CRYPTOBURG\u2022ID\u2022JQNJ\u2022ODIN token"
+  },
+  {
+    "canister_id": "4vcop-wqaaa-aaaar-qbvcq-cai",
+    "burn_rank": 82,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "COCORO\u2022ID\u2022IVPN\u2022ODIN",
+    "token_symbol": "COCORO\u2022ID\u2022IVPN\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified COCORO\u2022ID\u2022IVPN\u2022ODIN token"
+  },
+  {
+    "canister_id": "57nmv-uaaaa-aaaar-qbvfq-cai",
+    "burn_rank": 83,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "MOGU\u2022ID\u2022EJIE\u2022ODIN",
+    "token_symbol": "MOGU\u2022ID\u2022EJIE\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified MOGU\u2022ID\u2022EJIE\u2022ODIN token"
+  },
+  {
+    "canister_id": "57py2-taaaa-aaaar-qaqaq-cai",
+    "burn_rank": 84,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "TOADIN\u2022ID\u2022KXOM\u2022ODIN",
+    "token_symbol": "TOADIN\u2022ID\u2022KXOM\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified TOADIN\u2022ID\u2022KXOM\u2022ODIN token"
+  },
+  {
+    "canister_id": "4va2a-rqaaa-aaaar-qaqhq-cai",
+    "burn_rank": 85,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "ODOGE\u2022ID\u2022SCWN\u2022ODIN",
+    "token_symbol": "ODOGE\u2022ID\u2022SCWN\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified ODOGE\u2022ID\u2022SCWN\u2022ODIN token"
+  },
+  {
+    "canister_id": "4yboh-tyaaa-aaaar-qbn3a-cai",
+    "burn_rank": 86,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "BITCOIN\u2022ID\u2022EWUY\u2022ODIN",
+    "token_symbol": "BITCOIN\u2022ID\u2022EWUY\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified BITCOIN\u2022ID\u2022EWUY\u2022ODIN token"
+  },
+  {
+    "canister_id": "4yx2f-vyaaa-aaaar-qbs6q-cai",
+    "burn_rank": 94,
+    "last_researched": "2025-12-31",
+    "candid_available": false,
+    "is_token": true,
+    "token_name": "CEP\u2022ID\u2022JPYP\u2022ODIN",
+    "token_symbol": "CEP\u2022ID\u2022JPYP\u2022ODIN",
+    "project": "ODIN.fun",
+    "category": "token",
+    "notes": "Auto-identified CEP\u2022ID\u2022JPYP\u2022ODIN token"
+  },
+  {
+    "canister_id": "4dyxl-hiaaa-aaaaf-qasmq-cai",
+    "burn_rank": 3,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4biss-cyaaa-aaaah-arneq-cai",
+    "burn_rank": 4,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3thnb-raaaa-aaaaa-qahla-cai",
+    "burn_rank": 6,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "55e7x-xyaaa-aaaal-qmzsq-cai",
+    "burn_rank": 8,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2udpp-myaaa-aaaaf-qan4a-cai",
+    "burn_rank": 10,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4jngj-yiaaa-aaaal-ajk5q-cai",
+    "burn_rank": 11,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "235yg-kiaaa-aaaaj-qnwlq-cai",
+    "burn_rank": 13,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "57yxc-oiaaa-aaaai-atjhq-cai",
+    "burn_rank": 14,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2377i-5aaaa-aaaai-q3yua-cai",
+    "burn_rank": 15,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4dvbg-yaaaa-aaaao-qj6fa-cai",
+    "burn_rank": 16,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4dixi-liaaa-aaaah-arbiq-cai",
+    "burn_rank": 17,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "52miu-vqaaa-aaaag-at5ja-cai",
+    "burn_rank": 18,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3zwjo-2yaaa-aaaao-qj6xq-cai",
+    "burn_rank": 19,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4yq5d-cyaaa-aaaao-qj6hq-cai",
+    "burn_rank": 20,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2gfyw-aiaaa-aaaaf-qan7a-cai",
+    "burn_rank": 21,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4orfs-wqaaa-aaaad-qg6ka-cai",
+    "burn_rank": 22,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "44xsl-2aaaa-aaaad-qg6ja-cai",
+    "burn_rank": 23,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4sv7d-bqaaa-aaaad-qg6ia-cai",
+    "burn_rank": 24,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "5bjur-piaaa-aaaag-at5lq-cai",
+    "burn_rank": 25,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4zabs-biaaa-aaaag-at5pq-cai",
+    "burn_rank": 26,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4fe3d-wiaaa-aaaag-at5nq-cai",
+    "burn_rank": 27,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4xcm2-2yaaa-aaaag-at5oq-cai",
+    "burn_rank": 28,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3ecpo-oiaaa-aaaag-at55q-cai",
+    "burn_rank": 29,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "22hwg-5iaaa-aaaah-arb4q-cai",
+    "burn_rank": 30,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "57q7d-saaaa-aaaaj-az5ua-cai",
+    "burn_rank": 31,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2z72s-uqaaa-aaaai-q3uya-cai",
+    "burn_rank": 32,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2f3ad-dqaaa-aaaai-q3u2a-cai",
+    "burn_rank": 33,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "466cd-vaaaa-aaaac-aonra-cai",
+    "burn_rank": 34,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3gxjf-xiaaa-aaaai-q3u4q-cai",
+    "burn_rank": 35,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2lznl-yaaaa-aaaai-q3u3a-cai",
+    "burn_rank": 36,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3hxgw-iqaaa-aaaad-qhpka-cai",
+    "burn_rank": 37,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4ribt-uaaaa-aaaah-qqfda-cai",
+    "burn_rank": 38,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "27q7f-uiaaa-aaaaj-a2g7q-cai",
+    "burn_rank": 39,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2v5nj-jqaaa-aaaai-atf2a-cai",
+    "burn_rank": 40,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4n22d-4yaaa-aaaaf-qasnq-cai",
+    "burn_rank": 41,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "545sr-3yaaa-aaaao-qj6bq-cai",
+    "burn_rank": 43,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2onnu-myaaa-aaaag-at52q-cai",
+    "burn_rank": 45,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2x5x2-paaaa-aaaai-q3uza-cai",
+    "burn_rank": 46,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4phnc-7aaaa-aaaaj-qnrdq-cai",
+    "burn_rank": 47,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4azpi-aiaaa-aaaah-qqc5a-cai",
+    "burn_rank": 48,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2whn7-fqaaa-aaaak-qucca-cai",
+    "burn_rank": 50,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3mnis-uaaaa-aaaal-amm6a-cai",
+    "burn_rank": 51,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4fqbu-faaaa-aaaan-qmdiq-cai",
+    "burn_rank": 52,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "43qjv-pyaaa-aaaac-a4wxq-cai",
+    "burn_rank": 53,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2naxc-4iaaa-aaaam-qdo2q-cai",
+    "burn_rank": 54,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4e4d3-wyaaa-aaaao-a44dq-cai",
+    "burn_rank": 55,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3v56e-yqaaa-aaaan-qzyiq-cai",
+    "burn_rank": 56,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4ilm5-5iaaa-aaaam-qdomq-cai",
+    "burn_rank": 57,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "54jza-yiaaa-aaaal-artcq-cai",
+    "burn_rank": 58,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2v3om-2yaaa-aaaah-qczoa-cai",
+    "burn_rank": 59,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "36l7l-yqaaa-aaaal-amm5a-cai",
+    "burn_rank": 60,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3ng3c-vyaaa-aaaah-qddkq-cai",
+    "burn_rank": 61,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3wdhh-paaaa-aaaah-qddia-cai",
+    "burn_rank": 69,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "3dewk-oiaaa-aaaah-qddlq-cai",
+    "burn_rank": 71,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2h5or-paaaa-aaaak-qcjyq-cai",
+    "burn_rank": 72,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "322ha-cqaaa-aaaah-qqcpq-cai",
+    "burn_rank": 95,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  last_chunk: opt blob;\n  sha256: opt blob;\n};\n\n// Remove content for an ",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "4idfk-viaaa-aaaak-qiy2q-cai",
+    "burn_rank": 97,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2nvud-4yaaa-aaaal-qjaxa-cai",
+    "burn_rank": 136,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2obr6-aaaaa-aaaaj-a2bbq-cai",
+    "burn_rank": 157,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "275ts-ziaaa-aaaaj-qnotq-cai",
+    "burn_rank": 159,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "2lrpa-sqaaa-aaaal-ajvoq-cai",
+    "burn_rank": 175,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "// The asset symbol, e.g. \"ICP\" or \"BTC\".\ntype AssetSymbol = text;\n// The network id, represented by the blockchain symbol and network name (e.g. \"icp:mainnet\").\ntype NetworkId = text;\n// Most ids under the station canister are in the UUID format (e.g. \"d0cf5b3f-7017-4cb8-9dcf-52619c42a7b0\").\ntype UUID = text;\n// The timestamp type used in the canister.\ntype TimestampRFC3339 = text;\n// The hash string representation for sha256.\ntype Sha256Hash = text;\n\ntype PaginationInput = record {\n  // The of",
+    "project": "Orbit Station",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Orbit multi-sig wallet/station",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  },
+  {
+    "canister_id": "35dny-6aaaa-aaaas-akqba-cai",
+    "burn_rank": 180,
+    "last_researched": "2025-12-31",
+    "candid_available": true,
+    "candid_summary": "type BatchId = nat;\ntype ChunkId = nat;\ntype Key = text;\ntype Time = int;\n\ntype CreateAssetArguments = record {\n  key: Key;\n  content_type: text;\n  max_age: opt nat64;\n  headers: opt vec HeaderField;\n  enable_aliasing: opt bool;\n  allow_raw_access: opt bool;\n};\n\n// Add or change content for an asset, by content encoding\ntype SetAssetContentArguments = record {\n  key: Key;\n  content_encoding: text;\n  chunk_ids: vec ChunkId;\n  sha256: opt blob;\n};\n\n// Remove content for an asset, by content encodi",
+    "project": "Asset Canister",
+    "methods_tried": [
+      "candid:service",
+      "icrc1_name",
+      "icrc1_symbol",
+      "ledger_id"
+    ],
+    "notes": "Frontend asset canister - website hosting",
+    "category": "infrastructure",
+    "identified_by": "candid_pattern_matching"
+  }
+]

@@ -21,6 +21,9 @@ const THIRTY_DAYS_NANOS: u64 = 30 * NANOS_PER_DAY;
 const RETENTION_PERIOD: u64 = THIRTY_DAYS_NANOS;
 const BATCH_SIZE: usize = 50;
 const SNAPSHOT_INTERVAL: Duration = Duration::from_secs(3600); // 1 hour
+const DEFAULT_PAGE_LIMIT: u64 = 100;
+const MAX_PAGE_LIMIT: u64 = 1000;
+const MAX_PROJECT_NAME_BYTES: usize = 100;
 
 // =============================================================================
 // Proxy Types - Extensible for future query methods
@@ -93,6 +96,26 @@ pub struct LeaderboardEntry {
     pub burn_7d: Option<u128>,
 }
 
+/// Project-aggregated leaderboard entry
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
+pub struct ProjectLeaderboardEntry {
+    pub project: String,
+    pub canister_count: u64,
+    pub total_balance: u128,
+    pub total_burn_1h: Option<u128>,
+    pub total_burn_24h: Option<u128>,
+    pub total_burn_7d: Option<u128>,
+}
+
+/// Paginated leaderboard response
+#[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
+pub struct LeaderboardPage {
+    pub entries: Vec<LeaderboardEntry>,
+    pub total: u64,
+    pub offset: u64,
+    pub limit: u64,
+}
+
 /// Result of take_snapshot
 #[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
 pub struct SnapshotResult {
@@ -147,6 +170,11 @@ struct CanisterMeta {
     project_name: Option<String>,
 }
 
+/// Schema version for CanisterMeta serialization.
+/// Version detection: if first byte < 128, it's v0 (legacy). If >= 128, version = byte - 128.
+const CANISTER_META_VERSION: u8 = 1;
+const VERSION_MARKER: u8 = 128; // High bit set to distinguish from v0's proxy_len (0-29)
+
 impl Storable for CanisterMeta {
     fn to_bytes(&self) -> Cow<'_, [u8]> {
         let proxy_bytes = self.proxy_id.as_slice();
@@ -156,7 +184,9 @@ impl Storable for CanisterMeta {
             ProxyType::SnsRoot => 1,
         };
 
-        let mut bytes = Vec::with_capacity(2 + proxy_bytes.len() + 2 + name_bytes.len());
+        // v1 format: [version | proxy_len | proxy | proxy_type | name_len (u16 LE) | name]
+        let mut bytes = Vec::with_capacity(1 + 1 + proxy_bytes.len() + 1 + 2 + name_bytes.len());
+        bytes.push(VERSION_MARKER + CANISTER_META_VERSION); // Version byte (129 = v1)
         bytes.push(proxy_bytes.len() as u8);
         bytes.extend_from_slice(proxy_bytes);
         bytes.push(proxy_type_byte);
@@ -167,35 +197,69 @@ impl Storable for CanisterMeta {
     }
 
     fn from_bytes(bytes: Cow<[u8]>) -> Self {
-        let proxy_len = bytes[0] as usize;
-        let proxy_id = Principal::from_slice(&bytes[1..1 + proxy_len]);
+        let first_byte = bytes[0];
 
-        let proxy_type_byte = bytes[1 + proxy_len];
-        let proxy_type = match proxy_type_byte {
-            1 => ProxyType::SnsRoot,
-            _ => ProxyType::Blackhole,
-        };
+        // Detect version: v0 has proxy_len (0-29) as first byte, v1+ has 128+ as version marker
+        if first_byte < VERSION_MARKER {
+            // v0 (legacy format): [proxy_len | proxy | proxy_type | name_len (u16 LE) | name]
+            let proxy_len = first_byte as usize;
+            let proxy_id = Principal::from_slice(&bytes[1..1 + proxy_len]);
 
-        let name_len_start = 2 + proxy_len;
-        let name_len =
-            u16::from_le_bytes([bytes[name_len_start], bytes[name_len_start + 1]]) as usize;
+            let proxy_type_byte = bytes[1 + proxy_len];
+            let proxy_type = match proxy_type_byte {
+                1 => ProxyType::SnsRoot,
+                _ => ProxyType::Blackhole,
+            };
 
-        let project_name = if name_len > 0 {
-            let name_start = name_len_start + 2;
-            Some(String::from_utf8_lossy(&bytes[name_start..name_start + name_len]).into_owned())
+            let name_len_start = 2 + proxy_len;
+            let name_len =
+                u16::from_le_bytes([bytes[name_len_start], bytes[name_len_start + 1]]) as usize;
+
+            let project_name = if name_len > 0 {
+                let name_start = name_len_start + 2;
+                Some(String::from_utf8_lossy(&bytes[name_start..name_start + name_len]).into_owned())
+            } else {
+                None
+            };
+
+            Self {
+                proxy_id,
+                proxy_type,
+                project_name,
+            }
         } else {
-            None
-        };
+            // v1+ format: [version | proxy_len | proxy | proxy_type | name_len (u16 LE) | name]
+            let _version = first_byte - VERSION_MARKER; // For future use
+            let proxy_len = bytes[1] as usize;
+            let proxy_id = Principal::from_slice(&bytes[2..2 + proxy_len]);
 
-        Self {
-            proxy_id,
-            proxy_type,
-            project_name,
+            let proxy_type_byte = bytes[2 + proxy_len];
+            let proxy_type = match proxy_type_byte {
+                1 => ProxyType::SnsRoot,
+                _ => ProxyType::Blackhole,
+            };
+
+            let name_len_start = 3 + proxy_len;
+            let name_len =
+                u16::from_le_bytes([bytes[name_len_start], bytes[name_len_start + 1]]) as usize;
+
+            let project_name = if name_len > 0 {
+                let name_start = name_len_start + 2;
+                Some(String::from_utf8_lossy(&bytes[name_start..name_start + name_len]).into_owned())
+            } else {
+                None
+            };
+
+            Self {
+                proxy_id,
+                proxy_type,
+                project_name,
+            }
         }
     }
 
     const BOUND: Bound = Bound::Bounded {
-        max_size: 1 + 29 + 1 + 2 + 100, // proxy len + proxy + type + name len + name
+        max_size: 1 + 1 + 29 + 1 + 2 + 100, // version + proxy len + proxy + type + name len + name
         is_fixed_size: false,
     };
 }
@@ -334,6 +398,22 @@ fn nat_to_u128(nat: &Nat) -> u128 {
 fn is_controller() -> bool {
     let caller = ic_cdk::caller();
     ic_cdk::api::is_controller(&caller)
+}
+
+/// Truncate project name to max allowed bytes (UTF-8 safe)
+fn sanitize_project_name(name: Option<String>) -> Option<String> {
+    name.map(|s| {
+        if s.len() <= MAX_PROJECT_NAME_BYTES {
+            s
+        } else {
+            // Truncate at valid UTF-8 boundary
+            let mut end = MAX_PROJECT_NAME_BYTES;
+            while end > 0 && !s.is_char_boundary(end) {
+                end -= 1;
+            }
+            s[..end].to_string()
+        }
+    })
 }
 
 /// Delete all snapshots for a canister (used for cascade delete)
@@ -647,8 +727,155 @@ fn get_leaderboard() -> Vec<LeaderboardEntry> {
             b_burn.cmp(&a_burn)
         });
 
+        // Apply default limit for backward compatibility (prevents unbounded response)
+        entries.truncate(DEFAULT_PAGE_LIMIT as usize);
         entries
     })
+}
+
+/// Get paginated leaderboard with offset and limit
+#[ic_cdk::query]
+fn get_leaderboard_page(offset: u64, limit: u64) -> LeaderboardPage {
+    let now = now_nanos();
+    let limit = limit.min(MAX_PAGE_LIMIT);
+
+    CANISTERS.with(|c| {
+        let canisters = c.borrow();
+        let total = canisters.len();
+
+        let mut entries: Vec<LeaderboardEntry> = canisters
+            .iter()
+            .map(|(key, meta)| {
+                let canister_id = key.to_principal();
+
+                let balance = SNAPSHOTS.with(|s| {
+                    let map = s.borrow();
+                    let end_key = SnapshotKey {
+                        canister: key.clone(),
+                        timestamp: u64::MAX,
+                    };
+                    let start_key = SnapshotKey {
+                        canister: key.clone(),
+                        timestamp: 0,
+                    };
+                    map.range(start_key..=end_key)
+                        .last()
+                        .map(|(_, v)| v.0)
+                        .unwrap_or(0)
+                });
+
+                LeaderboardEntry {
+                    canister_id,
+                    project: meta.project_name.clone(),
+                    balance,
+                    burn_1h: calculate_burn(&key, NANOS_PER_HOUR, now),
+                    burn_24h: calculate_burn(&key, NANOS_PER_DAY, now),
+                    burn_7d: calculate_burn(&key, SEVEN_DAYS_NANOS, now),
+                }
+            })
+            .collect();
+
+        entries.sort_by(|a, b| {
+            let a_burn = a.burn_24h.unwrap_or(0);
+            let b_burn = b.burn_24h.unwrap_or(0);
+            b_burn.cmp(&a_burn)
+        });
+
+        let page_entries: Vec<LeaderboardEntry> = entries
+            .into_iter()
+            .skip(offset as usize)
+            .take(limit as usize)
+            .collect();
+
+        LeaderboardPage {
+            entries: page_entries,
+            total,
+            offset,
+            limit,
+        }
+    })
+}
+
+/// Get the project-aggregated leaderboard (excludes canisters without a project)
+#[ic_cdk::query]
+fn get_project_leaderboard() -> Vec<ProjectLeaderboardEntry> {
+    let now = now_nanos();
+
+    // First, get individual canister data
+    let canister_data: Vec<(PrincipalKey, String, u128, Option<u128>, Option<u128>, Option<u128>)> =
+        CANISTERS.with(|c| {
+            let canisters = c.borrow();
+            canisters
+                .iter()
+                .filter_map(|(key, meta)| {
+                    // Only include canisters with a project name
+                    let project_name = meta.project_name.as_ref()?;
+
+                    let balance = SNAPSHOTS.with(|s| {
+                        let map = s.borrow();
+                        let end_key = SnapshotKey {
+                            canister: key.clone(),
+                            timestamp: u64::MAX,
+                        };
+                        let start_key = SnapshotKey {
+                            canister: key.clone(),
+                            timestamp: 0,
+                        };
+                        map.range(start_key..=end_key)
+                            .last()
+                            .map(|(_, v)| v.0)
+                            .unwrap_or(0)
+                    });
+
+                    Some((
+                        key.clone(),
+                        project_name.clone(),
+                        balance,
+                        calculate_burn(&key, NANOS_PER_HOUR, now),
+                        calculate_burn(&key, NANOS_PER_DAY, now),
+                        calculate_burn(&key, SEVEN_DAYS_NANOS, now),
+                    ))
+                })
+                .collect()
+        });
+
+    // Aggregate by project
+    let mut project_map: HashMap<String, ProjectLeaderboardEntry> = HashMap::new();
+
+    for (_key, project, balance, burn_1h, burn_24h, burn_7d) in canister_data {
+        let entry = project_map.entry(project.clone()).or_insert(ProjectLeaderboardEntry {
+            project,
+            canister_count: 0,
+            total_balance: 0,
+            total_burn_1h: Some(0),
+            total_burn_24h: Some(0),
+            total_burn_7d: Some(0),
+        });
+
+        entry.canister_count += 1;
+        entry.total_balance += balance;
+
+        // Sum burns (treating None as 0 for aggregation)
+        if let Some(b) = burn_1h {
+            *entry.total_burn_1h.as_mut().unwrap() += b;
+        }
+        if let Some(b) = burn_24h {
+            *entry.total_burn_24h.as_mut().unwrap() += b;
+        }
+        if let Some(b) = burn_7d {
+            *entry.total_burn_7d.as_mut().unwrap() += b;
+        }
+    }
+
+    // Convert to vec and sort by 24h burn descending
+    let mut entries: Vec<ProjectLeaderboardEntry> = project_map.into_values().collect();
+    entries.sort_by(|a, b| {
+        let a_burn = a.total_burn_24h.unwrap_or(0);
+        let b_burn = b.total_burn_24h.unwrap_or(0);
+        b_burn.cmp(&a_burn)
+    });
+
+    entries
 }
 
 /// Get stats
@@ -806,9 +1033,12 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
         for import in canisters {
             let key = PrincipalKey::new(import.canister_id);
             // Use provided project, or fall back to existing project name
-            let project_name = import
-                .project
-                .or_else(|| map.get(&key).and_then(|m| m.project_name.clone()));
+            // Sanitize to ensure it fits in storage
+            let project_name = sanitize_project_name(
+                import
+                    .project
+                    .or_else(|| map.get(&key).and_then(|m| m.project_name.clone())),
+            );
             map.insert(
                 key,
                 CanisterMeta {
@@ -834,7 +1064,7 @@ fn set_project(canister_id: Principal, project: Option<String>) {
     CANISTERS.with(|c| {
         let mut map = c.borrow_mut();
         if let Some(mut meta) = map.get(&key) {
-            meta.project_name = project;
+            meta.project_name = sanitize_project_name(project);
             map.insert(key, meta);
         }
     });
@@ -853,7 +1083,7 @@ fn set_projects(projects: Vec<(Principal, Option<String>)>) -> u64 {
         for (canister_id, project) in projects {
             let key = PrincipalKey::new(canister_id);
             if let Some(mut meta) = map.get(&key) {
-                meta.project_name = project;
+                meta.project_name = sanitize_project_name(project);
                 map.insert(key, meta);
                 count += 1;
             }
@@ -881,7 +1111,7 @@ fn update_canister(canister_id: Principal, updates: CanisterUpdate) -> bool {
                 meta.proxy_type = proxy_type;
             }
             if let Some(project) = updates.project {
-                meta.project_name = project;
+                meta.project_name = sanitize_project_name(project);
             }
             map.insert(key, meta);
             true
@@ -940,9 +1170,17 @@ fn remove_canisters(canister_ids: Vec<Principal>) -> u64 {
     count
 }
 
-/// Take a snapshot of all canisters
+/// Take a snapshot of all canisters (controller only)
 #[ic_cdk::update]
 async fn take_snapshot() -> SnapshotResult {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can trigger snapshots");
+    }
+    do_take_snapshot().await
+}
+
+/// Internal snapshot logic - called by timer and public API
+async fn do_take_snapshot() -> SnapshotResult {
     let timestamp = now_nanos();
 
     // Collect all canisters grouped by proxy type
@@ -1056,18 +1294,16 @@ async fn take_snapshot() -> SnapshotResult {
     }
 
     // Prune old snapshots (keep RETENTION_PERIOD = 30 days)
+    // Note: We must check ALL entries because SnapshotKey sorts by (canister_id, timestamp),
+    // not globally by timestamp. Early break would miss old snapshots for later-sorted canisters.
     let cutoff = timestamp.saturating_sub(RETENTION_PERIOD);
     let pruned = SNAPSHOTS.with(|s| {
         let mut map = s.borrow_mut();
-        let mut to_remove = Vec::new();
-
-        for (key, _) in map.iter() {
-            if key.timestamp < cutoff {
-                to_remove.push(key.clone());
-            } else {
-                break;
-            }
-        }
+        let to_remove: Vec<_> = map
+            .iter()
+            .filter(|(key, _)| key.timestamp < cutoff)
+            .map(|(key, _)| key.clone())
+            .collect();
 
         let count = to_remove.len() as u64;
         for key in to_remove {
@@ -1092,8 +1328,22 @@ fn clear_canisters() {
         ic_cdk::trap("Only controller can clear canisters");
     }
 
+    // Clear snapshots first to avoid orphaned data
+    do_clear_snapshots();
+
     CANISTERS.with(|c| {
         let mut map = c.borrow_mut();
+        let keys: Vec<_> = map.iter().map(|(k, _)| k.clone()).collect();
+        for key in keys {
+            map.remove(&key);
+        }
+    });
+}
+
+/// Internal helper to clear all snapshots
+fn do_clear_snapshots() {
+    SNAPSHOTS.with(|s| {
+        let mut map = s.borrow_mut();
         let keys: Vec<_> = map.iter().map(|(k, _)| k.clone()).collect();
         for key in keys {
             map.remove(&key);
@@ -1107,14 +1357,7 @@ fn clear_snapshots() {
     if !is_controller() {
         ic_cdk::trap("Only controller can clear snapshots");
     }
-
-    SNAPSHOTS.with(|s| {
-        let mut map = s.borrow_mut();
-        let keys: Vec<_> = map.iter().map(|(k, _)| k.clone()).collect();
-        for key in keys {
-            map.remove(&key);
-        }
-    });
+    do_clear_snapshots();
 }
 
 // =============================================================================
@@ -1124,7 +1367,7 @@ fn clear_snapshots() {
 fn schedule_snapshot_timer() {
     let timer_id = ic_cdk_timers::set_timer_interval(SNAPSHOT_INTERVAL, || {
         ic_cdk::spawn(async {
-            let result = take_snapshot().await;
+            let result = do_take_snapshot().await;
             ic_cdk::println!(
                 "Auto snapshot: {} success, {} failed",
                 result.success,
