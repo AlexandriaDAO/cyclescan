@@ -81,6 +81,7 @@ service : {
   get_leaderboard : () -> (vec LeaderboardEntry) query;
   get_leaderboard_page : (nat64, nat64) -> (LeaderboardPage) query;
   get_project_leaderboard : () -> (vec ProjectLeaderboardEntry) query;
+  get_project_canisters : (text) -> (vec LeaderboardEntry) query;
   get_stats : () -> (Stats) query;
   get_canister_count : () -> (nat64) query;
   get_canister : (principal) -> (opt CanisterInfo) query;

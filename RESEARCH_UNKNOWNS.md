@@ -64,7 +64,21 @@ dfx canister --network ic metadata <CANISTER_ID> candid:service 2>&1
 
 ### 2.2 Call Common Query Methods
 
-Based on what the Candid shows, call relevant methods:
+Based on what the Candid shows, call relevant methods.
+
+**⚠️ IMPORTANT: dfx WARNING PARSING BUG**
+
+When a canister doesn't expose `candid:service` metadata, `dfx` outputs warnings to **stdout** (not stderr!):
+
+```
+WARN: Cannot fetch Candid interface for icrc1_name, sending arguments with inferred types.
+("Token")
+```
+
+**Only use the LAST LINE** (the value in parentheses). Never copy-paste the full output as a project name!
+
+**Correct:** `Token`
+**Wrong:** `WARN: Cannot fetch Candid interface for icrc1_name, sending arguments with inferred types. Token`
 
 ```bash
 # For tokens:
@@ -131,18 +145,46 @@ dfx canister --network ic call vohji-riaaa-aaaac-babxq-cai set_project '(princip
 
 ### If you could NOT identify the project:
 
-Mark it as `"Unidentified"` with context:
-```bash
-# Generic unidentified:
-dfx canister --network ic call vohji-riaaa-aaaac-babxq-cai set_project '(principal "<CANISTER_ID>", opt "Unidentified")'
+Use one of the standard categories below. This marks it as **vetted** so we don't waste time re-researching.
 
-# Or with more context:
-dfx canister --network ic call vohji-riaaa-aaaac-babxq-cai set_project '(principal "<CANISTER_ID>", opt "Unidentified (no candid)")'
-dfx canister --network ic call vohji-riaaa-aaaac-babxq-cai set_project '(principal "<CANISTER_ID>", opt "Unidentified (disabled)")'
-dfx canister --network ic call vohji-riaaa-aaaac-babxq-cai set_project '(principal "<CANISTER_ID>", opt "Unidentified (auth required)")'
+```bash
+dfx canister --network ic call vohji-riaaa-aaaac-babxq-cai set_project '(principal "<CANISTER_ID>", opt "<CATEGORY>")'
 ```
 
-This marks it as **vetted** so we don't waste time re-researching.
+---
+
+## Standard Categories for Unidentified Canisters
+
+Use the most specific category that fits. If you need a new category, add it here for future researchers.
+
+| Category | When to Use |
+|----------|-------------|
+| `Unidentified` | Generic - tried everything, can't identify |
+| `Unidentified (no candid)` | No `candid:service` metadata exposed |
+| `Unidentified (disabled)` | Canister is stopped or frozen |
+| `Unidentified (auth required)` | Methods exist but require authentication |
+| `Abandoned` | Canister is out of cycles (dead) |
+| `Unknown Token` | ICRC-1 token but can't identify the project |
+| `Asset Canister` | Frontend asset canister (serves static files) |
+| `Logger Canister` | Logging/monitoring infrastructure |
+| `Orbit Station` | Orbit wallet station canister |
+
+### Adding New Categories
+
+If you encounter a pattern that doesn't fit existing categories:
+1. Choose a clear, concise name
+2. Add it to the table above with a description
+3. Use it consistently going forward
+
+**Good category names:**
+- Descriptive of what the canister IS or WHY it's unidentifiable
+- Short (1-3 words)
+- Consistent capitalization
+
+**Examples of when to add a new category:**
+- You find 5+ canisters of the same unidentifiable type
+- A new proxy/infrastructure pattern emerges
+- A specific error condition is common
 
 ---
 

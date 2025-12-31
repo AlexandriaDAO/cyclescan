@@ -878,6 +878,62 @@ fn get_project_leaderboard() -> Vec<ProjectLeaderboardEntry> {
     entries
 }
 
+/// Get all canisters for a specific project
+#[ic_cdk::query]
+fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
+    let now = now_nanos();
+
+    CANISTERS.with(|c| {
+        let canisters = c.borrow();
+        let mut entries: Vec<LeaderboardEntry> = canisters
+            .iter()
+            .filter_map(|(key, meta)| {
+                // Only include canisters with matching project name
+                let canister_project = meta.project_name.as_ref()?;
+                if canister_project != &project_name {
+                    return None;
+                }
+
+                let canister_id = key.to_principal();
+
+                let balance = SNAPSHOTS.with(|s| {
+                    let map = s.borrow();
+                    let end_key = SnapshotKey {
+                        canister: key.clone(),
+                        timestamp: u64::MAX,
+                    };
+                    let start_key = SnapshotKey {
+                        canister: key.clone(),
+                        timestamp: 0,
+                    };
+                    map.range(start_key..=end_key)
+                        .last()
+                        .map(|(_, v)| v.0)
+                        .unwrap_or(0)
+                });
+
+                Some(LeaderboardEntry {
+                    canister_id,
+                    project: Some(project_name.clone()),
+                    balance,
+                    burn_1h: calculate_burn(&key, NANOS_PER_HOUR, now),
+                    burn_24h: calculate_burn(&key, NANOS_PER_DAY, now),
+                    burn_7d: calculate_burn(&key, SEVEN_DAYS_NANOS, now),
+                })
+            })
+            .collect();
+
+        // Sort by 24h burn descending
+        entries.sort_by(|a, b| {
+            let a_burn = a.burn_24h.unwrap_or(0);
+            let b_burn = b.burn_24h.unwrap_or(0);
+            b_burn.cmp(&a_burn)
+        });
+
+        entries
+    })
+}
+
 /// Get stats
 #[ic_cdk::query]
 fn get_stats() -> Stats {

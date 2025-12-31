@@ -12,6 +12,31 @@ import re
 from typing import Optional, Tuple
 import requests
 
+
+def parse_dfx_result(stdout: str) -> Optional[str]:
+    """Parse dfx output, handling WARN lines that go to stdout.
+
+    dfx outputs warnings to stdout (not stderr!) when candid:service
+    metadata is missing. Example:
+        WARN: Cannot fetch Candid interface for icrc1_name...
+        ("Token")
+
+    We extract only the actual result, which is the last non-empty line.
+    """
+    lines = [line.strip() for line in stdout.strip().split('\n') if line.strip()]
+    if not lines:
+        return None
+    # Get the last line (the actual result, not warnings)
+    result_line = lines[-1]
+    # Ensure it looks like a valid result: ("...")
+    if result_line.startswith('("') and result_line.endswith('")'):
+        return result_line[2:-2]  # Extract content between ("...")
+    elif result_line.startswith('(') and result_line.endswith(')'):
+        # Handle simple values like (123)
+        return result_line[1:-1].strip('"')
+    return None
+
+
 def check_icrc1_token(canister_id: str) -> Optional[Tuple[str, str]]:
     """Check if canister is an ICRC-1 token. Returns (name, symbol) if yes."""
     try:
@@ -22,8 +47,10 @@ def check_icrc1_token(canister_id: str) -> Optional[Tuple[str, str]]:
             text=True,
             timeout=10
         )
-        if result.returncode == 0 and '(' in result.stdout:
-            name = result.stdout.strip().strip('()').strip('"')
+        if result.returncode == 0:
+            name = parse_dfx_result(result.stdout)
+            if name is None:
+                return None
 
             # Try to get symbol
             result = subprocess.run(
@@ -32,9 +59,10 @@ def check_icrc1_token(canister_id: str) -> Optional[Tuple[str, str]]:
                 text=True,
                 timeout=10
             )
-            if result.returncode == 0 and '(' in result.stdout:
-                symbol = result.stdout.strip().strip('()').strip('"')
-                return (name, symbol)
+            if result.returncode == 0:
+                symbol = parse_dfx_result(result.stdout)
+                if symbol:
+                    return (name, symbol)
     except Exception as e:
         print(f"  ICRC-1 check failed: {e}")
     return None

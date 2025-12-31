@@ -413,6 +413,82 @@ tr:last-child td {
   font-style: italic;
 }
 
+/* Expandable Project Rows */
+.expand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.expand-icon.expanded {
+  transform: rotate(90deg);
+}
+
+.project-row {
+  transition: background 0.15s ease;
+}
+
+.project-row.expanded {
+  background: var(--bg-secondary);
+}
+
+.project-row.expanded:hover {
+  background: var(--bg-secondary);
+}
+
+.sub-row {
+  background: var(--bg-tertiary);
+}
+
+.sub-row:hover {
+  background: rgba(88, 166, 255, 0.08) !important;
+}
+
+.sub-row td {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.sub-rank {
+  position: relative;
+}
+
+.sub-rank::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.sub-cell {
+  padding-left: 28px;
+}
+
+.sub-canister-id {
+  font-family: "SF Mono", Monaco, Consolas, monospace;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.loading-row {
+  background: var(--bg-tertiary);
+}
+
+.loading-cell {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 16px !important;
+  font-size: 13px;
+}
+
 .loading {
   text-align: center;
   padding: 60px 20px;

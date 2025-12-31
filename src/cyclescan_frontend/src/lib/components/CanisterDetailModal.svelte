@@ -13,6 +13,7 @@
   let loading = true;
   let error = null;
   let timeRange = "7d";
+  let barInterval = "1h";
   let chartContainer;
   let chart = null;
   let barSeries = null;
@@ -21,11 +22,19 @@
   const BILLION = 1_000_000_000n;
   const MILLION = 1_000_000n;
   const NANOS_PER_DAY = 86_400_000_000_000n;
+  const NANOS_PER_HOUR = 3_600_000_000_000n;
 
   const TIME_RANGES = {
     "1d": NANOS_PER_DAY,
     "7d": 7n * NANOS_PER_DAY,
     "30d": 30n * NANOS_PER_DAY,
+  };
+
+  const BAR_INTERVALS = {
+    "1h": NANOS_PER_HOUR,
+    "4h": 4n * NANOS_PER_HOUR,
+    "12h": 12n * NANOS_PER_HOUR,
+    "1d": NANOS_PER_DAY,
   };
 
   function formatCycles(value) {
@@ -103,6 +112,34 @@
     return data.snapshots.filter(s => BigInt(s.timestamp) >= cutoff);
   }
 
+  function aggregateSnapshots(snapshots) {
+    if (snapshots.length === 0) return [];
+    if (barInterval === "1h") return snapshots; // No aggregation needed
+
+    const intervalNanos = BAR_INTERVALS[barInterval];
+    const buckets = new Map();
+
+    for (const snapshot of snapshots) {
+      const ts = BigInt(snapshot.timestamp);
+      // Round down to interval boundary
+      const bucketStart = (ts / intervalNanos) * intervalNanos;
+      const bucketKey = bucketStart.toString();
+
+      if (!buckets.has(bucketKey)) {
+        buckets.set(bucketKey, {
+          timestamp: bucketStart,
+          cycles: 0n,
+        });
+      }
+      buckets.get(bucketKey).cycles += BigInt(snapshot.cycles);
+    }
+
+    // Convert to array and sort by timestamp
+    return Array.from(buckets.values()).sort((a, b) =>
+      Number(a.timestamp - b.timestamp)
+    );
+  }
+
   function createChartInstance() {
     if (!chartContainer || !data) return;
 
@@ -113,7 +150,8 @@
     }
 
     const filteredSnapshots = getFilteredSnapshots();
-    if (filteredSnapshots.length === 0) return;
+    const aggregatedData = aggregateSnapshots(filteredSnapshots);
+    if (aggregatedData.length === 0) return;
 
     chart = createChart(chartContainer, {
       width: chartContainer.clientWidth,
@@ -144,7 +182,7 @@
       },
     });
 
-    const chartData = filteredSnapshots.map(point => ({
+    const chartData = aggregatedData.map(point => ({
       time: Math.floor(Number(point.timestamp) / 1_000_000_000), // seconds
       value: Number(point.cycles) / 1e12, // Convert to trillions
       color: "#00d395",
@@ -162,6 +200,11 @@
 
   function setTimeRange(range) {
     timeRange = range;
+    createChartInstance();
+  }
+
+  function setBarInterval(interval) {
+    barInterval = interval;
     createChartInstance();
   }
 
@@ -209,32 +252,63 @@
 
       <div class="chart-container" bind:this={chartContainer}></div>
 
-      <div class="time-range-selector">
-        <button
-          class="range-btn"
-          class:active={timeRange === "1d"}
-          on:click={() => setTimeRange("1d")}
-        >
-          1D
-          {#if !data.is_24h_actual}<span class="no-data-indicator">*</span>{/if}
-        </button>
-        <button
-          class="range-btn"
-          class:active={timeRange === "7d"}
-          on:click={() => setTimeRange("7d")}
-        >
-          7D
-          {#if !data.is_7d_actual}<span class="no-data-indicator">*</span>{/if}
-        </button>
-        <button
-          class="range-btn"
-          class:active={timeRange === "30d"}
-          on:click={() => setTimeRange("30d")}
-        >
-          30D
-          {#if !data.is_30d_actual}<span class="no-data-indicator">*</span>{/if}
-        </button>
-        <span class="data-note">* extrapolated data</span>
+      <div class="chart-controls">
+        <div class="interval-selector">
+          <span class="control-label">Interval</span>
+          <div class="interval-buttons">
+            <button
+              class="interval-btn"
+              class:active={barInterval === "1h"}
+              on:click={() => setBarInterval("1h")}
+            >1H</button>
+            <button
+              class="interval-btn"
+              class:active={barInterval === "4h"}
+              on:click={() => setBarInterval("4h")}
+            >4H</button>
+            <button
+              class="interval-btn"
+              class:active={barInterval === "12h"}
+              on:click={() => setBarInterval("12h")}
+            >12H</button>
+            <button
+              class="interval-btn"
+              class:active={barInterval === "1d"}
+              on:click={() => setBarInterval("1d")}
+            >1D</button>
+          </div>
+        </div>
+
+        <div class="time-range-selector">
+          <span class="control-label">Range</span>
+          <div class="range-buttons">
+            <button
+              class="range-btn"
+              class:active={timeRange === "1d"}
+              on:click={() => setTimeRange("1d")}
+            >
+              1D
+              {#if !data.is_24h_actual}<span class="no-data-indicator">*</span>{/if}
+            </button>
+            <button
+              class="range-btn"
+              class:active={timeRange === "7d"}
+              on:click={() => setTimeRange("7d")}
+            >
+              7D
+              {#if !data.is_7d_actual}<span class="no-data-indicator">*</span>{/if}
+            </button>
+            <button
+              class="range-btn"
+              class:active={timeRange === "30d"}
+              on:click={() => setTimeRange("30d")}
+            >
+              30D
+              {#if !data.is_30d_actual}<span class="no-data-indicator">*</span>{/if}
+            </button>
+          </div>
+          <span class="data-note">* extrapolated</span>
+        </div>
       </div>
 
       <div class="stats-panel">
@@ -373,34 +447,62 @@
     min-height: 300px;
   }
 
-  .time-range-selector {
+  .chart-controls {
     display: flex;
-    gap: 8px;
+    gap: 24px;
     margin-bottom: 24px;
     align-items: center;
+    flex-wrap: wrap;
   }
 
-  .range-btn {
+  .interval-selector,
+  .time-range-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .control-label {
+    color: #6b7280;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .interval-buttons,
+  .range-buttons {
+    display: flex;
     background: #2d2d44;
+    border-radius: 6px;
+    padding: 2px;
+  }
+
+  .interval-btn,
+  .range-btn {
+    background: transparent;
     border: none;
     color: #9ca3af;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s ease;
   }
 
+  .interval-btn:hover,
   .range-btn:hover {
-    background: #3d3d54;
+    color: #fff;
   }
 
+  .interval-btn.active,
   .range-btn.active {
     background: #00d395;
     color: #000;
   }
 
   .no-data-indicator {
-    margin-left: 4px;
+    margin-left: 2px;
     color: #f59e0b;
   }
 
@@ -410,8 +512,8 @@
 
   .data-note {
     color: #6b7280;
-    font-size: 12px;
-    margin-left: auto;
+    font-size: 11px;
+    margin-left: 4px;
   }
 
   .stats-panel {

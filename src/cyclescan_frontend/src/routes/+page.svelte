@@ -16,6 +16,10 @@
   let currentPage = 1;
   let selectedCanisterId = null;
   let viewMode = "canisters"; // "canisters" or "projects"
+  let expandedProjects = new Set(); // Track which projects are expanded
+  let projectCanistersCache = new Map(); // Cache for project canisters
+  let loadingProjects = new Set(); // Track which projects are loading
+  let failedLogos = new Set(); // Track logos that failed to load
 
   // Network-level stats
   let networkBurn24h = null;
@@ -69,8 +73,9 @@
     return `/logos/${filename}.png`;
   }
 
-  function handleLogoError(event) {
-    event.target.style.display = 'none';
+  function handleLogoError(project) {
+    failedLogos.add(project);
+    failedLogos = failedLogos; // Trigger reactivity
   }
 
   async function copyToClipboard(text, event) {
@@ -197,6 +202,36 @@
 
   function closeModal() {
     selectedCanisterId = null;
+  }
+
+  async function toggleProjectExpanded(projectName) {
+    if (expandedProjects.has(projectName)) {
+      expandedProjects.delete(projectName);
+      expandedProjects = expandedProjects; // Trigger reactivity
+    } else {
+      expandedProjects.add(projectName);
+      expandedProjects = expandedProjects; // Trigger reactivity
+
+      // Fetch canisters if not already cached
+      if (!projectCanistersCache.has(projectName)) {
+        loadingProjects.add(projectName);
+        loadingProjects = loadingProjects;
+        try {
+          const canisters = await backend.get_project_canisters(projectName);
+          projectCanistersCache.set(projectName, canisters);
+          projectCanistersCache = projectCanistersCache; // Trigger reactivity
+        } catch (e) {
+          console.error(`Failed to fetch canisters for ${projectName}:`, e);
+        } finally {
+          loadingProjects.delete(projectName);
+          loadingProjects = loadingProjects;
+        }
+      }
+    }
+  }
+
+  function getProjectCanisters(projectName) {
+    return projectCanistersCache.get(projectName) || [];
   }
 
   // Calculate aggregate 24hr burn from tracked canisters
@@ -460,12 +495,12 @@
                 <td class="rank">{startIndex + i + 1}</td>
                 <td class="project" class:empty={!entry.project?.[0]}>
                   <div class="project-cell">
-                    {#if entry.project?.[0]}
+                    {#if entry.project?.[0] && !failedLogos.has(entry.project[0])}
                       <img
                         src={getLogoPath(entry.project[0])}
                         alt=""
                         class="project-logo"
-                        on:error={handleLogoError}
+                        on:error={() => handleLogoError(entry.project[0])}
                       />
                     {/if}
                     <span class="project-name">{entry.project?.[0] ?? "Unknown"}</span>
@@ -554,16 +589,23 @@
           </thead>
           <tbody>
             {#each paginatedProjectEntries as entry, i}
-              <tr>
+              <tr class="project-row clickable" class:expanded={expandedProjects.has(entry.project)} on:click={() => toggleProjectExpanded(entry.project)}>
                 <td class="rank">{startIndex + i + 1}</td>
                 <td class="project">
                   <div class="project-cell">
-                    <img
-                      src={getLogoPath(entry.project)}
-                      alt=""
-                      class="project-logo"
-                      on:error={handleLogoError}
-                    />
+                    <span class="expand-icon" class:expanded={expandedProjects.has(entry.project)}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </span>
+                    {#if !failedLogos.has(entry.project)}
+                      <img
+                        src={getLogoPath(entry.project)}
+                        alt=""
+                        class="project-logo"
+                        on:error={() => handleLogoError(entry.project)}
+                      />
+                    {/if}
                     <span class="project-name">{entry.project}</span>
                   </div>
                 </td>
@@ -573,6 +615,29 @@
                 <td class="burn {formatBurn(entry.total_burn_24h).class}">{formatBurn(entry.total_burn_24h).text}</td>
                 <td class="burn {formatBurn(entry.total_burn_7d).class}">{formatBurn(entry.total_burn_7d).text}</td>
               </tr>
+              {#if expandedProjects.has(entry.project)}
+                {#if loadingProjects.has(entry.project)}
+                  <tr class="sub-row loading-row">
+                    <td colspan="7" class="loading-cell">Loading canisters...</td>
+                  </tr>
+                {:else}
+                  {#each getProjectCanisters(entry.project) as canister, j}
+                    <tr class="sub-row clickable" on:click|stopPropagation={() => openModal(canister.canister_id)}>
+                      <td class="rank sub-rank"></td>
+                      <td class="project sub-project">
+                        <div class="project-cell sub-cell">
+                          <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
+                        </div>
+                      </td>
+                      <td class="canister-count"></td>
+                      <td class="cycles">{formatCycles(canister.balance)}</td>
+                      <td class="burn {formatBurn(canister.burn_1h).class}">{formatBurn(canister.burn_1h).text}</td>
+                      <td class="burn {formatBurn(canister.burn_24h).class}">{formatBurn(canister.burn_24h).text}</td>
+                      <td class="burn {formatBurn(canister.burn_7d).class}">{formatBurn(canister.burn_7d).text}</td>
+                    </tr>
+                  {/each}
+                {/if}
+              {/if}
             {/each}
           </tbody>
         </table>
