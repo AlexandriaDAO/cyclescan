@@ -2,58 +2,54 @@
 
 ## Files
 
-- `backup_metadata.sh` - Export all canister metadata to JSON
-- `batch_import.py` - Restore metadata from JSON backup (handles large datasets)
-- `restore_metadata.sh` - Simple restore (fails for large datasets)
-- `canister_metadata_backup.json` - Latest backup
+- `backup_metadata.sh` - Export projects + canisters to JSON
+- `batch_import.py` - Restore from JSON backup
+- `projects_backup.json` - Project metadata (name, website)
+- `canisters_backup.json` - Canister metadata (id, proxy, project ref)
 
 ## Backup
 
 ```bash
-cd data/backup
 ./backup_metadata.sh
 ```
 
-This exports project names, websites, proxy IDs, and proxy types for all canisters.
+Exports two files:
+- `projects_backup.json` - Projects with websites
+- `canisters_backup.json` - Canisters (no website, references project)
 
-## Restore (Emergency)
+## Restore
 
-### Option 1: dfx Canister Snapshot (Full state)
-
-Restores complete canister state including cycle history:
-
-```bash
-# List available snapshots
-dfx canister snapshot list cyclescan_backend --network ic
-
-# Restore from snapshot (stops canister automatically)
-dfx canister snapshot load cyclescan_backend <snapshot_id> --network ic
-dfx canister start cyclescan_backend --network ic
-```
-
-### Option 2: JSON Backup (Metadata only)
-
-Restores project metadata but not cycle history:
+After a reinstall or fresh deployment:
 
 ```bash
-# Clear existing data (optional)
-dfx canister call cyclescan_backend clear_canisters --network ic
-dfx canister call cyclescan_backend clear_snapshots --network ic
-
-# Restore from backup
-cd data/backup
 python3 batch_import.py
-
-# Take first cycle snapshot
 dfx canister call cyclescan_backend take_snapshot --network ic
 ```
 
-## Creating a dfx Snapshot
+Note: Pre-computed values (balance, burns) are not backed up. They populate on first snapshot.
+
+## dfx Snapshots
+
+For full state backup (including cycle history):
 
 ```bash
+# Create snapshot
 dfx canister stop cyclescan_backend --network ic
 dfx canister snapshot create cyclescan_backend --network ic
 dfx canister start cyclescan_backend --network ic
+
+# Restore from snapshot
+dfx canister snapshot load cyclescan_backend <snapshot_id> --network ic
 ```
 
-Current snapshot: `0000000000000000000000000041006f0101`
+## Migration from Old Format
+
+If you have the old `canister_metadata_backup.json` format:
+
+```bash
+python3 convert_legacy.py  # One-time conversion
+python3 batch_import.py
+dfx canister call cyclescan_backend take_snapshot --network ic
+```
+
+Then delete `canister_metadata_backup.json` and `convert_legacy.py`.

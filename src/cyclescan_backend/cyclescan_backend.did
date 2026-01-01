@@ -5,13 +5,29 @@ type CanisterImport = record {
   proxy_id : principal;
   proxy_type : ProxyType;
   project : opt text;
-  website : opt text;
   valid : opt bool;
+};
+
+type CanisterExport = record {
+  canister_id : principal;
+  proxy_id : principal;
+  proxy_type : ProxyType;
+  project : opt text;
+  valid : bool;
+};
+
+type ProjectImport = record {
+  name : text;
+  website : opt text;
+};
+
+type ProjectExport = record {
+  name : text;
+  website : opt text;
 };
 
 type CanisterUpdate = record {
   project : opt opt text;
-  website : opt opt text;
 };
 
 type LeaderboardEntry = record {
@@ -72,18 +88,23 @@ type SnapshotResult = record {
 };
 
 service : {
-  // Queries
+  // Query endpoints
   get_leaderboard : (nat64, nat64) -> (LeaderboardPage) query;
   get_project_leaderboard : () -> (vec ProjectEntry) query;
   get_project_canisters : (text) -> (vec LeaderboardEntry) query;
   get_canister : (principal) -> (opt CanisterDetail) query;
+  get_project : (text) -> (opt ProjectEntry) query;
+  list_projects : () -> (vec ProjectEntry) query;
   get_stats : () -> (Stats) query;
   is_timer_running : () -> (bool) query;
-  export_canisters : () -> (vec CanisterImport) query;
+  export_canisters : () -> (vec CanisterExport) query;
+  export_projects : () -> (vec ProjectExport) query;
 
-  // Updates (controller only)
+  // Update endpoints (controller only)
   import_canisters : (vec CanisterImport) -> (nat64);
+  import_projects : (vec ProjectImport) -> (nat64);
   update_canister : (principal, CanisterUpdate) -> ();
+  set_project_website : (text, opt text) -> ();
   set_valid : (principal, bool) -> (bool);
   remove_canisters : (vec principal) -> ();
   clear_all : () -> ();

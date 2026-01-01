@@ -21,6 +21,7 @@ const THIRTY_DAYS_NANOS: u64 = 30 * NANOS_PER_DAY;
 const QUERY_BATCH_SIZE: usize = 50;
 const MAX_PROJECT_BYTES: usize = 100;
 const MAX_WEBSITE_BYTES: usize = 200;
+const MAX_PROJECT_KEY_BYTES: usize = 100;
 
 // ============================================================================
 // PROXY TYPES
@@ -58,14 +59,33 @@ pub struct CanisterImport {
     pub proxy_id: Principal,
     pub proxy_type: ProxyType,
     pub project: Option<String>,
-    pub website: Option<String>,
     pub valid: Option<bool>,
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct CanisterExport {
+    pub canister_id: Principal,
+    pub proxy_id: Principal,
+    pub proxy_type: ProxyType,
+    pub project: Option<String>,
+    pub valid: bool,
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct ProjectImport {
+    pub name: String,
+    pub website: Option<String>,
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct ProjectExport {
+    pub name: String,
+    pub website: Option<String>,
 }
 
 #[derive(CandidType, Deserialize)]
 pub struct CanisterUpdate {
     pub project: Option<Option<String>>,
-    pub website: Option<Option<String>>,
 }
 
 #[derive(CandidType, Clone)]
@@ -133,7 +153,7 @@ pub struct SnapshotResult {
 }
 
 // ============================================================================
-// STORAGE TYPES
+// STORAGE TYPES: PRINCIPAL KEY
 // ============================================================================
 
 #[derive(Clone)]
@@ -186,25 +206,164 @@ impl Ord for PrincipalKey {
     }
 }
 
+// ============================================================================
+// STORAGE TYPES: PROJECT KEY
+// ============================================================================
+
+#[derive(Clone)]
+struct ProjectKey([u8; MAX_PROJECT_KEY_BYTES + 2]); // 2 bytes for length
+
+impl ProjectKey {
+    fn from_str(s: &str) -> Self {
+        let mut bytes = [0u8; MAX_PROJECT_KEY_BYTES + 2];
+        let len = s.len().min(MAX_PROJECT_KEY_BYTES);
+        bytes[0] = (len >> 8) as u8;
+        bytes[1] = len as u8;
+        bytes[2..2 + len].copy_from_slice(&s.as_bytes()[..len]);
+        Self(bytes)
+    }
+
+    fn to_string(&self) -> String {
+        let len = ((self.0[0] as usize) << 8) | (self.0[1] as usize);
+        String::from_utf8_lossy(&self.0[2..2 + len]).to_string()
+    }
+}
+
+impl Storable for ProjectKey {
+    fn to_bytes(&self) -> Cow<[u8]> {
+        Cow::Borrowed(&self.0)
+    }
+    fn from_bytes(bytes: Cow<[u8]>) -> Self {
+        let mut arr = [0u8; MAX_PROJECT_KEY_BYTES + 2];
+        arr.copy_from_slice(&bytes[..MAX_PROJECT_KEY_BYTES + 2]);
+        Self(arr)
+    }
+    const BOUND: Bound = Bound::Bounded {
+        max_size: (MAX_PROJECT_KEY_BYTES + 2) as u32,
+        is_fixed_size: true,
+    };
+}
+
+impl PartialEq for ProjectKey {
+    fn eq(&self, other: &Self) -> bool {
+        self.0 == other.0
+    }
+}
+impl Eq for ProjectKey {}
+impl PartialOrd for ProjectKey {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+impl Ord for ProjectKey {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.0.cmp(&other.0)
+    }
+}
+
+// ============================================================================
+// STORAGE TYPES: PROJECT META
+// ============================================================================
+
+struct ProjectMeta {
+    website: Option<String>,
+    // Pre-computed aggregates (updated during snapshot):
+    canister_count: u64,
+    total_balance: u128,
+    total_burn_1h: u128,
+    total_burn_24h: u128,
+    total_burn_7d: u128,
+}
+
+// Layout: web_len(2) + website(200) + count(8) + balance(16) + burns(16*3) = 274 bytes
+const PROJECT_META_SIZE: u32 = 274;
+
+impl Storable for ProjectMeta {
+    fn to_bytes(&self) -> Cow<[u8]> {
+        let mut buf = vec![0u8; PROJECT_META_SIZE as usize];
+
+        // Website: bytes 0-201
+        if let Some(ref w) = self.website {
+            let bytes = w.as_bytes();
+            let len = bytes.len().min(MAX_WEBSITE_BYTES);
+            buf[0] = (len >> 8) as u8;
+            buf[1] = len as u8;
+            buf[2..2 + len].copy_from_slice(&bytes[..len]);
+        }
+
+        // Aggregates: bytes 202-273
+        buf[202..210].copy_from_slice(&self.canister_count.to_be_bytes());
+        buf[210..226].copy_from_slice(&self.total_balance.to_be_bytes());
+        buf[226..242].copy_from_slice(&self.total_burn_1h.to_be_bytes());
+        buf[242..258].copy_from_slice(&self.total_burn_24h.to_be_bytes());
+        buf[258..274].copy_from_slice(&self.total_burn_7d.to_be_bytes());
+
+        Cow::Owned(buf)
+    }
+
+    fn from_bytes(bytes: Cow<[u8]>) -> Self {
+        let web_len = (((bytes[0] as usize) << 8) | (bytes[1] as usize)).min(MAX_WEBSITE_BYTES);
+        let website = if web_len > 0 {
+            String::from_utf8(bytes[2..2 + web_len].to_vec()).ok()
+        } else {
+            None
+        };
+
+        let canister_count = u64::from_be_bytes(bytes[202..210].try_into().unwrap());
+        let total_balance = u128::from_be_bytes(bytes[210..226].try_into().unwrap());
+        let total_burn_1h = u128::from_be_bytes(bytes[226..242].try_into().unwrap());
+        let total_burn_24h = u128::from_be_bytes(bytes[242..258].try_into().unwrap());
+        let total_burn_7d = u128::from_be_bytes(bytes[258..274].try_into().unwrap());
+
+        Self {
+            website,
+            canister_count,
+            total_balance,
+            total_burn_1h,
+            total_burn_24h,
+            total_burn_7d,
+        }
+    }
+
+    const BOUND: Bound = Bound::Bounded {
+        max_size: PROJECT_META_SIZE,
+        is_fixed_size: true,
+    };
+}
+
+// ============================================================================
+// STORAGE TYPES: CANISTER META (NORMALIZED - no website, has pre-computed burns)
+// ============================================================================
+
 struct CanisterMeta {
     proxy_id: Principal,
     proxy_type: ProxyType,
     project: Option<String>,
-    website: Option<String>,
     valid: bool,
+    // Pre-computed (updated during snapshot):
+    balance: u128,
+    burn_1h: Option<u128>,
+    burn_24h: Option<u128>,
+    burn_7d: Option<u128>,
 }
 
-// Fixed layout: proxy_len(1) + proxy(29) + type(1) + proj_len(2) + proj(100) + web_len(2) + web(200) + valid(1) = 336
-const CANISTER_META_SIZE: u32 = 336;
+// Layout: proxy_len(1) + proxy(29) + type(1) + proj_len(2) + proj(100) + valid(1)
+//       + balance(16) + burn_flags(1) + burn_1h(16) + burn_24h(16) + burn_7d(16) = 199 bytes
+const CANISTER_META_SIZE: u32 = 199;
 
 impl Storable for CanisterMeta {
     fn to_bytes(&self) -> Cow<[u8]> {
         let mut buf = vec![0u8; CANISTER_META_SIZE as usize];
+
+        // Proxy ID: bytes 0-29
         let proxy_slice = self.proxy_id.as_slice();
         buf[0] = proxy_slice.len() as u8;
         buf[1..1 + proxy_slice.len()].copy_from_slice(proxy_slice);
+
+        // Proxy type: byte 30
         buf[30] = self.proxy_type.to_byte();
 
+        // Project: bytes 31-132
         if let Some(ref p) = self.project {
             let bytes = p.as_bytes();
             let len = bytes.len().min(MAX_PROJECT_BYTES);
@@ -213,15 +372,29 @@ impl Storable for CanisterMeta {
             buf[33..33 + len].copy_from_slice(&bytes[..len]);
         }
 
-        if let Some(ref w) = self.website {
-            let bytes = w.as_bytes();
-            let len = bytes.len().min(MAX_WEBSITE_BYTES);
-            buf[133] = (len >> 8) as u8;
-            buf[134] = len as u8;
-            buf[135..135 + len].copy_from_slice(&bytes[..len]);
-        }
+        // Valid: byte 133
+        buf[133] = if self.valid { 1 } else { 0 };
 
-        buf[335] = if self.valid { 1 } else { 0 };
+        // Balance: bytes 134-149
+        buf[134..150].copy_from_slice(&self.balance.to_be_bytes());
+
+        // Burn flags: byte 150 (bit 0 = 1h, bit 1 = 24h, bit 2 = 7d)
+        let mut flags = 0u8;
+        if self.burn_1h.is_some() {
+            flags |= 1;
+        }
+        if self.burn_24h.is_some() {
+            flags |= 2;
+        }
+        if self.burn_7d.is_some() {
+            flags |= 4;
+        }
+        buf[150] = flags;
+
+        // Burns: bytes 151-198
+        buf[151..167].copy_from_slice(&self.burn_1h.unwrap_or(0).to_be_bytes());
+        buf[167..183].copy_from_slice(&self.burn_24h.unwrap_or(0).to_be_bytes());
+        buf[183..199].copy_from_slice(&self.burn_7d.unwrap_or(0).to_be_bytes());
 
         Cow::Owned(buf)
     }
@@ -238,17 +411,36 @@ impl Storable for CanisterMeta {
             None
         };
 
-        let web_len = (((bytes[133] as usize) << 8) | (bytes[134] as usize)).min(MAX_WEBSITE_BYTES);
-        let website = if web_len > 0 {
-            String::from_utf8(bytes[135..135 + web_len].to_vec()).ok()
+        let valid = bytes[133] != 0;
+        let balance = u128::from_be_bytes(bytes[134..150].try_into().unwrap());
+
+        let flags = bytes[150];
+        let burn_1h = if flags & 1 != 0 {
+            Some(u128::from_be_bytes(bytes[151..167].try_into().unwrap()))
+        } else {
+            None
+        };
+        let burn_24h = if flags & 2 != 0 {
+            Some(u128::from_be_bytes(bytes[167..183].try_into().unwrap()))
+        } else {
+            None
+        };
+        let burn_7d = if flags & 4 != 0 {
+            Some(u128::from_be_bytes(bytes[183..199].try_into().unwrap()))
         } else {
             None
         };
 
-        // Default to true for backward compatibility with old 335-byte records
-        let valid = if bytes.len() > 335 { bytes[335] != 0 } else { true };
-
-        Self { proxy_id, proxy_type, project, website, valid }
+        Self {
+            proxy_id,
+            proxy_type,
+            project,
+            valid,
+            balance,
+            burn_1h,
+            burn_24h,
+            burn_7d,
+        }
     }
 
     const BOUND: Bound = Bound::Bounded {
@@ -256,6 +448,10 @@ impl Storable for CanisterMeta {
         is_fixed_size: true,
     };
 }
+
+// ============================================================================
+// STORAGE TYPES: SNAPSHOT KEY
+// ============================================================================
 
 #[derive(Clone)]
 struct SnapshotKey {
@@ -306,6 +502,10 @@ impl Ord for SnapshotKey {
     }
 }
 
+// ============================================================================
+// STORAGE TYPES: CYCLES VALUE
+// ============================================================================
+
 struct CyclesValue(u128);
 
 impl Storable for CyclesValue {
@@ -331,6 +531,7 @@ type Memory = VirtualMemory<DefaultMemoryImpl>;
 
 const CANISTERS_MEM_ID: MemoryId = MemoryId::new(0);
 const SNAPSHOTS_MEM_ID: MemoryId = MemoryId::new(1);
+const PROJECTS_MEM_ID: MemoryId = MemoryId::new(2);
 
 thread_local! {
     static MEMORY_MANAGER: RefCell<MemoryManager<DefaultMemoryImpl>> =
@@ -344,6 +545,11 @@ thread_local! {
     static SNAPSHOTS: RefCell<StableBTreeMap<SnapshotKey, CyclesValue, Memory>> =
         RefCell::new(StableBTreeMap::init(
             MEMORY_MANAGER.with(|m| m.borrow().get(SNAPSHOTS_MEM_ID))
+        ));
+
+    static PROJECTS: RefCell<StableBTreeMap<ProjectKey, ProjectMeta, Memory>> =
+        RefCell::new(StableBTreeMap::init(
+            MEMORY_MANAGER.with(|m| m.borrow().get(PROJECTS_MEM_ID))
         ));
 
     static TIMER_ID: RefCell<Option<TimerId>> = RefCell::new(None);
@@ -368,11 +574,27 @@ fn truncate_utf8(s: &str, max_bytes: usize) -> String {
     s[..end].to_string()
 }
 
+fn get_project_website(project: &Option<String>) -> Option<String> {
+    project.as_ref().and_then(|name| {
+        PROJECTS.with(|p| {
+            p.borrow()
+                .get(&ProjectKey::from_str(name))
+                .and_then(|meta| meta.website.clone())
+        })
+    })
+}
+
 fn get_latest_balance(key: &PrincipalKey) -> u128 {
     SNAPSHOTS.with(|s| {
         let map = s.borrow();
-        let start = SnapshotKey { canister: key.clone(), timestamp: 0 };
-        let end = SnapshotKey { canister: key.clone(), timestamp: u64::MAX };
+        let start = SnapshotKey {
+            canister: key.clone(),
+            timestamp: 0,
+        };
+        let end = SnapshotKey {
+            canister: key.clone(),
+            timestamp: u64::MAX,
+        };
         map.range(start..=end).last().map(|(_, v)| v.0).unwrap_or(0)
     })
 }
@@ -380,9 +602,17 @@ fn get_latest_balance(key: &PrincipalKey) -> u128 {
 fn get_snapshots(key: &PrincipalKey) -> Vec<(u64, u128)> {
     SNAPSHOTS.with(|s| {
         let map = s.borrow();
-        let start = SnapshotKey { canister: key.clone(), timestamp: 0 };
-        let end = SnapshotKey { canister: key.clone(), timestamp: u64::MAX };
-        map.range(start..=end).map(|(k, v)| (k.timestamp, v.0)).collect()
+        let start = SnapshotKey {
+            canister: key.clone(),
+            timestamp: 0,
+        };
+        let end = SnapshotKey {
+            canister: key.clone(),
+            timestamp: u64::MAX,
+        };
+        map.range(start..=end)
+            .map(|(k, v)| (k.timestamp, v.0))
+            .collect()
     })
 }
 
@@ -426,18 +656,6 @@ fn calculate_burn(key: &PrincipalKey, window_nanos: u64) -> Option<u128> {
     }
 }
 
-fn build_entry(key: &PrincipalKey, meta: &CanisterMeta) -> LeaderboardEntry {
-    LeaderboardEntry {
-        canister_id: key.to_principal(),
-        project: meta.project.clone(),
-        website: meta.website.clone(),
-        balance: get_latest_balance(key),
-        burn_1h: calculate_burn(key, NANOS_PER_HOUR),
-        burn_24h: calculate_burn(key, NANOS_PER_DAY),
-        burn_7d: calculate_burn(key, SEVEN_DAYS_NANOS),
-    }
-}
-
 // ============================================================================
 // QUERY ENDPOINTS
 // ============================================================================
@@ -452,13 +670,19 @@ fn get_leaderboard(offset: u64, limit: u64) -> LeaderboardPage {
         let mut entries: Vec<LeaderboardEntry> = canisters
             .iter()
             .filter(|(_, meta)| meta.valid)
-            .map(|(key, meta)| build_entry(&key, &meta))
+            .map(|(key, meta)| LeaderboardEntry {
+                canister_id: key.to_principal(),
+                project: meta.project.clone(),
+                website: get_project_website(&meta.project),
+                balance: meta.balance,
+                burn_1h: meta.burn_1h,
+                burn_24h: meta.burn_24h,
+                burn_7d: meta.burn_7d,
+            })
             .collect();
 
         // Sort by 24h burn descending
-        entries.sort_by(|a, b| {
-            b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0))
-        });
+        entries.sort_by(|a, b| b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0)));
 
         let total = entries.len() as u64;
         let page = entries.into_iter().skip(offset).take(limit).collect();
@@ -473,43 +697,30 @@ fn get_leaderboard(offset: u64, limit: u64) -> LeaderboardPage {
 
 #[query]
 fn get_project_leaderboard() -> Vec<ProjectEntry> {
-    CANISTERS.with(|c| {
-        let canisters = c.borrow();
-        // (count, balance, burn_1h, burn_24h, burn_7d, website)
-        let mut projects: HashMap<String, (u64, u128, u128, u128, u128, Option<String>)> = HashMap::new();
-
-        for (key, meta) in canisters.iter() {
-            if !meta.valid {
-                continue;
-            }
-            if let Some(ref project) = meta.project {
-                let balance = get_latest_balance(&key);
-                let burn_1h = calculate_burn(&key, NANOS_PER_HOUR).unwrap_or(0);
-                let burn_24h = calculate_burn(&key, NANOS_PER_DAY).unwrap_or(0);
-                let burn_7d = calculate_burn(&key, SEVEN_DAYS_NANOS).unwrap_or(0);
-                let entry = projects.entry(project.clone()).or_insert((0, 0, 0, 0, 0, None));
-                entry.0 += 1;
-                entry.1 += balance;
-                entry.2 += burn_1h;
-                entry.3 += burn_24h;
-                entry.4 += burn_7d;
-                // Keep first website found for this project
-                if entry.5.is_none() && meta.website.is_some() {
-                    entry.5 = meta.website.clone();
-                }
-            }
-        }
-
-        let mut result: Vec<ProjectEntry> = projects
-            .into_iter()
-            .map(|(project, (count, balance, burn_1h, burn_24h, burn_7d, website))| ProjectEntry {
-                project,
-                website,
-                canister_count: count,
-                total_balance: balance,
-                total_burn_1h: if burn_1h > 0 { Some(burn_1h) } else { None },
-                total_burn_24h: if burn_24h > 0 { Some(burn_24h) } else { None },
-                total_burn_7d: if burn_7d > 0 { Some(burn_7d) } else { None },
+    PROJECTS.with(|p| {
+        let mut result: Vec<ProjectEntry> = p
+            .borrow()
+            .iter()
+            .map(|(key, meta)| ProjectEntry {
+                project: key.to_string(),
+                website: meta.website.clone(),
+                canister_count: meta.canister_count,
+                total_balance: meta.total_balance,
+                total_burn_1h: if meta.total_burn_1h > 0 {
+                    Some(meta.total_burn_1h)
+                } else {
+                    None
+                },
+                total_burn_24h: if meta.total_burn_24h > 0 {
+                    Some(meta.total_burn_24h)
+                } else {
+                    None
+                },
+                total_burn_7d: if meta.total_burn_7d > 0 {
+                    Some(meta.total_burn_7d)
+                } else {
+                    None
+                },
             })
             .collect();
 
@@ -525,13 +736,19 @@ fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
         let mut entries: Vec<LeaderboardEntry> = canisters
             .iter()
             .filter(|(_, meta)| meta.valid && meta.project.as_ref() == Some(&project_name))
-            .map(|(key, meta)| build_entry(&key, &meta))
+            .map(|(key, meta)| LeaderboardEntry {
+                canister_id: key.to_principal(),
+                project: meta.project.clone(),
+                website: get_project_website(&meta.project),
+                balance: meta.balance,
+                burn_1h: meta.burn_1h,
+                burn_24h: meta.burn_24h,
+                burn_7d: meta.burn_7d,
+            })
             .collect();
 
         // Sort by 24h burn descending
-        entries.sort_by(|a, b| {
-            b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0))
-        });
+        entries.sort_by(|a, b| b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0)));
 
         entries
     })
@@ -545,19 +762,22 @@ fn get_canister(canister_id: Principal) -> Option<CanisterDetail> {
         c.borrow().get(&key).map(|meta| {
             let snapshots: Vec<Snapshot> = get_snapshots(&key)
                 .into_iter()
-                .map(|(ts, cycles)| Snapshot { timestamp: ts, cycles })
+                .map(|(ts, cycles)| Snapshot {
+                    timestamp: ts,
+                    cycles,
+                })
                 .collect();
 
             CanisterDetail {
                 canister_id,
                 proxy_id: meta.proxy_id,
                 proxy_type: meta.proxy_type,
-                project: meta.project,
-                website: meta.website,
-                current_balance: get_latest_balance(&key),
-                burn_1h: calculate_burn(&key, NANOS_PER_HOUR),
-                burn_24h: calculate_burn(&key, NANOS_PER_DAY),
-                burn_7d: calculate_burn(&key, SEVEN_DAYS_NANOS),
+                project: meta.project.clone(),
+                website: get_project_website(&meta.project),
+                current_balance: meta.balance,
+                burn_1h: meta.burn_1h,
+                burn_24h: meta.burn_24h,
+                burn_7d: meta.burn_7d,
                 burn_30d: calculate_burn(&key, THIRTY_DAYS_NANOS),
                 snapshots,
             }
@@ -566,18 +786,50 @@ fn get_canister(canister_id: Principal) -> Option<CanisterDetail> {
 }
 
 #[query]
+fn get_project(name: String) -> Option<ProjectEntry> {
+    PROJECTS.with(|p| {
+        p.borrow()
+            .get(&ProjectKey::from_str(&name))
+            .map(|meta| ProjectEntry {
+                project: name,
+                website: meta.website.clone(),
+                canister_count: meta.canister_count,
+                total_balance: meta.total_balance,
+                total_burn_1h: if meta.total_burn_1h > 0 {
+                    Some(meta.total_burn_1h)
+                } else {
+                    None
+                },
+                total_burn_24h: if meta.total_burn_24h > 0 {
+                    Some(meta.total_burn_24h)
+                } else {
+                    None
+                },
+                total_burn_7d: if meta.total_burn_7d > 0 {
+                    Some(meta.total_burn_7d)
+                } else {
+                    None
+                },
+            })
+    })
+}
+
+#[query]
+fn list_projects() -> Vec<ProjectEntry> {
+    get_project_leaderboard()
+}
+
+#[query]
 fn get_stats() -> Stats {
     let canister_count = CANISTERS.with(|c| c.borrow().len());
     let snapshot_count = SNAPSHOTS.with(|s| s.borrow().len());
-    let tracked_projects = CANISTERS.with(|c| {
-        c.borrow()
-            .iter()
-            .filter_map(|(_, meta)| meta.project)
-            .collect::<std::collections::HashSet<_>>()
-            .len() as u64
-    });
+    let tracked_projects = PROJECTS.with(|p| p.borrow().len());
 
-    Stats { canister_count, snapshot_count, tracked_projects }
+    Stats {
+        canister_count,
+        snapshot_count,
+        tracked_projects,
+    }
 }
 
 #[query]
@@ -586,17 +838,29 @@ fn is_timer_running() -> bool {
 }
 
 #[query]
-fn export_canisters() -> Vec<CanisterImport> {
+fn export_canisters() -> Vec<CanisterExport> {
     CANISTERS.with(|c| {
         c.borrow()
             .iter()
-            .map(|(key, meta)| CanisterImport {
+            .map(|(key, meta)| CanisterExport {
                 canister_id: key.to_principal(),
                 proxy_id: meta.proxy_id,
-                proxy_type: meta.proxy_type,
-                project: meta.project,
-                website: meta.website,
-                valid: Some(meta.valid),
+                proxy_type: meta.proxy_type.clone(),
+                project: meta.project.clone(),
+                valid: meta.valid,
+            })
+            .collect()
+    })
+}
+
+#[query]
+fn export_projects() -> Vec<ProjectExport> {
+    PROJECTS.with(|p| {
+        p.borrow()
+            .iter()
+            .map(|(key, meta)| ProjectExport {
+                name: key.to_string(),
+                website: meta.website.clone(),
             })
             .collect()
     })
@@ -619,10 +883,40 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
                 proxy_id: import.proxy_id,
                 proxy_type: import.proxy_type,
                 project: import.project.map(|p| truncate_utf8(&p, MAX_PROJECT_BYTES)),
-                website: import.website.map(|w| truncate_utf8(&w, MAX_WEBSITE_BYTES)),
                 valid: import.valid.unwrap_or(true),
+                // Pre-computed values start at 0, will be populated on next snapshot
+                balance: 0,
+                burn_1h: None,
+                burn_24h: None,
+                burn_7d: None,
             };
             map.insert(key, meta);
+            count += 1;
+        }
+    });
+    count
+}
+
+#[update]
+fn import_projects(projects: Vec<ProjectImport>) -> u64 {
+    assert!(is_controller(), "Not authorized");
+
+    let mut count = 0u64;
+    PROJECTS.with(|p| {
+        let mut map = p.borrow_mut();
+        for import in projects {
+            let key = ProjectKey::from_str(&import.name);
+            map.insert(
+                key,
+                ProjectMeta {
+                    website: import.website.map(|w| truncate_utf8(&w, MAX_WEBSITE_BYTES)),
+                    canister_count: 0,
+                    total_balance: 0,
+                    total_burn_1h: 0,
+                    total_burn_24h: 0,
+                    total_burn_7d: 0,
+                },
+            );
             count += 1;
         }
     });
@@ -640,10 +934,34 @@ fn update_canister(canister_id: Principal, updates: CanisterUpdate) {
             if let Some(project) = updates.project {
                 meta.project = project.map(|p| truncate_utf8(&p, MAX_PROJECT_BYTES));
             }
-            if let Some(website) = updates.website {
-                meta.website = website.map(|w| truncate_utf8(&w, MAX_WEBSITE_BYTES));
-            }
             map.insert(key, meta);
+        }
+    });
+}
+
+#[update]
+fn set_project_website(name: String, website: Option<String>) {
+    assert!(is_controller(), "Not authorized");
+
+    PROJECTS.with(|p| {
+        let mut map = p.borrow_mut();
+        let key = ProjectKey::from_str(&name);
+        if let Some(mut meta) = map.get(&key) {
+            meta.website = website.map(|w| truncate_utf8(&w, MAX_WEBSITE_BYTES));
+            map.insert(key, meta);
+        } else {
+            // Create new project
+            map.insert(
+                key,
+                ProjectMeta {
+                    website: website.map(|w| truncate_utf8(&w, MAX_WEBSITE_BYTES)),
+                    canister_count: 0,
+                    total_balance: 0,
+                    total_burn_1h: 0,
+                    total_burn_24h: 0,
+                    total_burn_7d: 0,
+                },
+            );
         }
     });
 }
@@ -680,7 +998,10 @@ fn remove_canisters(canister_ids: Vec<Principal>) {
         SNAPSHOTS.with(|s| {
             let mut map = s.borrow_mut();
             for (ts, _) in snapshots {
-                map.remove(&SnapshotKey { canister: key.clone(), timestamp: ts });
+                map.remove(&SnapshotKey {
+                    canister: key.clone(),
+                    timestamp: ts,
+                });
             }
         });
     }
@@ -700,6 +1021,14 @@ fn clear_all() {
 
     SNAPSHOTS.with(|s| {
         let mut map = s.borrow_mut();
+        let keys: Vec<_> = map.iter().map(|(k, _)| k).collect();
+        for key in keys {
+            map.remove(&key);
+        }
+    });
+
+    PROJECTS.with(|p| {
+        let mut map = p.borrow_mut();
         let keys: Vec<_> = map.iter().map(|(k, _)| k).collect();
         for key in keys {
             map.remove(&key);
@@ -778,7 +1107,13 @@ async fn do_take_snapshot() -> SnapshotResult {
             for (key, result) in results {
                 match result {
                     Ok(cycles) => {
-                        map.insert(SnapshotKey { canister: key, timestamp: now }, CyclesValue(cycles));
+                        map.insert(
+                            SnapshotKey {
+                                canister: key,
+                                timestamp: now,
+                            },
+                            CyclesValue(cycles),
+                        );
                         success += 1;
                     }
                     Err(_) => failed += 1,
@@ -796,7 +1131,13 @@ async fn do_take_snapshot() -> SnapshotResult {
                     for key in canister_keys {
                         let canister_id = key.to_principal();
                         if let Some(&cycles) = cycles_map.get(&canister_id) {
-                            map.insert(SnapshotKey { canister: key, timestamp: now }, CyclesValue(cycles));
+                            map.insert(
+                                SnapshotKey {
+                                    canister: key,
+                                    timestamp: now,
+                                },
+                                CyclesValue(cycles),
+                            );
                             success += 1;
                         } else {
                             failed += 1;
@@ -809,6 +1150,12 @@ async fn do_take_snapshot() -> SnapshotResult {
             }
         }
     }
+
+    // Update pre-computed values on all canisters
+    update_canister_summaries();
+
+    // Update project aggregates
+    update_project_aggregates();
 
     // Prune old snapshots
     let cutoff = now.saturating_sub(THIRTY_DAYS_NANOS);
@@ -826,8 +1173,70 @@ async fn do_take_snapshot() -> SnapshotResult {
         count
     });
 
-    SnapshotResult { success, failed, pruned }
+    SnapshotResult {
+        success,
+        failed,
+        pruned,
+    }
 }
+
+fn update_canister_summaries() {
+    CANISTERS.with(|c| {
+        let mut map = c.borrow_mut();
+        let keys: Vec<_> = map.iter().map(|(k, _)| k).collect();
+
+        for key in keys {
+            if let Some(mut meta) = map.get(&key) {
+                meta.balance = get_latest_balance(&key);
+                meta.burn_1h = calculate_burn(&key, NANOS_PER_HOUR);
+                meta.burn_24h = calculate_burn(&key, NANOS_PER_DAY);
+                meta.burn_7d = calculate_burn(&key, SEVEN_DAYS_NANOS);
+                map.insert(key, meta);
+            }
+        }
+    });
+}
+
+fn update_project_aggregates() {
+    // Collect aggregates from canisters
+    let mut aggregates: HashMap<String, (u64, u128, u128, u128, u128)> = HashMap::new();
+
+    CANISTERS.with(|c| {
+        for (_, meta) in c.borrow().iter() {
+            if !meta.valid {
+                continue;
+            }
+            if let Some(ref project) = meta.project {
+                let agg = aggregates.entry(project.clone()).or_default();
+                agg.0 += 1; // count
+                agg.1 += meta.balance;
+                agg.2 += meta.burn_1h.unwrap_or(0);
+                agg.3 += meta.burn_24h.unwrap_or(0);
+                agg.4 += meta.burn_7d.unwrap_or(0);
+            }
+        }
+    });
+
+    // Update project metadata
+    PROJECTS.with(|p| {
+        let mut map = p.borrow_mut();
+        for (name, (count, balance, b1h, b24h, b7d)) in aggregates {
+            let key = ProjectKey::from_str(&name);
+            if let Some(mut meta) = map.get(&key) {
+                meta.canister_count = count;
+                meta.total_balance = balance;
+                meta.total_burn_1h = b1h;
+                meta.total_burn_24h = b24h;
+                meta.total_burn_7d = b7d;
+                map.insert(key, meta);
+            }
+        }
+    });
+}
+
+// ============================================================================
+// EXTERNAL CANISTER QUERIES
+// ============================================================================
 
 // Blackhole canister_status query
 #[derive(CandidType, Deserialize)]
@@ -927,7 +1336,11 @@ fn setup_timer() {
         }
         let id = ic_cdk_timers::set_timer_interval(
             std::time::Duration::from_nanos(NANOS_PER_HOUR),
-            || ic_cdk::spawn(async { do_take_snapshot().await; }),
+            || {
+                ic_cdk::spawn(async {
+                    do_take_snapshot().await;
+                })
+            },
         );
         *t.borrow_mut() = Some(id);
     });

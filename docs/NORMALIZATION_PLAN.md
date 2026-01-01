@@ -606,7 +606,6 @@ fn import_projects(projects: Vec<ProjectImport>) -> u64 {
     count
 }
 
-// Modified import_canisters - auto-creates projects
 #[update]
 fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
     assert!(is_controller(), "Not authorized");
@@ -615,17 +614,12 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
     CANISTERS.with(|c| {
         let mut map = c.borrow_mut();
         for import in canisters {
-            // Auto-create project if referenced
-            if let Some(ref project) = import.project {
-                ensure_project_exists(project, import.website.clone());
-            }
-
             let key = PrincipalKey::from_principal(import.canister_id);
             let meta = CanisterMeta {
                 proxy_id: import.proxy_id,
                 proxy_type: import.proxy_type,
                 project: import.project.map(|p| truncate_utf8(&p, MAX_PROJECT_BYTES)),
-                valid: import.valid.unwrap_or(true),
+                valid: import.valid,
                 // Pre-computed values start at 0, will be populated on next snapshot
                 balance: 0,
                 burn_1h: None,
@@ -650,8 +644,20 @@ type CanisterImport = record {
     proxy_id : principal;
     proxy_type : ProxyType;
     project : opt text;
-    website : opt text;  // Used to set project website during import
-    valid : opt bool;
+    valid : bool;
+};
+
+type CanisterExport = record {
+    canister_id : principal;
+    proxy_id : principal;
+    proxy_type : ProxyType;
+    project : opt text;
+    valid : bool;
+};
+
+type ProjectExport = record {
+    name : text;
+    website : opt text;
 };
 
 type ProjectImport = record {
@@ -730,7 +736,8 @@ service : {
     list_projects : () -> (vec ProjectEntry) query;
     get_stats : () -> (Stats) query;
     is_timer_running : () -> (bool) query;
-    export_canisters : () -> (vec CanisterImport) query;
+    export_canisters : () -> (vec CanisterExport) query;
+    export_projects : () -> (vec ProjectExport) query;
 
     // Update endpoints
     import_canisters : (vec CanisterImport) -> (nat64);
@@ -872,176 +879,242 @@ echo "  Projects: $(du -h "$PROJECTS_FILE" | cut -f1)"
 echo "  Canisters: $(du -h "$CANISTERS_FILE" | cut -f1)"
 ```
 
-### batch_import.py (Revised)
+### batch_import.py (New Format Only)
 
 ```python
 #!/usr/bin/env python3
-"""
-Import projects and canisters from backup files.
-Handles both old format (single file with website on canisters) and
-new format (separate projects + canisters files).
-"""
+"""Import projects and canisters from backup files (new format only)."""
 import json
 import subprocess
 import sys
-import os
 
 BATCH_SIZE = 50
 
 def run_dfx(method, candid):
-    """Run dfx canister call and return result"""
     result = subprocess.run(
         ['dfx', 'canister', 'call', 'cyclescan_backend', method, candid, '--network', 'ic'],
         capture_output=True, text=True
     )
     if result.returncode != 0:
-        print(f"Error calling {method}: {result.stderr}")
+        print(f"Error: {result.stderr}")
         sys.exit(1)
     return result.stdout.strip()
 
 def projects_to_candid(projects):
-    """Convert projects list to Candid format"""
     items = []
     for p in projects:
-        name = p['name']
-        # Handle both [value] array format and direct value
         website = p.get('website')
         if isinstance(website, list):
             website = website[0] if website else None
         web = f'opt "{website}"' if website else 'null'
-        items.append(f'record {{ name = "{name}"; website = {web} }}')
+        items.append(f'record {{ name = "{p["name"]}"; website = {web} }}')
     return f'(vec {{ {"; ".join(items)} }})'
 
 def canisters_to_candid(canisters):
-    """Convert canisters list to Candid format"""
     items = []
     for c in canisters:
         proxy_type = list(c['proxy_type'].keys())[0]
-
-        # Handle project field
         project = c.get('project')
         if isinstance(project, list):
             project = project[0] if project else None
         proj = f'opt "{project}"' if project else 'null'
-
-        # Handle valid field (default true)
         valid = c.get('valid', True)
-        if isinstance(valid, list):
-            valid = valid[0] if valid else True
-        valid_str = 'true' if valid else 'false'
-
         items.append(
             f'record {{ canister_id = principal "{c["canister_id"]}"; '
             f'proxy_id = principal "{c["proxy_id"]}"; '
             f'proxy_type = variant {{ {proxy_type} }}; '
             f'project = {proj}; '
-            f'valid = {valid_str} }}'
+            f'valid = {"true" if valid else "false"} }}'
         )
     return f'(vec {{ {"; ".join(items)} }})'
 
-def extract_projects_from_legacy(canisters):
-    """Extract projects from old-format canister backup (with website on each canister)"""
-    projects = {}
-    for c in canisters:
-        proj = c.get('project')
-        if isinstance(proj, list):
-            proj = proj[0] if proj else None
-        if proj and proj not in projects:
-            website = c.get('website')
-            if isinstance(website, list):
-                website = website[0] if website else None
-            projects[proj] = website
-    return [{'name': name, 'website': website} for name, website in projects.items()]
+with open('projects_backup.json') as f:
+    projects = json.load(f)
+with open('canisters_backup.json') as f:
+    canisters = json.load(f)
 
-def main():
-    # Detect format: new (separate files) or legacy (single file)
-    has_new_format = os.path.exists('projects_backup.json') and os.path.exists('canisters_backup.json')
-    has_legacy_format = os.path.exists('canister_metadata_backup.json')
+print(f"Projects: {len(projects)}, Canisters: {len(canisters)}")
 
-    if has_new_format:
-        print("Detected new backup format (separate projects + canisters files)")
-        with open('projects_backup.json') as f:
-            projects = json.load(f)
-        with open('canisters_backup.json') as f:
-            canisters = json.load(f)
-    elif has_legacy_format:
-        print("Detected legacy backup format (single file with website on canisters)")
-        with open('canister_metadata_backup.json') as f:
-            canisters = json.load(f)
-        projects = extract_projects_from_legacy(canisters)
-        print(f"Extracted {len(projects)} projects from legacy format")
-    else:
-        print("Error: No backup files found!")
-        print("Expected either:")
-        print("  - projects_backup.json + canisters_backup.json (new format)")
-        print("  - canister_metadata_backup.json (legacy format)")
-        sys.exit(1)
+# Import projects
+print(f"Importing {len(projects)} projects...")
+print(f"  {run_dfx('import_projects', projects_to_candid(projects))}")
 
-    print(f"Projects: {len(projects)}")
-    print(f"Canisters: {len(canisters)}")
+# Import canisters in batches
+print(f"Importing {len(canisters)} canisters...")
+for i in range(0, len(canisters), BATCH_SIZE):
+    batch = canisters[i:i+BATCH_SIZE]
+    print(f"  Batch {i}-{i+len(batch)}: {run_dfx('import_canisters', canisters_to_candid(batch))}")
 
-    # Step 1: Import projects
-    if projects:
-        print(f"\nImporting {len(projects)} projects...")
-        candid = projects_to_candid(projects)
-        result = run_dfx('import_projects', candid)
-        print(f"  {result}")
+print("\n✓ Done! Run: dfx canister call cyclescan_backend take_snapshot --network ic")
+```
 
-    # Step 2: Import canisters in batches
-    print(f"\nImporting {len(canisters)} canisters...")
-    for i in range(0, len(canisters), BATCH_SIZE):
-        batch = canisters[i:i+BATCH_SIZE]
-        print(f"  Batch {i}-{i+len(batch)}...", end=' ')
-        candid = canisters_to_candid(batch)
-        result = run_dfx('import_canisters', candid)
-        print(result)
+### data/backup/ File Changes
 
-    print("\n✓ Import complete!")
-    print("\nRun this to populate pre-computed values:")
-    print("  dfx canister call cyclescan_backend take_snapshot --network ic")
+| File | Action | Notes |
+|------|--------|-------|
+| `backup_metadata.sh` | **Replace** | New version exports `projects_backup.json` + `canisters_backup.json` |
+| `batch_import.py` | **Replace** | New version imports new format only |
+| `restore_metadata.sh` | **Delete** | Redundant - `batch_import.py` handles everything |
+| `canister_metadata_backup.json` | **Delete after migration** | Replaced by the two new files |
+| `README.md` | **Update** | Document new backup format |
+| `convert_legacy.py` | **Create (temporary)** | One-time conversion, delete after migration |
+| `projects_backup.json` | **New** | Created by backup or conversion |
+| `canisters_backup.json` | **New** | Created by backup or conversion |
 
-if __name__ == '__main__':
-    main()
+### Updated README.md
+
+```markdown
+# CycleScan Backup & Restore
+
+## Files
+
+- `backup_metadata.sh` - Export projects + canisters to JSON
+- `batch_import.py` - Restore from JSON backup
+- `projects_backup.json` - Project metadata (name, website)
+- `canisters_backup.json` - Canister metadata (id, proxy, project ref)
+
+## Backup
+
+```bash
+./backup_metadata.sh
+```
+
+Exports two files:
+- `projects_backup.json` - 152 projects with websites
+- `canisters_backup.json` - 3,140 canisters (no website, references project)
+
+## Restore
+
+After a reinstall or fresh deployment:
+
+```bash
+python3 batch_import.py
+dfx canister call cyclescan_backend take_snapshot --network ic
+```
+
+Note: Pre-computed values (balance, burns) are not backed up. They populate on first snapshot.
+
+## dfx Snapshots
+
+For full state backup (including cycle history):
+
+```bash
+# Create snapshot
+dfx canister stop cyclescan_backend --network ic
+dfx canister snapshot create cyclescan_backend --network ic
+dfx canister start cyclescan_backend --network ic
+
+# Restore from snapshot
+dfx canister snapshot load cyclescan_backend <snapshot_id> --network ic
+```
 ```
 
 ---
 
-## Migration
+## Initial Deployment (One-Time)
+
+This is a fresh start. We convert the old backup format once, then never look back.
 
 ### Step 1: Backup Current Data (Before Code Changes)
 
 ```bash
 cd data/backup
-./backup_metadata.sh  # Uses OLD format, saves canister_metadata_backup.json
+./backup_metadata.sh  # Saves canister_metadata_backup.json (old format)
 ```
 
-### Step 2: Deploy New Code
-
-```bash
-# Build and deploy with reinstall (clears stable memory)
-dfx canister install cyclescan_backend --mode reinstall --network ic --yes
-```
-
-### Step 3: Restore Data
+### Step 2: Convert to New Format (One-Time Script)
 
 ```bash
 cd data/backup
-python3 batch_import.py  # Auto-detects legacy format, extracts projects
+python3 convert_legacy.py  # Creates projects_backup.json + canisters_backup.json
 ```
 
-The revised `batch_import.py` (shown in Backup System section above) will:
-1. Detect the legacy `canister_metadata_backup.json` format
-2. Extract unique projects with their websites
-3. Import projects first via `import_projects()`
-4. Import canisters via `import_canisters()`
+**convert_legacy.py** (run once, then delete):
+```python
+#!/usr/bin/env python3
+"""One-time conversion from old backup format to new format."""
+import json
 
-### Step 4: Populate Pre-computed Values
+with open('canister_metadata_backup.json') as f:
+    canisters = json.load(f)
+
+# Extract unique projects
+projects = {}
+for c in canisters:
+    proj = c.get('project', [None])[0]
+    if proj and proj not in projects:
+        website = c.get('website', [None])[0]
+        projects[proj] = website
+
+# Write projects
+with open('projects_backup.json', 'w') as f:
+    json.dump([
+        {'name': name, 'website': [website] if website else None}
+        for name, website in projects.items()
+    ], f, indent=2)
+
+# Write canisters (without website)
+with open('canisters_backup.json', 'w') as f:
+    json.dump([
+        {
+            'canister_id': c['canister_id'],
+            'proxy_id': c['proxy_id'],
+            'proxy_type': c['proxy_type'],
+            'project': c.get('project'),
+            'valid': c.get('valid', [True])[0]
+        }
+        for c in canisters
+    ], f, indent=2)
+
+print(f"Converted {len(canisters)} canisters, {len(projects)} projects")
+```
+
+### Step 3: Deploy New Code
+
+```bash
+dfx canister install cyclescan_backend --mode reinstall --network ic --yes
+```
+
+### Step 4: Import Data
+
+```bash
+cd data/backup
+python3 batch_import.py  # Now uses new format files
+```
+
+### Step 5: Populate Pre-computed Values
 
 ```bash
 dfx canister call cyclescan_backend take_snapshot --network ic
 ```
 
-This runs the snapshot logic which populates all pre-computed burn values.
+First snapshot starts fresh - no historical data, but burn values will populate over time.
+
+---
+
+## Ongoing Backup/Restore
+
+After initial deployment, backup and restore use the new format only:
+
+### Backup
+```bash
+cd data/backup
+./backup_metadata.sh  # Exports projects_backup.json + canisters_backup.json
+```
+
+### Restore (after reinstall)
+```bash
+cd data/backup
+python3 batch_import.py  # Imports from new format files
+dfx canister call cyclescan_backend take_snapshot --network ic
+```
+
+The cycle is clean:
+1. `export_projects()` → `projects_backup.json`
+2. `export_canisters()` → `canisters_backup.json`
+3. `import_projects()` ← `projects_backup.json`
+4. `import_canisters()` ← `canisters_backup.json`
+5. `take_snapshot()` → populates pre-computed values
 
 ---
 
