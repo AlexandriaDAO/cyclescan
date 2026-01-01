@@ -1,17 +1,4 @@
-type CanisterHistory = record {
-  burn_24h : opt nat;
-  burn_30d : opt nat;
-  is_24h_actual : bool;
-  canister_id : principal;
-  current_balance : nat;
-  snapshots : vec SnapshotPoint;
-  is_7d_actual : bool;
-  burn_1h : opt nat;
-  burn_7d : opt nat;
-  is_30d_actual : bool;
-  project : opt text;
-  website : opt text;
-};
+type ProxyType = variant { Blackhole; SnsRoot };
 
 type CanisterImport = record {
   canister_id : principal;
@@ -21,97 +8,84 @@ type CanisterImport = record {
   website : opt text;
 };
 
-type CanisterInfo = record {
-  canister_id : principal;
-  proxy_id : principal;
-  proxy_type : ProxyType;
-  project : opt text;
-  website : opt text;
-};
-
 type CanisterUpdate = record {
-  proxy_id : opt principal;
-  proxy_type : opt ProxyType;
   project : opt opt text;
   website : opt opt text;
 };
 
 type LeaderboardEntry = record {
-  burn_24h : opt nat;
-  balance : nat;
   canister_id : principal;
-  burn_1h : opt nat;
-  burn_7d : opt nat;
   project : opt text;
   website : opt text;
+  balance : nat;
+  burn_1h : opt nat;
+  burn_24h : opt nat;
+  burn_7d : opt nat;
 };
 
 type LeaderboardPage = record {
+  entries : vec LeaderboardEntry;
   total : nat64;
   offset : nat64;
-  limit : nat64;
-  entries : vec LeaderboardEntry;
 };
 
-type ProjectLeaderboardEntry = record {
-  canister_count : nat64;
-  total_burn_1h : opt nat;
-  total_burn_7d : opt nat;
-  total_burn_24h : opt nat;
-  total_balance : nat;
+type ProjectEntry = record {
   project : text;
   website : opt text;
+  canister_count : nat64;
+  total_balance : nat;
+  total_burn_1h : opt nat;
+  total_burn_24h : opt nat;
+  total_burn_7d : opt nat;
 };
 
-type ProxyType = variant { Blackhole; SnsRoot };
-
-type SnapshotPoint = record { cycles : nat; timestamp : nat64 };
-
-type SnapshotResult = record {
-  total : nat64;
+type Snapshot = record {
   timestamp : nat64;
-  success : nat64;
-  pruned : nat64;
-  failed : nat64;
+  cycles : nat;
+};
+
+type CanisterDetail = record {
+  canister_id : principal;
+  proxy_id : principal;
+  proxy_type : ProxyType;
+  project : opt text;
+  website : opt text;
+  current_balance : nat;
+  burn_1h : opt nat;
+  burn_24h : opt nat;
+  burn_7d : opt nat;
+  burn_30d : opt nat;
+  snapshots : vec Snapshot;
 };
 
 type Stats = record {
   canister_count : nat64;
-  oldest_snapshot : opt nat64;
-  newest_snapshot : opt nat64;
   snapshot_count : nat64;
+  tracked_projects : nat64;
+};
+
+type SnapshotResult = record {
+  success : nat64;
+  failed : nat64;
+  pruned : nat64;
 };
 
 service : {
-  // Query methods
-  get_leaderboard : () -> (vec LeaderboardEntry) query;
-  get_leaderboard_page : (nat64, nat64) -> (LeaderboardPage) query;
-  get_project_leaderboard : () -> (vec ProjectLeaderboardEntry) query;
+  // Queries
+  get_leaderboard : (nat64, nat64) -> (LeaderboardPage) query;
+  get_project_leaderboard : () -> (vec ProjectEntry) query;
   get_project_canisters : (text) -> (vec LeaderboardEntry) query;
+  get_canister : (principal) -> (opt CanisterDetail) query;
   get_stats : () -> (Stats) query;
-  get_canister_count : () -> (nat64) query;
-  get_canister : (principal) -> (opt CanisterInfo) query;
-  get_canister_history : (principal) -> (opt CanisterHistory) query;
-  list_canisters : () -> (vec CanisterInfo) query;
-  export_canisters : () -> (vec CanisterImport) query;
   is_timer_running : () -> (bool) query;
+  export_canisters : () -> (vec CanisterImport) query;
 
-  // Snapshot (controller only)
+  // Updates (controller only)
+  import_canisters : (vec CanisterImport) -> (nat64);
+  update_canister : (principal, CanisterUpdate) -> ();
+  remove_canisters : (vec principal) -> ();
+  clear_all : () -> ();
   take_snapshot : () -> (SnapshotResult);
-
-  // Timer control (controller only)
   start_timer : () -> ();
   stop_timer : () -> ();
-
-  // Canister management (controller only)
-  import_canisters : (vec CanisterImport) -> (nat64);
-  update_canister : (principal, CanisterUpdate) -> (bool);
-  remove_canister : (principal) -> (bool);
-  remove_canisters : (vec principal) -> (nat64);
-  set_project : (principal, opt text) -> ();
-  set_projects : (vec record { principal; opt text }) -> (nat64);
-  set_website : (principal, opt text) -> ();
-  set_websites : (vec record { principal; opt text }) -> (nat64);
-  clear_canisters : () -> ();
-  clear_snapshots : () -> ();
 }

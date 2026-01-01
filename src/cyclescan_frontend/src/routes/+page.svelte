@@ -270,12 +270,12 @@
     fetchNetworkBurnRate();
 
     try {
-      const [leaderboard, statsData, projectLeaderboard] = await Promise.all([
-        backend.get_leaderboard(),
+      const [leaderboardPage, statsData, projectLeaderboard] = await Promise.all([
+        backend.get_leaderboard(0n, 10000n),
         backend.get_stats(),
         backend.get_project_leaderboard()
       ]);
-      entries = leaderboard;
+      entries = leaderboardPage.entries;
       stats = statsData;
       projectEntries = projectLeaderboard;
       loading = false;

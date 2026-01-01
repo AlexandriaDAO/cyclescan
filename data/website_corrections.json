@@ -1,0 +1,193 @@
+{
+  "corrections": [
+    {
+      "project": "Orbit Station",
+      "old_website": "https://orbithub.app/",
+      "new_website": "https://orbit.global",
+      "reason": "orbithub.app doesn't exist, orbit.global is the correct domain"
+    },
+    {
+      "project": "Orbit",
+      "old_website": "incorrect",
+      "new_website": "https://orbit.global",
+      "reason": "orbithub.app doesn't exist, orbit.global is the correct domain"
+    },
+    {
+      "project": "Orbit Upgrader",
+      "old_website": null,
+      "new_website": "https://orbit.global",
+      "reason": "Part of Orbit ecosystem"
+    },
+    {
+      "project": "ODIN.fun",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://odin.fun",
+      "reason": "Token launchpad has its own domain"
+    },
+    {
+      "project": "Neutrinite",
+      "old_website": "https://docs.boomdao.xyz",
+      "new_website": "https://icpcoins.com",
+      "reason": "Neutrinite is ICPCoins DAO, not BOOM DAO"
+    },
+    {
+      "project": "ICPanda",
+      "old_website": "https://64od3-hiaaa-aaaad-qa3uq-cai.raw.icp0.io",
+      "new_website": "https://panda.fans",
+      "reason": "Has official domain panda.fans"
+    },
+    {
+      "project": "ICVC",
+      "old_website": "https://icvc-2.vercel.app",
+      "new_website": "https://ic-vc.com",
+      "reason": "Has official domain ic-vc.com"
+    },
+    {
+      "project": "ICPEx",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://icpex.org",
+      "reason": "DEX has its own domain"
+    },
+    {
+      "project": "TACO",
+      "old_website": "https://internetcomputer.org",
+      "new_website": null,
+      "reason": "No dedicated website - remove incorrect default"
+    },
+    {
+      "project": "KINIC",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://kinic.io",
+      "reason": "Has official domain kinic.io"
+    },
+    {
+      "project": "BOOM",
+      "old_website": "https://u52bf-3qaaa-aaaal-qb5wq-cai.icp0.io",
+      "new_website": "https://boomdao.xyz",
+      "reason": "Has official domain boomdao.xyz"
+    },
+    {
+      "project": "DecideAI",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://decideai.xyz",
+      "reason": "Has official domain decideai.xyz"
+    },
+    {
+      "project": "Draggin Karma Points",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://dragginz.io",
+      "reason": "Dragginz has its own domain"
+    },
+    {
+      "project": "Mimic Clay",
+      "old_website": "https://internetcomputer.org",
+      "new_website": null,
+      "reason": "No dedicated website - remove incorrect default"
+    },
+    {
+      "project": "ALICE",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://alice.fun",
+      "reason": "Part of BOB ecosystem"
+    },
+    {
+      "project": "TRAX",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://trax.so",
+      "reason": "Music platform has its own domain"
+    },
+    {
+      "project": "ESTATE",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://estatedao.org",
+      "reason": "Real estate DAO has its own domain"
+    },
+    {
+      "project": "PHASMA",
+      "old_website": "https://internetcomputer.org",
+      "new_website": null,
+      "reason": "No dedicated website - remove incorrect default"
+    },
+    {
+      "project": "FomoWell",
+      "old_website": "https://internetcomputer.org",
+      "new_website": null,
+      "reason": "No dedicated website - remove incorrect default"
+    },
+    {
+      "project": "Swampies",
+      "old_website": "https://internetcomputer.org",
+      "new_website": "https://dragginz.io",
+      "reason": "Part of Dragginz ecosystem"
+    },
+    {
+      "project": "Nuance",
+      "old_website": "https://www.home.nuance.xyz",
+      "new_website": "https://nuance.xyz",
+      "reason": "Main domain is nuance.xyz"
+    },
+    {
+      "project": "GOLDAO",
+      "old_website": "https://docs.gold-dao.org",
+      "new_website": "https://www.gold-dao.org",
+      "reason": "Main website is gold-dao.org, not docs subdomain"
+    }
+  ],
+  "additions": [
+    {
+      "project": "BoB (Burn or Burn)",
+      "website": "https://bob.fun",
+      "reason": "Website was missing"
+    },
+    {
+      "project": "Omnity",
+      "website": "https://www.omnity.network",
+      "reason": "Cross-chain protocol has official domain"
+    },
+    {
+      "project": "Oisy",
+      "website": "https://oisy.com",
+      "reason": "DFINITY wallet has official domain"
+    },
+    {
+      "project": "ICTO",
+      "website": "https://icto.app",
+      "reason": "Token operations platform"
+    },
+    {
+      "project": "Juno Build",
+      "website": "https://juno.build",
+      "reason": "Serverless platform"
+    },
+    {
+      "project": "Taggr",
+      "website": "https://taggr.link",
+      "reason": "Social network"
+    },
+    {
+      "project": "Tendies",
+      "website": "https://tendy.zone",
+      "reason": "SNS DAO"
+    },
+    {
+      "project": "Internet Identity",
+      "website": "https://identity.ic0.app",
+      "reason": "Official ICP authentication"
+    }
+  ],
+  "verified_correct": [
+    "Sonic - https://sonic.ooo",
+    "ICLighthouse DAO - https://iclight.house",
+    "OmniBTC - https://www.omnibtc.finance",
+    "CHAT - https://oc.app",
+    "WaterNeuron - https://waterneuron.fi",
+    "ICExplorer - https://www.icexplorer.io",
+    "KongSwap - https://kongswap.io",
+    "ICPSwap Token - https://www.icpswap.com",
+    "Sneed DAO - https://sneeddao.com",
+    "Yuku AI - https://yuku.app",
+    "ORIGYN - https://www.origyn.com",
+    "ELNA - https://www.elna.ai",
+    "CatalyzeDAO - https://catalyze.one"
+  ]
+}

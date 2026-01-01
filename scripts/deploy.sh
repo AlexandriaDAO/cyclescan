@@ -96,7 +96,7 @@ build_frontend() {
 
 deploy_backend() {
     echo "Deploying backend to mainnet..."
-    dfx deploy cyclescan_backend --network ic
+    dfx deploy cyclescan_backend --network ic --yes
 
     CANISTER_ID=$(dfx canister id cyclescan_backend --network ic)
     echo ""
@@ -123,10 +123,8 @@ take_snapshot() {
 
 run_tests() {
     echo "Testing..."
-    echo "Canister count:"
-    dfx canister call cyclescan_backend get_canister_count --network ic
-    echo "Snapshot count:"
-    dfx canister call cyclescan_backend get_snapshot_count --network ic
+    echo "Stats:"
+    dfx canister call cyclescan_backend get_stats --network ic
     echo ""
 }
 

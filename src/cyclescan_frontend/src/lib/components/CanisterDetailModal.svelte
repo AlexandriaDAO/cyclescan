@@ -87,7 +87,7 @@
       loading = true;
       error = null;
       const principal = Principal.fromText(canisterId);
-      const result = await backend.get_canister_history(principal);
+      const result = await backend.get_canister(principal);
 
       if (result.length === 0 || !result[0]) {
         error = "Canister not found";
@@ -288,28 +288,18 @@
               class="range-btn"
               class:active={timeRange === "1d"}
               on:click={() => setTimeRange("1d")}
-            >
-              1D
-              {#if !data.is_24h_actual}<span class="no-data-indicator">*</span>{/if}
-            </button>
+            >1D</button>
             <button
               class="range-btn"
               class:active={timeRange === "7d"}
               on:click={() => setTimeRange("7d")}
-            >
-              7D
-              {#if !data.is_7d_actual}<span class="no-data-indicator">*</span>{/if}
-            </button>
+            >7D</button>
             <button
               class="range-btn"
               class:active={timeRange === "30d"}
               on:click={() => setTimeRange("30d")}
-            >
-              30D
-              {#if !data.is_30d_actual}<span class="no-data-indicator">*</span>{/if}
-            </button>
+            >30D</button>
           </div>
-          <span class="data-note">* extrapolated</span>
         </div>
       </div>
 
@@ -320,31 +310,19 @@
         </div>
         <div class="stat-row">
           <span class="stat-label">1h Burn</span>
-          <span class="stat-value">
-            {formatCycles(data.burn_1h?.[0])}
-            <span class="extrapolated-badge">~</span>
-          </span>
+          <span class="stat-value">{formatCycles(data.burn_1h?.[0])}</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">24h Burn</span>
-          <span class="stat-value">
-            {formatCycles(data.burn_24h?.[0])}
-            {#if !data.is_24h_actual}<span class="extrapolated-badge">~</span>{/if}
-          </span>
+          <span class="stat-value">{formatCycles(data.burn_24h?.[0])}</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">7d Burn</span>
-          <span class="stat-value">
-            {formatCycles(data.burn_7d?.[0])}
-            {#if !data.is_7d_actual}<span class="extrapolated-badge">~</span>{/if}
-          </span>
+          <span class="stat-value">{formatCycles(data.burn_7d?.[0])}</span>
         </div>
         <div class="stat-row">
           <span class="stat-label">30d Burn</span>
-          <span class="stat-value">
-            {formatCycles(data.burn_30d?.[0])}
-            {#if !data.is_30d_actual}<span class="extrapolated-badge">~</span>{/if}
-          </span>
+          <span class="stat-value">{formatCycles(data.burn_30d?.[0])}</span>
         </div>
       </div>
 
