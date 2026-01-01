@@ -14,6 +14,7 @@
   let sortDirection = "desc";
   let currentPage = 1;
   let selectedCanisterId = null;
+  let showInvalid = false; // Toggle for showing excluded canisters
   let expandedProjects = new Set(); // Track which projects are expanded
   let projectCanistersCache = new Map(); // Cache for project canisters
   let loadingProjects = new Set(); // Track which projects are loading
@@ -346,6 +347,10 @@
       placeholder="Search projects..."
       bind:value={searchQuery}
     />
+    <label class="toggle-label" title="Show canisters that are excluded from burn calculations">
+      <input type="checkbox" bind:checked={showInvalid} />
+      <span>Show excluded</span>
+    </label>
   </div>
 
   {#if loading}
@@ -457,12 +462,20 @@
                     <td colspan="8" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
-                  {#each getProjectCanisters(entry.project) as canister, j}
-                    <tr class="sub-row clickable" on:click|stopPropagation={() => openModal(canister.canister_id)}>
+                  {#each getProjectCanisters(entry.project).filter(c => showInvalid || c.valid) as canister, j}
+                    <tr class="sub-row clickable" class:excluded={!canister.valid} on:click|stopPropagation={() => openModal(canister.canister_id)}>
                       <td class="rank sub-rank"></td>
                       <td class="project sub-project">
                         <div class="project-cell sub-cell">
                           <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
+                          {#if !canister.valid}
+                            <span class="excluded-badge" title="Excluded from burn calculations">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                              </svg>
+                            </span>
+                          {/if}
                         </div>
                       </td>
                       <td class="website-cell"></td>

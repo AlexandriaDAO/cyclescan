@@ -38,6 +38,7 @@ type LeaderboardEntry = record {
   burn_1h : opt nat;
   burn_24h : opt nat;
   burn_7d : opt nat;
+  valid : bool;
 };
 
 type LeaderboardPage = record {

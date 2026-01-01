@@ -97,6 +97,7 @@ pub struct LeaderboardEntry {
     pub burn_1h: Option<u128>,
     pub burn_24h: Option<u128>,
     pub burn_7d: Option<u128>,
+    pub valid: bool,
 }
 
 #[derive(CandidType)]
@@ -678,6 +679,7 @@ fn get_leaderboard(offset: u64, limit: u64) -> LeaderboardPage {
                 burn_1h: meta.burn_1h,
                 burn_24h: meta.burn_24h,
                 burn_7d: meta.burn_7d,
+                valid: meta.valid,
             })
             .collect();
 
@@ -735,7 +737,7 @@ fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
         let canisters = c.borrow();
         let mut entries: Vec<LeaderboardEntry> = canisters
             .iter()
-            .filter(|(_, meta)| meta.valid && meta.project.as_ref() == Some(&project_name))
+            .filter(|(_, meta)| meta.project.as_ref() == Some(&project_name))
             .map(|(key, meta)| LeaderboardEntry {
                 canister_id: key.to_principal(),
                 project: meta.project.clone(),
@@ -744,11 +746,19 @@ fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
                 burn_1h: meta.burn_1h,
                 burn_24h: meta.burn_24h,
                 burn_7d: meta.burn_7d,
+                valid: meta.valid,
             })
             .collect();
 
-        // Sort by 24h burn descending
-        entries.sort_by(|a, b| b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0)));
+        // Sort by 24h burn descending, invalid canisters last
+        entries.sort_by(|a, b| {
+            // Valid canisters first
+            match (a.valid, b.valid) {
+                (true, false) => std::cmp::Ordering::Less,
+                (false, true) => std::cmp::Ordering::Greater,
+                _ => b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0)),
+            }
+        });
 
         entries
     })
