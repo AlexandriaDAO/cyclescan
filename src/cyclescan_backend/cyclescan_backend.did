@@ -10,6 +10,7 @@ type CanisterHistory = record {
   burn_7d : opt nat;
   is_30d_actual : bool;
   project : opt text;
+  website : opt text;
 };
 
 type CanisterImport = record {
@@ -17,6 +18,7 @@ type CanisterImport = record {
   proxy_id : principal;
   proxy_type : ProxyType;
   project : opt text;
+  website : opt text;
 };
 
 type CanisterInfo = record {
@@ -24,12 +26,14 @@ type CanisterInfo = record {
   proxy_id : principal;
   proxy_type : ProxyType;
   project : opt text;
+  website : opt text;
 };
 
 type CanisterUpdate = record {
   proxy_id : opt principal;
   proxy_type : opt ProxyType;
   project : opt opt text;
+  website : opt opt text;
 };
 
 type LeaderboardEntry = record {
@@ -39,6 +43,7 @@ type LeaderboardEntry = record {
   burn_1h : opt nat;
   burn_7d : opt nat;
   project : opt text;
+  website : opt text;
 };
 
 type LeaderboardPage = record {
@@ -55,6 +60,7 @@ type ProjectLeaderboardEntry = record {
   total_burn_24h : opt nat;
   total_balance : nat;
   project : text;
+  website : opt text;
 };
 
 type ProxyType = variant { Blackhole; SnsRoot };
@@ -104,6 +110,8 @@ service : {
   remove_canisters : (vec principal) -> (nat64);
   set_project : (principal, opt text) -> ();
   set_projects : (vec record { principal; opt text }) -> (nat64);
+  set_website : (principal, opt text) -> ();
+  set_websites : (vec record { principal; opt text }) -> (nat64);
   clear_canisters : () -> ();
   clear_snapshots : () -> ();
 }

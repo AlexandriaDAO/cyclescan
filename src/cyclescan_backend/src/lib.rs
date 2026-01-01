@@ -21,9 +21,9 @@ const THIRTY_DAYS_NANOS: u64 = 30 * NANOS_PER_DAY;
 const RETENTION_PERIOD: u64 = THIRTY_DAYS_NANOS;
 const BATCH_SIZE: usize = 50;
 const SNAPSHOT_INTERVAL: Duration = Duration::from_secs(3600); // 1 hour
-const DEFAULT_PAGE_LIMIT: u64 = 100;
 const MAX_PAGE_LIMIT: u64 = 1000;
 const MAX_PROJECT_NAME_BYTES: usize = 100;
+const MAX_WEBSITE_BYTES: usize = 200;
 
 // =============================================================================
 // Proxy Types - Extensible for future query methods
@@ -65,6 +65,8 @@ pub struct CanisterImport {
     pub proxy_type: ProxyType,
     #[serde(default)]
     pub project: Option<String>,
+    #[serde(default)]
+    pub website: Option<String>,
 }
 
 /// Full canister info for queries
@@ -74,6 +76,7 @@ pub struct CanisterInfo {
     pub proxy_id: Principal,
     pub proxy_type: ProxyType,
     pub project: Option<String>,
+    pub website: Option<String>,
 }
 
 /// Partial update for canister metadata
@@ -83,6 +86,8 @@ pub struct CanisterUpdate {
     pub proxy_type: Option<ProxyType>,
     /// None = unchanged, Some(None) = clear, Some(Some(x)) = set to x
     pub project: Option<Option<String>>,
+    /// None = unchanged, Some(None) = clear, Some(Some(x)) = set to x
+    pub website: Option<Option<String>>,
 }
 
 /// Leaderboard entry - the main output
@@ -90,6 +95,7 @@ pub struct CanisterUpdate {
 pub struct LeaderboardEntry {
     pub canister_id: Principal,
     pub project: Option<String>,
+    pub website: Option<String>,
     pub balance: u128,
     pub burn_1h: Option<u128>,
     pub burn_24h: Option<u128>,
@@ -100,6 +106,7 @@ pub struct LeaderboardEntry {
 #[derive(CandidType, Serialize, Deserialize, Clone, Debug)]
 pub struct ProjectLeaderboardEntry {
     pub project: String,
+    pub website: Option<String>,
     pub canister_count: u64,
     pub total_balance: u128,
     pub total_burn_1h: Option<u128>,
@@ -147,6 +154,7 @@ pub struct SnapshotPoint {
 pub struct CanisterHistory {
     pub canister_id: Principal,
     pub project: Option<String>,
+    pub website: Option<String>,
     pub current_balance: u128,
     pub snapshots: Vec<SnapshotPoint>,
     pub burn_1h: Option<u128>,
@@ -168,30 +176,36 @@ struct CanisterMeta {
     proxy_id: Principal,
     proxy_type: ProxyType,
     project_name: Option<String>,
+    website: Option<String>,
 }
 
 /// Schema version for CanisterMeta serialization.
 /// Version detection: if first byte < 128, it's v0 (legacy). If >= 128, version = byte - 128.
-const CANISTER_META_VERSION: u8 = 1;
+/// v1: Added version marker
+/// v2: Added website field
+const CANISTER_META_VERSION: u8 = 2;
 const VERSION_MARKER: u8 = 128; // High bit set to distinguish from v0's proxy_len (0-29)
 
 impl Storable for CanisterMeta {
     fn to_bytes(&self) -> Cow<'_, [u8]> {
         let proxy_bytes = self.proxy_id.as_slice();
         let name_bytes = self.project_name.as_deref().unwrap_or("").as_bytes();
+        let website_bytes = self.website.as_deref().unwrap_or("").as_bytes();
         let proxy_type_byte: u8 = match self.proxy_type {
             ProxyType::Blackhole => 0,
             ProxyType::SnsRoot => 1,
         };
 
-        // v1 format: [version | proxy_len | proxy | proxy_type | name_len (u16 LE) | name]
-        let mut bytes = Vec::with_capacity(1 + 1 + proxy_bytes.len() + 1 + 2 + name_bytes.len());
-        bytes.push(VERSION_MARKER + CANISTER_META_VERSION); // Version byte (129 = v1)
+        // v2 format: [version | proxy_len | proxy | proxy_type | name_len (u16 LE) | name | website_len (u16 LE) | website]
+        let mut bytes = Vec::with_capacity(1 + 1 + proxy_bytes.len() + 1 + 2 + name_bytes.len() + 2 + website_bytes.len());
+        bytes.push(VERSION_MARKER + CANISTER_META_VERSION); // Version byte (130 = v2)
         bytes.push(proxy_bytes.len() as u8);
         bytes.extend_from_slice(proxy_bytes);
         bytes.push(proxy_type_byte);
         bytes.extend_from_slice(&(name_bytes.len() as u16).to_le_bytes());
         bytes.extend_from_slice(name_bytes);
+        bytes.extend_from_slice(&(website_bytes.len() as u16).to_le_bytes());
+        bytes.extend_from_slice(website_bytes);
 
         Cow::Owned(bytes)
     }
@@ -226,10 +240,10 @@ impl Storable for CanisterMeta {
                 proxy_id,
                 proxy_type,
                 project_name,
+                website: None, // v0 has no website
             }
         } else {
-            // v1+ format: [version | proxy_len | proxy | proxy_type | name_len (u16 LE) | name]
-            let _version = first_byte - VERSION_MARKER; // For future use
+            let version = first_byte - VERSION_MARKER;
             let proxy_len = bytes[1] as usize;
             let proxy_id = Principal::from_slice(&bytes[2..2 + proxy_len]);
 
@@ -250,16 +264,34 @@ impl Storable for CanisterMeta {
                 None
             };
 
+            // v2+ has website field
+            let website = if version >= 2 {
+                let website_len_start = name_len_start + 2 + name_len;
+                let website_len =
+                    u16::from_le_bytes([bytes[website_len_start], bytes[website_len_start + 1]]) as usize;
+
+                if website_len > 0 {
+                    let website_start = website_len_start + 2;
+                    Some(String::from_utf8_lossy(&bytes[website_start..website_start + website_len]).into_owned())
+                } else {
+                    None
+                }
+            } else {
+                None // v1 has no website
+            };
+
             Self {
                 proxy_id,
                 proxy_type,
                 project_name,
+                website,
             }
         }
     }
 
     const BOUND: Bound = Bound::Bounded {
-        max_size: 1 + 1 + 29 + 1 + 2 + 100, // version + proxy len + proxy + type + name len + name
+        // version + proxy_len + proxy + type + name_len + name + website_len + website
+        max_size: 1 + 1 + 29 + 1 + 2 + 100 + 2 + 200,
         is_fixed_size: false,
     };
 }
@@ -408,6 +440,22 @@ fn sanitize_project_name(name: Option<String>) -> Option<String> {
         } else {
             // Truncate at valid UTF-8 boundary
             let mut end = MAX_PROJECT_NAME_BYTES;
+            while end > 0 && !s.is_char_boundary(end) {
+                end -= 1;
+            }
+            s[..end].to_string()
+        }
+    })
+}
+
+/// Truncate website URL to max allowed bytes (UTF-8 safe)
+fn sanitize_website(url: Option<String>) -> Option<String> {
+    url.map(|s| {
+        if s.len() <= MAX_WEBSITE_BYTES {
+            s
+        } else {
+            // Truncate at valid UTF-8 boundary
+            let mut end = MAX_WEBSITE_BYTES;
             while end > 0 && !s.is_char_boundary(end) {
                 end -= 1;
             }
@@ -713,6 +761,7 @@ fn get_leaderboard() -> Vec<LeaderboardEntry> {
                 LeaderboardEntry {
                     canister_id,
                     project: meta.project_name.clone(),
+                    website: meta.website.clone(),
                     balance,
                     burn_1h: calculate_burn(&key, NANOS_PER_HOUR, now),
                     burn_24h: calculate_burn(&key, NANOS_PER_DAY, now),
@@ -727,8 +776,6 @@ fn get_leaderboard() -> Vec<LeaderboardEntry> {
             b_burn.cmp(&a_burn)
         });
 
-        // Apply default limit for backward compatibility (prevents unbounded response)
-        entries.truncate(DEFAULT_PAGE_LIMIT as usize);
         entries
     })
 }
@@ -767,6 +814,7 @@ fn get_leaderboard_page(offset: u64, limit: u64) -> LeaderboardPage {
                 LeaderboardEntry {
                     canister_id,
                     project: meta.project_name.clone(),
+                    website: meta.website.clone(),
                     balance,
                     burn_1h: calculate_burn(&key, NANOS_PER_HOUR, now),
                     burn_24h: calculate_burn(&key, NANOS_PER_DAY, now),
@@ -801,8 +849,8 @@ fn get_leaderboard_page(offset: u64, limit: u64) -> LeaderboardPage {
 fn get_project_leaderboard() -> Vec<ProjectLeaderboardEntry> {
     let now = now_nanos();
 
-    // First, get individual canister data
-    let canister_data: Vec<(PrincipalKey, String, u128, Option<u128>, Option<u128>, Option<u128>)> =
+    // First, get individual canister data (including website)
+    let canister_data: Vec<(PrincipalKey, String, Option<String>, u128, Option<u128>, Option<u128>, Option<u128>)> =
         CANISTERS.with(|c| {
             let canisters = c.borrow();
             canisters
@@ -830,6 +878,7 @@ fn get_project_leaderboard() -> Vec<ProjectLeaderboardEntry> {
                     Some((
                         key.clone(),
                         project_name.clone(),
+                        meta.website.clone(),
                         balance,
                         calculate_burn(&key, NANOS_PER_HOUR, now),
                         calculate_burn(&key, NANOS_PER_DAY, now),
@@ -842,15 +891,21 @@ fn get_project_leaderboard() -> Vec<ProjectLeaderboardEntry> {
     // Aggregate by project
     let mut project_map: HashMap<String, ProjectLeaderboardEntry> = HashMap::new();
 
-    for (_key, project, balance, burn_1h, burn_24h, burn_7d) in canister_data {
+    for (_key, project, website, balance, burn_1h, burn_24h, burn_7d) in canister_data {
         let entry = project_map.entry(project.clone()).or_insert(ProjectLeaderboardEntry {
             project,
+            website: None,
             canister_count: 0,
             total_balance: 0,
             total_burn_1h: Some(0),
             total_burn_24h: Some(0),
             total_burn_7d: Some(0),
         });
+
+        // Use the first non-None website we encounter
+        if entry.website.is_none() && website.is_some() {
+            entry.website = website;
+        }
 
         entry.canister_count += 1;
         entry.total_balance += balance;
@@ -915,6 +970,7 @@ fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
                 Some(LeaderboardEntry {
                     canister_id,
                     project: Some(project_name.clone()),
+                    website: meta.website.clone(),
                     balance,
                     burn_1h: calculate_burn(&key, NANOS_PER_HOUR, now),
                     burn_24h: calculate_burn(&key, NANOS_PER_DAY, now),
@@ -970,6 +1026,7 @@ fn get_canister(canister_id: Principal) -> Option<CanisterInfo> {
             proxy_id: meta.proxy_id,
             proxy_type: meta.proxy_type,
             project: meta.project_name,
+            website: meta.website,
         })
     })
 }
@@ -985,6 +1042,7 @@ fn list_canisters() -> Vec<CanisterInfo> {
                 proxy_id: meta.proxy_id,
                 proxy_type: meta.proxy_type,
                 project: meta.project_name,
+                website: meta.website,
             })
             .collect()
     })
@@ -1001,6 +1059,7 @@ fn export_canisters() -> Vec<CanisterImport> {
                 proxy_id: meta.proxy_id,
                 proxy_type: meta.proxy_type,
                 project: meta.project_name,
+                website: meta.website,
             })
             .collect()
     })
@@ -1059,6 +1118,7 @@ fn get_canister_history(canister_id: Principal) -> Option<CanisterHistory> {
     Some(CanisterHistory {
         canister_id,
         project: meta.project_name,
+        website: meta.website,
         current_balance,
         snapshots,
         burn_1h,
@@ -1076,7 +1136,7 @@ fn get_canister_history(canister_id: Principal) -> Option<CanisterHistory> {
 // =============================================================================
 
 /// Import canisters (controller only)
-/// If project is provided in import, it will be used; otherwise preserves existing project name
+/// If project/website is provided in import, it will be used; otherwise preserves existing values
 #[ic_cdk::update]
 fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
     if !is_controller() {
@@ -1088,12 +1148,18 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
         let mut map = c.borrow_mut();
         for import in canisters {
             let key = PrincipalKey::new(import.canister_id);
-            // Use provided project, or fall back to existing project name
-            // Sanitize to ensure it fits in storage
+            let existing = map.get(&key);
+            // Use provided values, or fall back to existing ones
+            // Sanitize to ensure they fit in storage
             let project_name = sanitize_project_name(
                 import
                     .project
-                    .or_else(|| map.get(&key).and_then(|m| m.project_name.clone())),
+                    .or_else(|| existing.as_ref().and_then(|m| m.project_name.clone())),
+            );
+            let website = sanitize_website(
+                import
+                    .website
+                    .or_else(|| existing.as_ref().and_then(|m| m.website.clone())),
             );
             map.insert(
                 key,
@@ -1101,6 +1167,7 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
                     proxy_id: import.proxy_id,
                     proxy_type: import.proxy_type,
                     project_name,
+                    website,
                 },
             );
             count += 1;
@@ -1148,6 +1215,45 @@ fn set_projects(projects: Vec<(Principal, Option<String>)>) -> u64 {
     count
 }
 
+/// Set website URL for a canister (controller only)
+#[ic_cdk::update]
+fn set_website(canister_id: Principal, website: Option<String>) {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can set website URLs");
+    }
+
+    let key = PrincipalKey::new(canister_id);
+    CANISTERS.with(|c| {
+        let mut map = c.borrow_mut();
+        if let Some(mut meta) = map.get(&key) {
+            meta.website = sanitize_website(website);
+            map.insert(key, meta);
+        }
+    });
+}
+
+/// Set website URLs in bulk (controller only)
+#[ic_cdk::update]
+fn set_websites(websites: Vec<(Principal, Option<String>)>) -> u64 {
+    if !is_controller() {
+        ic_cdk::trap("Only controller can set website URLs");
+    }
+
+    let mut count = 0u64;
+    CANISTERS.with(|c| {
+        let mut map = c.borrow_mut();
+        for (canister_id, website) in websites {
+            let key = PrincipalKey::new(canister_id);
+            if let Some(mut meta) = map.get(&key) {
+                meta.website = sanitize_website(website);
+                map.insert(key, meta);
+                count += 1;
+            }
+        }
+    });
+    count
+}
+
 /// Update canister metadata (controller only)
 /// Only provided fields are updated; None means unchanged
 #[ic_cdk::update]
@@ -1168,6 +1274,9 @@ fn update_canister(canister_id: Principal, updates: CanisterUpdate) -> bool {
             }
             if let Some(project) = updates.project {
                 meta.project_name = sanitize_project_name(project);
+            }
+            if let Some(website) = updates.website {
+                meta.website = sanitize_website(website);
             }
             map.insert(key, meta);
             true

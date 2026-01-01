@@ -452,6 +452,7 @@
                 Project
                 <span class="sort-arrow">{sortColumn === "project" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
+              <th class="website-col">Web</th>
               <th
                 class:sorted={sortColumn === "balance"}
                 on:click={() => sortBy("balance")}
@@ -506,6 +507,17 @@
                     <span class="project-name">{entry.project?.[0] ?? "Unknown"}</span>
                   </div>
                 </td>
+                <td class="website-cell">
+                  {#if entry.website?.[0]}
+                    <a href={entry.website[0]} target="_blank" rel="noopener noreferrer" class="website-link" on:click|stopPropagation title={entry.website[0]}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                      </svg>
+                    </a>
+                  {/if}
+                </td>
                 <td class="cycles">{formatCycles(entry.balance)}</td>
                 <td class="burn {formatBurn(entry.burn_1h).class}">{formatBurn(entry.burn_1h).text}</td>
                 <td class="burn {formatBurn(entry.burn_24h).class}">{formatBurn(entry.burn_24h).text}</td>
@@ -550,6 +562,7 @@
                 Project
                 <span class="sort-arrow">{sortColumn === "project" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
+              <th class="website-col">Web</th>
               <th
                 class:sorted={sortColumn === "canister_count"}
                 on:click={() => sortBy("canister_count")}
@@ -609,6 +622,17 @@
                     <span class="project-name">{entry.project}</span>
                   </div>
                 </td>
+                <td class="website-cell">
+                  {#if entry.website?.[0]}
+                    <a href={entry.website[0]} target="_blank" rel="noopener noreferrer" class="website-link" on:click|stopPropagation title={entry.website[0]}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                      </svg>
+                    </a>
+                  {/if}
+                </td>
                 <td class="canister-count">{Number(entry.canister_count).toLocaleString()}</td>
                 <td class="cycles">{formatCycles(entry.total_balance)}</td>
                 <td class="burn {formatBurn(entry.total_burn_1h).class}">{formatBurn(entry.total_burn_1h).text}</td>
@@ -618,7 +642,7 @@
               {#if expandedProjects.has(entry.project)}
                 {#if loadingProjects.has(entry.project)}
                   <tr class="sub-row loading-row">
-                    <td colspan="7" class="loading-cell">Loading canisters...</td>
+                    <td colspan="8" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
                   {#each getProjectCanisters(entry.project) as canister, j}
@@ -629,6 +653,7 @@
                           <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
                         </div>
                       </td>
+                      <td class="website-cell"></td>
                       <td class="canister-count"></td>
                       <td class="cycles">{formatCycles(canister.balance)}</td>
                       <td class="burn {formatBurn(canister.burn_1h).class}">{formatBurn(canister.burn_1h).text}</td>

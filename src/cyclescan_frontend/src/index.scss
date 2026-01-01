@@ -413,6 +413,33 @@ tr:last-child td {
   font-style: italic;
 }
 
+/* Website Column */
+.website-col {
+  width: 50px;
+  text-align: center;
+  cursor: default !important;
+}
+
+.website-cell {
+  width: 50px;
+  text-align: center;
+}
+
+.website-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.website-link:hover {
+  color: var(--accent);
+  background: var(--bg-tertiary);
+}
+
 /* Expandable Project Rows */
 .expand-icon {
   display: flex;

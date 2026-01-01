@@ -125,19 +125,21 @@
       const bucketStart = (ts / intervalNanos) * intervalNanos;
       const bucketKey = bucketStart.toString();
 
-      if (!buckets.has(bucketKey)) {
+      // Keep the latest snapshot in each bucket (highest timestamp wins)
+      const existing = buckets.get(bucketKey);
+      if (!existing || ts > existing.timestamp) {
         buckets.set(bucketKey, {
-          timestamp: bucketStart,
-          cycles: 0n,
+          timestamp: ts,
+          bucketStart: bucketStart,
+          cycles: BigInt(snapshot.cycles),
         });
       }
-      buckets.get(bucketKey).cycles += BigInt(snapshot.cycles);
     }
 
-    // Convert to array and sort by timestamp
-    return Array.from(buckets.values()).sort((a, b) =>
-      Number(a.timestamp - b.timestamp)
-    );
+    // Convert to array and sort by bucket start time
+    return Array.from(buckets.values())
+      .map(b => ({ timestamp: b.bucketStart, cycles: b.cycles }))
+      .sort((a, b) => Number(a.timestamp - b.timestamp));
   }
 
   function createChartInstance() {

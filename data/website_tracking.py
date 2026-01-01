@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+import json
+
+# Track website discoveries
+websites = {
+    # ICP Infrastructure
+    "Internet Identity": "https://internet_computer.org",  # Uses Internet Identity, part of IC
+    "ICP Ledger": "https://internetcomputer.org",
+    "ICP Index": "https://internetcomputer.org",
+    "NNS Registry": "https://internetcomputer.org",
+    "NNS Governance": "https://internetcomputer.org",
+    "NNS Root": "https://internetcomputer.org",
+    "Cycles Minting Canister (CMC)": "https://internetcomputer.org",
+    "NNS Lifeline": "https://internetcomputer.org",
+    "Genesis Token": "https://internetcomputer.org",
+    "NNS dapp": "https://nns.ic0.app",
+    "ICP Ledger Archive": "https://internetcomputer.org",
+    "SNS-W": "https://internetcomputer.org",
+    "NNS Subnet Rental": "https://internetcomputer.org",
+    "NNS Node Provider Rewards": "https://internetcomputer.org",
+    "NNS Canister Migration": "https://internetcomputer.org",
+    "NNS Subnet Management": "https://internetcomputer.org",
+    "Bitcoin Integration": "https://internetcomputer.org",
+    "EVM RPC": "https://internetcomputer.org",
+    "Exchange Rates Oracle": "https://internetcomputer.org",
+    "ckETH Ledger": "https://internetcomputer.org",
+    "ckETH Minter": "https://internetcomputer.org",
+    "ckETH Index": "https://internetcomputer.org",
+    "ckUSDC Ledger": "https://internetcomputer.org",
+    "ckUSDC Index": "https://internetcomputer.org",
+    "ckEURC Index": "https://internetcomputer.org",
+    "ckLINK Ledger": "https://internetcomputer.org",
+    "ckLINK Index": "https://internetcomputer.org",
+    "ckOCT Ledger": "https://internetcomputer.org",
+    "ckPEPE Index": "https://internetcomputer.org",
+    "ckUNI Index": "https://internetcomputer.org",
+    "ckXAUT Index": "https://internetcomputer.org",
+    "ckERC20 Orchestrator": "https://internetcomputer.org",
+
+    # Major Ecosystem Projects
+    "ORIGYN": "https://www.origyn.com",
+    "Sonic": "https://sonic.ooo",
+    "ICPSwap Token": "https://www.icpswap.com",
+    "KongSwap": "https://kongswap.io",
+    "OmniBTC": "https://www.omnibtc.finance",
+    "Omnity": "https://www.omnity.network",
+    "ICLighthouse DAO": "https://iclight.house",
+    "NFID Wallet": "https://nfid.one",
+    "WaterNeuron": "https://waterneuron.fi",
+    "Oisy": "https://oisy.com",
+    "Nuance": "https://www.home.nuance.xyz",
+    "Taggr": "https://taggr.link",
+    "ICPanda": "https://64od3-hiaaa-aaaad-qa3uq-cai.raw.icp0.io",
+    "Yuku AI": "https://yuku.app",
+    "Orbit": "https://orbithub.app",
+    "Orbit Station": "https://orbithub.app",
+}
+
+# Save to JSON
+data = {
+    "metadata": {
+        "total_discovered": len(websites),
+        "last_updated": "2025-12-31"
+    },
+    "websites": websites
+}
+
+with open('websites_found.json', 'w') as f:
+    json.dump(data, f, indent=2)
+
+print(f"Saved {len(websites)} websites to websites_found.json")
+print(f"\nProjects with websites: {len(websites)}")
+print(f"Projects remaining: ~{134 - len(websites)}")
