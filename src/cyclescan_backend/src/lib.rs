@@ -59,6 +59,7 @@ pub struct CanisterImport {
     pub proxy_type: ProxyType,
     pub project: Option<String>,
     pub website: Option<String>,
+    pub valid: Option<bool>,
 }
 
 #[derive(CandidType, Deserialize)]
@@ -190,10 +191,11 @@ struct CanisterMeta {
     proxy_type: ProxyType,
     project: Option<String>,
     website: Option<String>,
+    valid: bool,
 }
 
-// Fixed layout: proxy_len(1) + proxy(29) + type(1) + proj_len(2) + proj(100) + web_len(2) + web(200) = 335
-const CANISTER_META_SIZE: u32 = 335;
+// Fixed layout: proxy_len(1) + proxy(29) + type(1) + proj_len(2) + proj(100) + web_len(2) + web(200) + valid(1) = 336
+const CANISTER_META_SIZE: u32 = 336;
 
 impl Storable for CanisterMeta {
     fn to_bytes(&self) -> Cow<[u8]> {
@@ -219,29 +221,34 @@ impl Storable for CanisterMeta {
             buf[135..135 + len].copy_from_slice(&bytes[..len]);
         }
 
+        buf[335] = if self.valid { 1 } else { 0 };
+
         Cow::Owned(buf)
     }
 
     fn from_bytes(bytes: Cow<[u8]>) -> Self {
-        let proxy_len = bytes[0] as usize;
+        let proxy_len = (bytes[0] as usize).min(29);
         let proxy_id = Principal::from_slice(&bytes[1..1 + proxy_len]);
         let proxy_type = ProxyType::from_byte(bytes[30]);
 
-        let proj_len = ((bytes[31] as usize) << 8) | (bytes[32] as usize);
+        let proj_len = (((bytes[31] as usize) << 8) | (bytes[32] as usize)).min(MAX_PROJECT_BYTES);
         let project = if proj_len > 0 {
             String::from_utf8(bytes[33..33 + proj_len].to_vec()).ok()
         } else {
             None
         };
 
-        let web_len = ((bytes[133] as usize) << 8) | (bytes[134] as usize);
+        let web_len = (((bytes[133] as usize) << 8) | (bytes[134] as usize)).min(MAX_WEBSITE_BYTES);
         let website = if web_len > 0 {
             String::from_utf8(bytes[135..135 + web_len].to_vec()).ok()
         } else {
             None
         };
 
-        Self { proxy_id, proxy_type, project, website }
+        // Default to true for backward compatibility with old 335-byte records
+        let valid = if bytes.len() > 335 { bytes[335] != 0 } else { true };
+
+        Self { proxy_id, proxy_type, project, website, valid }
     }
 
     const BOUND: Bound = Bound::Bounded {
@@ -444,6 +451,7 @@ fn get_leaderboard(offset: u64, limit: u64) -> LeaderboardPage {
         let canisters = c.borrow();
         let mut entries: Vec<LeaderboardEntry> = canisters
             .iter()
+            .filter(|(_, meta)| meta.valid)
             .map(|(key, meta)| build_entry(&key, &meta))
             .collect();
 
@@ -471,6 +479,9 @@ fn get_project_leaderboard() -> Vec<ProjectEntry> {
         let mut projects: HashMap<String, (u64, u128, u128, u128, u128, Option<String>)> = HashMap::new();
 
         for (key, meta) in canisters.iter() {
+            if !meta.valid {
+                continue;
+            }
             if let Some(ref project) = meta.project {
                 let balance = get_latest_balance(&key);
                 let burn_1h = calculate_burn(&key, NANOS_PER_HOUR).unwrap_or(0);
@@ -513,7 +524,7 @@ fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
         let canisters = c.borrow();
         let mut entries: Vec<LeaderboardEntry> = canisters
             .iter()
-            .filter(|(_, meta)| meta.project.as_ref() == Some(&project_name))
+            .filter(|(_, meta)| meta.valid && meta.project.as_ref() == Some(&project_name))
             .map(|(key, meta)| build_entry(&key, &meta))
             .collect();
 
@@ -585,6 +596,7 @@ fn export_canisters() -> Vec<CanisterImport> {
                 proxy_type: meta.proxy_type,
                 project: meta.project,
                 website: meta.website,
+                valid: Some(meta.valid),
             })
             .collect()
     })
@@ -608,6 +620,7 @@ fn import_canisters(canisters: Vec<CanisterImport>) -> u64 {
                 proxy_type: import.proxy_type,
                 project: import.project.map(|p| truncate_utf8(&p, MAX_PROJECT_BYTES)),
                 website: import.website.map(|w| truncate_utf8(&w, MAX_WEBSITE_BYTES)),
+                valid: import.valid.unwrap_or(true),
             };
             map.insert(key, meta);
             count += 1;
@@ -633,6 +646,23 @@ fn update_canister(canister_id: Principal, updates: CanisterUpdate) {
             map.insert(key, meta);
         }
     });
+}
+
+#[update]
+fn set_valid(canister_id: Principal, valid: bool) -> bool {
+    assert!(is_controller(), "Not authorized");
+
+    let key = PrincipalKey::from_principal(canister_id);
+    CANISTERS.with(|c| {
+        let mut map = c.borrow_mut();
+        if let Some(mut meta) = map.get(&key) {
+            meta.valid = valid;
+            map.insert(key, meta);
+            true
+        } else {
+            false
+        }
+    })
 }
 
 #[update]

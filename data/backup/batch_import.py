@@ -12,12 +12,16 @@ def to_candid(canisters):
         proxy_type = list(c['proxy_type'].keys())[0]
         project = f'opt "{c["project"][0]}"' if c.get('project') else 'null'
         website = f'opt "{c["website"][0]}"' if c.get('website') else 'null'
+        # Handle valid field (default to true if not present)
+        valid_val = c.get('valid', [True])
+        valid = f'opt {"true" if valid_val[0] else "false"}' if valid_val else 'opt true'
         items.append(
             f'record {{ canister_id = principal "{c["canister_id"]}"; '
             f'proxy_id = principal "{c["proxy_id"]}"; '
             f'proxy_type = variant {{ {proxy_type} }}; '
             f'project = {project}; '
-            f'website = {website} }}'
+            f'website = {website}; '
+            f'valid = {valid} }}'
         )
     return f'(vec {{ {"; ".join(items)} }})'
 

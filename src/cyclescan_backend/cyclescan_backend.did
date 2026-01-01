@@ -6,6 +6,7 @@ type CanisterImport = record {
   proxy_type : ProxyType;
   project : opt text;
   website : opt text;
+  valid : opt bool;
 };
 
 type CanisterUpdate = record {
@@ -83,6 +84,7 @@ service : {
   // Updates (controller only)
   import_canisters : (vec CanisterImport) -> (nat64);
   update_canister : (principal, CanisterUpdate) -> ();
+  set_valid : (principal, bool) -> (bool);
   remove_canisters : (vec principal) -> ();
   clear_all : () -> ();
   take_snapshot : () -> (SnapshotResult);
