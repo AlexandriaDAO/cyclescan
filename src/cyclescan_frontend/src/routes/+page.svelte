@@ -8,14 +8,12 @@
   let projectEntries = [];
   let stats = null;
   let loading = true;
-  let projectLoading = false;
   let error = null;
   let searchQuery = "";
   let sortColumn = "burn_24h";
   let sortDirection = "desc";
   let currentPage = 1;
   let selectedCanisterId = null;
-  let viewMode = "canisters"; // "canisters" or "projects"
   let expandedProjects = new Set(); // Track which projects are expanded
   let projectCanistersCache = new Map(); // Cache for project canisters
   let loadingProjects = new Set(); // Track which projects are loading
@@ -96,40 +94,6 @@
     }
   }
 
-  function getValue(entry, col) {
-    switch (col) {
-      case "balance": return entry.balance;
-      case "burn_1h": return entry.burn_1h?.[0] ?? -1n;
-      case "burn_24h": return entry.burn_24h?.[0] ?? -1n;
-      case "burn_7d": return entry.burn_7d?.[0] ?? -1n;
-      case "project": return entry.project?.[0] ?? "";
-      case "canister_id": return entry.canister_id.toString();
-      default: return 0;
-    }
-  }
-
-  $: filteredEntries = entries.filter(e => {
-    if (!searchQuery) return true;
-    const q = searchQuery.toLowerCase();
-    const id = e.canister_id.toString().toLowerCase();
-    const project = (e.project?.[0] ?? "").toLowerCase();
-    return id.includes(q) || project.includes(q);
-  });
-
-  $: sortedEntries = [...filteredEntries].sort((a, b) => {
-    const aVal = getValue(a, sortColumn);
-    const bVal = getValue(b, sortColumn);
-    let cmp = 0;
-    if (typeof aVal === "string") {
-      cmp = aVal.localeCompare(bVal);
-    } else {
-      if (aVal < bVal) cmp = -1;
-      else if (aVal > bVal) cmp = 1;
-    }
-    return sortDirection === "desc" ? -cmp : cmp;
-  });
-
-  $: totalPages = Math.ceil(sortedEntries.length / ITEMS_PER_PAGE);
   $: {
     // Reset to page 1 when filters change
     searchQuery;
@@ -138,7 +102,6 @@
     currentPage = 1;
   }
   $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  $: paginatedEntries = sortedEntries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   // Project view helpers
   function getProjectValue(entry, col) {
@@ -182,12 +145,8 @@
   $: totalProjectPages = Math.ceil(sortedProjectEntries.length / ITEMS_PER_PAGE);
   $: paginatedProjectEntries = sortedProjectEntries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  // Use correct totals based on view
-  $: currentTotalPages = viewMode === "projects" ? totalProjectPages : totalPages;
-  $: currentTotalEntries = viewMode === "projects" ? sortedProjectEntries.length : sortedEntries.length;
-
   function goToPage(page) {
-    if (page >= 1 && page <= currentTotalPages) {
+    if (page >= 1 && page <= totalProjectPages) {
       currentPage = page;
     }
   }
@@ -278,28 +237,6 @@
     }
   }
 
-  // Fetch project leaderboard
-  async function fetchProjectLeaderboard() {
-    if (projectEntries.length > 0) return; // Already fetched
-    projectLoading = true;
-    try {
-      projectEntries = await backend.get_project_leaderboard();
-    } catch (e) {
-      console.error('Failed to fetch project leaderboard:', e);
-    } finally {
-      projectLoading = false;
-    }
-  }
-
-  // Handle view mode change
-  async function setViewMode(mode) {
-    viewMode = mode;
-    searchQuery = ""; // Reset search when switching views
-    currentPage = 1;
-    if (mode === "projects") {
-      await fetchProjectLeaderboard();
-    }
-  }
 
   // Format cycles in Trillions for hero display (consistent unit for comparison)
   function formatTrillions(value) {
@@ -333,12 +270,14 @@
     fetchNetworkBurnRate();
 
     try {
-      const [leaderboard, statsData] = await Promise.all([
+      const [leaderboard, statsData, projectLeaderboard] = await Promise.all([
         backend.get_leaderboard(),
-        backend.get_stats()
+        backend.get_stats(),
+        backend.get_project_leaderboard()
       ]);
       entries = leaderboard;
       stats = statsData;
+      projectEntries = projectLeaderboard;
       loading = false;
     } catch (e) {
       error = e.message || "Failed to load data";
@@ -401,146 +340,19 @@
   </header>
 
   <div class="controls">
-    <div class="view-toggle">
-      <button
-        class="toggle-btn"
-        class:active={viewMode === "canisters"}
-        on:click={() => setViewMode("canisters")}
-      >
-        By Canister
-      </button>
-      <button
-        class="toggle-btn"
-        class:active={viewMode === "projects"}
-        on:click={() => setViewMode("projects")}
-      >
-        By Project
-      </button>
-    </div>
     <input
       type="text"
       class="search"
-      placeholder={viewMode === "projects" ? "Search by project..." : "Search by canister ID or project..."}
+      placeholder="Search projects..."
       bind:value={searchQuery}
     />
   </div>
 
-  {#if loading || (viewMode === "projects" && projectLoading)}
+  {#if loading}
     <div class="loading">Loading leaderboard...</div>
   {:else if error}
     <div class="error">Error: {error}</div>
-  {:else if viewMode === "canisters"}
-    <!-- Canister View -->
-    {#if sortedEntries.length === 0}
-      <div class="empty-state">
-        {#if searchQuery}
-          No canisters match your search.
-        {:else}
-          No canisters tracked yet.
-        {/if}
-      </div>
-    {:else}
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th class="rank">#</th>
-              <th
-                class:sorted={sortColumn === "project"}
-                on:click={() => sortBy("project")}
-              >
-                Project
-                <span class="sort-arrow">{sortColumn === "project" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
-              </th>
-              <th class="website-col">Web</th>
-              <th
-                class:sorted={sortColumn === "balance"}
-                on:click={() => sortBy("balance")}
-              >
-                Balance
-                <span class="sort-arrow">{sortColumn === "balance" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
-              </th>
-              <th
-                class:sorted={sortColumn === "burn_1h"}
-                on:click={() => sortBy("burn_1h")}
-              >
-                1h Burn
-                <span class="sort-arrow">{sortColumn === "burn_1h" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
-              </th>
-              <th
-                class:sorted={sortColumn === "burn_24h"}
-                on:click={() => sortBy("burn_24h")}
-              >
-                24h Burn
-                <span class="sort-arrow">{sortColumn === "burn_24h" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
-              </th>
-              <th
-                class:sorted={sortColumn === "burn_7d"}
-                on:click={() => sortBy("burn_7d")}
-              >
-                7d Burn
-                <span class="sort-arrow">{sortColumn === "burn_7d" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
-              </th>
-              <th
-                class:sorted={sortColumn === "canister_id"}
-                on:click={() => sortBy("canister_id")}
-              >
-                Canister
-                <span class="sort-arrow">{sortColumn === "canister_id" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each paginatedEntries as entry, i}
-              <tr class="clickable" on:click={() => openModal(entry.canister_id)}>
-                <td class="rank">{startIndex + i + 1}</td>
-                <td class="project" class:empty={!entry.project?.[0]}>
-                  <div class="project-cell">
-                    {#if entry.project?.[0] && !failedLogos.has(entry.project[0])}
-                      <img
-                        src={getLogoPath(entry.project[0])}
-                        alt=""
-                        class="project-logo"
-                        on:error={() => handleLogoError(entry.project[0])}
-                      />
-                    {/if}
-                    <span class="project-name">{entry.project?.[0] ?? "Unknown"}</span>
-                  </div>
-                </td>
-                <td class="website-cell">
-                  {#if entry.website?.[0]}
-                    <a href={entry.website[0]} target="_blank" rel="noopener noreferrer" class="website-link" on:click|stopPropagation title={entry.website[0]}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                      </svg>
-                    </a>
-                  {/if}
-                </td>
-                <td class="cycles">{formatCycles(entry.balance)}</td>
-                <td class="burn {formatBurn(entry.burn_1h).class}">{formatBurn(entry.burn_1h).text}</td>
-                <td class="burn {formatBurn(entry.burn_24h).class}">{formatBurn(entry.burn_24h).text}</td>
-                <td class="burn {formatBurn(entry.burn_7d).class}">{formatBurn(entry.burn_7d).text}</td>
-                <td class="canister-id">
-                  <span class="canister-link">
-                    {shortenCanisterId(entry.canister_id)}
-                  </span>
-                  <button class="copy-btn" on:click={(e) => copyToClipboard(entry.canister_id.toString(), e)} title="Copy canister ID">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-    {/if}
   {:else}
-    <!-- Project View -->
     {#if sortedProjectEntries.length === 0}
       <div class="empty-state">
         {#if searchQuery}
@@ -670,8 +482,8 @@
     {/if}
   {/if}
 
-  <!-- Pagination (shared for both views) -->
-  {#if !loading && !error && currentTotalPages > 1}
+  <!-- Pagination -->
+  {#if !loading && !error && totalProjectPages > 1}
     <div class="pagination">
       <button
         class="page-btn"
@@ -689,8 +501,8 @@
       </button>
 
       <div class="page-numbers">
-        {#each Array.from({ length: currentTotalPages }, (_, i) => i + 1) as page}
-          {#if page === 1 || page === currentTotalPages || (page >= currentPage - 2 && page <= currentPage + 2)}
+        {#each Array.from({ length: totalProjectPages }, (_, i) => i + 1) as page}
+          {#if page === 1 || page === totalProjectPages || (page >= currentPage - 2 && page <= currentPage + 2)}
             <button
               class="page-num"
               class:active={page === currentPage}
@@ -706,21 +518,21 @@
 
       <button
         class="page-btn"
-        disabled={currentPage === currentTotalPages}
+        disabled={currentPage === totalProjectPages}
         on:click={() => goToPage(currentPage + 1)}
       >
         Next
       </button>
       <button
         class="page-btn"
-        disabled={currentPage === currentTotalPages}
-        on:click={() => goToPage(currentTotalPages)}
+        disabled={currentPage === totalProjectPages}
+        on:click={() => goToPage(totalProjectPages)}
       >
         Last
       </button>
 
       <span class="page-info">
-        {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, currentTotalEntries)} of {currentTotalEntries.toLocaleString()}
+        {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, sortedProjectEntries.length)} of {sortedProjectEntries.length.toLocaleString()}
       </span>
     </div>
   {/if}
