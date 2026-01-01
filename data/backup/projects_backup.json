@@ -32,7 +32,7 @@
   {
     "name": "ICTO",
     "website": [
-      "https://internetcomputer.org"
+      "https://icto.app"
     ]
   },
   {
@@ -50,43 +50,43 @@
   {
     "name": "TACO",
     "website": [
-      "https://internetcomputer.org"
+      "https://tacodao.com"
     ]
   },
   {
     "name": "TRAX",
     "website": [
-      "https://internetcomputer.org"
+      "https://trax.so"
     ]
   },
   {
     "name": "ALICE",
     "website": [
-      "https://internetcomputer.org"
+      "https://alice.fun"
     ]
   },
   {
     "name": "ICPEx",
     "website": [
-      "https://internetcomputer.org"
+      "https://icpex.org"
     ]
   },
   {
     "name": "KINIC",
     "website": [
-      "https://internetcomputer.org"
+      "https://kinic.io"
     ]
   },
   {
     "name": "Orbit",
     "website": [
-      "https://orbithub.app"
+      "https://orbit.global"
     ]
   },
   {
     "name": "SNS-W",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai"
     ]
   },
   {
@@ -104,7 +104,7 @@
   {
     "name": "ESTATE",
     "website": [
-      "https://internetcomputer.org"
+      "https://estatedao.org"
     ]
   },
   {
@@ -142,7 +142,7 @@
   {
     "name": "PHASMA",
     "website": [
-      "https://internetcomputer.org"
+      "https://www.phasma.io"
     ]
   },
   {
@@ -152,13 +152,13 @@
   {
     "name": "DOLR AI",
     "website": [
-      "https://internetcomputer.org"
+      "https://hotornot.wtf"
     ]
   },
   {
     "name": "EVM RPC",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview"
     ]
   },
   {
@@ -182,7 +182,7 @@
   {
     "name": "Tendies",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/sns/gbx4n-4aaaa-aaaaq-aadqa-cai"
     ]
   },
   {
@@ -202,13 +202,13 @@
   {
     "name": "DecideAI",
     "website": [
-      "https://internetcomputer.org"
+      "https://decideai.xyz"
     ]
   },
   {
     "name": "FomoWell",
     "website": [
-      "https://internetcomputer.org"
+      "https://fomowell.com"
     ]
   },
   {
@@ -220,7 +220,7 @@
   {
     "name": "NNS Root",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai"
     ]
   },
   {
@@ -238,13 +238,13 @@
   {
     "name": "SNS Swap",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/sns"
     ]
   },
   {
     "name": "Swampies",
     "website": [
-      "https://internetcomputer.org"
+      "https://dragginz.io"
     ]
   },
   {
@@ -258,7 +258,7 @@
   {
     "name": "ICP Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai"
     ]
   },
   {
@@ -288,7 +288,7 @@
   {
     "name": "ICP Ledger",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
     ]
   },
   {
@@ -308,7 +308,7 @@
   {
     "name": "Mimic Clay",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/sns/4m6il-zqaaa-aaaaq-aaa2a-cai"
     ]
   },
   {
@@ -320,7 +320,7 @@
   {
     "name": "Ordi Trade",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/sns/niwqm-faaaa-aaaaq-aadiq-cai"
     ]
   },
   {
@@ -396,13 +396,13 @@
   {
     "name": "ckETH Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckUNI Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
@@ -416,13 +416,13 @@
   {
     "name": "NNS Lifeline",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/rno2w-sqaaa-aaaaa-aaacq-cai"
     ]
   },
   {
     "name": "NNS Registry",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai"
     ]
   },
   {
@@ -440,49 +440,49 @@
   {
     "name": "ckETH Ledger",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckETH Minter",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckEURC Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckLINK Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckOCT Ledger",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckPEPE Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckUSDC Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckXAUT Index",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
@@ -508,7 +508,7 @@
   {
     "name": "Genesis Token",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/renrk-eyaaa-aaaaa-aaada-cai"
     ]
   },
   {
@@ -526,7 +526,7 @@
   {
     "name": "SNS Component",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/sns"
     ]
   },
   {
@@ -536,13 +536,13 @@
   {
     "name": "ckLINK Ledger",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
     "name": "ckUSDC Ledger",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
@@ -564,7 +564,7 @@
   {
     "name": "NNS Governance",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai"
     ]
   },
   {
@@ -636,13 +636,13 @@
   {
     "name": "Internet Identity",
     "website": [
-      "https://internetcomputer.org"
+      "https://identity.ic0.app"
     ]
   },
   {
     "name": "NNS Subnet Rental",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/qvhpv-4qaaa-aaaaa-aaagq-cai"
     ]
   },
   {
@@ -658,7 +658,7 @@
   {
     "name": "ICP Ledger Archive",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
     ]
   },
   {
@@ -668,7 +668,7 @@
   {
     "name": "Bitcoin Integration",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/bitcoin-integration"
     ]
   },
   {
@@ -678,7 +678,7 @@
   {
     "name": "Draggin Karma Points",
     "website": [
-      "https://internetcomputer.org"
+      "https://dragginz.io"
     ]
   },
   {
@@ -688,7 +688,7 @@
   {
     "name": "ckERC20 Orchestrator",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
     ]
   },
   {
@@ -702,13 +702,13 @@
   {
     "name": "Exchange Rates Oracle",
     "website": [
-      "https://internetcomputer.org"
+      "https://internetcomputer.org/docs/references/system-canisters"
     ]
   },
   {
     "name": "NNS Subnet Management",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/subnets"
     ]
   },
   {
@@ -718,7 +718,7 @@
   {
     "name": "NNS Canister Migration",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/sbzkb-zqaaa-aaaaa-aaaiq-cai"
     ]
   },
   {
@@ -746,7 +746,7 @@
   {
     "name": "NNS Node Provider Rewards",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/sgymv-uiaaa-aaaaa-aaaia-cai"
     ]
   },
   {
@@ -760,7 +760,7 @@
   {
     "name": "Cycles Minting Canister (CMC)",
     "website": [
-      "https://internetcomputer.org"
+      "https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai"
     ]
   },
   {

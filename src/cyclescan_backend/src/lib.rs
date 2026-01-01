@@ -670,7 +670,6 @@ fn get_leaderboard(offset: u64, limit: u64) -> LeaderboardPage {
         let canisters = c.borrow();
         let mut entries: Vec<LeaderboardEntry> = canisters
             .iter()
-            .filter(|(_, meta)| meta.valid)
             .map(|(key, meta)| LeaderboardEntry {
                 canister_id: key.to_principal(),
                 project: meta.project.clone(),
@@ -750,15 +749,8 @@ fn get_project_canisters(project_name: String) -> Vec<LeaderboardEntry> {
             })
             .collect();
 
-        // Sort by 24h burn descending, invalid canisters last
-        entries.sort_by(|a, b| {
-            // Valid canisters first
-            match (a.valid, b.valid) {
-                (true, false) => std::cmp::Ordering::Less,
-                (false, true) => std::cmp::Ordering::Greater,
-                _ => b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0)),
-            }
-        });
+        // Sort by 24h burn descending
+        entries.sort_by(|a, b| b.burn_24h.unwrap_or(0).cmp(&a.burn_24h.unwrap_or(0)));
 
         entries
     })
@@ -1208,14 +1200,11 @@ fn update_canister_summaries() {
 }
 
 fn update_project_aggregates() {
-    // Collect aggregates from canisters
+    // Collect aggregates from canisters (include all, even flagged ones)
     let mut aggregates: HashMap<String, (u64, u128, u128, u128, u128)> = HashMap::new();
 
     CANISTERS.with(|c| {
         for (_, meta) in c.borrow().iter() {
-            if !meta.valid {
-                continue;
-            }
             if let Some(ref project) = meta.project {
                 let agg = aggregates.entry(project.clone()).or_default();
                 agg.0 += 1; // count
