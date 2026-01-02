@@ -104,15 +104,24 @@
   }
   $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
-  // Project view helpers
+  // Project view helpers - uses adjusted values based on toggle
   function getProjectValue(entry, col) {
     switch (col) {
-      case "total_balance": return entry.total_balance;
-      case "total_burn_1h": return entry.total_burn_1h?.[0] ?? -1n;
-      case "total_burn_24h": return entry.total_burn_24h?.[0] ?? -1n;
-      case "total_burn_7d": return entry.total_burn_7d?.[0] ?? -1n;
+      case "total_balance": return getAdjustedProjectValue(entry, 'total_balance');
+      case "total_burn_1h": {
+        const v = getAdjustedProjectValue(entry, 'total_burn_1h');
+        return v?.[0] ?? -1n;
+      }
+      case "total_burn_24h": {
+        const v = getAdjustedProjectValue(entry, 'total_burn_24h');
+        return v?.[0] ?? -1n;
+      }
+      case "total_burn_7d": {
+        const v = getAdjustedProjectValue(entry, 'total_burn_7d');
+        return v?.[0] ?? -1n;
+      }
       case "project": return entry.project;
-      case "canister_count": return entry.canister_count;
+      case "canister_count": return getAdjustedProjectValue(entry, 'canister_count');
       default: return 0;
     }
   }
@@ -125,25 +134,30 @@
     return e.project.toLowerCase().includes(q);
   });
 
-  $: sortedProjectEntries = [...filteredProjectEntries].sort((a, b) => {
-    // Map canister columns to project columns for sorting
-    let col = sortColumn;
-    if (col === "balance") col = "total_balance";
-    if (col === "burn_1h") col = "total_burn_1h";
-    if (col === "burn_24h") col = "total_burn_24h";
-    if (col === "burn_7d") col = "total_burn_7d";
+  // Note: includeCycleTransfers is referenced to trigger re-sort when toggle changes
+  $: sortedProjectEntries = (() => {
+    // Reference toggle to make this reactive to it
+    const _ = includeCycleTransfers;
+    return [...filteredProjectEntries].sort((a, b) => {
+      // Map canister columns to project columns for sorting
+      let col = sortColumn;
+      if (col === "balance") col = "total_balance";
+      if (col === "burn_1h") col = "total_burn_1h";
+      if (col === "burn_24h") col = "total_burn_24h";
+      if (col === "burn_7d") col = "total_burn_7d";
 
-    const aVal = getProjectValue(a, col);
-    const bVal = getProjectValue(b, col);
-    let cmp = 0;
-    if (typeof aVal === "string") {
-      cmp = aVal.localeCompare(bVal);
-    } else {
-      if (aVal < bVal) cmp = -1;
-      else if (aVal > bVal) cmp = 1;
-    }
-    return sortDirection === "desc" ? -cmp : cmp;
-  });
+      const aVal = getProjectValue(a, col);
+      const bVal = getProjectValue(b, col);
+      let cmp = 0;
+      if (typeof aVal === "string") {
+        cmp = aVal.localeCompare(bVal);
+      } else {
+        if (aVal < bVal) cmp = -1;
+        else if (aVal > bVal) cmp = 1;
+      }
+      return sortDirection === "desc" ? -cmp : cmp;
+    });
+  })();
 
   $: totalProjectPages = Math.ceil(sortedProjectEntries.length / ITEMS_PER_PAGE);
   $: paginatedProjectEntries = sortedProjectEntries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -210,27 +224,73 @@
     return canisters.every(c => !c.valid);
   }
 
-  // For projects not yet loaded, check entries to see if we know about invalid canisters
-  $: projectInvalidStatus = (() => {
-    const status = new Map();
+  // Track invalid canister contributions per project (for adjusting totals)
+  $: projectInvalidContributions = (() => {
+    const contrib = new Map();
     for (const entry of entries) {
       const project = entry.project?.[0];
       if (!project) continue;
-      if (!status.has(project)) {
-        status.set(project, { total: 0, invalid: 0 });
+      if (!contrib.has(project)) {
+        contrib.set(project, {
+          total: 0,
+          invalid: 0,
+          invalidBalance: 0n,
+          invalidBurn1h: 0n,
+          invalidBurn24h: 0n,
+          invalidBurn7d: 0n
+        });
       }
-      const s = status.get(project);
-      s.total++;
-      if (!entry.valid) s.invalid++;
+      const c = contrib.get(project);
+      c.total++;
+      if (!entry.valid) {
+        c.invalid++;
+        c.invalidBalance += BigInt(entry.balance || 0);
+        c.invalidBurn1h += BigInt(entry.burn_1h?.[0] || 0);
+        c.invalidBurn24h += BigInt(entry.burn_24h?.[0] || 0);
+        c.invalidBurn7d += BigInt(entry.burn_7d?.[0] || 0);
+      }
     }
-    return status;
+    return contrib;
   })();
 
+  // Adjust project entries based on toggle (subtract invalid contributions when off)
+  function getAdjustedProjectValue(entry, field) {
+    const contrib = projectInvalidContributions.get(entry.project);
+    if (includeCycleTransfers || !contrib) {
+      // Return original value
+      switch (field) {
+        case 'total_balance': return entry.total_balance;
+        case 'total_burn_1h': return entry.total_burn_1h;
+        case 'total_burn_24h': return entry.total_burn_24h;
+        case 'total_burn_7d': return entry.total_burn_7d;
+        case 'canister_count': return entry.canister_count;
+      }
+    }
+    // Subtract invalid contributions
+    switch (field) {
+      case 'total_balance':
+        const adjBalance = BigInt(entry.total_balance) - contrib.invalidBalance;
+        return adjBalance > 0n ? adjBalance : 0n;
+      case 'total_burn_1h':
+        if (!entry.total_burn_1h?.[0]) return entry.total_burn_1h;
+        const adj1h = BigInt(entry.total_burn_1h[0]) - contrib.invalidBurn1h;
+        return adj1h > 0n ? [adj1h] : [0n];
+      case 'total_burn_24h':
+        if (!entry.total_burn_24h?.[0]) return entry.total_burn_24h;
+        const adj24h = BigInt(entry.total_burn_24h[0]) - contrib.invalidBurn24h;
+        return adj24h > 0n ? [adj24h] : [0n];
+      case 'total_burn_7d':
+        if (!entry.total_burn_7d?.[0]) return entry.total_burn_7d;
+        const adj7d = BigInt(entry.total_burn_7d[0]) - contrib.invalidBurn7d;
+        return adj7d > 0n ? [adj7d] : [0n];
+      case 'canister_count':
+        return BigInt(entry.canister_count) - BigInt(contrib.invalid);
+    }
+  }
+
   function shouldHideProject(projectName) {
-    if (includeCycleTransfers) return false;
-    const status = projectInvalidStatus.get(projectName);
-    if (!status) return false;
-    return status.total > 0 && status.total === status.invalid;
+    // Never hide projects - just show them with adjusted (possibly zero) values
+    return false;
   }
 
   // Count invalid canisters (cycle transfers)
@@ -464,11 +524,11 @@
                     </a>
                   {/if}
                 </td>
-                <td class="canister-count">{Number(entry.canister_count).toLocaleString()}</td>
-                <td class="cycles">{formatCycles(entry.total_balance)}</td>
-                <td class="burn {formatBurn(entry.total_burn_1h).class}">{formatBurn(entry.total_burn_1h).text}</td>
-                <td class="burn {formatBurn(entry.total_burn_24h).class}">{formatBurn(entry.total_burn_24h).text}</td>
-                <td class="burn {formatBurn(entry.total_burn_7d).class}">{formatBurn(entry.total_burn_7d).text}</td>
+                <td class="canister-count">{Number(getAdjustedProjectValue(entry, 'canister_count')).toLocaleString()}</td>
+                <td class="cycles">{formatCycles(getAdjustedProjectValue(entry, 'total_balance'))}</td>
+                <td class="burn {formatBurn(getAdjustedProjectValue(entry, 'total_burn_1h')).class}">{formatBurn(getAdjustedProjectValue(entry, 'total_burn_1h')).text}</td>
+                <td class="burn {formatBurn(getAdjustedProjectValue(entry, 'total_burn_24h')).class}">{formatBurn(getAdjustedProjectValue(entry, 'total_burn_24h')).text}</td>
+                <td class="burn {formatBurn(getAdjustedProjectValue(entry, 'total_burn_7d')).class}">{formatBurn(getAdjustedProjectValue(entry, 'total_burn_7d')).text}</td>
               </tr>
               {#if expandedProjects.has(entry.project)}
                 {#if loadingProjects.has(entry.project)}
