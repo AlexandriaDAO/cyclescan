@@ -52,7 +52,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "rno2w-sqaaa-aaaaa-aaacq-cai",
@@ -21705,7 +21705,7 @@
   {
     "canister_id": "h43eb-lqaaa-aaaao-qjxgq-cai",
     "project": [
-      "DEX"
+      "RunicSwap"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -22563,9 +22563,9 @@
   {
     "canister_id": "ekbv3-lqaaa-aaaap-ab4oq-cai",
     "project": [
-      "NFT"
+      "ESTATE"
     ],
-    "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
+    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
@@ -26567,7 +26567,7 @@
   {
     "canister_id": "um5iw-rqaaa-aaaaq-qaaba-cai",
     "project": [
-      "Cycles Minting Canister (CMC)"
+      "Cycles Ledger"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {

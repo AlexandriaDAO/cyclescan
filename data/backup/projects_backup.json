@@ -1,11 +1,15 @@
 [
   {
     "name": "DEX",
-    "website": []
+    "website": [
+      "https://www.icpswap.com"
+    ]
   },
   {
     "name": "NFT",
-    "website": []
+    "website": [
+      "https://entrepot.app/marketplace"
+    ]
   },
   {
     "name": "BOOM",
@@ -27,7 +31,9 @@
   },
   {
     "name": "ICFC",
-    "website": []
+    "website": [
+      "https://dashboard.internetcomputer.org/sns/gyito-zyaaa-aaaaq-aacpq-cai"
+    ]
   },
   {
     "name": "ICTO",
@@ -115,7 +121,9 @@
   },
   {
     "name": "Motoko",
-    "website": []
+    "website": [
+      "https://entrepot.app/marketplace/motoko"
+    ]
   },
   {
     "name": "Nuance",
@@ -125,7 +133,9 @@
   },
   {
     "name": "OHSHII",
-    "website": []
+    "website": [
+      "https://launcher.ohshii.com"
+    ]
   },
   {
     "name": "ORIGYN",
@@ -147,7 +157,9 @@
   },
   {
     "name": "TipJar",
-    "website": []
+    "website": [
+      "https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app"
+    ]
   },
   {
     "name": "DOLR AI",
@@ -197,7 +209,9 @@
   },
   {
     "name": "CANI DAO",
-    "website": []
+    "website": [
+      "https://canistore.io"
+    ]
   },
   {
     "name": "DecideAI",
@@ -253,7 +267,9 @@
   },
   {
     "name": "BOB Token",
-    "website": []
+    "website": [
+      "https://bob.fun"
+    ]
   },
   {
     "name": "ICP Index",
@@ -264,6 +280,12 @@
   {
     "name": "RON Index",
     "website": []
+  },
+  {
+    "name": "RunicSwap",
+    "website": [
+      "https://github.com/buriburizaemonnn/RunicSwap"
+    ]
   },
   {
     "name": "Sneed DAO",
@@ -293,7 +315,9 @@
   },
   {
     "name": "ICRC Index",
-    "website": []
+    "website": [
+      "https://internetcomputer.org/docs/current/developer-docs/defi/tokens/indexes"
+    ]
   },
   {
     "name": "ICRC Token",
@@ -359,7 +383,9 @@
   },
   {
     "name": "GRAVE Token",
-    "website": []
+    "website": [
+      "https://xc3mi-sqaaa-aaaaj-a2mhq-cai.icp0.io"
+    ]
   },
   {
     "name": "Kaspa Token",
@@ -431,7 +457,9 @@
   },
   {
     "name": "Personal DAO",
-    "website": []
+    "website": [
+      "https://dashboard.internetcomputer.org/sns/izscx-raaaa-aaaaq-aaesq-cai"
+    ]
   },
   {
     "name": "Unidentified",
@@ -491,7 +519,9 @@
   },
   {
     "name": "CanDB Storage",
-    "website": []
+    "website": [
+      "https://www.canscale.dev"
+    ]
   },
   {
     "name": "Cardano Token",
@@ -500,6 +530,12 @@
   {
     "name": "Cycle Manager",
     "website": []
+  },
+  {
+    "name": "Cycles Ledger",
+    "website": [
+      "https://internetcomputer.org"
+    ]
   },
   {
     "name": "Cycles Wallet",
@@ -589,7 +625,9 @@
   },
   {
     "name": "Windoge98 Token",
-    "website": []
+    "website": [
+      "https://windoge98.com"
+    ]
   },
   {
     "name": "Butten Bun Token",
@@ -615,7 +653,9 @@
   },
   {
     "name": "5000 SLICES Token",
-    "website": []
+    "website": [
+      "https://3npnb-hqaaa-aaaao-a2ghq-cai.icp0.io"
+    ]
   },
   {
     "name": "Analytics Service",
@@ -653,7 +693,9 @@
   },
   {
     "name": "Cecil The Lion DAO",
-    "website": []
+    "website": [
+      "https://cecildao.org/cecil-the-lion"
+    ]
   },
   {
     "name": "ICP Ledger Archive",
@@ -683,7 +725,9 @@
   },
   {
     "name": "The Needful DO Token",
-    "website": []
+    "website": [
+      "https://github.com/The-Needful-DO-org/alien-token"
+    ]
   },
   {
     "name": "ckERC20 Orchestrator",
@@ -713,7 +757,9 @@
   },
   {
     "name": "Avocado Research Token",
-    "website": []
+    "website": [
+      "https://avcd.hodl.fyi"
+    ]
   },
   {
     "name": "NNS Canister Migration",
