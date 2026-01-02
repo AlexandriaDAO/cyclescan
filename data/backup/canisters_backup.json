@@ -26573,7 +26573,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "ul4oc-4iaaa-aaaaq-qaabq-cai",

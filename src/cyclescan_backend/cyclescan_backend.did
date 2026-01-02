@@ -74,6 +74,7 @@ type CanisterDetail = record {
   burn_7d : opt nat;
   burn_30d : opt nat;
   snapshots : vec Snapshot;
+  valid : bool;
 };
 
 type Stats = record {

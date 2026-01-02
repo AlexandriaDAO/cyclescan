@@ -131,6 +131,7 @@ pub struct CanisterDetail {
     pub burn_7d: Option<u128>,
     pub burn_30d: Option<u128>,
     pub snapshots: Vec<Snapshot>,
+    pub valid: bool,
 }
 
 #[derive(CandidType, Clone)]
@@ -639,7 +640,23 @@ fn calculate_burn(key: &PrincipalKey, window_nanos: u64) -> Option<u128> {
                 total_burn += prev - curr;
             }
         }
-        Some(total_burn)
+
+        // Check if data covers the full window - if not, extrapolate
+        let oldest_in_window = in_window.first().unwrap().0;
+        let newest_in_window = in_window.last().unwrap().0;
+        let actual_span = newest_in_window.saturating_sub(oldest_in_window);
+
+        // If we have data covering at least 80% of the window, use actual burn
+        // Otherwise, extrapolate based on burn rate
+        if actual_span >= (window_nanos * 8 / 10) {
+            Some(total_burn)
+        } else if actual_span > 0 {
+            // Extrapolate: total_burn / actual_span * window_nanos
+            let rate = total_burn as f64 / actual_span as f64;
+            Some((rate * window_nanos as f64) as u128)
+        } else {
+            Some(total_burn)
+        }
     } else {
         // Extrapolate from last 2 snapshots
         let len = snapshots.len();
@@ -782,6 +799,7 @@ fn get_canister(canister_id: Principal) -> Option<CanisterDetail> {
                 burn_7d: meta.burn_7d,
                 burn_30d: calculate_burn(&key, THIRTY_DAYS_NANOS),
                 snapshots,
+                valid: meta.valid,
             }
         })
     })

@@ -18,6 +18,7 @@
   let projectCanistersCache = new Map(); // Cache for project canisters
   let loadingProjects = new Set(); // Track which projects are loading
   let failedLogos = new Set(); // Track logos that failed to load
+  let includeCycleTransfers = false; // Toggle to show/hide invalid canisters
 
   // Network-level stats
   let networkBurn24h = null;
@@ -117,6 +118,8 @@
   }
 
   $: filteredProjectEntries = projectEntries.filter(e => {
+    // Hide fully-invalid projects unless toggle is on
+    if (shouldHideProject(e.project)) return false;
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return e.project.toLowerCase().includes(q);
@@ -193,31 +196,62 @@
     return projectCanistersCache.get(projectName) || [];
   }
 
-  // Calculate aggregate 24hr burn from tracked canisters
-  $: trackedBurn24h = entries.reduce((sum, entry) => {
-    const burn = entry.burn_24h?.[0];
-    if (burn !== null && burn !== undefined) {
-      return sum + BigInt(burn);
+  // Get visible canisters for a project (respects toggle)
+  function getVisibleProjectCanisters(projectName) {
+    const canisters = getProjectCanisters(projectName);
+    if (includeCycleTransfers) return canisters;
+    return canisters.filter(c => c.valid);
+  }
+
+  // Check if a project has ALL invalid canisters (should be hidden unless toggle is on)
+  function isProjectFullyInvalid(projectName) {
+    const canisters = getProjectCanisters(projectName);
+    if (canisters.length === 0) return false; // Not loaded yet, show it
+    return canisters.every(c => !c.valid);
+  }
+
+  // For projects not yet loaded, check entries to see if we know about invalid canisters
+  $: projectInvalidStatus = (() => {
+    const status = new Map();
+    for (const entry of entries) {
+      const project = entry.project?.[0];
+      if (!project) continue;
+      if (!status.has(project)) {
+        status.set(project, { total: 0, invalid: 0 });
+      }
+      const s = status.get(project);
+      s.total++;
+      if (!entry.valid) s.invalid++;
     }
-    return sum;
-  }, 0n);
+    return status;
+  })();
+
+  function shouldHideProject(projectName) {
+    if (includeCycleTransfers) return false;
+    const status = projectInvalidStatus.get(projectName);
+    if (!status) return false;
+    return status.total > 0 && status.total === status.invalid;
+  }
+
+  // Count invalid canisters (cycle transfers)
+  $: invalidCanisterCount = entries.filter(e => !e.valid).length;
+
+  // Calculate aggregate 24hr burn from tracked canisters (excluding invalid unless toggled)
+  $: trackedBurn24h = entries
+    .filter(e => includeCycleTransfers || e.valid)
+    .reduce((sum, entry) => {
+      const burn = entry.burn_24h?.[0];
+      if (burn !== null && burn !== undefined) {
+        return sum + BigInt(burn);
+      }
+      return sum;
+    }, 0n);
 
   // Calculate coverage percentage
   $: coveragePercent = (networkBurn24h && trackedBurn24h > 0n)
     ? Number((trackedBurn24h * 10000n) / BigInt(Math.floor(networkBurn24h))) / 100
     : null;
 
-  // Get top 3 burners for highlights
-  $: topBurners = entries
-    .filter(e => e.burn_24h?.[0] && e.burn_24h[0] > 0n)
-    .sort((a, b) => {
-      const aVal = a.burn_24h?.[0] ?? 0n;
-      const bVal = b.burn_24h?.[0] ?? 0n;
-      if (aVal < bVal) return 1;
-      if (aVal > bVal) return -1;
-      return 0;
-    })
-    .slice(0, 3);
 
   // Fetch network-wide cycle burn rate from IC Dashboard API
   async function fetchNetworkBurnRate() {
@@ -287,55 +321,31 @@
 </script>
 
 <div class="container">
-  <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-label">Network Burn:</span>
-      <span class="stat-value network">
-        {#if networkBurnLoading}...{:else}{formatUsd(cyclesToUsd(networkBurn24h))}/day{/if}
-      </span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">Tracked:</span>
-      <span class="stat-value tracked">
-        {#if loading}...{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day{/if}
-      </span>
-      <span class="stat-secondary">({formatTrillions(trackedBurn24h)}T)</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">Coverage:</span>
-      <span class="stat-value coverage">
-        {#if loading || networkBurnLoading}...{:else if coveragePercent !== null}{coveragePercent.toFixed(1)}%{:else}-{/if}
-      </span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">Canisters:</span>
-      <span class="stat-value">{stats ? formatNumber(stats.canister_count) : '-'}</span>
-    </div>
-  </div>
-
   <header class="page-header">
-    <div class="header-main">
-      <div class="header-title">
-        <div class="brand-row">
-          <img src="/logo.png" alt="CycleScan" class="header-logo" />
-          <div>
-            <h1>CycleScan</h1>
-            <p class="tagline">Cycle consumption leaderboard for the Internet Computer. See which canisters burn the most compute.</p>
-          </div>
-        </div>
+    <div class="header-brand">
+      <img src="/logo.png" alt="CycleScan" class="header-logo" />
+      <span class="brand-name">CycleScan</span>
+    </div>
+    <div class="header-stats">
+      <div class="hero-stat">
+        <span class="hero-value">
+          {#if networkBurnLoading}—{:else}{formatUsd(cyclesToUsd(networkBurn24h))}{/if}
+        </span>
+        <span class="hero-unit">/day burned across the IC</span>
       </div>
-      {#if !loading && topBurners.length > 0}
-        <div class="top-burners">
-          <span class="burners-label">Top Burners</span>
-          {#each topBurners as burner, i}
-            <button class="burner-chip" on:click={() => openModal(burner.canister_id)}>
-              <span class="burner-rank">#{i + 1}</span>
-              <span class="burner-name">{burner.project?.[0] ?? shortenCanisterId(burner.canister_id)}</span>
-              <span class="burner-amount">{formatUsd(cyclesToUsd(burner.burn_24h[0]))}</span>
-            </button>
-          {/each}
-        </div>
-      {/if}
+      <div class="meta-stats">
+        <span class="meta-item">
+          Tracking {stats ? formatNumber(stats.canister_count) : '—'} canisters
+        </span>
+        <span class="meta-sep">·</span>
+        <span class="meta-item">
+          {#if loading || networkBurnLoading}—{:else if coveragePercent !== null}{coveragePercent.toFixed(1)}% coverage{:else}—{/if}
+        </span>
+        <span class="meta-sep">·</span>
+        <span class="meta-item">
+          {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day tracked{/if}
+        </span>
+      </div>
     </div>
   </header>
 
@@ -343,9 +353,18 @@
     <input
       type="text"
       class="search"
-      placeholder="Search projects..."
+      placeholder="Search projects or canister_ids..."
       bind:value={searchQuery}
     />
+    <label class="toggle-label">
+      <input type="checkbox" bind:checked={includeCycleTransfers} />
+      <span>Include cycle transfers</span>
+      {#if invalidCanisterCount > 0 && !includeCycleTransfers}
+        <span class="excluded-count" title="Canisters excluded because they transfer cycles rather than burn them">
+          ({invalidCanisterCount} excluded)
+        </span>
+      {/if}
+    </label>
   </div>
 
   {#if loading}
@@ -457,7 +476,7 @@
                     <td colspan="8" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
-                  {#each getProjectCanisters(entry.project) as canister, j}
+                  {#each getVisibleProjectCanisters(entry.project) as canister, j}
                     <tr class="sub-row clickable" on:click|stopPropagation={() => openModal(canister.canister_id)}>
                       <td class="rank sub-rank"></td>
                       <td class="project sub-project">
