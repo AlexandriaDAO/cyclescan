@@ -2,123 +2,59 @@
 
 Cycles burn leaderboard for ICP. Like CoinGecko, but for cycle consumption.
 
-## Canister IDs (Mainnet)
+## Architecture
+
+**Static data architecture** - no backend canister needed:
+
+1. **GitHub Actions** runs hourly to collect cycle balances
+2. **Static JSON files** store snapshots (7 days of hourly data)
+3. **Frontend canister** serves everything as static assets
+
+## Canister
 
 | Canister | ID |
 |----------|-----|
-| Backend | `vohji-riaaa-aaaac-babxq-cai` |
+| Frontend | `xknwi-uaaaa-aaaak-qu4oq-cai` |
 
-- Dashboard: https://dashboard.internetcomputer.org/canister/vohji-riaaa-aaaac-babxq-cai
-- Candid UI: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=vohji-riaaa-aaaac-babxq-cai
+- Live: https://xknwi-uaaaa-aaaak-qu4oq-cai.icp0.io/
 
 ## Development
 
-**Always deploy after changes** (no local dev environment):
+**Deploy frontend:**
 ```bash
 ./scripts/deploy.sh
 ```
 
-Uses `daopad` identity.
-
-## Architecture
-
-**Backend stores canisters with their proxy type and method:**
-
-```rust
-enum ProxyType {
-    Blackhole,  // Query via canister_status(canister_id)
-    SnsRoot,    // Query via get_sns_canisters_summary()
-    // Future: add new variants for other query methods
-}
-```
-
-**Stable memory:**
-1. **Canisters** - `canister_id -> { proxy_id, proxy_type, project_name }`
-2. **Snapshots** - `(canister_id, timestamp) -> cycles`
-
-**Hourly workflow:**
-1. Call `take_snapshot()`
-2. Backend groups canisters by proxy_type
-3. Blackhole: query `canister_status` per canister
-4. SnsRoot: query `get_sns_canisters_summary` per SNS (returns all canisters)
-5. Store cycles, prune >7 day old data
-
-## API
-
-```candid
-get_leaderboard : () -> (vec LeaderboardEntry) query;
-take_snapshot : () -> (SnapshotResult);
-import_canisters : (vec CanisterImport) -> (nat64);
-set_project : (principal, opt text) -> ();
-get_stats : () -> (Stats) query;
-```
-
-## Data Sources
-
-### 1. Blackhole Canisters (ninegua, NNS Root)
-
+**Run data collection locally:**
 ```bash
-# Fetch from IC Dashboard API
-cd data
-./fetch_batch.sh 0 25000
-./extract_trackable.sh canisters_0_25000.json
+cd scripts && npm run collect
 ```
 
-### 2. SNS Canisters
+Uses `daopad` identity for deployment, `cyclescan` identity for GitHub Actions.
 
-```bash
-# List all deployed SNSes
-dfx canister --network ic call qaa6y-5yaaa-aaaaa-aaafa-cai list_deployed_snses '(record {})'
+## Data Files
 
-# Get all canisters for a specific SNS
-dfx canister --network ic call <sns_root_id> get_sns_canisters_summary '(record {})'
+| File | Purpose |
+|------|---------|
+| `data/live/snapshots.json` | Hourly cycle balances (auto-updated) |
+| `data/archive/canisters_backup.json` | Canister registry |
+| `data/archive/projects_backup.json` | Project metadata |
 
-# Fetch all SNS canisters
-cd data
-python3 fetch_sns.py
-```
+## Collection Script
 
-### 3. Adding New Proxy Types (Future)
+`scripts/collect_snapshots.mjs` queries canisters via:
 
-To add support for a new canister query method:
+- **Blackhole**: `canister_status(canister_id)` - one call per canister
+- **SNS Root**: `get_sns_canisters_summary()` - one call returns all SNS canisters
 
-1. **Add variant to ProxyType enum** in `lib.rs`:
-   ```rust
-   enum ProxyType {
-       Blackhole,
-       SnsRoot,
-       NewMethod,  // Add here
-   }
-   ```
+Uses anonymous identity (no keys needed for collection).
 
-2. **Add query function**:
-   ```rust
-   async fn query_new_method(canister_id: Principal) -> CallResult<u128> {
-       // Implement the query
-   }
-   ```
+## GitHub Actions
 
-3. **Update take_snapshot()** to handle the new type
-
-4. **Update Storable impl** for CanisterMeta (add byte mapping)
-
-5. **Create data fetching script** in `data/`
-
-## Import Format
-
-```json
-[
-  {"canister_id": "abc-cai", "proxy_id": "e3mmv-...", "proxy_type": "Blackhole"},
-  {"canister_id": "def-cai", "proxy_id": "zxeu2-...", "proxy_type": "SnsRoot"}
-]
-```
-
-## Proxy Types
-
-| Type | Proxy | Query Method | Notes |
-|------|-------|--------------|-------|
-| Blackhole | ninegua, NNS Root | `canister_status(canister_id)` | One call per canister |
-| SnsRoot | SNS root canister | `get_sns_canisters_summary()` | One call returns all SNS canisters |
+`.github/workflows/collect-snapshots.yml` runs hourly at :05:
+1. Collect cycle balances from ~2900 canisters
+2. Commit updated snapshots.json
+3. Deploy frontend with new data
 
 ## Key Canister IDs
 

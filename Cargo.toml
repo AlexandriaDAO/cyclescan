@@ -1,5 +1,0 @@
-[workspace]
-members = [
-    "src/cyclescan_backend",
-]
-resolver = "2"
