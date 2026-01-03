@@ -87,6 +87,8 @@ jobs:
 
       - name: Deploy frontend to IC
         if: steps.commit.outputs.changed == 'true'
+        env:
+          DFX_WARNING: -mainnet_plaintext_identity
         run: |
           dfx deploy --network ic cyclescan_frontend --no-wallet
 
