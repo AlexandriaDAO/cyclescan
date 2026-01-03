@@ -34,7 +34,7 @@ echo ""
 
 # Deploy frontend
 echo "Deploying frontend to mainnet..."
-dfx deploy cyclescan_frontend --network ic
+dfx deploy cyclescan_frontend --network ic --yes
 
 CANISTER_ID=$(dfx canister id cyclescan_frontend --network ic)
 
