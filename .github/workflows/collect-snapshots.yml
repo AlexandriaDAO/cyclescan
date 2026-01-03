@@ -55,6 +55,7 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             git commit -m "Hourly snapshot $(date -u +%Y-%m-%d_%H:%M)"
+            git pull --rebase origin master
             git push
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
