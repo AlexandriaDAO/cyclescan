@@ -26,5 +26,5 @@ dist/
 
 # runtime state
 fetcher_state.json
-src/cyclescan_frontend/static/backup
+src/cyclescan_frontend/static/archive
 src/cyclescan_frontend/static/live
