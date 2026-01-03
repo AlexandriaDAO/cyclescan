@@ -1,13 +1,5 @@
 {
   "canisters": {
-    "cyclescan_backend": {
-      "candid": "src/cyclescan_backend/cyclescan_backend.did",
-      "declarations": {
-        "node_compatibility": true
-      },
-      "package": "cyclescan_backend",
-      "type": "rust"
-    },
     "cyclescan_frontend": {
       "source": [
         "src/cyclescan_frontend/dist",
