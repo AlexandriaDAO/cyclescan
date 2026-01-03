@@ -81,9 +81,9 @@ export async function loadData(): Promise<{
   }
 
   const [snapshotsRes, canistersRes, projectsRes] = await Promise.all([
-    fetch('/data/live/snapshots.json'),
-    fetch('/data/backup/canisters_backup.json'),
-    fetch('/data/backup/projects_backup.json'),
+    fetch('/live/snapshots.json'),
+    fetch('/backup/canisters_backup.json'),
+    fetch('/backup/projects_backup.json'),
   ]);
 
   const snapshotsData: SnapshotsData = await snapshotsRes.json();
