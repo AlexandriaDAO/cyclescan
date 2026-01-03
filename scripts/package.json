@@ -1,0 +1,12 @@
+{
+  "name": "cyclescan-collector",
+  "type": "module",
+  "scripts": {
+    "collect": "node collect_snapshots.mjs"
+  },
+  "dependencies": {
+    "@dfinity/agent": "^2.0.0",
+    "@dfinity/principal": "^2.0.0",
+    "@dfinity/candid": "^2.0.0"
+  }
+}

@@ -1,7 +1,7 @@
 <script>
   import "../index.scss";
   import { onMount } from "svelte";
-  import { backend } from "$lib/canisters";
+  import { loadData, getProjectCanisters as fetchProjectCanisters } from "$lib/data";
   import CanisterDetailModal from "$lib/components/CanisterDetailModal.svelte";
 
   let entries = [];
@@ -104,29 +104,20 @@
   }
   $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
-  // Project view helpers - uses adjusted values based on toggle
+  // Project view helpers - uses pre-computed adjusted values
   function getProjectValue(entry, col) {
     switch (col) {
-      case "total_balance": return getAdjustedProjectValue(entry, 'total_balance');
-      case "total_burn_1h": {
-        const v = getAdjustedProjectValue(entry, 'total_burn_1h');
-        return v?.[0] ?? -1n;
-      }
-      case "total_burn_24h": {
-        const v = getAdjustedProjectValue(entry, 'total_burn_24h');
-        return v?.[0] ?? -1n;
-      }
-      case "total_burn_7d": {
-        const v = getAdjustedProjectValue(entry, 'total_burn_7d');
-        return v?.[0] ?? -1n;
-      }
+      case "total_balance": return entry.adj_total_balance;
+      case "total_burn_1h": return entry.adj_total_burn_1h?.[0] ?? -1n;
+      case "total_burn_24h": return entry.adj_total_burn_24h?.[0] ?? -1n;
+      case "total_burn_7d": return entry.adj_total_burn_7d?.[0] ?? -1n;
       case "project": return entry.project;
-      case "canister_count": return getAdjustedProjectValue(entry, 'canister_count');
+      case "canister_count": return entry.adj_canister_count;
       default: return 0;
     }
   }
 
-  $: filteredProjectEntries = projectEntries.filter(e => {
+  $: filteredProjectEntries = adjustedProjectEntries.filter(e => {
     // Hide fully-invalid projects unless toggle is on
     if (shouldHideProject(e.project)) return false;
     if (!searchQuery) return true;
@@ -134,30 +125,25 @@
     return e.project.toLowerCase().includes(q);
   });
 
-  // Note: includeCycleTransfers is referenced to trigger re-sort when toggle changes
-  $: sortedProjectEntries = (() => {
-    // Reference toggle to make this reactive to it
-    const _ = includeCycleTransfers;
-    return [...filteredProjectEntries].sort((a, b) => {
-      // Map canister columns to project columns for sorting
-      let col = sortColumn;
-      if (col === "balance") col = "total_balance";
-      if (col === "burn_1h") col = "total_burn_1h";
-      if (col === "burn_24h") col = "total_burn_24h";
-      if (col === "burn_7d") col = "total_burn_7d";
+  $: sortedProjectEntries = [...filteredProjectEntries].sort((a, b) => {
+    // Map canister columns to project columns for sorting
+    let col = sortColumn;
+    if (col === "balance") col = "total_balance";
+    if (col === "burn_1h") col = "total_burn_1h";
+    if (col === "burn_24h") col = "total_burn_24h";
+    if (col === "burn_7d") col = "total_burn_7d";
 
-      const aVal = getProjectValue(a, col);
-      const bVal = getProjectValue(b, col);
-      let cmp = 0;
-      if (typeof aVal === "string") {
-        cmp = aVal.localeCompare(bVal);
-      } else {
-        if (aVal < bVal) cmp = -1;
-        else if (aVal > bVal) cmp = 1;
-      }
-      return sortDirection === "desc" ? -cmp : cmp;
-    });
-  })();
+    const aVal = getProjectValue(a, col);
+    const bVal = getProjectValue(b, col);
+    let cmp = 0;
+    if (typeof aVal === "string") {
+      cmp = aVal.localeCompare(bVal);
+    } else {
+      if (aVal < bVal) cmp = -1;
+      else if (aVal > bVal) cmp = 1;
+    }
+    return sortDirection === "desc" ? -cmp : cmp;
+  });
 
   $: totalProjectPages = Math.ceil(sortedProjectEntries.length / ITEMS_PER_PAGE);
   $: paginatedProjectEntries = sortedProjectEntries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -193,7 +179,7 @@
         loadingProjects.add(projectName);
         loadingProjects = loadingProjects;
         try {
-          const canisters = await backend.get_project_canisters(projectName);
+          const canisters = await fetchProjectCanisters(projectName);
           projectCanistersCache.set(projectName, canisters);
           projectCanistersCache = projectCanistersCache; // Trigger reactivity
         } catch (e) {
@@ -224,8 +210,9 @@
     return canisters.every(c => !c.valid);
   }
 
-  // Track invalid canister contributions per project (for adjusting totals)
-  $: projectInvalidContributions = (() => {
+  // Pre-compute adjusted project entries (once per data load or toggle change)
+  $: adjustedProjectEntries = (() => {
+    // First, compute invalid contributions per project
     const contrib = new Map();
     for (const entry of entries) {
       const project = entry.project?.[0];
@@ -250,43 +237,37 @@
         c.invalidBurn7d += BigInt(entry.burn_7d?.[0] || 0);
       }
     }
-    return contrib;
-  })();
 
-  // Adjust project entries based on toggle (subtract invalid contributions when off)
-  function getAdjustedProjectValue(entry, field) {
-    const contrib = projectInvalidContributions.get(entry.project);
-    if (includeCycleTransfers || !contrib) {
-      // Return original value
-      switch (field) {
-        case 'total_balance': return entry.total_balance;
-        case 'total_burn_1h': return entry.total_burn_1h;
-        case 'total_burn_24h': return entry.total_burn_24h;
-        case 'total_burn_7d': return entry.total_burn_7d;
-        case 'canister_count': return entry.canister_count;
+    // Now create adjusted entries
+    return projectEntries.map(entry => {
+      const c = contrib.get(entry.project);
+      if (includeCycleTransfers || !c || c.invalid === 0) {
+        // No adjustment needed
+        return {
+          ...entry,
+          adj_canister_count: entry.canister_count,
+          adj_total_balance: entry.total_balance,
+          adj_total_burn_1h: entry.total_burn_1h,
+          adj_total_burn_24h: entry.total_burn_24h,
+          adj_total_burn_7d: entry.total_burn_7d
+        };
       }
-    }
-    // Subtract invalid contributions
-    switch (field) {
-      case 'total_balance':
-        const adjBalance = BigInt(entry.total_balance) - contrib.invalidBalance;
-        return adjBalance > 0n ? adjBalance : 0n;
-      case 'total_burn_1h':
-        if (!entry.total_burn_1h?.[0]) return entry.total_burn_1h;
-        const adj1h = BigInt(entry.total_burn_1h[0]) - contrib.invalidBurn1h;
-        return adj1h > 0n ? [adj1h] : [0n];
-      case 'total_burn_24h':
-        if (!entry.total_burn_24h?.[0]) return entry.total_burn_24h;
-        const adj24h = BigInt(entry.total_burn_24h[0]) - contrib.invalidBurn24h;
-        return adj24h > 0n ? [adj24h] : [0n];
-      case 'total_burn_7d':
-        if (!entry.total_burn_7d?.[0]) return entry.total_burn_7d;
-        const adj7d = BigInt(entry.total_burn_7d[0]) - contrib.invalidBurn7d;
-        return adj7d > 0n ? [adj7d] : [0n];
-      case 'canister_count':
-        return BigInt(entry.canister_count) - BigInt(contrib.invalid);
-    }
-  }
+      // Compute adjusted values
+      const adjBalance = BigInt(entry.total_balance) - c.invalidBalance;
+      const adj1h = entry.total_burn_1h?.[0] ? BigInt(entry.total_burn_1h[0]) - c.invalidBurn1h : null;
+      const adj24h = entry.total_burn_24h?.[0] ? BigInt(entry.total_burn_24h[0]) - c.invalidBurn24h : null;
+      const adj7d = entry.total_burn_7d?.[0] ? BigInt(entry.total_burn_7d[0]) - c.invalidBurn7d : null;
+
+      return {
+        ...entry,
+        adj_canister_count: BigInt(entry.canister_count) - BigInt(c.invalid),
+        adj_total_balance: adjBalance > 0n ? adjBalance : 0n,
+        adj_total_burn_1h: adj1h !== null ? (adj1h > 0n ? [adj1h] : [0n]) : entry.total_burn_1h,
+        adj_total_burn_24h: adj24h !== null ? (adj24h > 0n ? [adj24h] : [0n]) : entry.total_burn_24h,
+        adj_total_burn_7d: adj7d !== null ? (adj7d > 0n ? [adj7d] : [0n]) : entry.total_burn_7d
+      };
+    });
+  })();
 
   function shouldHideProject(projectName) {
     // Never hide projects - just show them with adjusted (possibly zero) values
@@ -364,14 +345,10 @@
     fetchNetworkBurnRate();
 
     try {
-      const [leaderboardPage, statsData, projectLeaderboard] = await Promise.all([
-        backend.get_leaderboard(0n, 10000n),
-        backend.get_stats(),
-        backend.get_project_leaderboard()
-      ]);
-      entries = leaderboardPage.entries;
-      stats = statsData;
-      projectEntries = projectLeaderboard;
+      const data = await loadData();
+      entries = data.entries;
+      stats = data.stats;
+      projectEntries = data.projectEntries;
       loading = false;
     } catch (e) {
       error = e.message || "Failed to load data";
@@ -524,11 +501,11 @@
                     </a>
                   {/if}
                 </td>
-                <td class="canister-count">{Number(getAdjustedProjectValue(entry, 'canister_count')).toLocaleString()}</td>
-                <td class="cycles">{formatCycles(getAdjustedProjectValue(entry, 'total_balance'))}</td>
-                <td class="burn {formatBurn(getAdjustedProjectValue(entry, 'total_burn_1h')).class}">{formatBurn(getAdjustedProjectValue(entry, 'total_burn_1h')).text}</td>
-                <td class="burn {formatBurn(getAdjustedProjectValue(entry, 'total_burn_24h')).class}">{formatBurn(getAdjustedProjectValue(entry, 'total_burn_24h')).text}</td>
-                <td class="burn {formatBurn(getAdjustedProjectValue(entry, 'total_burn_7d')).class}">{formatBurn(getAdjustedProjectValue(entry, 'total_burn_7d')).text}</td>
+                <td class="canister-count">{Number(entry.adj_canister_count).toLocaleString()}</td>
+                <td class="cycles">{formatCycles(entry.adj_total_balance)}</td>
+                <td class="burn {formatBurn(entry.adj_total_burn_1h).class}">{formatBurn(entry.adj_total_burn_1h).text}</td>
+                <td class="burn {formatBurn(entry.adj_total_burn_24h).class}">{formatBurn(entry.adj_total_burn_24h).text}</td>
+                <td class="burn {formatBurn(entry.adj_total_burn_7d).class}">{formatBurn(entry.adj_total_burn_7d).text}</td>
               </tr>
               {#if expandedProjects.has(entry.project)}
                 {#if loadingProjects.has(entry.project)}

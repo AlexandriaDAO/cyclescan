@@ -26,3 +26,4 @@ dist/
 
 # runtime state
 fetcher_state.json
+src/cyclescan_frontend/static/data/

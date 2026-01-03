@@ -1,7 +1,6 @@
 <script>
   import { onMount, onDestroy, createEventDispatcher } from "svelte";
-  import { backend } from "$lib/canisters";
-  import { Principal } from "@dfinity/principal";
+  import { getCanisterDetail } from "$lib/data";
   import { createChart, HistogramSeries } from "lightweight-charts";
 
   export let canisterId;
@@ -26,8 +25,8 @@
 
   const TIME_RANGES = {
     "1d": NANOS_PER_DAY,
+    "3d": 3n * NANOS_PER_DAY,
     "7d": 7n * NANOS_PER_DAY,
-    "30d": 30n * NANOS_PER_DAY,
   };
 
   const BAR_INTERVALS = {
@@ -86,15 +85,14 @@
     try {
       loading = true;
       error = null;
-      const principal = Principal.fromText(canisterId);
-      const result = await backend.get_canister(principal);
+      const result = await getCanisterDetail(canisterId);
 
-      if (result.length === 0 || !result[0]) {
+      if (!result) {
         error = "Canister not found";
         return;
       }
 
-      data = result[0];
+      data = result;
     } catch (e) {
       error = e.message || "Failed to load canister history";
     } finally {
@@ -296,9 +294,9 @@
             >7D</button>
             <button
               class="range-btn"
-              class:active={timeRange === "30d"}
-              on:click={() => setTimeRange("30d")}
-            >30D</button>
+              class:active={timeRange === "3d"}
+              on:click={() => setTimeRange("3d")}
+            >3D</button>
           </div>
         </div>
       </div>
@@ -319,10 +317,6 @@
         <div class="stat-row">
           <span class="stat-label">7d Burn</span>
           <span class="stat-value">{formatCycles(data.burn_7d?.[0])}</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">30d Burn</span>
-          <span class="stat-value">{formatCycles(data.burn_30d?.[0])}</span>
         </div>
       </div>
 

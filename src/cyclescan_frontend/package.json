@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "setup": "npm i && dfx canister create cyclescan_backend && dfx generate cyclescan_backend && dfx deploy",
+    "setup": "npm i && dfx deploy",
     "start": "vite --port 3000",
-    "prebuild": "dfx generate",
     "build": "vite build",
+    "preview": "vite preview --port 3000",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
   },
   "dependencies": {

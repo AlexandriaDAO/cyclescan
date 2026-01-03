@@ -9,11 +9,9 @@
       "type": "rust"
     },
     "cyclescan_frontend": {
-      "dependencies": [
-        "cyclescan_backend"
-      ],
       "source": [
-        "src/cyclescan_frontend/dist"
+        "src/cyclescan_frontend/dist",
+        "data"
       ],
       "type": "assets",
       "workspace": "cyclescan_frontend"
