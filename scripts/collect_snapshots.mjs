@@ -66,7 +66,7 @@ const snsRootIdl = ({ IDL }) => {
 // ============================================================================
 
 function loadCanisters() {
-  const canistersPath = join(DATA_DIR, 'backup', 'canisters_backup.json');
+  const canistersPath = join(DATA_DIR, 'archive', 'canisters_backup.json');
   const data = JSON.parse(readFileSync(canistersPath, 'utf-8'));
   // Filter to only valid canisters
   return data.filter(c => c.valid !== false);
