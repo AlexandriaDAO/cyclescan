@@ -1,5 +1,8 @@
 // src/cyclescan_frontend/src/lib/data.ts
-// Static data loading utilities for the GitHub-based static architecture
+// Data loading utilities - fetches directly from GitHub (no redeployment needed)
+
+// GitHub raw content base URL
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/AlexandriaDAO/cyclescan/master/data';
 
 export interface Snapshot {
   timestamp: number;
@@ -116,10 +119,12 @@ export async function loadData(): Promise<{
     };
   }
 
+  // Fetch data directly from GitHub (cache-bust with timestamp for snapshots)
+  const cacheBust = `?t=${Math.floor(Date.now() / 60000)}`; // Changes every minute
   const [snapshotsRes, canistersRes, projectsRes] = await Promise.all([
-    fetch('/live/snapshots.json'),
-    fetch('/archive/canisters_backup.json'),
-    fetch('/archive/projects_backup.json'),
+    fetch(`${GITHUB_RAW_BASE}/live/snapshots.json${cacheBust}`),
+    fetch(`${GITHUB_RAW_BASE}/archive/canisters_backup.json`),
+    fetch(`${GITHUB_RAW_BASE}/archive/projects_backup.json`),
   ]);
 
   const snapshotsData: SnapshotsData = await snapshotsRes.json();

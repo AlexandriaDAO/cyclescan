@@ -11,13 +11,10 @@ permissions:
   contents: write
 
 jobs:
-  collect-and-deploy:
+  collect:
     runs-on: ubuntu-latest
 
     steps:
-      # -----------------------------------------------------------------------
-      # Setup
-      # -----------------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -28,22 +25,15 @@ jobs:
           cache: 'npm'
           cache-dependency-path: scripts/package-lock.json
 
-      - name: Install collection dependencies
+      - name: Install dependencies
         working-directory: scripts
         run: npm ci
 
-      # -----------------------------------------------------------------------
-      # Collect Data
-      # -----------------------------------------------------------------------
       - name: Collect snapshots from IC
         working-directory: scripts
         run: node collect_snapshots.mjs
 
-      # -----------------------------------------------------------------------
-      # Commit to Git
-      # -----------------------------------------------------------------------
       - name: Commit snapshot data
-        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -52,48 +42,8 @@ jobs:
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
-            echo "changed=false" >> $GITHUB_OUTPUT
           else
             git commit -m "Hourly snapshot $(date -u +%Y-%m-%d_%H:%M)"
             git pull --rebase origin master
             git push
-            echo "changed=true" >> $GITHUB_OUTPUT
           fi
-
-      # -----------------------------------------------------------------------
-      # Deploy Frontend (only if data changed)
-      # -----------------------------------------------------------------------
-      - name: Install dfx
-        if: steps.commit.outputs.changed == 'true'
-        uses: dfinity/setup-dfx@main
-
-      - name: Setup deploy identity
-        if: steps.commit.outputs.changed == 'true'
-        run: |
-          # Decode the base64 PEM and import as identity
-          echo "${{ secrets.DFX_IDENTITY_PEM_B64 }}" | base64 -d > /tmp/deploy.pem
-          dfx identity import --storage-mode=plaintext cyclescan-deploy /tmp/deploy.pem
-          dfx identity use cyclescan-deploy
-          rm /tmp/deploy.pem
-
-      - name: Install frontend dependencies
-        if: steps.commit.outputs.changed == 'true'
-        working-directory: src/cyclescan_frontend
-        run: npm ci
-
-      - name: Build frontend
-        if: steps.commit.outputs.changed == 'true'
-        working-directory: src/cyclescan_frontend
-        run: npm run build
-
-      - name: Deploy frontend to IC
-        if: steps.commit.outputs.changed == 'true'
-        env:
-          DFX_WARNING: -mainnet_plaintext_identity
-        run: |
-          dfx deploy --network ic cyclescan_frontend --no-wallet
-
-      - name: Cleanup identity
-        if: always()
-        run: |
-          dfx identity remove cyclescan-deploy 2>/dev/null || true
