@@ -289,14 +289,14 @@
             >1D</button>
             <button
               class="range-btn"
-              class:active={timeRange === "7d"}
-              on:click={() => setTimeRange("7d")}
-            >7D</button>
-            <button
-              class="range-btn"
               class:active={timeRange === "3d"}
               on:click={() => setTimeRange("3d")}
             >3D</button>
+            <button
+              class="range-btn"
+              class:active={timeRange === "7d"}
+              on:click={() => setTimeRange("7d")}
+            >7D</button>
           </div>
         </div>
       </div>
@@ -475,21 +475,6 @@
     color: #000;
   }
 
-  .no-data-indicator {
-    margin-left: 2px;
-    color: #f59e0b;
-  }
-
-  .range-btn.active .no-data-indicator {
-    color: #000;
-  }
-
-  .data-note {
-    color: #6b7280;
-    font-size: 11px;
-    margin-left: 4px;
-  }
-
   .stats-panel {
     background: #2d2d44;
     border-radius: 8px;
@@ -515,12 +500,6 @@
   .stat-value {
     color: #fff;
     font-family: monospace;
-  }
-
-  .extrapolated-badge {
-    color: #f59e0b;
-    margin-left: 4px;
-    font-size: 12px;
   }
 
   .external-links {

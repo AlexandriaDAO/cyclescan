@@ -59,6 +59,42 @@ let cachedData: {
   stats: Stats;
 } | null = null;
 
+// Time constants in milliseconds
+const HOUR_MS = 60 * 60 * 1000;
+const DAY_MS = 24 * HOUR_MS;
+
+// Tolerance: how far from target time a snapshot can be (as fraction of period)
+const TIME_TOLERANCE = 0.5; // 50% tolerance
+
+/**
+ * Find a snapshot closest to the target time, within tolerance.
+ * Returns null if no snapshot is within acceptable range.
+ */
+function findSnapshotNearTime(
+  snapshots: Snapshot[],
+  targetTimeMs: number,
+  toleranceMs: number
+): Snapshot | null {
+  if (snapshots.length === 0) return null;
+
+  let bestSnapshot: Snapshot | null = null;
+  let bestDelta = Infinity;
+
+  for (const snapshot of snapshots) {
+    const delta = Math.abs(snapshot.timestamp - targetTimeMs);
+    if (delta < bestDelta) {
+      bestDelta = delta;
+      bestSnapshot = snapshot;
+    }
+  }
+
+  // Only return if within tolerance
+  if (bestSnapshot && bestDelta <= toleranceMs) {
+    return bestSnapshot;
+  }
+  return null;
+}
+
 function calculateBurn(current: bigint, previousStr: string | undefined): bigint | null {
   if (!previousStr) return null;
   const previous = BigInt(previousStr);
@@ -98,11 +134,14 @@ export async function loadData(): Promise<{
     projectMetaMap.set(p.name, p);
   }
 
-  // Get snapshots for comparison
+  // Get current snapshot and calculate target times for burn comparisons
   const currentSnapshot = snapshots[0] || { balances: {}, timestamp: Date.now() };
-  const snapshot1h = snapshots[1]?.balances || {};
-  const snapshot24h = snapshots[24]?.balances || {};
-  const snapshot7d = snapshots[167]?.balances || {};
+  const now = currentSnapshot.timestamp;
+
+  // Find snapshots near target times (using actual timestamps, not indices)
+  const snapshot1h = findSnapshotNearTime(snapshots, now - HOUR_MS, HOUR_MS * TIME_TOLERANCE)?.balances || {};
+  const snapshot24h = findSnapshotNearTime(snapshots, now - DAY_MS, DAY_MS * TIME_TOLERANCE)?.balances || {};
+  const snapshot7d = findSnapshotNearTime(snapshots, now - 7 * DAY_MS, 7 * DAY_MS * TIME_TOLERANCE)?.balances || {};
 
   // Build canister entries
   const entries: CanisterEntry[] = [];
@@ -263,15 +302,20 @@ export async function getCanisterDetail(canisterId: string): Promise<CanisterDet
   }
 
   const currentBalance = BigInt(currentBalanceStr);
+  const now = snapshots[0].timestamp;
 
-  // Calculate burn rates
-  const snapshot1h = snapshots[1]?.balances[canisterId];
-  const snapshot24h = snapshots[24]?.balances[canisterId];
-  const snapshot7d = snapshots[167]?.balances[canisterId];
+  // Calculate burn rates using time-based snapshot lookup
+  const snap1h = findSnapshotNearTime(snapshots, now - HOUR_MS, HOUR_MS * TIME_TOLERANCE);
+  const snap24h = findSnapshotNearTime(snapshots, now - DAY_MS, DAY_MS * TIME_TOLERANCE);
+  const snap7d = findSnapshotNearTime(snapshots, now - 7 * DAY_MS, 7 * DAY_MS * TIME_TOLERANCE);
 
-  const burn1h = snapshot1h ? BigInt(snapshot1h) - currentBalance : null;
-  const burn24h = snapshot24h ? BigInt(snapshot24h) - currentBalance : null;
-  const burn7d = snapshot7d ? BigInt(snapshot7d) - currentBalance : null;
+  const balance1h = snap1h?.balances[canisterId];
+  const balance24h = snap24h?.balances[canisterId];
+  const balance7d = snap7d?.balances[canisterId];
+
+  const burn1h = balance1h ? BigInt(balance1h) - currentBalance : null;
+  const burn24h = balance24h ? BigInt(balance24h) - currentBalance : null;
+  const burn7d = balance7d ? BigInt(balance7d) - currentBalance : null;
 
   // Build snapshots array for chart (convert to nanoseconds as expected by modal)
   const snapshotHistory: Array<{ timestamp: bigint; cycles: bigint }> = [];

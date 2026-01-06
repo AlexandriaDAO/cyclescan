@@ -9,7 +9,10 @@
   --border: #30363d;
   --text: #e6edf3;
   --text-muted: #8b949e;
-  --accent: #58a6ff;
+  --accent: #f97316;
+  --accent-start: #f97316;
+  --accent-end: #ef4444;
+  --accent-gradient: linear-gradient(135deg, var(--accent-start), var(--accent-end));
   --green: #3fb950;
   --red: #f85149;
   --orange: #d29922;
@@ -19,11 +22,15 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse at 90% 90%, rgba(249, 115, 22, 0.07) 0%, transparent 50%),
+    #0d1117;
+  background-attachment: fixed;
   color: var(--text);
   margin: 0;
   padding: 0;
   line-height: 1.5;
+  min-height: 100vh;
 }
 
 .container {
@@ -77,9 +84,12 @@ body {
 .hero-value {
   font-size: 32px;
   font-weight: 600;
-  color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   letter-spacing: -0.02em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-unit {
@@ -216,7 +226,7 @@ tr.clickable {
 }
 
 tr.clickable:hover {
-  background: rgba(88, 166, 255, 0.1);
+  background: rgba(249, 115, 22, 0.1);
 }
 
 tr:last-child td {
@@ -391,7 +401,7 @@ tr:last-child td {
 }
 
 .sub-row:hover {
-  background: rgba(88, 166, 255, 0.08) !important;
+  background: rgba(249, 115, 22, 0.08) !important;
 }
 
 .sub-row td {
@@ -506,7 +516,7 @@ tr:last-child td {
 }
 
 .page-num.active {
-  background: var(--accent);
+  background: var(--accent-gradient);
   color: #fff;
   font-weight: 600;
 }
