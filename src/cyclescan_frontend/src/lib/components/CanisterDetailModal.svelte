@@ -186,7 +186,8 @@
     });
 
     const chartData = aggregatedData.map(point => ({
-      time: Math.floor(Number(point.timestamp) / 1_000_000_000), // seconds
+      // Divide as BigInt first to avoid precision loss, then convert to Number
+      time: Number(BigInt(point.timestamp) / 1_000_000_000n), // nanoseconds to seconds
       value: Number(point.cycles) / 1e12, // Convert to trillions
       color: "#00d395",
     }));

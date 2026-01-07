@@ -430,15 +430,19 @@
                 Project
                 <span class="sort-arrow">{sortColumn === "project" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
-              <th class="website-col">Web</th>
               <th
+                class="num-col"
                 class:sorted={sortColumn === "canister_count"}
                 on:click={() => sortBy("canister_count")}
+                title="Canisters"
               >
-                Canisters
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
                 <span class="sort-arrow">{sortColumn === "canister_count" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
               <th
+                class="col-balance"
                 class:sorted={sortColumn === "balance"}
                 on:click={() => sortBy("balance")}
               >
@@ -446,6 +450,7 @@
                 <span class="sort-arrow">{sortColumn === "balance" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
               <th
+                class="col-burn"
                 class:sorted={sortColumn === "burn_1h"}
                 on:click={() => sortBy("burn_1h")}
               >
@@ -453,6 +458,7 @@
                 <span class="sort-arrow">{sortColumn === "burn_1h" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
               <th
+                class="col-burn"
                 class:sorted={sortColumn === "burn_24h"}
                 on:click={() => sortBy("burn_24h")}
               >
@@ -460,6 +466,7 @@
                 <span class="sort-arrow">{sortColumn === "burn_24h" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
               <th
+                class="col-burn"
                 class:sorted={sortColumn === "burn_7d"}
                 on:click={() => sortBy("burn_7d")}
               >
@@ -488,18 +495,16 @@
                       />
                     {/if}
                     <span class="project-name">{entry.project}</span>
+                    {#if entry.website?.[0]}
+                      <a href={entry.website[0]} target="_blank" rel="noopener noreferrer" class="website-link-inline" on:click|stopPropagation title={entry.website[0]}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="2" y1="12" x2="22" y2="12"></line>
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                      </a>
+                    {/if}
                   </div>
-                </td>
-                <td class="website-cell">
-                  {#if entry.website?.[0]}
-                    <a href={entry.website[0]} target="_blank" rel="noopener noreferrer" class="website-link" on:click|stopPropagation title={entry.website[0]}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                      </svg>
-                    </a>
-                  {/if}
                 </td>
                 <td class="canister-count">{Number(entry.adj_canister_count).toLocaleString()}</td>
                 <td class="cycles">{formatCycles(entry.adj_total_balance)}</td>
@@ -510,7 +515,7 @@
               {#if expandedProjects.has(entry.project)}
                 {#if loadingProjects.has(entry.project)}
                   <tr class="sub-row loading-row">
-                    <td colspan="8" class="loading-cell">Loading canisters...</td>
+                    <td colspan="7" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
                   {#each getVisibleProjectCanisters(entry.project) as canister, j}
@@ -529,7 +534,6 @@
                           {/if}
                         </div>
                       </td>
-                      <td class="website-cell"></td>
                       <td class="canister-count"></td>
                       <td class="cycles">{formatCycles(canister.balance)}</td>
                       <td class="burn {formatBurn(canister.burn_1h).class}">{formatBurn(canister.burn_1h).text}</td>
