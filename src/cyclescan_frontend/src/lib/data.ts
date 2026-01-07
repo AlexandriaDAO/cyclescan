@@ -67,7 +67,9 @@ const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
 
 // Tolerance: how far from target time a snapshot can be (as fraction of period)
-const TIME_TOLERANCE = 0.5; // 50% tolerance
+// 1h needs higher tolerance since gaps in hourly collection are more impactful
+const TIME_TOLERANCE_1H = 0.75; // 45 mins for 1h (handles missed runs)
+const TIME_TOLERANCE = 0.5;     // 50% for 24h and 7d
 
 /**
  * Find a snapshot closest to the target time, within tolerance.
@@ -144,7 +146,7 @@ export async function loadData(): Promise<{
   const now = currentSnapshot.timestamp;
 
   // Find snapshots near target times (using actual timestamps, not indices)
-  const snapshot1h = findSnapshotNearTime(snapshots, now - HOUR_MS, HOUR_MS * TIME_TOLERANCE)?.balances || {};
+  const snapshot1h = findSnapshotNearTime(snapshots, now - HOUR_MS, HOUR_MS * TIME_TOLERANCE_1H)?.balances || {};
   const snapshot24h = findSnapshotNearTime(snapshots, now - DAY_MS, DAY_MS * TIME_TOLERANCE)?.balances || {};
   const snapshot7d = findSnapshotNearTime(snapshots, now - 7 * DAY_MS, 7 * DAY_MS * TIME_TOLERANCE)?.balances || {};
 
@@ -310,7 +312,7 @@ export async function getCanisterDetail(canisterId: string): Promise<CanisterDet
   const now = snapshots[0].timestamp;
 
   // Calculate burn rates using time-based snapshot lookup
-  const snap1h = findSnapshotNearTime(snapshots, now - HOUR_MS, HOUR_MS * TIME_TOLERANCE);
+  const snap1h = findSnapshotNearTime(snapshots, now - HOUR_MS, HOUR_MS * TIME_TOLERANCE_1H);
   const snap24h = findSnapshotNearTime(snapshots, now - DAY_MS, DAY_MS * TIME_TOLERANCE);
   const snap7d = findSnapshotNearTime(snapshots, now - 7 * DAY_MS, 7 * DAY_MS * TIME_TOLERANCE);
 
