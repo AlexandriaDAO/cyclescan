@@ -112,7 +112,10 @@
 
   function aggregateSnapshots(snapshots) {
     if (snapshots.length === 0) return [];
-    if (barInterval === "1h") return snapshots; // No aggregation needed
+    if (barInterval === "1h") {
+      // No aggregation needed, but must sort ascending (oldest first) for chart
+      return [...snapshots].sort((a, b) => Number(a.timestamp - b.timestamp));
+    }
 
     const intervalNanos = BAR_INTERVALS[barInterval];
     const buckets = new Map();
