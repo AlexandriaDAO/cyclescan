@@ -10,13 +10,16 @@ export interface RegressionResult {
 }
 
 export interface BurnRateData {
-  rate: bigint;             // cycles per hour (positive = burning)
+  rate: bigint;             // cycles per hour (positive = burning) - USE THIS FOR DISPLAY
   confidence: number;       // R² (0-1)
   dataPoints: number;       // snapshots used
   actualHours: number;      // actual time span of data
   topUpActivity: 'none' | 'single' | 'frequent';
   netBurnRate: bigint | null;  // burn rate excluding top-ups (null if uncalculable)
   totalTopUps: bigint;      // sum of all detected top-ups in window
+  // New: indicates if rate data is unreliable due to top-ups we couldn't compensate for
+  unreliable: boolean;      // true = show warning badge, false = data is trustworthy
+  burnIntervalCount: number; // number of non-top-up intervals used for estimation
 }
 
 export interface TopUpAnalysis {
@@ -88,6 +91,11 @@ export function linearRegression(
 /**
  * Detect top-up patterns in the data.
  * Top-ups are positive jumps in balance between consecutive snapshots.
+ *
+ * We use a high threshold (500B cycles) because:
+ * - Typical daily burn is 1-50B cycles per canister
+ * - Small positive fluctuations can be noise
+ * - We want to catch intentional top-ups, not minor variations
  */
 export function analyzeTopUps(points: Array<{ t: number; v: number }>): TopUpAnalysis {
   if (points.length < 2) {
@@ -97,9 +105,10 @@ export function analyzeTopUps(points: Array<{ t: number; v: number }>): TopUpAna
   const sorted = [...points].sort((a, b) => a.t - b.t);
   const topUps: Array<{ index: number; amount: number }> = [];
 
-  // Threshold for detecting a top-up: 100B cycles
-  // This is small enough to catch most top-ups but large enough to filter noise
-  const THRESHOLD = 100_000_000_000;
+  // Threshold for detecting a top-up: 500B cycles (0.5T)
+  // This is high enough to filter noise but catches real top-ups
+  // Most manual top-ups are 1T+ cycles
+  const THRESHOLD = 500_000_000_000;
 
   for (let i = 1; i < sorted.length; i++) {
     const jump = sorted[i].v - sorted[i - 1].v;
@@ -162,30 +171,53 @@ export function calculateBurnRateWithTopUps(
   const sorted = [...points].sort((a, b) => a.t - b.t);
   const MS_PER_HOUR = 3600000;
 
+  // For all cases, also calculate burn from non-top-up intervals for comparison
+  const burnIntervals: Array<{ burn: number; duration: number }> = [];
+  for (let i = 1; i < sorted.length; i++) {
+    const change = sorted[i].v - sorted[i - 1].v;
+    if (change <= 0) {  // Only burning intervals (no top-up)
+      const duration = sorted[i].t - sorted[i - 1].t;
+      if (duration > 0) {
+        burnIntervals.push({ burn: -change, duration });
+      }
+    }
+  }
+
+  const burnIntervalCount = burnIntervals.length;
+  let estimatedBurnFromIntervals: bigint | null = null;
+  if (burnIntervalCount > 0) {
+    const totalBurn = burnIntervals.reduce((s, i) => s + i.burn, 0);
+    const totalDuration = burnIntervals.reduce((s, i) => s + i.duration, 0);
+    if (totalDuration > 0) {
+      estimatedBurnFromIntervals = BigInt(Math.round((totalBurn / totalDuration) * MS_PER_HOUR));
+    }
+  }
+
   switch (analysis.activity) {
     case 'none': {
       // Simple case: no top-ups, just run regression
       const result = linearRegression(points);
       if (!result) return null;
 
-      // slope is cycles per millisecond
-      // Negative slope = balance decreasing = burning cycles
       const burnPerMs = -result.slope;
       const burnPerHour = burnPerMs * MS_PER_HOUR;
+      const burnRate = BigInt(Math.round(Math.max(0, burnPerHour)));
 
       return {
-        rate: BigInt(Math.round(Math.max(0, burnPerHour))),
+        rate: burnRate,
         confidence: result.r2,
         dataPoints: result.n,
         actualHours: result.timeSpanMs / MS_PER_HOUR,
         topUpActivity: 'none',
         totalTopUps: 0n,
-        netBurnRate: BigInt(Math.round(Math.max(0, burnPerHour))),
+        netBurnRate: burnRate,
+        unreliable: false,  // No top-ups = fully reliable
+        burnIntervalCount,
       };
     }
 
     case 'single': {
-      // One top-up: segment after it for accurate burn rate
+      // One top-up: use data AFTER the top-up for accurate burn rate
       const lastTopUp = analysis.topUps[analysis.topUps.length - 1];
       const postTopUpPoints = sorted.slice(lastTopUp.index);
 
@@ -194,20 +226,40 @@ export function calculateBurnRateWithTopUps(
         if (result) {
           const burnPerMs = -result.slope;
           const burnPerHour = burnPerMs * MS_PER_HOUR;
+          const burnRate = BigInt(Math.round(Math.max(0, burnPerHour)));
 
+          // We have good post-top-up data, so this is reliable
           return {
-            rate: BigInt(Math.round(Math.max(0, burnPerHour))),
+            rate: burnRate,  // Use post-top-up rate as the displayed rate
             confidence: result.r2,
             dataPoints: result.n,
             actualHours: result.timeSpanMs / MS_PER_HOUR,
             topUpActivity: 'single',
             totalTopUps: BigInt(Math.round(analysis.totalAmount)),
-            netBurnRate: BigInt(Math.round(Math.max(0, burnPerHour))),
+            netBurnRate: burnRate,
+            unreliable: false,  // We successfully isolated the burn rate
+            burnIntervalCount,
           };
         }
       }
-      // Fall through if not enough post-top-up data
-      // Use full regression but flag the top-up
+
+      // Not enough post-top-up data - try to use burn intervals
+      if (estimatedBurnFromIntervals !== null && burnIntervalCount >= 2) {
+        const result = linearRegression(points);
+        return {
+          rate: estimatedBurnFromIntervals,  // Use interval-based estimate
+          confidence: result?.r2 ?? 0,
+          dataPoints: points.length,
+          actualHours: result?.timeSpanMs ? result.timeSpanMs / MS_PER_HOUR : 0,
+          topUpActivity: 'single',
+          totalTopUps: BigInt(Math.round(analysis.totalAmount)),
+          netBurnRate: estimatedBurnFromIntervals,
+          unreliable: burnIntervalCount < 3,  // Need at least 3 intervals for reliability
+          burnIntervalCount,
+        };
+      }
+
+      // Fall through: can't calculate reliable burn rate
       const result = linearRegression(points);
       if (!result) return null;
 
@@ -215,52 +267,52 @@ export function calculateBurnRateWithTopUps(
       const burnPerHour = burnPerMs * MS_PER_HOUR;
 
       return {
-        rate: BigInt(Math.round(burnPerHour)),  // May be negative (net gaining)
+        rate: BigInt(Math.round(burnPerHour)),  // Raw rate (may be distorted)
         confidence: result.r2,
         dataPoints: result.n,
         actualHours: result.timeSpanMs / MS_PER_HOUR,
         topUpActivity: 'single',
         totalTopUps: BigInt(Math.round(analysis.totalAmount)),
-        netBurnRate: null,  // Can't calculate reliable burn rate
+        netBurnRate: null,
+        unreliable: true,  // Couldn't compensate for top-up
+        burnIntervalCount,
       };
     }
 
     case 'frequent': {
-      // Frequent top-ups: can't segment, report net rate AND estimated burn
+      // Frequent top-ups: use burn intervals for the displayed rate
       const result = linearRegression(points);
       if (!result) return null;
 
-      // Net rate (includes top-ups) - may be negative (gaining)
+      // If we have enough burn intervals, use that as the primary rate
+      if (estimatedBurnFromIntervals !== null && burnIntervalCount >= 3) {
+        return {
+          rate: estimatedBurnFromIntervals,  // Use interval-based burn rate
+          confidence: result.r2,
+          dataPoints: result.n,
+          actualHours: result.timeSpanMs / MS_PER_HOUR,
+          topUpActivity: 'frequent',
+          totalTopUps: BigInt(Math.round(analysis.totalAmount)),
+          netBurnRate: estimatedBurnFromIntervals,
+          unreliable: false,  // We have enough intervals to estimate
+          burnIntervalCount,
+        };
+      }
+
+      // Not enough burn-only intervals - mark as unreliable
       const burnPerMs = -result.slope;
       const netBurnPerHour = burnPerMs * MS_PER_HOUR;
 
-      // Estimate "pure" burn by looking at intervals WITHOUT top-ups
-      const burnIntervals: Array<{ burn: number; duration: number }> = [];
-      for (let i = 1; i < sorted.length; i++) {
-        const change = sorted[i].v - sorted[i - 1].v;
-        if (change <= 0) {  // Only burning intervals (no top-up)
-          const duration = sorted[i].t - sorted[i - 1].t;
-          burnIntervals.push({ burn: -change, duration });
-        }
-      }
-
-      let estimatedBurnRate: bigint | null = null;
-      if (burnIntervals.length > 0) {
-        const totalBurn = burnIntervals.reduce((s, i) => s + i.burn, 0);
-        const totalDuration = burnIntervals.reduce((s, i) => s + i.duration, 0);
-        if (totalDuration > 0) {
-          estimatedBurnRate = BigInt(Math.round((totalBurn / totalDuration) * MS_PER_HOUR));
-        }
-      }
-
       return {
-        rate: BigInt(Math.round(netBurnPerHour)),  // Net rate (may be negative)
+        rate: estimatedBurnFromIntervals ?? BigInt(Math.round(Math.max(0, netBurnPerHour))),
         confidence: result.r2,
         dataPoints: result.n,
         actualHours: result.timeSpanMs / MS_PER_HOUR,
         topUpActivity: 'frequent',
         totalTopUps: BigInt(Math.round(analysis.totalAmount)),
-        netBurnRate: estimatedBurnRate,  // Burn rate from non-top-up intervals
+        netBurnRate: estimatedBurnFromIntervals,
+        unreliable: true,  // Not enough data to reliably estimate
+        burnIntervalCount,
       };
     }
   }
@@ -306,6 +358,8 @@ export interface ProjectRateData {
   canistersWithData: number;             // How many canisters contributed
   canistersWithLowConfidence: number;    // How many had R² < 0.5
   topUpsDetected: number;                // How many canisters had top-ups
+  unreliable: boolean;                   // True if majority of burn rate comes from unreliable sources
+  unreliableCount: number;               // How many canisters have unreliable data
 }
 
 export function aggregateProjectRate(canisterRates: (BurnRateData | null)[]): ProjectRateData | null {
@@ -321,6 +375,17 @@ export function aggregateProjectRate(canisterRates: (BurnRateData | null)[]): Pr
   );
   const avgConfidence = totalPoints > 0 ? weightedR2Sum / totalPoints : 0;
 
+  // Calculate unreliable stats
+  const unreliableRates = validRates.filter(r => r.unreliable);
+  const unreliableCount = unreliableRates.length;
+
+  // Project is unreliable if:
+  // - More than 50% of canisters with data are unreliable, OR
+  // - More than 50% of the total burn rate comes from unreliable canisters
+  const unreliableBurnRate = unreliableRates.reduce((sum, r) => sum + r.rate, 0n);
+  const unreliableByCount = unreliableCount > validRates.length / 2;
+  const unreliableByBurn = totalRate > 0n && unreliableBurnRate * 2n > totalRate;
+
   return {
     rate: totalRate,
     avgConfidence,
@@ -328,5 +393,7 @@ export function aggregateProjectRate(canisterRates: (BurnRateData | null)[]): Pr
     canistersWithData: validRates.length,
     canistersWithLowConfidence: validRates.filter(r => r.confidence < 0.5).length,
     topUpsDetected: validRates.filter(r => r.topUpActivity !== 'none').length,
+    unreliable: unreliableByCount || unreliableByBurn,
+    unreliableCount,
   };
 }

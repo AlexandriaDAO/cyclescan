@@ -418,8 +418,8 @@
               <span class="rate-meta">
                 ({data.recent_rate.dataPoints} pts, R²={data.recent_rate.confidence.toFixed(2)})
               </span>
-              {#if data.recent_rate.topUpActivity !== 'none'}
-                <span class="topup-indicator">{data.recent_rate.topUpActivity === 'frequent' ? '!!' : '!'}</span>
+              {#if data.recent_rate.unreliable}
+                <span class="topup-indicator" title="Rate may be inaccurate due to top-ups">~</span>
               {/if}
             {:else}
               -
@@ -440,8 +440,8 @@
               <span class="rate-meta">
                 ({data.short_term_rate.dataPoints} pts, R²={data.short_term_rate.confidence.toFixed(2)})
               </span>
-              {#if data.short_term_rate.topUpActivity !== 'none'}
-                <span class="topup-indicator">{data.short_term_rate.topUpActivity === 'frequent' ? '!!' : '!'}</span>
+              {#if data.short_term_rate.unreliable}
+                <span class="topup-indicator" title="Rate may be inaccurate due to top-ups">~</span>
               {/if}
             {:else}
               -
@@ -462,8 +462,8 @@
               <span class="rate-meta">
                 ({data.long_term_rate.dataPoints} pts, R²={data.long_term_rate.confidence.toFixed(2)})
               </span>
-              {#if data.long_term_rate.topUpActivity !== 'none'}
-                <span class="topup-indicator">{data.long_term_rate.topUpActivity === 'frequent' ? '!!' : '!'}</span>
+              {#if data.long_term_rate.unreliable}
+                <span class="topup-indicator" title="Rate may be inaccurate due to top-ups">~</span>
               {/if}
             {:else}
               -

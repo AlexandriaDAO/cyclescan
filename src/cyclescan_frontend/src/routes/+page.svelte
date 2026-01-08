@@ -72,12 +72,12 @@
   // Format rate data for display in table
   function formatRateCell(rateData) {
     if (!rateData) {
-      return { text: "-", class: "no-data", topUp: false, lowConfidence: false };
+      return { text: "-", class: "no-data", unreliable: false, lowConfidence: false };
     }
 
     const formatted = formatRate(rateData.rate);
     if (!formatted) {
-      return { text: "-", class: "no-data", topUp: false, lowConfidence: false };
+      return { text: "-", class: "no-data", unreliable: false, lowConfidence: false };
     }
 
     let displayClass = "positive";
@@ -90,13 +90,42 @@
     return {
       text: formatted.isNegative ? `+${formatted.value}` : formatted.value,
       class: displayClass,
-      topUp: rateData.topUpActivity !== 'none',
-      frequentTopUp: rateData.topUpActivity === 'frequent',
+      // Only show warning when data is actually unreliable (couldn't compensate for top-ups)
+      unreliable: rateData.unreliable === true,
       lowConfidence: rateData.confidence < 0.5,
       confidence: rateData.confidence,
       dataPoints: rateData.dataPoints,
-      actualHours: rateData.actualHours
+      actualHours: rateData.actualHours,
+      burnIntervals: rateData.burnIntervalCount ?? 0
     };
+  }
+
+  // Calculate runway in days: balance / (burn rate per day)
+  function calcRunway(balance, rateData) {
+    if (!balance || !rateData || !rateData.rate || rateData.rate <= 0n) {
+      return null; // No burn or gaining cycles = infinite runway
+    }
+    const balanceBigInt = BigInt(balance);
+    const ratePerDay = rateData.rate * 24n;
+    if (ratePerDay <= 0n) return null;
+    return Number(balanceBigInt / ratePerDay);
+  }
+
+  // Format runway for display
+  function formatRunway(days) {
+    if (days === null) {
+      return { text: "∞", class: "runway-infinite" };
+    }
+    if (days < 30) {
+      return { text: `${Math.round(days)}d`, class: "runway-critical" };
+    } else if (days < 90) {
+      return { text: `${Math.round(days)}d`, class: "runway-warning" };
+    } else if (days < 365) {
+      return { text: `${Math.round(days / 30)}mo`, class: "runway-ok" };
+    } else {
+      const years = days / 365;
+      return { text: years >= 10 ? `${Math.round(years)}y` : `${years.toFixed(1)}y`, class: "runway-good" };
+    }
   }
 
   // Legacy formatBurn for backwards compatibility
@@ -170,6 +199,12 @@
         return entry.short_term_rate?.rate ?? entry.adj_short_term_rate?.rate ?? -1n;
       case "long_term_rate":
         return entry.long_term_rate?.rate ?? entry.adj_long_term_rate?.rate ?? -1n;
+      case "runway": {
+        const balance = entry.adj_total_balance ?? entry.total_balance ?? entry.balance;
+        const rate = entry.adj_short_term_rate ?? entry.short_term_rate;
+        const days = calcRunway(balance, rate);
+        return days === null ? Infinity : days;
+      }
       // Legacy columns
       case "total_burn_1h":
       case "burn_1h":
@@ -460,6 +495,14 @@
         <span class="meta-item">
           {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day tracked{/if}
         </span>
+        <span class="meta-sep">·</span>
+        <a href="/about" class="meta-link" title="How it works">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </a>
       </div>
     </div>
   </header>
@@ -557,6 +600,15 @@
                 <span class="time-hint">(~7d)</span>
                 <span class="sort-arrow">{sortColumn === "long_term_rate" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
               </th>
+              <th
+                class="col-runway"
+                class:sorted={sortColumn === "runway"}
+                on:click={() => sortBy("runway")}
+                title="Estimated days until cycles depleted (based on short-term rate)"
+              >
+                Runway
+                <span class="sort-arrow">{sortColumn === "runway" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -564,6 +616,8 @@
               {@const recentCell = formatRateCell(entry.adj_recent_rate ?? entry.recent_rate)}
               {@const shortTermCell = formatRateCell(entry.adj_short_term_rate ?? entry.short_term_rate)}
               {@const longTermCell = formatRateCell(entry.adj_long_term_rate ?? entry.long_term_rate)}
+              {@const runwayDays = calcRunway(entry.adj_total_balance ?? entry.total_balance, entry.adj_short_term_rate ?? entry.short_term_rate)}
+              {@const runwayCell = formatRunway(runwayDays)}
               <tr class="project-row clickable" class:expanded={expandedProjects.has(entry.project)} on:click={() => toggleProjectExpanded(entry.project)}>
                 <td class="rank">{startIndex + i + 1}</td>
                 <td class="project">
@@ -596,43 +650,48 @@
                 <td class="canister-count">{Number(entry.adj_canister_count ?? entry.canister_count).toLocaleString()}</td>
                 <td class="cycles">{formatCycles(entry.adj_total_balance ?? entry.total_balance)}</td>
                 <td class="burn {recentCell.class}" class:low-confidence={recentCell.lowConfidence}>
-                  <span class="rate-value" title={recentCell.dataPoints ? `${recentCell.dataPoints} pts, R²=${recentCell.confidence?.toFixed(2)}` : ''}>
+                  <span class="rate-value" title={recentCell.dataPoints ? `${recentCell.dataPoints} pts, R²=${recentCell.confidence?.toFixed(2)}, ${recentCell.burnIntervals} burn intervals` : ''}>
                     {recentCell.text}
                     {#if recentCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                   </span>
-                  {#if recentCell.topUp}
-                    <span class="topup-badge" title="Top-up detected">{recentCell.frequentTopUp ? '!!' : '!'}</span>
+                  {#if recentCell.unreliable}
+                    <span class="topup-badge" title="Estimated rate - insufficient data after recent top-ups">~</span>
                   {/if}
                 </td>
                 <td class="burn {shortTermCell.class}" class:low-confidence={shortTermCell.lowConfidence}>
-                  <span class="rate-value" title={shortTermCell.dataPoints ? `${shortTermCell.dataPoints} pts, R²=${shortTermCell.confidence?.toFixed(2)}` : ''}>
+                  <span class="rate-value" title={shortTermCell.dataPoints ? `${shortTermCell.dataPoints} pts, R²=${shortTermCell.confidence?.toFixed(2)}, ${shortTermCell.burnIntervals} burn intervals` : ''}>
                     {shortTermCell.text}
                     {#if shortTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                   </span>
-                  {#if shortTermCell.topUp}
-                    <span class="topup-badge" title="Top-up detected">{shortTermCell.frequentTopUp ? '!!' : '!'}</span>
+                  {#if shortTermCell.unreliable}
+                    <span class="topup-badge" title="Estimated rate - insufficient data after recent top-ups">~</span>
                   {/if}
                 </td>
                 <td class="burn {longTermCell.class}" class:low-confidence={longTermCell.lowConfidence}>
-                  <span class="rate-value" title={longTermCell.dataPoints ? `${longTermCell.dataPoints} pts, R²=${longTermCell.confidence?.toFixed(2)}` : ''}>
+                  <span class="rate-value" title={longTermCell.dataPoints ? `${longTermCell.dataPoints} pts, R²=${longTermCell.confidence?.toFixed(2)}, ${longTermCell.burnIntervals} burn intervals` : ''}>
                     {longTermCell.text}
                     {#if longTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                   </span>
-                  {#if longTermCell.topUp}
-                    <span class="topup-badge" title="Top-up detected">{longTermCell.frequentTopUp ? '!!' : '!'}</span>
+                  {#if longTermCell.unreliable}
+                    <span class="topup-badge" title="Estimated rate - insufficient data after recent top-ups">~</span>
                   {/if}
+                </td>
+                <td class="runway {runwayCell.class}" title={runwayDays !== null ? `${Math.round(runwayDays)} days` : 'Infinite (not burning or gaining cycles)'}>
+                  {runwayCell.text}
                 </td>
               </tr>
               {#if expandedProjects.has(entry.project)}
                 {#if loadingProjects.has(entry.project)}
                   <tr class="sub-row loading-row">
-                    <td colspan="7" class="loading-cell">Loading canisters...</td>
+                    <td colspan="8" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
                   {#each getVisibleProjectCanisters(entry.project) as canister, j}
                     {@const canRecentCell = formatRateCell(canister.recent_rate)}
                     {@const canShortTermCell = formatRateCell(canister.short_term_rate)}
                     {@const canLongTermCell = formatRateCell(canister.long_term_rate)}
+                    {@const canRunwayDays = calcRunway(canister.balance, canister.short_term_rate)}
+                    {@const canRunwayCell = formatRunway(canRunwayDays)}
                     <tr class="sub-row clickable" on:click|stopPropagation={() => openModal(canister.canister_id)}>
                       <td class="rank sub-rank"></td>
                       <td class="project sub-project">
@@ -655,8 +714,8 @@
                           {canRecentCell.text}
                           {#if canRecentCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                         </span>
-                        {#if canRecentCell.topUp}
-                          <span class="topup-badge">{canRecentCell.frequentTopUp ? '!!' : '!'}</span>
+                        {#if canRecentCell.unreliable}
+                          <span class="topup-badge" title="Rate may be inaccurate">~</span>
                         {/if}
                       </td>
                       <td class="burn {canShortTermCell.class}" class:low-confidence={canShortTermCell.lowConfidence}>
@@ -664,8 +723,8 @@
                           {canShortTermCell.text}
                           {#if canShortTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                         </span>
-                        {#if canShortTermCell.topUp}
-                          <span class="topup-badge">{canShortTermCell.frequentTopUp ? '!!' : '!'}</span>
+                        {#if canShortTermCell.unreliable}
+                          <span class="topup-badge" title="Rate may be inaccurate">~</span>
                         {/if}
                       </td>
                       <td class="burn {canLongTermCell.class}" class:low-confidence={canLongTermCell.lowConfidence}>
@@ -673,9 +732,12 @@
                           {canLongTermCell.text}
                           {#if canLongTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                         </span>
-                        {#if canLongTermCell.topUp}
-                          <span class="topup-badge">{canLongTermCell.frequentTopUp ? '!!' : '!'}</span>
+                        {#if canLongTermCell.unreliable}
+                          <span class="topup-badge" title="Rate may be inaccurate">~</span>
                         {/if}
+                      </td>
+                      <td class="runway {canRunwayCell.class}">
+                        {canRunwayCell.text}
                       </td>
                     </tr>
                   {/each}
@@ -744,6 +806,8 @@
   {/if}
 
   <footer>
+    <a href="/about">How It Works</a>
+    <span class="meta-sep">·</span>
     An <a href="https://alexandriadao.com/" target="_blank" rel="noopener">Alexandria</a> Project
   </footer>
 </div>
