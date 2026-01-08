@@ -18,6 +18,19 @@
   --red: #f85149;
   --orange: #d29922;
   --purple: #a371f7;
+
+  /* Data freshness indicator colors */
+  --color-full: #4ade80;      /* Green - complete data */
+  --color-mostly: #a3e635;    /* Light green - mostly complete */
+  --color-partial: #fbbf24;   /* Yellow - partial data */
+  --color-sparse: #f87171;    /* Red - sparse/missing */
+  --color-empty: #333;        /* Dark - no data */
+  --color-primary: #4ade80;   /* Primary accent for data freshness */
+  --border-subtle: #333;      /* Subtle border color */
+  --bg-hover: rgba(255,255,255,0.05);
+  --bg-selected: rgba(74, 222, 128, 0.1);
+  --text-primary: #fff;
+  --text-secondary: #aaa;
 }
 
 body {
@@ -42,9 +55,19 @@ body {
 
 /* Page Header */
 .page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 28px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border);
+}
+
+.header-left {
+  flex: 1;
+  min-width: 300px;
 }
 
 .header-brand {
@@ -677,4 +700,52 @@ footer a:hover {
 /* Gaining (negative burn) styling */
 .burn.gaining {
   color: #3b82f6;  /* Blue for gaining */
+}
+
+/* Sparkline / Trend column */
+:root {
+  --color-burn: #4ade80;       /* Green - actual burn */
+  --color-inferred: #fbbf24;   /* Orange/yellow - inferred burn */
+  --color-trend-up: #f87171;   /* Red - increasing (warning) */
+  --color-trend-down: #4ade80; /* Green - decreasing (good) */
+}
+
+.col-trend {
+  width: 100px;
+  text-align: center;
+  cursor: default;
+}
+
+td.trend {
+  padding: 4px 8px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+td.trend.sub-trend {
+  padding: 2px 8px;
+}
+
+/* Responsive: hide trend column on small screens */
+@media (max-width: 768px) {
+  .col-trend,
+  td.trend {
+    display: none;
+  }
+}
+
+/* Responsive: Data freshness component */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+  }
+
+  .header-left {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .data-freshness {
+    width: 100%;
+  }
 }

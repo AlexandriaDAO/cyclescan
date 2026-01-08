@@ -1,7 +1,6 @@
 <script>
   import { onMount, onDestroy, createEventDispatcher } from "svelte";
-  import { getCanisterDetail, getRawSnapshots } from "$lib/data";
-  import { linearRegression } from "$lib/regression";
+  import { getCanisterDetail, getChartIntervals } from "$lib/data";
   import { createChart, HistogramSeries, LineSeries } from "lightweight-charts";
 
   export let canisterId;
@@ -133,93 +132,19 @@
     }
   }
 
-  // Compute burn deltas between consecutive snapshots
-  function computeBurnDeltas(snapshots) {
-    if (!snapshots || snapshots.length < 2) return [];
-
-    const sorted = [...snapshots].sort((a, b) =>
-      Number(a.timestamp - b.timestamp)
-    );
-
-    const deltas = [];
-    for (let i = 1; i < sorted.length; i++) {
-      const prev = sorted[i - 1];
-      const curr = sorted[i];
-
-      const startTimeMs = Number(prev.timestamp / 1_000_000n);
-      const endTimeMs = Number(curr.timestamp / 1_000_000n);
-      const burnAmount = prev.cycles - curr.cycles;
-
-      deltas.push({
-        startTime: startTimeMs,
-        endTime: endTimeMs,
-        burnAmount: Number(burnAmount),
-      });
-    }
-
-    return deltas;
-  }
-
-  // Interpolate burn deltas into hourly buckets
-  function interpolateToHourlyBuckets(deltas) {
-    if (deltas.length === 0) return [];
-
-    const hourlyBurns = new Map();
-
-    for (const delta of deltas) {
-      const durationMs = delta.endTime - delta.startTime;
-      if (durationMs <= 0) continue;
-
-      const burnPerMs = delta.burnAmount / durationMs;
-
-      const startHour = Math.floor(delta.startTime / HOUR_MS) * HOUR_MS;
-      const endHour = Math.floor(delta.endTime / HOUR_MS) * HOUR_MS;
-
-      for (let hour = startHour; hour <= endHour; hour += HOUR_MS) {
-        const hourEnd = hour + HOUR_MS;
-
-        const overlapStart = Math.max(delta.startTime, hour);
-        const overlapEnd = Math.min(delta.endTime, hourEnd);
-        const overlapMs = Math.max(0, overlapEnd - overlapStart);
-
-        if (overlapMs > 0) {
-          const burnInThisHour = burnPerMs * overlapMs;
-          hourlyBurns.set(hour, (hourlyBurns.get(hour) || 0) + burnInThisHour);
-        }
-      }
-    }
-
-    return Array.from(hourlyBurns.entries())
-      .map(([hourStart, burnAmount]) => ({ hourStart, burnAmount }))
-      .sort((a, b) => a.hourStart - b.hourStart);
-  }
-
-  function getFilteredSnapshots() {
-    if (!data || !data.snapshots) return [];
-
-    const now = Date.now();
-    const rangeMs = TIME_RANGES[timeRange];
-    const cutoff = now - rangeMs;
-
-    return data.snapshots.filter(s => {
-      const tsMs = Number(s.timestamp / 1_000_000n);
-      return tsMs >= cutoff;
-    });
-  }
-
   function createChartInstance() {
-    if (!chartContainer || !data) return;
+    if (!chartContainer || !canisterId) return;
 
     if (chart) {
       chart.remove();
       chart = null;
     }
 
-    const filteredSnapshots = getFilteredSnapshots();
-    const deltas = computeBurnDeltas(filteredSnapshots);
-    const hourlyData = interpolateToHourlyBuckets(deltas);
+    // Get intervals from the new universal algorithm
+    const rangeMs = TIME_RANGES[timeRange];
+    const intervals = getChartIntervals(canisterId, rangeMs);
 
-    if (hourlyData.length === 0) return;
+    if (intervals.length === 0) return;
 
     chart = createChart(chartContainer, {
       width: chartContainer.clientWidth,
@@ -242,42 +167,89 @@
       },
     });
 
-    // Layer 1: Interpolated hourly bars
+    // Create chart data from intervals
+    // Each interval becomes a bar at its midpoint
+    const chartData = [];
+
+    for (const interval of intervals) {
+      const midTime = Math.floor((interval.startTime + interval.endTime) / 2000); // seconds for chart
+      const durationHours = interval.duration / HOUR_MS;
+
+      if (interval.isTopUp) {
+        // For top-up intervals, show two bars:
+        // 1. The inferred burn (positive, orange)
+        // 2. The top-up amount (negative, below zero, red)
+
+        const inferredBurnPerHour = interval.inferredBurn / interval.duration * HOUR_MS;
+        if (inferredBurnPerHour > 0) {
+          chartData.push({
+            time: midTime,
+            value: inferredBurnPerHour / 1e12, // Convert to T
+            color: "#f97316", // Orange for inferred
+            isInferred: true,
+          });
+        }
+
+        // Show top-up as negative bar
+        const topUpPerHour = interval.topUpAmount / interval.duration * HOUR_MS;
+        if (topUpPerHour > 0) {
+          chartData.push({
+            time: midTime + 1, // Offset by 1 second to avoid overlap
+            value: -topUpPerHour / 1e12, // Negative for top-up
+            color: "#f85149", // Red for top-up (shows below zero)
+            isTopUp: true,
+          });
+        }
+      } else {
+        // Regular burn interval - green bar
+        const burnPerHour = interval.actualBurn / interval.duration * HOUR_MS;
+        chartData.push({
+          time: midTime,
+          value: burnPerHour / 1e12, // Convert to T
+          color: "#00d395", // Green for actual burn
+          isActual: true,
+        });
+      }
+    }
+
+    // Sort by time
+    chartData.sort((a, b) => a.time - b.time);
+
+    if (chartData.length === 0) return;
+
+    // Create histogram series
     const barSeries = chart.addSeries(HistogramSeries, {
       priceFormat: {
         type: "custom",
-        formatter: (price) => formatBurnValue(price),
+        formatter: (price) => formatBurnValue(Math.abs(price)),
       },
     });
 
-    const chartData = hourlyData.map(h => ({
-      time: h.hourStart / 1000,
-      value: h.burnAmount / 1e12,
-      color: h.burnAmount >= 0 ? "#00d395" : "#3b82f6",
-    }));
-
     barSeries.setData(chartData);
 
-    // Layer 2: Add trend line using regression
-    addTrendLine(chart, filteredSnapshots);
+    // Add average burn rate line
+    addAverageLine(chart, intervals);
 
     chart.timeScale().fitContent();
   }
 
-  // Add regression trend line to the chart
-  function addTrendLine(chartInstance, snapshots) {
-    if (!snapshots || snapshots.length < 2) return;
+  // Add horizontal line showing average burn rate
+  function addAverageLine(chartInstance, intervals) {
+    if (!intervals || intervals.length === 0) return;
 
-    // Convert snapshots to points for regression
-    const points = snapshots.map(s => ({
-      t: Number(s.timestamp / 1_000_000n),  // ms
-      v: Number(s.cycles),
-    }));
+    // Calculate average from actual burn intervals only
+    const burnIntervals = intervals.filter(i => !i.isTopUp);
+    if (burnIntervals.length === 0) return;
 
-    const result = linearRegression(points);
-    if (!result) return;
+    const totalBurn = burnIntervals.reduce((s, i) => s + i.actualBurn, 0);
+    const totalDuration = burnIntervals.reduce((s, i) => s + i.duration, 0);
 
-    // Create line series for trend
+    if (totalDuration <= 0) return;
+
+    const avgBurnPerMs = totalBurn / totalDuration;
+    const avgBurnPerHourT = avgBurnPerMs * HOUR_MS / 1e12;
+
+    // Create line series for average
     const lineSeries = chartInstance.addSeries(LineSeries, {
       color: 'rgba(249, 115, 22, 0.7)',  // Orange, semi-transparent
       lineWidth: 2,
@@ -287,33 +259,14 @@
       crosshairMarkerVisible: false,
     });
 
-    // Calculate trend line from regression
-    const sortedPoints = [...points].sort((a, b) => a.t - b.t);
-    const firstTime = sortedPoints[0].t;
-    const lastTime = sortedPoints[sortedPoints.length - 1].t;
+    // Get time range from intervals
+    const firstTime = Math.floor(intervals[0].startTime / 1000);
+    const lastTime = Math.floor(intervals[intervals.length - 1].endTime / 1000);
 
-    // Calculate balance values from regression line
-    const firstValue = result.slope * firstTime + result.intercept;
-    const lastValue = result.slope * lastTime + result.intercept;
-
-    // Convert to burn rate for display on the burn chart
-    // The trend represents the rate of change
-    const burnPerMs = -result.slope;  // Negative slope = positive burn
-    const avgHourlyBurn = burnPerMs * HOUR_MS / 1e12;  // Convert to T per hour
-
-    // Create a horizontal reference line at the average burn rate
-    const trendData = [
-      {
-        time: Math.floor(firstTime / 1000),
-        value: avgHourlyBurn,
-      },
-      {
-        time: Math.floor(lastTime / 1000),
-        value: avgHourlyBurn,
-      },
-    ];
-
-    lineSeries.setData(trendData);
+    lineSeries.setData([
+      { time: firstTime, value: avgBurnPerHourT },
+      { time: lastTime, value: avgBurnPerHourT },
+    ]);
   }
 
   function handleResize() {
@@ -370,7 +323,12 @@
       </div>
 
       <div class="chart-header">
-        <span class="chart-title">Hourly Burn (interpolated from snapshots)</span>
+        <span class="chart-title">Burn Rate per Interval</span>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot actual"></span> Actual</span>
+          <span class="legend-item"><span class="legend-dot inferred"></span> Inferred</span>
+          <span class="legend-item"><span class="legend-dot topup"></span> Top-up</span>
+        </div>
       </div>
       <div class="chart-container" bind:this={chartContainer}></div>
 
@@ -404,7 +362,7 @@
         </div>
         <div class="stat-divider"></div>
 
-        <!-- Regression-based burn rates -->
+        <!-- Burn rates -->
         <div class="stat-row">
           <span class="stat-label">
             Recent Rate
@@ -416,11 +374,8 @@
             {#if data.recent_rate}
               {formatRate(data.recent_rate.rate)}/day
               <span class="rate-meta">
-                ({data.recent_rate.dataPoints} pts, R²={data.recent_rate.confidence.toFixed(2)})
+                ({data.recent_rate.dataPoints} pts{#if data.recent_rate.topUpCount > 0}, {data.recent_rate.topUpCount} top-up{data.recent_rate.topUpCount > 1 ? 's' : ''}{/if})
               </span>
-              {#if data.recent_rate.unreliable}
-                <span class="topup-indicator" title="Rate may be inaccurate due to top-ups">~</span>
-              {/if}
             {:else}
               -
             {/if}
@@ -438,11 +393,8 @@
             {#if data.short_term_rate}
               {formatRate(data.short_term_rate.rate)}/day
               <span class="rate-meta">
-                ({data.short_term_rate.dataPoints} pts, R²={data.short_term_rate.confidence.toFixed(2)})
+                ({data.short_term_rate.dataPoints} pts{#if data.short_term_rate.topUpCount > 0}, {data.short_term_rate.topUpCount} top-up{data.short_term_rate.topUpCount > 1 ? 's' : ''}{/if})
               </span>
-              {#if data.short_term_rate.unreliable}
-                <span class="topup-indicator" title="Rate may be inaccurate due to top-ups">~</span>
-              {/if}
             {:else}
               -
             {/if}
@@ -460,11 +412,8 @@
             {#if data.long_term_rate}
               {formatRate(data.long_term_rate.rate)}/day
               <span class="rate-meta">
-                ({data.long_term_rate.dataPoints} pts, R²={data.long_term_rate.confidence.toFixed(2)})
+                ({data.long_term_rate.dataPoints} pts{#if data.long_term_rate.topUpCount > 0}, {data.long_term_rate.topUpCount} top-up{data.long_term_rate.topUpCount > 1 ? 's' : ''}{/if})
               </span>
-              {#if data.long_term_rate.unreliable}
-                <span class="topup-indicator" title="Rate may be inaccurate due to top-ups">~</span>
-              {/if}
             {:else}
               -
             {/if}
@@ -568,6 +517,11 @@
 
   .chart-header {
     margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .chart-title {
@@ -575,6 +529,37 @@
     color: #6b7280;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  .chart-legend {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: #9ca3af;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+
+  .legend-dot.actual {
+    background: #00d395;
+  }
+
+  .legend-dot.inferred {
+    background: #f97316;
+  }
+
+  .legend-dot.topup {
+    background: #f85149;
   }
 
   .chart-container {
@@ -683,12 +668,6 @@
     color: #6b7280;
     margin-left: 4px;
     font-family: sans-serif;
-  }
-
-  .topup-indicator {
-    color: #f97316;
-    margin-left: 4px;
-    font-weight: 600;
   }
 
   .external-links {

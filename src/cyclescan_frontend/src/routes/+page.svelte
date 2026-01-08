@@ -1,17 +1,19 @@
 <script>
   import "../index.scss";
   import { onMount } from "svelte";
-  import { loadData, getProjectCanisters as fetchProjectCanisters } from "$lib/data";
+  import { loadData, getProjectCanisters as fetchProjectCanisters, getProjectSparklineIntervals, getChartIntervals } from "$lib/data";
   import CanisterDetailModal from "$lib/components/CanisterDetailModal.svelte";
+  import Sparkline from "$lib/components/Sparkline.svelte";
+  import DataFreshness from "$lib/components/DataFreshness/DataFreshness.svelte";
 
   let entries = [];
   let projectEntries = [];
   let stats = null;
-  let timeWindows = null;
+  let rawSnapshots = [];
   let loading = true;
   let error = null;
   let searchQuery = "";
-  let sortColumn = "short_term_rate";  // Default to short-term rate
+  let sortColumn = "short_term_rate";
   let sortDirection = "desc";
   let currentPage = 1;
   let selectedCanisterId = null;
@@ -20,6 +22,10 @@
   let loadingProjects = new Set();
   let failedLogos = new Set();
   let includeCycleTransfers = false;
+
+  // Sparkline caches (computed on demand for visible rows)
+  let projectSparklineCache = new Map();
+  let canisterSparklineCache = new Map();
 
   // Network-level stats
   let networkBurn24h = null;
@@ -31,6 +37,7 @@
   const BILLION = 1_000_000_000n;
   const MILLION = 1_000_000n;
   const SECONDS_PER_DAY = 86400;
+  const DAY_MS = 24 * 60 * 60 * 1000;
 
   function formatCycles(value) {
     if (value === null || value === undefined) return null;
@@ -51,7 +58,6 @@
     if (ratePerHour === null || ratePerHour === undefined) return null;
     const perDay = ratePerHour * 24n;
 
-    // Handle negative rates (gaining)
     const isNegative = perDay < 0n;
     const absPerDay = isNegative ? -perDay : perDay;
 
@@ -69,15 +75,15 @@
     return { value: formatted, isNegative };
   }
 
-  // Format rate data for display in table
+  // Format rate data for display in table - simplified
   function formatRateCell(rateData) {
     if (!rateData) {
-      return { text: "-", class: "no-data", unreliable: false, lowConfidence: false };
+      return { text: "-", class: "no-data" };
     }
 
     const formatted = formatRate(rateData.rate);
     if (!formatted) {
-      return { text: "-", class: "no-data", unreliable: false, lowConfidence: false };
+      return { text: "-", class: "no-data" };
     }
 
     let displayClass = "positive";
@@ -90,20 +96,15 @@
     return {
       text: formatted.isNegative ? `+${formatted.value}` : formatted.value,
       class: displayClass,
-      // Only show warning when data is actually unreliable (couldn't compensate for top-ups)
-      unreliable: rateData.unreliable === true,
-      lowConfidence: rateData.confidence < 0.5,
-      confidence: rateData.confidence,
       dataPoints: rateData.dataPoints,
-      actualHours: rateData.actualHours,
-      burnIntervals: rateData.burnIntervalCount ?? 0
+      hasInferred: rateData.hasInferredData
     };
   }
 
-  // Calculate runway in days: balance / (burn rate per day)
+  // Calculate runway in days
   function calcRunway(balance, rateData) {
     if (!balance || !rateData || !rateData.rate || rateData.rate <= 0n) {
-      return null; // No burn or gaining cycles = infinite runway
+      return null;
     }
     const balanceBigInt = BigInt(balance);
     const ratePerDay = rateData.rate * 24n;
@@ -126,18 +127,6 @@
       const years = days / 365;
       return { text: years >= 10 ? `${Math.round(years)}y` : `${years.toFixed(1)}y`, class: "runway-good" };
     }
-  }
-
-  // Legacy formatBurn for backwards compatibility
-  function formatBurn(value) {
-    if (value === null || value === undefined || value.length === 0) {
-      return { text: "-", class: "no-data" };
-    }
-    const v = value[0];
-    if (v === 0n || v === 0) {
-      return { text: "0", class: "zero" };
-    }
-    return { text: formatCycles(v), class: "positive" };
   }
 
   function shortenCanisterId(id) {
@@ -187,7 +176,7 @@
   }
   $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
-  // Get rate value for sorting - handles both new and legacy columns
+  // Get rate value for sorting
   function getRateValue(entry, col) {
     switch (col) {
       case "total_balance":
@@ -205,16 +194,6 @@
         const days = calcRunway(balance, rate);
         return days === null ? Infinity : days;
       }
-      // Legacy columns
-      case "total_burn_1h":
-      case "burn_1h":
-        return entry.adj_total_burn_1h?.[0] ?? entry.total_burn_1h?.[0] ?? entry.burn_1h?.[0] ?? -1n;
-      case "total_burn_24h":
-      case "burn_24h":
-        return entry.adj_total_burn_24h?.[0] ?? entry.total_burn_24h?.[0] ?? entry.burn_24h?.[0] ?? -1n;
-      case "total_burn_7d":
-      case "burn_7d":
-        return entry.adj_total_burn_7d?.[0] ?? entry.total_burn_7d?.[0] ?? entry.burn_7d?.[0] ?? -1n;
       case "project":
         return entry.project ?? "";
       case "canister_count":
@@ -225,7 +204,6 @@
   }
 
   $: filteredProjectEntries = adjustedProjectEntries.filter(e => {
-    if (shouldHideProject(e.project)) return false;
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return e.project.toLowerCase().includes(q);
@@ -300,13 +278,23 @@
     return canisters.filter(c => c.valid);
   }
 
-  function isProjectFullyInvalid(projectName) {
-    const canisters = getProjectCanisters(projectName);
-    if (canisters.length === 0) return false;
-    return canisters.every(c => !c.valid);
+  // Get sparkline data for a project (with caching)
+  function getProjectSparklineData(projectName) {
+    if (!projectSparklineCache.has(projectName)) {
+      projectSparklineCache.set(projectName, getProjectSparklineIntervals(projectName, 7 * DAY_MS));
+    }
+    return projectSparklineCache.get(projectName);
   }
 
-  // Pre-compute adjusted project entries
+  // Get sparkline data for a canister (with caching)
+  function getCanisterSparklineData(canisterId) {
+    if (!canisterSparklineCache.has(canisterId)) {
+      canisterSparklineCache.set(canisterId, getChartIntervals(canisterId, 7 * DAY_MS));
+    }
+    return canisterSparklineCache.get(canisterId);
+  }
+
+  // Pre-compute adjusted project entries (excluding invalid canisters)
   $: adjustedProjectEntries = (() => {
     const contrib = new Map();
     for (const entry of entries) {
@@ -319,10 +307,7 @@
           invalidBalance: 0n,
           invalidRecentRate: 0n,
           invalidShortTermRate: 0n,
-          invalidLongTermRate: 0n,
-          invalidBurn1h: 0n,
-          invalidBurn24h: 0n,
-          invalidBurn7d: 0n
+          invalidLongTermRate: 0n
         });
       }
       const c = contrib.get(project);
@@ -333,9 +318,6 @@
         c.invalidRecentRate += entry.recent_rate?.rate ?? 0n;
         c.invalidShortTermRate += entry.short_term_rate?.rate ?? 0n;
         c.invalidLongTermRate += entry.long_term_rate?.rate ?? 0n;
-        c.invalidBurn1h += BigInt(entry.burn_1h?.[0] || 0);
-        c.invalidBurn24h += BigInt(entry.burn_24h?.[0] || 0);
-        c.invalidBurn7d += BigInt(entry.burn_7d?.[0] || 0);
       }
     }
 
@@ -348,16 +330,12 @@
           adj_total_balance: entry.total_balance,
           adj_recent_rate: entry.recent_rate,
           adj_short_term_rate: entry.short_term_rate,
-          adj_long_term_rate: entry.long_term_rate,
-          adj_total_burn_1h: entry.total_burn_1h,
-          adj_total_burn_24h: entry.total_burn_24h,
-          adj_total_burn_7d: entry.total_burn_7d
+          adj_long_term_rate: entry.long_term_rate
         };
       }
 
       const adjBalance = BigInt(entry.total_balance) - c.invalidBalance;
 
-      // Adjust rates by subtracting invalid canister contributions
       const adjRecentRate = entry.recent_rate ? {
         ...entry.recent_rate,
         rate: entry.recent_rate.rate - c.invalidRecentRate
@@ -371,34 +349,22 @@
         rate: entry.long_term_rate.rate - c.invalidLongTermRate
       } : null;
 
-      const adj1h = entry.total_burn_1h?.[0] ? BigInt(entry.total_burn_1h[0]) - c.invalidBurn1h : null;
-      const adj24h = entry.total_burn_24h?.[0] ? BigInt(entry.total_burn_24h[0]) - c.invalidBurn24h : null;
-      const adj7d = entry.total_burn_7d?.[0] ? BigInt(entry.total_burn_7d[0]) - c.invalidBurn7d : null;
-
       return {
         ...entry,
         adj_canister_count: BigInt(entry.canister_count) - BigInt(c.invalid),
         adj_total_balance: adjBalance > 0n ? adjBalance : 0n,
         adj_recent_rate: adjRecentRate,
         adj_short_term_rate: adjShortTermRate,
-        adj_long_term_rate: adjLongTermRate,
-        adj_total_burn_1h: adj1h !== null ? (adj1h > 0n ? [adj1h] : [0n]) : entry.total_burn_1h,
-        adj_total_burn_24h: adj24h !== null ? (adj24h > 0n ? [adj24h] : [0n]) : entry.total_burn_24h,
-        adj_total_burn_7d: adj7d !== null ? (adj7d > 0n ? [adj7d] : [0n]) : entry.total_burn_7d
+        adj_long_term_rate: adjLongTermRate
       };
     });
   })();
 
-  function shouldHideProject(projectName) {
-    return false;
-  }
-
   $: invalidCanisterCount = entries.filter(e => !e.valid).length;
 
-  // Calculate aggregate burn from tracked canisters using regression rates
+  // Calculate aggregate burn from tracked canisters
   $: trackedBurn24h = (() => {
     const validEntries = entries.filter(e => includeCycleTransfers || e.valid);
-    // Use short_term_rate (36h window) and convert from /hour to /day
     const totalRatePerHour = validEntries.reduce((sum, entry) => {
       const rate = entry.short_term_rate?.rate;
       if (rate !== null && rate !== undefined) {
@@ -406,7 +372,7 @@
       }
       return sum;
     }, 0n);
-    return totalRatePerHour * 24n;  // Convert to per-day
+    return totalRatePerHour * 24n;
   })();
 
   $: coveragePercent = (networkBurn24h && trackedBurn24h > 0n)
@@ -427,12 +393,6 @@
     } finally {
       networkBurnLoading = false;
     }
-  }
-
-  function formatTrillions(value) {
-    if (value === null || value === undefined) return null;
-    const n = typeof value === 'bigint' ? Number(value) : value;
-    return (n / 1e12).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 });
   }
 
   function cyclesToUsd(cycles) {
@@ -461,7 +421,7 @@
       entries = data.entries;
       stats = data.stats;
       projectEntries = data.projectEntries;
-      timeWindows = data.timeWindows;
+      rawSnapshots = data.rawSnapshots;
       loading = false;
     } catch (e) {
       error = e.message || "Failed to load data";
@@ -472,46 +432,51 @@
 
 <div class="container">
   <header class="page-header">
-    <div class="header-brand">
-      <img src="/logo.png" alt="CycleScan" class="header-logo" />
-      <span class="brand-name">CycleScan</span>
-    </div>
-    <div class="header-stats">
-      <div class="hero-stat">
-        <span class="hero-value">
-          {#if networkBurnLoading}—{:else}{formatUsd(cyclesToUsd(networkBurn24h))}{/if}
-        </span>
-        <span class="hero-unit">/day burned across the IC</span>
+    <div class="header-left">
+      <div class="header-brand">
+        <img src="/logo.png" alt="CycleScan" class="header-logo" />
+        <span class="brand-name">CycleScan</span>
       </div>
-      <div class="meta-stats">
-        <span class="meta-item">
-          Tracking {stats ? formatNumber(stats.canister_count) : '—'} canisters
-        </span>
-        <span class="meta-sep">·</span>
-        <span class="meta-item">
-          {#if loading || networkBurnLoading}—{:else if coveragePercent !== null}{coveragePercent.toFixed(1)}% coverage{:else}—{/if}
-        </span>
-        <span class="meta-sep">·</span>
-        <span class="meta-item">
-          {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day tracked{/if}
-        </span>
-        <span class="meta-sep">·</span>
-        <a href="/about" class="meta-link" title="How it works">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
-        </a>
+      <div class="header-stats">
+        <div class="hero-stat">
+          <span class="hero-value">
+            {#if networkBurnLoading}—{:else}{formatUsd(cyclesToUsd(networkBurn24h))}{/if}
+          </span>
+          <span class="hero-unit">/day burned across the IC</span>
+        </div>
+        <div class="meta-stats">
+          <span class="meta-item">
+            Tracking {stats ? formatNumber(stats.canister_count) : '—'} canisters
+          </span>
+          <span class="meta-sep">·</span>
+          <span class="meta-item">
+            {#if loading || networkBurnLoading}—{:else if coveragePercent !== null}{coveragePercent.toFixed(1)}% coverage{:else}—{/if}
+          </span>
+          <span class="meta-sep">·</span>
+          <span class="meta-item">
+            {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day tracked{/if}
+          </span>
+          <span class="meta-sep">·</span>
+          <a href="/about" class="meta-link" title="How it works">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
+    {#if !loading && rawSnapshots.length > 0}
+      <DataFreshness snapshots={rawSnapshots} />
+    {/if}
   </header>
 
   <div class="controls">
     <input
       type="text"
       class="search"
-      placeholder="Search projects or canister_ids..."
+      placeholder="Search projects..."
       bind:value={searchQuery}
     />
     <label class="toggle-label">
@@ -604,10 +569,14 @@
                 class="col-runway"
                 class:sorted={sortColumn === "runway"}
                 on:click={() => sortBy("runway")}
-                title="Estimated days until cycles depleted (based on short-term rate)"
+                title="Estimated days until cycles depleted"
               >
                 Runway
                 <span class="sort-arrow">{sortColumn === "runway" ? (sortDirection === "desc" ? "▼" : "▲") : "▼"}</span>
+              </th>
+              <th class="col-trend">
+                Trend
+                <span class="time-hint">(24h)</span>
               </th>
             </tr>
           </thead>
@@ -649,41 +618,35 @@
                 </td>
                 <td class="canister-count">{Number(entry.adj_canister_count ?? entry.canister_count).toLocaleString()}</td>
                 <td class="cycles">{formatCycles(entry.adj_total_balance ?? entry.total_balance)}</td>
-                <td class="burn {recentCell.class}" class:low-confidence={recentCell.lowConfidence}>
-                  <span class="rate-value" title={recentCell.dataPoints ? `${recentCell.dataPoints} pts, R²=${recentCell.confidence?.toFixed(2)}, ${recentCell.burnIntervals} burn intervals` : ''}>
+                <td class="burn {recentCell.class}">
+                  <span class="rate-value" title={recentCell.dataPoints ? `${recentCell.dataPoints} data points` : ''}>
                     {recentCell.text}
                     {#if recentCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                   </span>
-                  {#if recentCell.unreliable}
-                    <span class="topup-badge" title="Estimated rate - insufficient data after recent top-ups">~</span>
-                  {/if}
                 </td>
-                <td class="burn {shortTermCell.class}" class:low-confidence={shortTermCell.lowConfidence}>
-                  <span class="rate-value" title={shortTermCell.dataPoints ? `${shortTermCell.dataPoints} pts, R²=${shortTermCell.confidence?.toFixed(2)}, ${shortTermCell.burnIntervals} burn intervals` : ''}>
+                <td class="burn {shortTermCell.class}">
+                  <span class="rate-value" title={shortTermCell.dataPoints ? `${shortTermCell.dataPoints} data points` : ''}>
                     {shortTermCell.text}
                     {#if shortTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                   </span>
-                  {#if shortTermCell.unreliable}
-                    <span class="topup-badge" title="Estimated rate - insufficient data after recent top-ups">~</span>
-                  {/if}
                 </td>
-                <td class="burn {longTermCell.class}" class:low-confidence={longTermCell.lowConfidence}>
-                  <span class="rate-value" title={longTermCell.dataPoints ? `${longTermCell.dataPoints} pts, R²=${longTermCell.confidence?.toFixed(2)}, ${longTermCell.burnIntervals} burn intervals` : ''}>
+                <td class="burn {longTermCell.class}">
+                  <span class="rate-value" title={longTermCell.dataPoints ? `${longTermCell.dataPoints} data points` : ''}>
                     {longTermCell.text}
                     {#if longTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                   </span>
-                  {#if longTermCell.unreliable}
-                    <span class="topup-badge" title="Estimated rate - insufficient data after recent top-ups">~</span>
-                  {/if}
                 </td>
-                <td class="runway {runwayCell.class}" title={runwayDays !== null ? `${Math.round(runwayDays)} days` : 'Infinite (not burning or gaining cycles)'}>
+                <td class="runway {runwayCell.class}" title={runwayDays !== null ? `${Math.round(runwayDays)} days` : 'Infinite'}>
                   {runwayCell.text}
+                </td>
+                <td class="trend">
+                  <Sparkline intervals={getProjectSparklineData(entry.project)} showInferred={false} />
                 </td>
               </tr>
               {#if expandedProjects.has(entry.project)}
                 {#if loadingProjects.has(entry.project)}
                   <tr class="sub-row loading-row">
-                    <td colspan="8" class="loading-cell">Loading canisters...</td>
+                    <td colspan="9" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
                   {#each getVisibleProjectCanisters(entry.project) as canister, j}
@@ -698,7 +661,7 @@
                         <div class="project-cell sub-cell">
                           <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
                           {#if !canister.valid}
-                            <span class="transfers-flag" title="Data may be inaccurate — this canister appears to transfer cycles rather than burn them">
+                            <span class="transfers-flag" title="This canister transfers cycles rather than burns them">
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
                                 <line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="2"></line>
@@ -709,35 +672,29 @@
                       </td>
                       <td class="canister-count"></td>
                       <td class="cycles">{formatCycles(canister.balance)}</td>
-                      <td class="burn {canRecentCell.class}" class:low-confidence={canRecentCell.lowConfidence}>
+                      <td class="burn {canRecentCell.class}">
                         <span class="rate-value">
                           {canRecentCell.text}
                           {#if canRecentCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                         </span>
-                        {#if canRecentCell.unreliable}
-                          <span class="topup-badge" title="Rate may be inaccurate">~</span>
-                        {/if}
                       </td>
-                      <td class="burn {canShortTermCell.class}" class:low-confidence={canShortTermCell.lowConfidence}>
+                      <td class="burn {canShortTermCell.class}">
                         <span class="rate-value">
                           {canShortTermCell.text}
                           {#if canShortTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                         </span>
-                        {#if canShortTermCell.unreliable}
-                          <span class="topup-badge" title="Rate may be inaccurate">~</span>
-                        {/if}
                       </td>
-                      <td class="burn {canLongTermCell.class}" class:low-confidence={canLongTermCell.lowConfidence}>
+                      <td class="burn {canLongTermCell.class}">
                         <span class="rate-value">
                           {canLongTermCell.text}
                           {#if canLongTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
                         </span>
-                        {#if canLongTermCell.unreliable}
-                          <span class="topup-badge" title="Rate may be inaccurate">~</span>
-                        {/if}
                       </td>
                       <td class="runway {canRunwayCell.class}">
                         {canRunwayCell.text}
+                      </td>
+                      <td class="trend sub-trend">
+                        <Sparkline intervals={getCanisterSparklineData(canister.canister_id)} width={60} height={16} />
                       </td>
                     </tr>
                   {/each}
@@ -753,55 +710,20 @@
   <!-- Pagination -->
   {#if !loading && !error && totalProjectPages > 1}
     <div class="pagination">
-      <button
-        class="page-btn"
-        disabled={currentPage === 1}
-        on:click={() => goToPage(1)}
-      >
-        First
-      </button>
-      <button
-        class="page-btn"
-        disabled={currentPage === 1}
-        on:click={() => goToPage(currentPage - 1)}
-      >
-        Prev
-      </button>
-
+      <button class="page-btn" disabled={currentPage === 1} on:click={() => goToPage(1)}>First</button>
+      <button class="page-btn" disabled={currentPage === 1} on:click={() => goToPage(currentPage - 1)}>Prev</button>
       <div class="page-numbers">
         {#each Array.from({ length: totalProjectPages }, (_, i) => i + 1) as page}
           {#if page === 1 || page === totalProjectPages || (page >= currentPage - 2 && page <= currentPage + 2)}
-            <button
-              class="page-num"
-              class:active={page === currentPage}
-              on:click={() => goToPage(page)}
-            >
-              {page}
-            </button>
+            <button class="page-num" class:active={page === currentPage} on:click={() => goToPage(page)}>{page}</button>
           {:else if page === currentPage - 3 || page === currentPage + 3}
             <span class="ellipsis">...</span>
           {/if}
         {/each}
       </div>
-
-      <button
-        class="page-btn"
-        disabled={currentPage === totalProjectPages}
-        on:click={() => goToPage(currentPage + 1)}
-      >
-        Next
-      </button>
-      <button
-        class="page-btn"
-        disabled={currentPage === totalProjectPages}
-        on:click={() => goToPage(totalProjectPages)}
-      >
-        Last
-      </button>
-
-      <span class="page-info">
-        {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, sortedProjectEntries.length)} of {sortedProjectEntries.length.toLocaleString()}
-      </span>
+      <button class="page-btn" disabled={currentPage === totalProjectPages} on:click={() => goToPage(currentPage + 1)}>Next</button>
+      <button class="page-btn" disabled={currentPage === totalProjectPages} on:click={() => goToPage(totalProjectPages)}>Last</button>
+      <span class="page-info">{startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, sortedProjectEntries.length)} of {sortedProjectEntries.length.toLocaleString()}</span>
     </div>
   {/if}
 
@@ -813,8 +735,5 @@
 </div>
 
 {#if selectedCanisterId}
-  <CanisterDetailModal
-    canisterId={selectedCanisterId}
-    onClose={closeModal}
-  />
+  <CanisterDetailModal canisterId={selectedCanisterId} onClose={closeModal} />
 {/if}

@@ -13,7 +13,6 @@
       <img src="/logo.png" alt="CycleScan" class="header-logo" />
       <span class="brand-name">CycleScan</span>
     </div>
-    <h1 class="page-title">How It Works</h1>
   </header>
 
   <div class="content">
@@ -35,27 +34,30 @@
     <section class="methodology-section">
       <h2>Burn Rate Calculation</h2>
       <p>
-        Unlike simple "subtract previous from current" approaches, CycleScan uses
-        <strong>linear regression</strong> to calculate burn rates. This provides several advantages:
+        CycleScan uses an <strong>interval-based averaging</strong> approach to calculate burn rates.
+        We analyze the change in balance between each consecutive snapshot:
       </p>
       <ul>
-        <li><strong>Noise reduction:</strong> Minor fluctuations in individual snapshots don't skew the result</li>
-        <li><strong>Uses all data:</strong> Instead of just two points, we use all available snapshots in the time window</li>
-        <li><strong>Confidence metric:</strong> The R² value tells you how well the data fits a linear trend</li>
+        <li><strong>Burn intervals:</strong> When balance decreases between snapshots, this represents actual cycle consumption</li>
+        <li><strong>Top-up intervals:</strong> When balance increases, this indicates a cycle top-up occurred</li>
       </ul>
 
-      <h3>The Math</h3>
+      <h3>The Algorithm</h3>
       <p>
-        For each canister, we collect all balance snapshots within a time window and fit a line
-        using least-squares regression. The slope of this line (in cycles per millisecond) is
-        converted to cycles per day for display.
+        For each canister within a time window, we:
       </p>
+      <ol>
+        <li>Calculate the burn rate from all intervals where the balance decreased</li>
+        <li>Compute the average burn rate per millisecond from these "burn intervals"</li>
+        <li>For top-up intervals, we <strong>infer</strong> what the burn would have been based on this average</li>
+        <li>Sum actual burns + inferred burns to get the total burn over the full time period</li>
+      </ol>
       <div class="formula">
-        Burn Rate = -slope × 86,400,000 ms/day
+        Burn Rate = (Actual Burns + Inferred Burns) ÷ Total Duration
       </div>
       <p class="formula-note">
-        A negative slope means the balance is decreasing (burning cycles). We negate it to
-        show burn as a positive number.
+        This approach gives us accurate burn rates even when top-ups occur, because we estimate
+        the burn that would have happened during those periods.
       </p>
     </section>
 
@@ -89,43 +91,56 @@
     <section class="methodology-section">
       <h2>Handling Top-Ups</h2>
       <p>
-        When a canister receives new cycles (a "top-up"), its balance jumps upward. This can
-        distort burn rate calculations. CycleScan detects top-ups (increases ≥500B cycles) and
-        handles them intelligently:
+        When a canister receives new cycles (a "top-up"), its balance jumps upward. CycleScan
+        detects <strong>any balance increase</strong> as a top-up and handles it automatically:
       </p>
       <ul>
         <li>
-          <strong>Single top-up:</strong> We use only the data <em>after</em> the top-up for
-          the most accurate recent burn rate.
+          <strong>Detection:</strong> Any interval where the ending balance is higher than the
+          starting balance is marked as a top-up interval.
         </li>
         <li>
-          <strong>Multiple top-ups:</strong> We calculate burn from non-top-up intervals only,
-          then extrapolate.
+          <strong>Inference:</strong> During top-up intervals, we estimate the burn that would
+          have occurred based on the average burn rate from non-top-up intervals.
+        </li>
+        <li>
+          <strong>Calculation:</strong> The final burn rate includes both actual measured burns
+          and inferred burns, giving you an accurate picture of consumption.
         </li>
       </ul>
-
-      <h3>The ~ Symbol</h3>
-      <p>
-        When you see a <span class="badge-example">~</span> next to a burn rate, it means we
-        couldn't reliably compensate for top-ups in that time window. The rate shown is our
-        best estimate but may be less accurate.
-      </p>
+      <div class="info-box">
+        <strong>Example:</strong> If a canister burns 100B cycles/hour on average, and receives
+        a 1T cycle top-up during a 1-hour interval, we infer that ~100B cycles were also burned
+        during that hour. The displayed burn rate accounts for this.
+      </div>
     </section>
 
     <section class="methodology-section">
-      <h2>Confidence (R²)</h2>
+      <h2>Chart Visualization</h2>
       <p>
-        The R² (R-squared) value measures how well the data fits a linear trend:
+        When you click on a canister, the detail chart shows burn rates per interval with
+        color-coded bars:
       </p>
-      <ul>
-        <li><strong>R² ≥ 0.9:</strong> Excellent fit - very consistent burn rate</li>
-        <li><strong>R² ≥ 0.7:</strong> Good fit - reasonably stable</li>
-        <li><strong>R² ≥ 0.5:</strong> Moderate fit - some variance</li>
-        <li><strong>R² &lt; 0.5:</strong> Low confidence - burn rate varies significantly</li>
-      </ul>
+      <table class="info-table">
+        <tr>
+          <th>Color</th>
+          <th>Meaning</th>
+        </tr>
+        <tr>
+          <td><span class="color-dot actual"></span> Green</td>
+          <td><strong>Actual burn</strong> - Measured cycle consumption from intervals where balance decreased</td>
+        </tr>
+        <tr>
+          <td><span class="color-dot inferred"></span> Orange</td>
+          <td><strong>Inferred burn</strong> - Estimated consumption during top-up intervals, based on average burn rate</td>
+        </tr>
+        <tr>
+          <td><span class="color-dot topup"></span> Red (below zero)</td>
+          <td><strong>Top-up amount</strong> - The cycles added during that interval (shown as negative/below the axis)</td>
+        </tr>
+      </table>
       <p>
-        Low confidence doesn't mean the data is wrong—it means the canister's burn rate
-        isn't constant. This is common for canisters with bursty activity.
+        The orange dashed line shows the average burn rate across all actual burn intervals.
       </p>
     </section>
 
@@ -155,7 +170,7 @@
           <td>Okay - healthy runway</td>
         </tr>
         <tr>
-          <td class="runway-good">> 1y</td>
+          <td class="runway-good">&gt; 1y</td>
           <td>Good - well funded</td>
         </tr>
         <tr>
@@ -197,6 +212,83 @@
     </section>
 
     <section class="methodology-section">
+      <h2>Get Your Project Listed</h2>
+      <p>
+        Missing from CycleScan? Here's how to get your project added.
+      </p>
+      <h3>Eligibility Requirements</h3>
+      <p>
+        Your canister must have a controller that publicly exposes cycle balance information.
+        This means one of the following must be a controller of your canister:
+      </p>
+      <ul>
+        <li>
+          <strong>Blackhole canister</strong> (<code>e3mmv-5qaaa-aaaah-aadma-cai</code>) -
+          A widely-used canister that allows anyone to query <code>canister_status</code>
+        </li>
+        <li>
+          <strong>NNS Root canister</strong> (<code>r7inp-6aaaa-aaaaa-aaabq-cai</code>) -
+          The NNS root also exposes <code>canister_status</code> publicly
+        </li>
+        <li>
+          <strong>SNS Root canister</strong> - If your project is an SNS, cycle data is
+          automatically available via <code>get_sns_canisters_summary()</code>
+        </li>
+      </ul>
+
+      <h3>About the Blackhole Canister</h3>
+      <p>
+        The blackhole canister is the recommended option for most projects. It's a simple, trustworthy
+        canister created by <a href="https://github.com/ninegua/ic-blackhole" target="_blank" rel="noopener">ninegua</a>
+        with these properties:
+      </p>
+      <ul>
+        <li>
+          <strong>Open source</strong> - The entire code is ~25 lines of Motoko, just a thin wrapper
+          around the IC management canister
+        </li>
+        <li>
+          <strong>Immutable</strong> - Its only controller is itself, so it can never be modified
+        </li>
+        <li>
+          <strong>Safe</strong> - It only exposes <code>canister_status</code> for reading. It cannot
+          upgrade, stop, delete, or modify your canister in any way
+        </li>
+        <li>
+          <strong>Verified</strong> - Module hash: <code>0x210cf9...9d7de0</code>
+        </li>
+      </ul>
+      <p>
+        The only "downside" is that anyone can query your canister's cycle balance, memory usage, and
+        module hash. For most projects, this transparency is a feature, not a bug.
+      </p>
+
+      <div class="info-box">
+        <strong>Why is this required?</strong> Without one of these controllers, there's no way to
+        publicly query a canister's cycle balance. The IC management canister's <code>canister_status</code>
+        method is restricted to controllers, so a public proxy like the blackhole is needed.
+      </div>
+      <h3>How to Get Added</h3>
+      <p>
+        Once your canister meets the eligibility requirements, reach out to us on X (Twitter):
+      </p>
+      <p style="text-align: center; margin: 20px 0;">
+        <a href="https://x.com/alexandria_lbry" target="_blank" rel="noopener" class="contact-link">
+          @alexandria_lbry
+        </a>
+      </p>
+      <p>
+        Include your canister ID(s) and project name, and we'll add you to the leaderboard.
+      </p>
+      <div class="info-box">
+        <strong>Background:</strong> CycleScan was initiated by querying every single canister on
+        the entire ICP network and checking for eligibility. However, we don't continuously scan
+        for newly eligible canisters, so if you've recently added the blackhole as a controller
+        or launched a new project, you'll need to let us know.
+      </div>
+    </section>
+
+    <section class="methodology-section">
       <h2>Limitations</h2>
       <ul>
         <li>
@@ -208,8 +300,9 @@
           canisters on the IC. Coverage percentage is shown in the header.
         </li>
         <li>
-          <strong>Top-up detection:</strong> Very small top-ups (&lt; 500B cycles) aren't detected
-          and may slightly skew burn rates.
+          <strong>Inferred burn accuracy:</strong> When top-ups occur, the inferred burn is based
+          on the average from other intervals. If burn rates vary significantly, the inference
+          may be less accurate.
         </li>
         <li>
           <strong>Cycle transfers:</strong> We identify known cycle-transferring canisters, but
@@ -240,13 +333,6 @@
   .back-link:hover {
     color: var(--accent);
     background: var(--bg-tertiary);
-  }
-
-  .page-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-top: 16px;
-    color: var(--text);
   }
 
   .content {
@@ -350,15 +436,36 @@
     color: var(--text);
   }
 
-  .badge-example {
+  .color-dot {
     display: inline-block;
-    background: var(--orange);
-    color: var(--bg);
-    font-weight: 600;
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin: 0 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .color-dot.actual {
+    background: #00d395;
+  }
+
+  .color-dot.inferred {
+    background: #f97316;
+  }
+
+  .color-dot.topup {
+    background: #f85149;
+  }
+
+  .methodology-section ol {
+    margin: 12px 0;
+    padding-left: 24px;
+  }
+
+  .methodology-section ol li {
+    line-height: 1.7;
+    margin-bottom: 8px;
+    color: var(--text);
   }
 
   .runway-critical {
@@ -389,6 +496,32 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  .contact-link {
+    display: inline-block;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.15s ease;
+  }
+
+  .contact-link:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  code {
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: var(--text-muted);
   }
 
   footer {
