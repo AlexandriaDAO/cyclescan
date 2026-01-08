@@ -1,7 +1,8 @@
 <script>
   import { onMount, onDestroy, createEventDispatcher } from "svelte";
-  import { getCanisterDetail } from "$lib/data";
-  import { createChart, HistogramSeries } from "lightweight-charts";
+  import { getCanisterDetail, getRawSnapshots } from "$lib/data";
+  import { linearRegression } from "$lib/regression";
+  import { createChart, HistogramSeries, LineSeries } from "lightweight-charts";
 
   export let canisterId;
   export let onClose;
@@ -12,49 +13,81 @@
   let loading = true;
   let error = null;
   let timeRange = "7d";
-  let barInterval = "1h";
   let chartContainer;
   let chart = null;
-  let barSeries = null;
 
   const TRILLION = 1_000_000_000_000n;
   const BILLION = 1_000_000_000n;
   const MILLION = 1_000_000n;
-  const NANOS_PER_DAY = 86_400_000_000_000n;
-  const NANOS_PER_HOUR = 3_600_000_000_000n;
+  const HOUR_MS = 3600000;
+  const DAY_MS = 86400000;
 
   const TIME_RANGES = {
-    "1d": NANOS_PER_DAY,
-    "3d": 3n * NANOS_PER_DAY,
-    "7d": 7n * NANOS_PER_DAY,
-  };
-
-  const BAR_INTERVALS = {
-    "1h": NANOS_PER_HOUR,
-    "4h": 4n * NANOS_PER_HOUR,
-    "12h": 12n * NANOS_PER_HOUR,
-    "1d": NANOS_PER_DAY,
+    "1d": DAY_MS,
+    "3d": 3 * DAY_MS,
+    "7d": 7 * DAY_MS,
   };
 
   function formatCycles(value) {
     if (value === null || value === undefined) return "-";
-    const n = BigInt(value);
-    if (n >= TRILLION) {
-      return (Number(n / BILLION) / 1000).toFixed(2) + "T";
-    } else if (n >= BILLION) {
-      return (Number(n / MILLION) / 1000).toFixed(2) + "B";
-    } else if (n >= MILLION) {
-      return (Number(n) / 1_000_000).toFixed(2) + "M";
+    const n = typeof value === 'bigint' ? value : BigInt(value);
+    const absN = n < 0n ? -n : n;
+    const sign = n < 0n ? "-" : "";
+
+    if (absN >= TRILLION) {
+      return sign + (Number(absN / BILLION) / 1000).toFixed(2) + "T";
+    } else if (absN >= BILLION) {
+      return sign + (Number(absN / MILLION) / 1000).toFixed(2) + "B";
+    } else if (absN >= MILLION) {
+      return sign + (Number(absN) / 1_000_000).toFixed(2) + "M";
     } else {
-      return Number(n).toLocaleString();
+      return sign + Number(absN).toLocaleString();
     }
   }
 
-  function formatTrillions(value) {
+  // Format rate: takes cycles/hour, displays as cycles/day
+  function formatRate(ratePerHour) {
+    if (ratePerHour === null || ratePerHour === undefined) return "-";
+    const perDay = ratePerHour * 24n;
+
+    const isNegative = perDay < 0n;
+    const absPerDay = isNegative ? -perDay : perDay;
+
+    let formatted;
+    if (absPerDay >= TRILLION) {
+      formatted = (Number(absPerDay / BILLION) / 1000).toFixed(2) + "T";
+    } else if (absPerDay >= BILLION) {
+      formatted = (Number(absPerDay / MILLION) / 1000).toFixed(2) + "B";
+    } else if (absPerDay >= MILLION) {
+      formatted = (Number(absPerDay) / 1_000_000).toFixed(1) + "M";
+    } else {
+      formatted = Number(absPerDay).toLocaleString();
+    }
+
+    return isNegative ? `+${formatted}` : formatted;
+  }
+
+  function formatBurnValue(value) {
     if (value >= 1000) {
       return `${(value / 1000).toFixed(1)}Q`;
+    } else if (value >= 1) {
+      return `${value.toFixed(2)}T`;
+    } else if (value >= 0.001) {
+      return `${(value * 1000).toFixed(1)}B`;
+    } else {
+      return `${(value * 1000000).toFixed(0)}M`;
     }
-    return `${value.toFixed(1)}T`;
+  }
+
+  function formatTimeDelta(hours) {
+    if (hours === null || hours === undefined || hours === 0) return '';
+    if (hours < 1) {
+      return `${Math.round(hours * 60)} min`;
+    } else if (hours < 24) {
+      return `${hours.toFixed(1)}h`;
+    } else {
+      return `${(hours / 24).toFixed(1)}d`;
+    }
   }
 
   function dashboardUrl(id) {
@@ -100,61 +133,93 @@
     }
   }
 
-  function getFilteredSnapshots() {
-    if (!data || !data.snapshots) return [];
+  // Compute burn deltas between consecutive snapshots
+  function computeBurnDeltas(snapshots) {
+    if (!snapshots || snapshots.length < 2) return [];
 
-    const now = BigInt(Date.now()) * 1_000_000n; // Convert to nanoseconds
-    const rangeNanos = TIME_RANGES[timeRange];
-    const cutoff = now - rangeNanos;
+    const sorted = [...snapshots].sort((a, b) =>
+      Number(a.timestamp - b.timestamp)
+    );
 
-    return data.snapshots.filter(s => BigInt(s.timestamp) >= cutoff);
-  }
+    const deltas = [];
+    for (let i = 1; i < sorted.length; i++) {
+      const prev = sorted[i - 1];
+      const curr = sorted[i];
 
-  function aggregateSnapshots(snapshots) {
-    if (snapshots.length === 0) return [];
-    if (barInterval === "1h") {
-      // No aggregation needed, but must sort ascending (oldest first) for chart
-      return [...snapshots].sort((a, b) => Number(a.timestamp - b.timestamp));
+      const startTimeMs = Number(prev.timestamp / 1_000_000n);
+      const endTimeMs = Number(curr.timestamp / 1_000_000n);
+      const burnAmount = prev.cycles - curr.cycles;
+
+      deltas.push({
+        startTime: startTimeMs,
+        endTime: endTimeMs,
+        burnAmount: Number(burnAmount),
+      });
     }
 
-    const intervalNanos = BAR_INTERVALS[barInterval];
-    const buckets = new Map();
+    return deltas;
+  }
 
-    for (const snapshot of snapshots) {
-      const ts = BigInt(snapshot.timestamp);
-      // Round down to interval boundary
-      const bucketStart = (ts / intervalNanos) * intervalNanos;
-      const bucketKey = bucketStart.toString();
+  // Interpolate burn deltas into hourly buckets
+  function interpolateToHourlyBuckets(deltas) {
+    if (deltas.length === 0) return [];
 
-      // Keep the latest snapshot in each bucket (highest timestamp wins)
-      const existing = buckets.get(bucketKey);
-      if (!existing || ts > existing.timestamp) {
-        buckets.set(bucketKey, {
-          timestamp: ts,
-          bucketStart: bucketStart,
-          cycles: BigInt(snapshot.cycles),
-        });
+    const hourlyBurns = new Map();
+
+    for (const delta of deltas) {
+      const durationMs = delta.endTime - delta.startTime;
+      if (durationMs <= 0) continue;
+
+      const burnPerMs = delta.burnAmount / durationMs;
+
+      const startHour = Math.floor(delta.startTime / HOUR_MS) * HOUR_MS;
+      const endHour = Math.floor(delta.endTime / HOUR_MS) * HOUR_MS;
+
+      for (let hour = startHour; hour <= endHour; hour += HOUR_MS) {
+        const hourEnd = hour + HOUR_MS;
+
+        const overlapStart = Math.max(delta.startTime, hour);
+        const overlapEnd = Math.min(delta.endTime, hourEnd);
+        const overlapMs = Math.max(0, overlapEnd - overlapStart);
+
+        if (overlapMs > 0) {
+          const burnInThisHour = burnPerMs * overlapMs;
+          hourlyBurns.set(hour, (hourlyBurns.get(hour) || 0) + burnInThisHour);
+        }
       }
     }
 
-    // Convert to array and sort by bucket start time
-    return Array.from(buckets.values())
-      .map(b => ({ timestamp: b.bucketStart, cycles: b.cycles }))
-      .sort((a, b) => Number(a.timestamp - b.timestamp));
+    return Array.from(hourlyBurns.entries())
+      .map(([hourStart, burnAmount]) => ({ hourStart, burnAmount }))
+      .sort((a, b) => a.hourStart - b.hourStart);
+  }
+
+  function getFilteredSnapshots() {
+    if (!data || !data.snapshots) return [];
+
+    const now = Date.now();
+    const rangeMs = TIME_RANGES[timeRange];
+    const cutoff = now - rangeMs;
+
+    return data.snapshots.filter(s => {
+      const tsMs = Number(s.timestamp / 1_000_000n);
+      return tsMs >= cutoff;
+    });
   }
 
   function createChartInstance() {
     if (!chartContainer || !data) return;
 
-    // Destroy existing chart
     if (chart) {
       chart.remove();
       chart = null;
     }
 
     const filteredSnapshots = getFilteredSnapshots();
-    const aggregatedData = aggregateSnapshots(filteredSnapshots);
-    if (aggregatedData.length === 0) return;
+    const deltas = computeBurnDeltas(filteredSnapshots);
+    const hourlyData = interpolateToHourlyBuckets(deltas);
+
+    if (hourlyData.length === 0) return;
 
     chart = createChart(chartContainer, {
       width: chartContainer.clientWidth,
@@ -177,23 +242,78 @@
       },
     });
 
-    barSeries = chart.addSeries(HistogramSeries, {
-      color: "#00d395",
+    // Layer 1: Interpolated hourly bars
+    const barSeries = chart.addSeries(HistogramSeries, {
       priceFormat: {
         type: "custom",
-        formatter: (price) => formatTrillions(price),
+        formatter: (price) => formatBurnValue(price),
       },
     });
 
-    const chartData = aggregatedData.map(point => ({
-      // Divide as BigInt first to avoid precision loss, then convert to Number
-      time: Number(BigInt(point.timestamp) / 1_000_000_000n), // nanoseconds to seconds
-      value: Number(point.cycles) / 1e12, // Convert to trillions
-      color: "#00d395",
+    const chartData = hourlyData.map(h => ({
+      time: h.hourStart / 1000,
+      value: h.burnAmount / 1e12,
+      color: h.burnAmount >= 0 ? "#00d395" : "#3b82f6",
     }));
 
     barSeries.setData(chartData);
+
+    // Layer 2: Add trend line using regression
+    addTrendLine(chart, filteredSnapshots);
+
     chart.timeScale().fitContent();
+  }
+
+  // Add regression trend line to the chart
+  function addTrendLine(chartInstance, snapshots) {
+    if (!snapshots || snapshots.length < 2) return;
+
+    // Convert snapshots to points for regression
+    const points = snapshots.map(s => ({
+      t: Number(s.timestamp / 1_000_000n),  // ms
+      v: Number(s.cycles),
+    }));
+
+    const result = linearRegression(points);
+    if (!result) return;
+
+    // Create line series for trend
+    const lineSeries = chartInstance.addSeries(LineSeries, {
+      color: 'rgba(249, 115, 22, 0.7)',  // Orange, semi-transparent
+      lineWidth: 2,
+      lineStyle: 2,  // Dashed
+      lastValueVisible: false,
+      priceLineVisible: false,
+      crosshairMarkerVisible: false,
+    });
+
+    // Calculate trend line from regression
+    const sortedPoints = [...points].sort((a, b) => a.t - b.t);
+    const firstTime = sortedPoints[0].t;
+    const lastTime = sortedPoints[sortedPoints.length - 1].t;
+
+    // Calculate balance values from regression line
+    const firstValue = result.slope * firstTime + result.intercept;
+    const lastValue = result.slope * lastTime + result.intercept;
+
+    // Convert to burn rate for display on the burn chart
+    // The trend represents the rate of change
+    const burnPerMs = -result.slope;  // Negative slope = positive burn
+    const avgHourlyBurn = burnPerMs * HOUR_MS / 1e12;  // Convert to T per hour
+
+    // Create a horizontal reference line at the average burn rate
+    const trendData = [
+      {
+        time: Math.floor(firstTime / 1000),
+        value: avgHourlyBurn,
+      },
+      {
+        time: Math.floor(lastTime / 1000),
+        value: avgHourlyBurn,
+      },
+    ];
+
+    lineSeries.setData(trendData);
   }
 
   function handleResize() {
@@ -204,11 +324,6 @@
 
   function setTimeRange(range) {
     timeRange = range;
-    createChartInstance();
-  }
-
-  function setBarInterval(interval) {
-    barInterval = interval;
     createChartInstance();
   }
 
@@ -254,35 +369,12 @@
         </div>
       </div>
 
+      <div class="chart-header">
+        <span class="chart-title">Hourly Burn (interpolated from snapshots)</span>
+      </div>
       <div class="chart-container" bind:this={chartContainer}></div>
 
       <div class="chart-controls">
-        <div class="interval-selector">
-          <span class="control-label">Interval</span>
-          <div class="interval-buttons">
-            <button
-              class="interval-btn"
-              class:active={barInterval === "1h"}
-              on:click={() => setBarInterval("1h")}
-            >1H</button>
-            <button
-              class="interval-btn"
-              class:active={barInterval === "4h"}
-              on:click={() => setBarInterval("4h")}
-            >4H</button>
-            <button
-              class="interval-btn"
-              class:active={barInterval === "12h"}
-              on:click={() => setBarInterval("12h")}
-            >12H</button>
-            <button
-              class="interval-btn"
-              class:active={barInterval === "1d"}
-              on:click={() => setBarInterval("1d")}
-            >1D</button>
-          </div>
-        </div>
-
         <div class="time-range-selector">
           <span class="control-label">Range</span>
           <div class="range-buttons">
@@ -310,17 +402,73 @@
           <span class="stat-label">Current Balance</span>
           <span class="stat-value">{formatCycles(data.current_balance)}</span>
         </div>
+        <div class="stat-divider"></div>
+
+        <!-- Regression-based burn rates -->
         <div class="stat-row">
-          <span class="stat-label">1h Burn</span>
-          <span class="stat-value">{formatCycles(data.burn_1h?.[0])}</span>
+          <span class="stat-label">
+            Recent Rate
+            {#if data.recent_rate?.actualHours}
+              <span class="time-delta">({formatTimeDelta(data.recent_rate.actualHours)})</span>
+            {/if}
+          </span>
+          <span class="stat-value" class:gaining={data.recent_rate?.rate < 0n}>
+            {#if data.recent_rate}
+              {formatRate(data.recent_rate.rate)}/day
+              <span class="rate-meta">
+                ({data.recent_rate.dataPoints} pts, R²={data.recent_rate.confidence.toFixed(2)})
+              </span>
+              {#if data.recent_rate.topUpActivity !== 'none'}
+                <span class="topup-indicator">{data.recent_rate.topUpActivity === 'frequent' ? '!!' : '!'}</span>
+              {/if}
+            {:else}
+              -
+            {/if}
+          </span>
         </div>
+
         <div class="stat-row">
-          <span class="stat-label">24h Burn</span>
-          <span class="stat-value">{formatCycles(data.burn_24h?.[0])}</span>
+          <span class="stat-label">
+            Short-term Rate
+            {#if data.short_term_rate?.actualHours}
+              <span class="time-delta">({formatTimeDelta(data.short_term_rate.actualHours)})</span>
+            {/if}
+          </span>
+          <span class="stat-value" class:gaining={data.short_term_rate?.rate < 0n}>
+            {#if data.short_term_rate}
+              {formatRate(data.short_term_rate.rate)}/day
+              <span class="rate-meta">
+                ({data.short_term_rate.dataPoints} pts, R²={data.short_term_rate.confidence.toFixed(2)})
+              </span>
+              {#if data.short_term_rate.topUpActivity !== 'none'}
+                <span class="topup-indicator">{data.short_term_rate.topUpActivity === 'frequent' ? '!!' : '!'}</span>
+              {/if}
+            {:else}
+              -
+            {/if}
+          </span>
         </div>
+
         <div class="stat-row">
-          <span class="stat-label">7d Burn</span>
-          <span class="stat-value">{formatCycles(data.burn_7d?.[0])}</span>
+          <span class="stat-label">
+            Long-term Rate
+            {#if data.long_term_rate?.actualHours}
+              <span class="time-delta">({formatTimeDelta(data.long_term_rate.actualHours)})</span>
+            {/if}
+          </span>
+          <span class="stat-value" class:gaining={data.long_term_rate?.rate < 0n}>
+            {#if data.long_term_rate}
+              {formatRate(data.long_term_rate.rate)}/day
+              <span class="rate-meta">
+                ({data.long_term_rate.dataPoints} pts, R²={data.long_term_rate.confidence.toFixed(2)})
+              </span>
+              {#if data.long_term_rate.topUpActivity !== 'none'}
+                <span class="topup-indicator">{data.long_term_rate.topUpActivity === 'frequent' ? '!!' : '!'}</span>
+              {/if}
+            {:else}
+              -
+            {/if}
+          </span>
         </div>
       </div>
 
@@ -418,6 +566,17 @@
     color: #fff;
   }
 
+  .chart-header {
+    margin-bottom: 8px;
+  }
+
+  .chart-title {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   .chart-container {
     background: #1a1a2e;
     border-radius: 8px;
@@ -433,7 +592,6 @@
     flex-wrap: wrap;
   }
 
-  .interval-selector,
   .time-range-selector {
     display: flex;
     align-items: center;
@@ -447,7 +605,6 @@
     letter-spacing: 0.5px;
   }
 
-  .interval-buttons,
   .range-buttons {
     display: flex;
     background: #2d2d44;
@@ -455,7 +612,6 @@
     padding: 2px;
   }
 
-  .interval-btn,
   .range-btn {
     background: transparent;
     border: none;
@@ -468,12 +624,10 @@
     transition: all 0.15s ease;
   }
 
-  .interval-btn:hover,
   .range-btn:hover {
     color: #fff;
   }
 
-  .interval-btn.active,
   .range-btn.active {
     background: #00d395;
     color: #000;
@@ -489,21 +643,52 @@
   .stat-row {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 8px 0;
     border-bottom: 1px solid #3d3d54;
+    gap: 16px;
   }
 
   .stat-row:last-child {
     border-bottom: none;
   }
 
+  .stat-divider {
+    border-bottom: 2px solid #3d3d54;
+    margin: 4px 0;
+  }
+
   .stat-label {
     color: #9ca3af;
+    white-space: nowrap;
+  }
+
+  .stat-label .time-delta {
+    color: #f97316;
+    font-size: 12px;
   }
 
   .stat-value {
     color: #fff;
     font-family: monospace;
+    text-align: right;
+  }
+
+  .stat-value.gaining {
+    color: #3b82f6;
+  }
+
+  .rate-meta {
+    font-size: 11px;
+    color: #6b7280;
+    margin-left: 4px;
+    font-family: sans-serif;
+  }
+
+  .topup-indicator {
+    color: #f97316;
+    margin-left: 4px;
+    font-weight: 600;
   }
 
   .external-links {
