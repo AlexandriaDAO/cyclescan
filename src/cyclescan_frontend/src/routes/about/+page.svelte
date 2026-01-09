@@ -10,7 +10,7 @@
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </a>
-      <img src="/logo.png" alt="CycleScan" class="header-logo" />
+      <img src="/cyclescan_canister.png" alt="CycleScan" class="header-logo" />
       <span class="brand-name">CycleScan</span>
     </div>
   </header>

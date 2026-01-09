@@ -6,6 +6,9 @@
   export let snapshots = [];
   export let compact = false;
 
+  // Expanded state for non-compact mode
+  let expanded = false;
+
   // Group snapshots by day
   $: snapshotsByDay = groupByDay(snapshots);
 
@@ -70,30 +73,56 @@
   }
 </script>
 
-<div class="data-freshness" class:compact>
-  <div class="freshness-header">
-    <span class="freshness-title">Data Coverage</span>
-    <LiveIndicator {minutesAgo} />
-  </div>
-
-  <DayHeatmap
-    days={last7Days}
-    {snapshotsByDay}
-    {selectedDayIndex}
-    onSelect={handleSelectDay}
-  />
-
-  {#if !compact && selectedDay}
-    <HourClock
-      snapshots={selectedDaySnapshots}
-      day={selectedDay}
-      isToday={selectedDayIndex === 6}
+<div class="data-freshness" class:compact class:expanded>
+  {#if compact}
+    <DayHeatmap
+      days={last7Days}
+      {snapshotsByDay}
+      {selectedDayIndex}
+      onSelect={handleSelectDay}
+      compact={true}
     />
+    <LiveIndicator {minutesAgo} />
+  {:else}
+    <button class="freshness-toggle" on:click={() => expanded = !expanded}>
+      <div class="toggle-header">
+        <DayHeatmap
+          days={last7Days}
+          {snapshotsByDay}
+          {selectedDayIndex}
+          onSelect={handleSelectDay}
+          compact={true}
+        />
+        <LiveIndicator {minutesAgo} />
+        <span class="expand-icon" class:expanded>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+    </button>
 
-    <div class="day-summary">
-      {selectedDay.date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
-      · {selectedDaySnapshots.length} of {selectedDayIndex === 6 ? new Date().getHours() + 1 : 24} snapshots
-    </div>
+    {#if expanded && selectedDay}
+      <div class="expanded-content">
+        <DayHeatmap
+          days={last7Days}
+          {snapshotsByDay}
+          {selectedDayIndex}
+          onSelect={handleSelectDay}
+        />
+
+        <HourClock
+          snapshots={selectedDaySnapshots}
+          day={selectedDay}
+          isToday={selectedDayIndex === 6}
+        />
+
+        <div class="day-summary">
+          {selectedDay.date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
+          · {selectedDaySnapshots.length} of {selectedDayIndex === 6 ? new Date().getHours() + 1 : 24} snapshots
+        </div>
+      </div>
+    {/if}
   {/if}
 </div>
 
@@ -102,33 +131,63 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 16px;
+    gap: 8px;
+  }
+
+  .data-freshness.compact {
+    flex-direction: row;
+    gap: 8px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .freshness-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+
+  .freshness-toggle:hover {
+    background: var(--bg-hover, rgba(255,255,255,0.05));
+  }
+
+  .toggle-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .expand-icon {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted, #888);
+    transition: transform 0.2s ease;
+  }
+
+  .expand-icon.expanded {
+    transform: rotate(180deg);
+  }
+
+  .expanded-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
     background: var(--bg-secondary, #1a1a2e);
     border-radius: 8px;
-  }
-
-  .freshness-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  .freshness-title {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted, #888);
+    margin-top: 4px;
   }
 
   .day-summary {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--text-secondary, #aaa);
-  }
-
-  .compact .freshness-header {
-    justify-content: center;
-    gap: 12px;
   }
 </style>

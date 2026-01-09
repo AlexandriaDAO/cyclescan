@@ -433,28 +433,22 @@
 <div class="container">
   <header class="page-header">
     <div class="header-left">
-      <div class="header-brand">
-        <img src="/logo.png" alt="CycleScan" class="header-logo" />
-        <span class="brand-name">CycleScan</span>
-      </div>
-      <div class="header-stats">
-        <div class="hero-stat">
-          <span class="hero-value">
-            {#if networkBurnLoading}—{:else}{formatUsd(cyclesToUsd(networkBurn24h))}{/if}
-          </span>
-          <span class="hero-unit">/day burned across the IC</span>
+      <div class="header-row-top">
+        <div class="header-brand" title="Cycles burn leaderboard for ICP">
+          <img src="/cyclescan_canister.png" alt="CycleScan" class="header-logo" />
+          <span class="brand-name">CycleScan</span>
         </div>
         <div class="meta-stats">
-          <span class="meta-item">
-            Tracking {stats ? formatNumber(stats.canister_count) : '—'} canisters
+          <span class="meta-item" title="Number of canisters being tracked">
+            {stats ? formatNumber(stats.canister_count) : '—'} canisters
           </span>
           <span class="meta-sep">·</span>
-          <span class="meta-item">
+          <span class="meta-item" title={`Coverage: ${coveragePercent?.toFixed(1) ?? '—'}% of total IC network cycle burn is tracked by CycleScan`}>
             {#if loading || networkBurnLoading}—{:else if coveragePercent !== null}{coveragePercent.toFixed(1)}% coverage{:else}—{/if}
           </span>
           <span class="meta-sep">·</span>
-          <span class="meta-item">
-            {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day tracked{/if}
+          <span class="meta-item highlight" title={`Tracked burn: ${formatCycles(trackedBurn24h)}/day (${formatUsd(cyclesToUsd(trackedBurn24h))} USD at 1T cycles = $${xdrToUsd.toFixed(2)})`}>
+            {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day burn{/if}
           </span>
           <span class="meta-sep">·</span>
           <a href="/about" class="meta-link" title="How it works">
@@ -466,29 +460,30 @@
           </a>
         </div>
       </div>
+      <div class="header-row-bottom">
+        <input
+          type="text"
+          class="search"
+          placeholder="Search projects..."
+          bind:value={searchQuery}
+        />
+        <label class="toggle-label">
+          <input type="checkbox" bind:checked={includeCycleTransfers} />
+          <span>Include cycle transfers</span>
+          {#if invalidCanisterCount > 0 && !includeCycleTransfers}
+            <span class="excluded-count" title="Canisters excluded because they transfer cycles rather than burn them">
+              ({invalidCanisterCount} excluded)
+            </span>
+          {/if}
+        </label>
+      </div>
     </div>
     {#if !loading && rawSnapshots.length > 0}
-      <DataFreshness snapshots={rawSnapshots} />
+      <div class="header-right">
+        <DataFreshness snapshots={rawSnapshots} />
+      </div>
     {/if}
   </header>
-
-  <div class="controls">
-    <input
-      type="text"
-      class="search"
-      placeholder="Search projects..."
-      bind:value={searchQuery}
-    />
-    <label class="toggle-label">
-      <input type="checkbox" bind:checked={includeCycleTransfers} />
-      <span>Include cycle transfers</span>
-      {#if invalidCanisterCount > 0 && !includeCycleTransfers}
-        <span class="excluded-count" title="Canisters excluded because they transfer cycles rather than burn them">
-          ({invalidCanisterCount} excluded)
-        </span>
-      {/if}
-    </label>
-  </div>
 
   {#if loading}
     <div class="loading">Loading leaderboard...</div>

@@ -3,6 +3,7 @@
   export let snapshotsByDay = new Map();
   export let selectedDayIndex = 6;
   export let onSelect = () => {};
+  export let compact = false;
 
   function getCompleteness(dateKey, index) {
     const snaps = snapshotsByDay.get(dateKey) || [];
@@ -36,7 +37,7 @@
   }
 </script>
 
-<div class="day-heatmap">
+<div class="day-heatmap" class:compact>
   {#each days as day, i}
     {@const completeness = getCompleteness(day.dateKey, i)}
     <button
@@ -46,7 +47,9 @@
       on:click={() => onSelect(i)}
       title={getTooltip(day, i)}
     >
-      <span class="day-name">{day.dayName}</span>
+      {#if !compact}
+        <span class="day-name">{day.dayName}</span>
+      {/if}
       <span class="day-bar"></span>
     </button>
   {/each}
@@ -56,6 +59,10 @@
   .day-heatmap {
     display: flex;
     gap: 4px;
+  }
+
+  .day-heatmap.compact {
+    gap: 2px;
   }
 
   .day-cell {
@@ -71,6 +78,11 @@
     transition: all 0.15s ease;
   }
 
+  .compact .day-cell {
+    padding: 2px;
+    gap: 0;
+  }
+
   .day-cell:hover {
     background: var(--bg-hover, rgba(255,255,255,0.05));
   }
@@ -78,6 +90,15 @@
   .day-cell.selected {
     border-color: var(--color-primary, #4ade80);
     background: var(--bg-selected, rgba(74, 222, 128, 0.1));
+  }
+
+  .compact .day-cell.selected {
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .compact .day-cell.selected .day-bar {
+    box-shadow: 0 0 0 1px var(--color-primary, #4ade80);
   }
 
   .day-name {
@@ -90,6 +111,12 @@
     height: 6px;
     border-radius: 2px;
     background: var(--color-empty, #333);
+  }
+
+  .compact .day-bar {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
   }
 
   /* Completeness colors */
@@ -117,5 +144,9 @@
   .day-cell.today .day-name {
     font-weight: 600;
     color: var(--text-primary, #fff);
+  }
+
+  .compact .day-cell.today .day-bar {
+    box-shadow: 0 0 0 1px var(--text-primary, #fff);
   }
 </style>
