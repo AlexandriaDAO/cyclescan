@@ -1,14 +1,74 @@
 [
   {
-    "name": "DEX",
+    "name": "5000 SLICES Token",
     "website": [
-      "https://www.icpswap.com"
+      "https://3npnb-hqaaa-aaaao-a2ghq-cai.icp0.io"
     ]
   },
   {
-    "name": "NFT",
+    "name": "Abandoned",
+    "website": []
+  },
+  {
+    "name": "ALICE",
     "website": [
-      "https://entrepot.app/marketplace"
+      "https://alice.fun"
+    ]
+  },
+  {
+    "name": "Alice Token",
+    "website": []
+  },
+  {
+    "name": "Analytics Service",
+    "website": []
+  },
+  {
+    "name": "Aptos Token",
+    "website": []
+  },
+  {
+    "name": "Asset Canister",
+    "website": []
+  },
+  {
+    "name": "Avocado Research Token",
+    "website": [
+      "https://avcd.hodl.fyi"
+    ]
+  },
+  {
+    "name": "Bills Payment App",
+    "website": []
+  },
+  {
+    "name": "Bitcoin Integration",
+    "website": [
+      "https://internetcomputer.org/bitcoin-integration"
+    ]
+  },
+  {
+    "name": "Bitcoin Runes Etching",
+    "website": []
+  },
+  {
+    "name": "Bitcoin Token",
+    "website": []
+  },
+  {
+    "name": "Blackhole (ninegua)",
+    "website": []
+  },
+  {
+    "name": "BoB (Burn or Burn)",
+    "website": [
+      "https://bob.fun"
+    ]
+  },
+  {
+    "name": "BOB Token",
+    "website": [
+      "https://bob.fun"
     ]
   },
   {
@@ -18,9 +78,117 @@
     ]
   },
   {
+    "name": "Butten Bun Token",
+    "website": []
+  },
+  {
+    "name": "CanDB Storage",
+    "website": [
+      "https://www.canscale.dev"
+    ]
+  },
+  {
+    "name": "CANI DAO",
+    "website": [
+      "https://canistore.io"
+    ]
+  },
+  {
+    "name": "Canister Monitor",
+    "website": []
+  },
+  {
+    "name": "Canister Status Query",
+    "website": []
+  },
+  {
+    "name": "Canister Upgrader",
+    "website": []
+  },
+  {
+    "name": "Cardano Token",
+    "website": []
+  },
+  {
+    "name": "CatalyzeDAO",
+    "website": [
+      "https://catalyze.one"
+    ]
+  },
+  {
+    "name": "Cecil The Lion DAO",
+    "website": [
+      "https://cecildao.org/cecil-the-lion"
+    ]
+  },
+  {
+    "name": "Chain Fusion",
+    "website": [
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
+    ]
+  },
+  {
     "name": "CHAT",
     "website": [
       "https://oc.app"
+    ]
+  },
+  {
+    "name": "CLOUD Index",
+    "website": []
+  },
+  {
+    "name": "Cycle Manager",
+    "website": []
+  },
+  {
+    "name": "Cycles Ledger",
+    "website": [
+      "https://internetcomputer.org"
+    ]
+  },
+  {
+    "name": "Cycles Minting Canister (CMC)",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai"
+    ]
+  },
+  {
+    "name": "Cycles Wallet",
+    "website": []
+  },
+  {
+    "name": "CYCLES-TRANSFER-STATION",
+    "website": [
+      "https://cycles-transfer-station.com"
+    ]
+  },
+  {
+    "name": "DecideAI",
+    "website": [
+      "https://decideai.xyz"
+    ]
+  },
+  {
+    "name": "DEX",
+    "website": [
+      "https://www.icpswap.com"
+    ]
+  },
+  {
+    "name": "Discord Bot",
+    "website": []
+  },
+  {
+    "name": "DOLR AI",
+    "website": [
+      "https://hotornot.wtf"
+    ]
+  },
+  {
+    "name": "Draggin Karma Points",
+    "website": [
+      "https://dragginz.io"
     ]
   },
   {
@@ -30,10 +198,158 @@
     ]
   },
   {
+    "name": "ESTATE",
+    "website": [
+      "https://estatedao.org"
+    ]
+  },
+  {
+    "name": "EVM RPC",
+    "website": [
+      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview"
+    ]
+  },
+  {
+    "name": "Exchange Rates Oracle",
+    "website": [
+      "https://internetcomputer.org/docs/references/system-canisters"
+    ]
+  },
+  {
+    "name": "Exchange Registry",
+    "website": []
+  },
+  {
+    "name": "FomoWell",
+    "website": [
+      "https://fomowell.com"
+    ]
+  },
+  {
+    "name": "Forum/Board",
+    "website": []
+  },
+  {
+    "name": "funnAI",
+    "website": [
+      "https://funnai.xyz"
+    ]
+  },
+  {
+    "name": "Genesis Token",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/renrk-eyaaa-aaaaa-aaada-cai"
+    ]
+  },
+  {
+    "name": "GOLDAO",
+    "website": [
+      "https://docs.gold-dao.org"
+    ]
+  },
+  {
+    "name": "GoldFish Token",
+    "website": []
+  },
+  {
+    "name": "GoldSlice Token",
+    "website": []
+  },
+  {
+    "name": "Granny VS Internet Token",
+    "website": []
+  },
+  {
+    "name": "GRAVE Token",
+    "website": [
+      "https://xc3mi-sqaaa-aaaaj-a2mhq-cai.icp0.io"
+    ]
+  },
+  {
+    "name": "Hell O Token",
+    "website": []
+  },
+  {
+    "name": "ICExplorer",
+    "website": [
+      "https://www.icexplorer.io"
+    ]
+  },
+  {
     "name": "ICFC",
     "website": [
       "https://dashboard.internetcomputer.org/sns/gyito-zyaaa-aaaaq-aacpq-cai"
     ]
+  },
+  {
+    "name": "ICLighthouse DAO",
+    "website": [
+      "https://iclight.house"
+    ]
+  },
+  {
+    "name": "ICP Index",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai"
+    ]
+  },
+  {
+    "name": "ICP Ledger",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
+    ]
+  },
+  {
+    "name": "ICP Ledger Archive",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
+    ]
+  },
+  {
+    "name": "ICPanda",
+    "website": [
+      "https://64od3-hiaaa-aaaad-qa3uq-cai.raw.icp0.io"
+    ]
+  },
+  {
+    "name": "ICPEx",
+    "website": [
+      "https://icpex.org"
+    ]
+  },
+  {
+    "name": "ICPSwap Token",
+    "website": [
+      "https://www.icpswap.com"
+    ]
+  },
+  {
+    "name": "ICPunks",
+    "website": [
+      "https://icpunks.com"
+    ]
+  },
+  {
+    "name": "ICRC Archive",
+    "website": []
+  },
+  {
+    "name": "ICRC Index",
+    "website": [
+      "https://internetcomputer.org/docs/current/developer-docs/defi/tokens/indexes"
+    ]
+  },
+  {
+    "name": "ICRC Token",
+    "website": []
+  },
+  {
+    "name": "ICRC-1 Archive",
+    "website": []
+  },
+  {
+    "name": "ICRC-3 Archive",
+    "website": []
   },
   {
     "name": "ICTO",
@@ -48,187 +364,25 @@
     ]
   },
   {
-    "name": "Oisy",
+    "name": "Internet Identity",
     "website": [
-      "https://oisy.com"
+      "https://identity.ic0.app"
     ]
   },
   {
-    "name": "TACO",
+    "name": "Juno Build",
     "website": [
-      "https://tacodao.com"
+      "https://juno.build"
     ]
   },
   {
-    "name": "TRAX",
-    "website": [
-      "https://trax.so"
-    ]
-  },
-  {
-    "name": "ALICE",
-    "website": [
-      "https://alice.fun"
-    ]
-  },
-  {
-    "name": "ICPEx",
-    "website": [
-      "https://icpex.org"
-    ]
+    "name": "Kaspa Token",
+    "website": []
   },
   {
     "name": "KINIC",
     "website": [
       "https://kinic.io"
-    ]
-  },
-  {
-    "name": "Orbit",
-    "website": [
-      "https://orbit.global"
-    ]
-  },
-  {
-    "name": "SNS-W",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai"
-    ]
-  },
-  {
-    "name": "Sonic",
-    "website": [
-      "https://sonic.ooo"
-    ]
-  },
-  {
-    "name": "Taggr",
-    "website": [
-      "https://taggr.link"
-    ]
-  },
-  {
-    "name": "ESTATE",
-    "website": [
-      "https://estatedao.org"
-    ]
-  },
-  {
-    "name": "GOLDAO",
-    "website": [
-      "https://docs.gold-dao.org"
-    ]
-  },
-  {
-    "name": "Motoko",
-    "website": [
-      "https://entrepot.app/marketplace/motoko"
-    ]
-  },
-  {
-    "name": "Nuance",
-    "website": [
-      "https://www.home.nuance.xyz"
-    ]
-  },
-  {
-    "name": "OHSHII",
-    "website": [
-      "https://launcher.ohshii.com"
-    ]
-  },
-  {
-    "name": "ORIGYN",
-    "website": [
-      "https://www.origyn.com"
-    ]
-  },
-  {
-    "name": "Omnity",
-    "website": [
-      "https://www.omnity.network"
-    ]
-  },
-  {
-    "name": "PHASMA",
-    "website": [
-      "https://www.phasma.io"
-    ]
-  },
-  {
-    "name": "TipJar",
-    "website": [
-      "https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app"
-    ]
-  },
-  {
-    "name": "DOLR AI",
-    "website": [
-      "https://hotornot.wtf"
-    ]
-  },
-  {
-    "name": "EVM RPC",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview"
-    ]
-  },
-  {
-    "name": "ICPanda",
-    "website": [
-      "https://64od3-hiaaa-aaaad-qa3uq-cai.raw.icp0.io"
-    ]
-  },
-  {
-    "name": "ICPunks",
-    "website": [
-      "https://icpunks.com"
-    ]
-  },
-  {
-    "name": "OmniBTC",
-    "website": [
-      "https://www.omnibtc.finance"
-    ]
-  },
-  {
-    "name": "Tendies",
-    "website": [
-      "https://dashboard.internetcomputer.org/sns/gbx4n-4aaaa-aaaaq-aadqa-cai"
-    ]
-  },
-  {
-    "name": "Unknown",
-    "website": []
-  },
-  {
-    "name": "Yuku AI",
-    "website": [
-      "https://yuku.app"
-    ]
-  },
-  {
-    "name": "CANI DAO",
-    "website": [
-      "https://canistore.io"
-    ]
-  },
-  {
-    "name": "DecideAI",
-    "website": [
-      "https://decideai.xyz"
-    ]
-  },
-  {
-    "name": "FomoWell",
-    "website": [
-      "https://fomowell.com"
-    ]
-  },
-  {
-    "name": "funnAI",
-    "website": [
-      "https://funnai.xyz"
     ]
   },
   {
@@ -238,107 +392,19 @@
     ]
   },
   {
-    "name": "NNS Root",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai"
-    ]
-  },
-  {
-    "name": "NNS dapp",
-    "website": [
-      "https://nns.ic0.app"
-    ]
-  },
-  {
-    "name": "ODIN.fun",
-    "website": [
-      "https://odin.fun"
-    ]
-  },
-  {
-    "name": "SNS Swap",
-    "website": [
-      "https://internetcomputer.org/sns"
-    ]
-  },
-  {
-    "name": "Swampies",
-    "website": [
-      "https://dragginz.io"
-    ]
-  },
-  {
-    "name": "Abandoned",
+    "name": "Logger Canister",
     "website": []
-  },
-  {
-    "name": "BOB Token",
-    "website": [
-      "https://bob.fun"
-    ]
-  },
-  {
-    "name": "ICP Index",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai"
-    ]
-  },
-  {
-    "name": "RON Index",
-    "website": []
-  },
-  {
-    "name": "RunicSwap",
-    "website": [
-      "https://github.com/buriburizaemonnn/RunicSwap"
-    ]
-  },
-  {
-    "name": "Sneed DAO",
-    "website": [
-      "https://sneeddao.com"
-    ]
-  },
-  {
-    "name": "XRP Token",
-    "website": []
-  },
-  {
-    "name": "vyt Token",
-    "website": []
-  },
-  {
-    "name": "ICExplorer",
-    "website": [
-      "https://www.icexplorer.io"
-    ]
-  },
-  {
-    "name": "ICP Ledger",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
-    ]
-  },
-  {
-    "name": "ICRC Index",
-    "website": [
-      "https://internetcomputer.org/docs/current/developer-docs/defi/tokens/indexes"
-    ]
-  },
-  {
-    "name": "ICRC Token",
-    "website": []
-  },
-  {
-    "name": "Juno Build",
-    "website": [
-      "https://juno.build"
-    ]
   },
   {
     "name": "Mimic Clay",
     "website": [
       "https://dashboard.internetcomputer.org/sns/4m6il-zqaaa-aaaaq-aaa2a-cai"
+    ]
+  },
+  {
+    "name": "Motoko",
+    "website": [
+      "https://entrepot.app/marketplace/motoko"
     ]
   },
   {
@@ -348,107 +414,49 @@
     ]
   },
   {
-    "name": "Ordi Trade",
-    "website": [
-      "https://dashboard.internetcomputer.org/sns/niwqm-faaaa-aaaaq-aadiq-cai"
-    ]
-  },
-  {
-    "name": "SHOW Index",
-    "website": []
-  },
-  {
-    "name": "TRON Token",
-    "website": []
-  },
-  {
-    "name": "Alice Token",
-    "website": []
-  },
-  {
-    "name": "Aptos Token",
-    "website": []
-  },
-  {
-    "name": "CLOUD Index",
-    "website": []
-  },
-  {
-    "name": "CatalyzeDAO",
-    "website": [
-      "https://catalyze.one"
-    ]
-  },
-  {
-    "name": "Discord Bot",
-    "website": []
-  },
-  {
-    "name": "Forum/Board",
-    "website": []
-  },
-  {
-    "name": "GRAVE Token",
-    "website": [
-      "https://xc3mi-sqaaa-aaaaj-a2mhq-cai.icp0.io"
-    ]
-  },
-  {
-    "name": "Kaspa Token",
-    "website": []
-  },
-  {
     "name": "NFID Wallet",
     "website": [
       "https://nfid.one"
     ]
   },
   {
-    "name": "RONJU Token",
-    "website": []
-  },
-  {
-    "name": "TST15 Token",
-    "website": []
-  },
-  {
-    "name": "ToKeN Token",
-    "website": []
-  },
-  {
-    "name": "Trump Token",
-    "website": []
-  },
-  {
-    "name": "WaterNeuron",
+    "name": "NFT",
     "website": [
-      "https://waterneuron.fi"
+      "https://entrepot.app/marketplace"
     ]
   },
   {
-    "name": "ckETH Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckUNI Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "Hell O Token",
+    "name": "NFT Runes Exchange",
     "website": []
   },
   {
-    "name": "ICRC Archive",
-    "website": []
+    "name": "NNS Canister Migration",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/sbzkb-zqaaa-aaaaa-aaaiq-cai"
+    ]
+  },
+  {
+    "name": "NNS dapp",
+    "website": [
+      "https://nns.ic0.app"
+    ]
+  },
+  {
+    "name": "NNS Governance",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai"
+    ]
   },
   {
     "name": "NNS Lifeline",
     "website": [
       "https://dashboard.internetcomputer.org/canister/rno2w-sqaaa-aaaaa-aaacq-cai"
+    ]
+  },
+  {
+    "name": "NNS Node Provider Rewards",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/sgymv-uiaaa-aaaaa-aaaia-cai"
     ]
   },
   {
@@ -458,301 +466,9 @@
     ]
   },
   {
-    "name": "OHSHII Index",
-    "website": []
-  },
-  {
-    "name": "Personal DAO",
+    "name": "NNS Root",
     "website": [
-      "https://dashboard.internetcomputer.org/sns/izscx-raaaa-aaaaq-aaesq-cai"
-    ]
-  },
-  {
-    "name": "Unidentified",
-    "website": []
-  },
-  {
-    "name": "ckETH Ledger",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckETH Minter",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckEURC Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckLINK Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckOCT Ledger",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckPEPE Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckUSDC Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckXAUT Index",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "Bitcoin Token",
-    "website": []
-  },
-  {
-    "name": "CanDB Storage",
-    "website": [
-      "https://www.canscale.dev"
-    ]
-  },
-  {
-    "name": "Cardano Token",
-    "website": []
-  },
-  {
-    "name": "Cycle Manager",
-    "website": []
-  },
-  {
-    "name": "Cycles Ledger",
-    "website": [
-      "https://internetcomputer.org"
-    ]
-  },
-  {
-    "name": "Cycles Wallet",
-    "website": []
-  },
-  {
-    "name": "Genesis Token",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/renrk-eyaaa-aaaaa-aaada-cai"
-    ]
-  },
-  {
-    "name": "ICPSwap Token",
-    "website": [
-      "https://www.icpswap.com"
-    ]
-  },
-  {
-    "name": "Orbit Station",
-    "website": [
-      "https://orbit.global"
-    ]
-  },
-  {
-    "name": "SNS Component",
-    "website": [
-      "https://internetcomputer.org/sns"
-    ]
-  },
-  {
-    "name": "Unknown Token",
-    "website": []
-  },
-  {
-    "name": "ckLINK Ledger",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "ckUSDC Ledger",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "Asset Canister",
-    "website": []
-  },
-  {
-    "name": "GoldFish Token",
-    "website": []
-  },
-  {
-    "name": "ICRC-1 Archive",
-    "website": []
-  },
-  {
-    "name": "ICRC-3 Archive",
-    "website": []
-  },
-  {
-    "name": "NNS Governance",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai"
-    ]
-  },
-  {
-    "name": "Orbit Upgrader",
-    "website": []
-  },
-  {
-    "name": "polkadot Token",
-    "website": []
-  },
-  {
-    "name": "GoldSlice Token",
-    "website": []
-  },
-  {
-    "name": "Logger Canister",
-    "website": []
-  },
-  {
-    "name": "Social Platform",
-    "website": []
-  },
-  {
-    "name": "Windoge98 Token",
-    "website": [
-      "https://windoge98.com"
-    ]
-  },
-  {
-    "name": "Butten Bun Token",
-    "website": []
-  },
-  {
-    "name": "Canister Monitor",
-    "website": []
-  },
-  {
-    "name": "ICLighthouse DAO",
-    "website": [
-      "https://iclight.house"
-    ]
-  },
-  {
-    "name": "Social/Forum App",
-    "website": []
-  },
-  {
-    "name": "WaterMelon Token",
-    "website": []
-  },
-  {
-    "name": "5000 SLICES Token",
-    "website": [
-      "https://3npnb-hqaaa-aaaao-a2ghq-cai.icp0.io"
-    ]
-  },
-  {
-    "name": "Analytics Service",
-    "website": []
-  },
-  {
-    "name": "Bills Payment App",
-    "website": []
-  },
-  {
-    "name": "Canister Upgrader",
-    "website": []
-  },
-  {
-    "name": "Exchange Registry",
-    "website": []
-  },
-  {
-    "name": "Internet Identity",
-    "website": [
-      "https://identity.ic0.app"
-    ]
-  },
-  {
-    "name": "NNS Subnet Rental",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/qvhpv-4qaaa-aaaaa-aaagq-cai"
-    ]
-  },
-  {
-    "name": "BoB (Burn or Burn)",
-    "website": [
-      "https://bob.fun"
-    ]
-  },
-  {
-    "name": "Cecil The Lion DAO",
-    "website": [
-      "https://cecildao.org/cecil-the-lion"
-    ]
-  },
-  {
-    "name": "ICP Ledger Archive",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
-    ]
-  },
-  {
-    "name": "NFT Runes Exchange",
-    "website": []
-  },
-  {
-    "name": "Bitcoin Integration",
-    "website": [
-      "https://internetcomputer.org/bitcoin-integration"
-    ]
-  },
-  {
-    "name": "Blackhole (ninegua)",
-    "website": []
-  },
-  {
-    "name": "Draggin Karma Points",
-    "website": [
-      "https://dragginz.io"
-    ]
-  },
-  {
-    "name": "The Needful DO Token",
-    "website": [
-      "https://github.com/The-Needful-DO-org/alien-token"
-    ]
-  },
-  {
-    "name": "ckERC20 Orchestrator",
-    "website": [
-      "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
-  },
-  {
-    "name": "Bitcoin Runes Etching",
-    "website": []
-  },
-  {
-    "name": "Canister Status Query",
-    "website": []
-  },
-  {
-    "name": "Exchange Rates Oracle",
-    "website": [
-      "https://internetcomputer.org/docs/references/system-canisters"
+      "https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai"
     ]
   },
   {
@@ -762,15 +478,107 @@
     ]
   },
   {
-    "name": "Avocado Research Token",
+    "name": "NNS Subnet Rental",
     "website": [
-      "https://avcd.hodl.fyi"
+      "https://dashboard.internetcomputer.org/canister/qvhpv-4qaaa-aaaaa-aaagq-cai"
     ]
   },
   {
-    "name": "NNS Canister Migration",
+    "name": "Nuance",
     "website": [
-      "https://dashboard.internetcomputer.org/canister/sbzkb-zqaaa-aaaaa-aaaiq-cai"
+      "https://www.home.nuance.xyz"
+    ]
+  },
+  {
+    "name": "ODIN.fun",
+    "website": [
+      "https://odin.fun"
+    ]
+  },
+  {
+    "name": "OHSHII",
+    "website": [
+      "https://launcher.ohshii.com"
+    ]
+  },
+  {
+    "name": "OHSHII Index",
+    "website": []
+  },
+  {
+    "name": "Oisy",
+    "website": [
+      "https://oisy.com"
+    ]
+  },
+  {
+    "name": "OmniBTC",
+    "website": [
+      "https://www.omnibtc.finance"
+    ]
+  },
+  {
+    "name": "Omnity",
+    "website": [
+      "https://www.omnity.network"
+    ]
+  },
+  {
+    "name": "Orbit",
+    "website": [
+      "https://orbit.global"
+    ]
+  },
+  {
+    "name": "Orbit Station",
+    "website": [
+      "https://orbit.global"
+    ]
+  },
+  {
+    "name": "Orbit Upgrader",
+    "website": []
+  },
+  {
+    "name": "Ordi Trade",
+    "website": [
+      "https://dashboard.internetcomputer.org/sns/niwqm-faaaa-aaaaq-aadiq-cai"
+    ]
+  },
+  {
+    "name": "ORIGYN",
+    "website": [
+      "https://www.origyn.com"
+    ]
+  },
+  {
+    "name": "Personal DAO",
+    "website": [
+      "https://dashboard.internetcomputer.org/sns/izscx-raaaa-aaaaq-aaesq-cai"
+    ]
+  },
+  {
+    "name": "PHASMA",
+    "website": [
+      "https://www.phasma.io"
+    ]
+  },
+  {
+    "name": "polkadot Token",
+    "website": []
+  },
+  {
+    "name": "RON Index",
+    "website": []
+  },
+  {
+    "name": "RONJU Token",
+    "website": []
+  },
+  {
+    "name": "RunicSwap",
+    "website": [
+      "https://github.com/buriburizaemonnn/RunicSwap"
     ]
   },
   {
@@ -778,27 +586,45 @@
     "website": []
   },
   {
-    "name": "Unidentified (deleted)",
+    "name": "SHOW Index",
     "website": []
   },
   {
-    "name": "CYCLES-TRANSFER-STATION",
+    "name": "Sneed DAO",
     "website": [
-      "https://cycles-transfer-station.com"
+      "https://sneeddao.com"
     ]
   },
   {
-    "name": "Granny VS Internet Token",
-    "website": []
-  },
-  {
-    "name": "Unidentified (no candid)",
-    "website": []
-  },
-  {
-    "name": "NNS Node Provider Rewards",
+    "name": "SNS Component",
     "website": [
-      "https://dashboard.internetcomputer.org/canister/sgymv-uiaaa-aaaaa-aaaia-cai"
+      "https://internetcomputer.org/sns"
+    ]
+  },
+  {
+    "name": "SNS Swap",
+    "website": [
+      "https://internetcomputer.org/sns"
+    ]
+  },
+  {
+    "name": "SNS-W",
+    "website": [
+      "https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai"
+    ]
+  },
+  {
+    "name": "Social Platform",
+    "website": []
+  },
+  {
+    "name": "Social/Forum App",
+    "website": []
+  },
+  {
+    "name": "Sonic",
+    "website": [
+      "https://sonic.ooo"
     ]
   },
   {
@@ -806,17 +632,119 @@
     "website": []
   },
   {
+    "name": "Swampies",
+    "website": [
+      "https://dragginz.io"
+    ]
+  },
+  {
+    "name": "TACO",
+    "website": [
+      "https://tacodao.com"
+    ]
+  },
+  {
+    "name": "Taggr",
+    "website": [
+      "https://taggr.link"
+    ]
+  },
+  {
+    "name": "Tendies",
+    "website": [
+      "https://dashboard.internetcomputer.org/sns/gbx4n-4aaaa-aaaaq-aadqa-cai"
+    ]
+  },
+  {
+    "name": "The Needful DO Token",
+    "website": [
+      "https://github.com/The-Needful-DO-org/alien-token"
+    ]
+  },
+  {
+    "name": "TipJar",
+    "website": [
+      "https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app"
+    ]
+  },
+  {
+    "name": "ToKeN Token",
+    "website": []
+  },
+  {
+    "name": "TRAX",
+    "website": [
+      "https://trax.so"
+    ]
+  },
+  {
+    "name": "TRON Token",
+    "website": []
+  },
+  {
+    "name": "Trump Token",
+    "website": []
+  },
+  {
+    "name": "TST15 Token",
+    "website": []
+  },
+  {
+    "name": "Unidentified",
+    "website": []
+  },
+  {
+    "name": "Unidentified (deleted)",
+    "website": []
+  },
+  {
     "name": "Unidentified (empty service)",
     "website": []
   },
   {
-    "name": "Cycles Minting Canister (CMC)",
+    "name": "Unidentified (minimal interface)",
+    "website": []
+  },
+  {
+    "name": "Unidentified (no candid)",
+    "website": []
+  },
+  {
+    "name": "Unknown",
+    "website": []
+  },
+  {
+    "name": "Unknown Token",
+    "website": []
+  },
+  {
+    "name": "vyt Token",
+    "website": []
+  },
+  {
+    "name": "WaterMelon Token",
+    "website": []
+  },
+  {
+    "name": "WaterNeuron",
     "website": [
-      "https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai"
+      "https://waterneuron.fi"
     ]
   },
   {
-    "name": "Unidentified (minimal interface)",
+    "name": "Windoge98 Token",
+    "website": [
+      "https://windoge98.com"
+    ]
+  },
+  {
+    "name": "XRP Token",
     "website": []
+  },
+  {
+    "name": "Yuku AI",
+    "website": [
+      "https://yuku.app"
+    ]
   }
 ]

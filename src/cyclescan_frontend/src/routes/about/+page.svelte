@@ -116,10 +116,124 @@
     </section>
 
     <section class="methodology-section">
-      <h2>Chart Visualization</h2>
+      <h2>Project Aggregation</h2>
       <p>
-        When you click on a canister, the detail chart shows burn rates per interval with
-        color-coded bars:
+        CycleScan groups canisters by project and calculates aggregate statistics. Here's how
+        project-level metrics are computed:
+      </p>
+      <ul>
+        <li>
+          <strong>Total Balance:</strong> Sum of all canister balances in the project
+        </li>
+        <li>
+          <strong>Burn Rate:</strong> Sum of individual canister burn rates. Each canister's rate
+          is calculated independently using the interval-based algorithm, then summed.
+        </li>
+        <li>
+          <strong>Runway:</strong> Calculated from the aggregated balance and burn rate, representing
+          the project as a whole
+        </li>
+      </ul>
+      <div class="info-box">
+        <strong>Why sum rates?</strong> Since each canister burns cycles independently, the total
+        project burn is simply the sum of all canister burns. This gives you a complete picture
+        of the project's resource consumption.
+      </div>
+
+      <h3>The "Include Cycle Transfers" Toggle</h3>
+      <p>
+        Some canisters don't actually burn cycles — they transfer them to other canisters. These
+        show up as high "burn" rates but aren't real consumption. CycleScan flags these canisters
+        and the toggle controls how they're handled:
+      </p>
+      <table class="info-table">
+        <tr>
+          <th>Toggle State</th>
+          <th>What Happens</th>
+        </tr>
+        <tr>
+          <td><strong>OFF</strong> (default)</td>
+          <td>
+            Flagged canisters are <strong>hidden</strong> from the expanded project list and
+            <strong>excluded</strong> from all aggregate calculations (balance, burn rate, runway, trend chart)
+          </td>
+        </tr>
+        <tr>
+          <td><strong>ON</strong></td>
+          <td>
+            All canisters are shown and <strong>included</strong> in aggregate calculations.
+            Projects with cycle-transferring canisters will show inflated burn rates.
+          </td>
+        </tr>
+      </table>
+      <p>
+        Flagged canisters are marked with a <span class="transfers-flag-inline">flag icon</span> when visible.
+      </p>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Trend Chart</h2>
+      <p>
+        The "Trend" column shows a compact visualization of burn activity over the last 7 days.
+        It's a mini bar chart where each bar represents one hour of data.
+      </p>
+      <h3>How It Works</h3>
+      <ul>
+        <li>
+          <strong>Time range:</strong> Last 7 days of hourly data (~168 bars, though only the most
+          recent portion is visible in the compact view)
+        </li>
+        <li>
+          <strong>Bar height:</strong> Proportional to the burn rate during that hour
+        </li>
+        <li>
+          <strong>Colors:</strong> Green for actual burns, yellow/amber for intervals with inferred
+          data (top-ups detected)
+        </li>
+      </ul>
+      <h3>Logarithmic Scaling</h3>
+      <p>
+        When burn rates are "spiky" (maximum &gt; 10× median), the chart automatically switches
+        to logarithmic scaling. This prevents occasional large spikes from flattening all the
+        other bars into invisibility.
+      </p>
+      <h3>Special Indicators</h3>
+      <table class="info-table">
+        <tr>
+          <th>Display</th>
+          <th>Meaning</th>
+        </tr>
+        <tr>
+          <td><strong>·</strong> (dot)</td>
+          <td>All burns are zero — no activity detected</td>
+        </tr>
+        <tr>
+          <td><strong>—</strong> (dash)</td>
+          <td>Insufficient data (fewer than 3 hours of snapshots)</td>
+        </tr>
+      </table>
+      <h3>Project Trends</h3>
+      <p>
+        For projects, the trend chart shows <strong>aggregated burn</strong> across all canisters
+        in that project. Click on any project's trend chart to open a detailed view with:
+      </p>
+      <ul>
+        <li>Full-size aggregate burn chart with 1D/3D/7D time range selector</li>
+        <li>Total balance and canister count</li>
+        <li>Aggregate burn rates (recent, short-term, long-term)</li>
+        <li>The same actual/inferred/top-up breakdown as individual canisters</li>
+      </ul>
+      <div class="info-box">
+        <strong>Tip:</strong> Clicking the trend chart opens the project detail modal. Clicking
+        elsewhere on the row expands it to show individual canisters.
+      </div>
+    </section>
+
+    <section class="methodology-section">
+      <h2>Detail Chart</h2>
+      <p>
+        When you click on a canister row or a project's trend chart, a detail modal opens with
+        a full burn rate chart. The bars are color-coded:
       </p>
       <table class="info-table">
         <tr>
@@ -178,19 +292,6 @@
           <td>Infinite - not burning or gaining cycles</td>
         </tr>
       </table>
-    </section>
-
-    <section class="methodology-section">
-      <h2>Cycle Transfer Detection</h2>
-      <p>
-        Some canisters transfer cycles to other canisters rather than burning them. This creates
-        artificially high "burn" rates. CycleScan marks these canisters and excludes them from
-        aggregates by default.
-      </p>
-      <p>
-        You can toggle "Include cycle transfers" to see all canisters, but be aware that
-        projects with cycle-transferring canisters may show inflated burn rates.
-      </p>
     </section>
 
     <section class="methodology-section">
@@ -455,6 +556,18 @@
 
   .color-dot.topup {
     background: #f85149;
+  }
+
+  .transfers-flag-inline {
+    display: inline-flex;
+    align-items: center;
+    color: var(--red);
+    vertical-align: middle;
+  }
+
+  .transfers-flag-inline::before {
+    content: "⚑";
+    font-size: 14px;
   }
 
   .methodology-section ol {

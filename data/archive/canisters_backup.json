@@ -26776,35 +26776,38 @@
   {
     "canister_id": "sv3dd-oaaaa-aaaar-qacoa-cai",
     "project": [
-      "ckETH Minter"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckETH Minter"
   },
   {
     "canister_id": "ss2fx-dyaaa-aaaar-qacoq-cai",
     "project": [
-      "ckETH Ledger"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckETH Ledger"
   },
   {
     "canister_id": "s3zol-vqaaa-aaaar-qacpa-cai",
     "project": [
-      "ckETH Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckETH Index"
   },
   {
     "canister_id": "s4yi7-yiaaa-aaaar-qacpq-cai",
@@ -26963,13 +26966,14 @@
   {
     "canister_id": "vxkom-oyaaa-aaaar-qafda-cai",
     "project": [
-      "ckERC20 Orchestrator"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckERC20 Orchestrator"
   },
   {
     "canister_id": "uughk-2aaaa-aaaar-qaffq-cai",
@@ -26985,24 +26989,26 @@
   {
     "canister_id": "xevnm-gaaaa-aaaar-qafnq-cai",
     "project": [
-      "ckUSDC Ledger"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckUSDC Ledger"
   },
   {
     "canister_id": "xrs4b-hiaaa-aaaar-qafoa-cai",
     "project": [
-      "ckUSDC Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckUSDC Index"
   },
   {
     "canister_id": "t4dy3-uiaaa-aaaar-qafua-cai",
@@ -27150,24 +27156,26 @@
   {
     "canister_id": "g4tto-rqaaa-aaaar-qageq-cai",
     "project": [
-      "ckLINK Ledger"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckLINK Ledger"
   },
   {
     "canister_id": "gvqys-hyaaa-aaaar-qagfa-cai",
     "project": [
-      "ckLINK Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckLINK Index"
   },
   {
     "canister_id": "gaxj7-gqaaa-aaaar-qaggq-cai",
@@ -27194,24 +27202,26 @@
   {
     "canister_id": "eujml-dqaaa-aaaar-qagiq-cai",
     "project": [
-      "ckPEPE Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckPEPE Index"
   },
   {
     "canister_id": "ebo5g-cyaaa-aaaar-qagla-cai",
     "project": [
-      "ckOCT Ledger"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckOCT Ledger"
   },
   {
     "canister_id": "egp3s-paaaa-aaaar-qaglq-cai",
@@ -27436,13 +27446,14 @@
   {
     "canister_id": "imymm-naaaa-aaaar-qahhq-cai",
     "project": [
-      "ckUNI Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckUNI Index"
   },
   {
     "canister_id": "lvinw-hiaaa-aaaar-qahoa-cai",
@@ -27480,13 +27491,14 @@
   {
     "canister_id": "pd4vj-oqaaa-aaaar-qahwq-cai",
     "project": [
-      "ckEURC Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckEURC Index"
   },
   {
     "canister_id": "pn6yb-vaaaa-aaaar-qahxq-cai",
@@ -27524,13 +27536,14 @@
   {
     "canister_id": "nmhmy-riaaa-aaaar-qah2a-cai",
     "project": [
-      "ckXAUT Index"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckXAUT Index"
   },
   {
     "canister_id": "nlgkm-4qaaa-aaaar-qah2q-cai",
@@ -34633,7 +34646,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "qmgdh-3aaaa-aaaaa-qanfq-cai",
@@ -34657,7 +34670,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "bgm6p-5aaaa-aaaaf-qbzda-cai",
@@ -34669,7 +34682,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "r2n3m-oqaaa-aaaaa-qanaq-cai",
