@@ -652,6 +652,20 @@ td.trend {
   text-align: center;
 }
 
+/* Clickable sparkline wrapper for project rows */
+.sparkline-clickable {
+  display: inline-block;
+  cursor: pointer;
+  padding: 4px;
+  margin: -4px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.sparkline-clickable:hover {
+  background: rgba(249, 115, 22, 0.15);
+}
+
 td.trend.sub-trend {
   padding: 2px 8px;
 }

@@ -34597,7 +34597,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "qbhxa-ziaaa-aaaaa-qbqza-cai",
@@ -34609,7 +34609,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "rtoqq-yyaaa-aaaaa-qanba-cai",
@@ -34621,7 +34621,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "rilmv-caaaa-aaaaa-qandq-cai",
@@ -34633,7 +34633,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "qmgdh-3aaaa-aaaaa-qanfq-cai",
@@ -34645,7 +34645,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "474n2-qiaaa-aaaaf-qasoq-cai",
@@ -34657,7 +34657,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "bgm6p-5aaaa-aaaaf-qbzda-cai",
@@ -34669,7 +34669,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "r2n3m-oqaaa-aaaaa-qanaq-cai",
@@ -34681,7 +34681,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "vofho-bqaaa-aaaac-qalyq-cai",

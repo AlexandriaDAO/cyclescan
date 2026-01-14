@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import { loadData, getProjectCanisters as fetchProjectCanisters, getProjectSparklineIntervals, getChartIntervals } from "$lib/data";
   import CanisterDetailModal from "$lib/components/CanisterDetailModal.svelte";
+  import ProjectDetailModal from "$lib/components/ProjectDetailModal.svelte";
   import Sparkline from "$lib/components/Sparkline.svelte";
   import DataFreshness from "$lib/components/DataFreshness/DataFreshness.svelte";
 
@@ -17,6 +18,7 @@
   let sortDirection = "desc";
   let currentPage = 1;
   let selectedCanisterId = null;
+  let selectedProjectName = null;
   let expandedProjects = new Set();
   let projectCanistersCache = new Map();
   let loadingProjects = new Set();
@@ -273,6 +275,14 @@
 
   function closeModal() {
     selectedCanisterId = null;
+  }
+
+  function openProjectModal(projectName) {
+    selectedProjectName = projectName;
+  }
+
+  function closeProjectModal() {
+    selectedProjectName = null;
   }
 
   async function toggleProjectExpanded(projectName) {
@@ -685,7 +695,10 @@
                   {runwayCell.text}
                 </td>
                 <td class="trend">
-                  <Sparkline intervals={getProjectSparklineData(entry.project)} showInferred={false} />
+                  <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+                  <div class="sparkline-clickable" on:click|stopPropagation={() => openProjectModal(entry.project)} title="Click to view project details">
+                    <Sparkline intervals={getProjectSparklineData(entry.project)} showInferred={false} />
+                  </div>
                 </td>
               </tr>
               {#if expandedProjects.has(entry.project)}
@@ -789,4 +802,8 @@
 
 {#if selectedCanisterId}
   <CanisterDetailModal canisterId={selectedCanisterId} onClose={closeModal} />
+{/if}
+
+{#if selectedProjectName}
+  <ProjectDetailModal projectName={selectedProjectName} onClose={closeProjectModal} />
 {/if}

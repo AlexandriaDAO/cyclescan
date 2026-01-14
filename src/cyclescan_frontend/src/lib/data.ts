@@ -243,6 +243,39 @@ export function getChartIntervals(canisterId: string, windowMs: number): Interva
   return getIntervalsForChart(snapshots, windowMs, now, canisterId);
 }
 
+export interface ProjectDetail {
+  project: string;
+  canister_count: bigint;
+  total_balance: bigint;
+  website: string[] | null;
+  recent_rate: ProjectRateData | null;
+  short_term_rate: ProjectRateData | null;
+  long_term_rate: ProjectRateData | null;
+}
+
+export async function getProjectDetail(projectName: string): Promise<ProjectDetail | null> {
+  if (!cachedData) await loadData();
+  if (!cachedData) return null;
+
+  const projectEntry = cachedData.projectEntries.find(p => p.project === projectName);
+  if (!projectEntry) return null;
+
+  return {
+    project: projectEntry.project,
+    canister_count: projectEntry.canister_count,
+    total_balance: projectEntry.total_balance,
+    website: projectEntry.website,
+    recent_rate: projectEntry.recent_rate,
+    short_term_rate: projectEntry.short_term_rate,
+    long_term_rate: projectEntry.long_term_rate,
+  };
+}
+
+export function getProjectChartIntervals(projectName: string, windowMs: number): IntervalData[] {
+  // Alias for getProjectSparklineIntervals - same aggregation logic works for charts
+  return getProjectSparklineIntervals(projectName, windowMs);
+}
+
 export function getProjectSparklineIntervals(projectName: string, windowMs: number): IntervalData[] {
   if (!cachedData) return [];
 
