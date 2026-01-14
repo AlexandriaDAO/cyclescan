@@ -125,7 +125,22 @@
     "name": "Chain Fusion",
     "website": [
       "https://internetcomputer.org/docs/building-apps/chain-fusion/ethereum/overview"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "ckERC20 Orchestrator": "Manages ckERC20 token ledger suites. Creates new ledgers via NNS proposals, handles upgrades, and tops up managed canisters with cycles.",
+      "ckETH Minter": "Mints ckETH when users deposit Ether, burns ckETH when processing withdrawal requests. Bridges ETH between Ethereum and ICP.",
+      "ckETH Ledger": "Records ckETH token transactions and account balances. Implements ICRC-1/ICRC-2 fungible token standards.",
+      "ckETH Index": "Provides transaction history lookups for individual ckETH accounts by periodically pulling from the ledger.",
+      "ckUSDC Ledger": "Records ckUSDC stablecoin transactions and balances. ICRC-1/ICRC-2 compliant token ledger.",
+      "ckUSDC Index": "Transaction history lookups for ckUSDC accounts.",
+      "ckLINK Ledger": "Records ckLINK (Chainlink) token transactions and balances on ICP.",
+      "ckLINK Index": "Transaction history lookups for ckLINK accounts.",
+      "ckPEPE Index": "Transaction history lookups for ckPEPE memecoin accounts.",
+      "ckOCT Ledger": "Records ckOCT token transactions and balances.",
+      "ckUNI Index": "Transaction history lookups for ckUNI (Uniswap) token accounts.",
+      "ckEURC Index": "Transaction history lookups for ckEURC (Euro stablecoin) accounts.",
+      "ckXAUT Index": "Transaction history lookups for ckXAUT (Tether Gold) accounts."
+    }
   },
   {
     "name": "CHAT",
@@ -233,7 +248,20 @@
     "name": "funnAI",
     "website": [
       "https://funnai.xyz"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "Core": "Main protocol canisters including the FUNNAI token. Handles core PoAIW (Proof-of-AI-Work) functionality and tokenomics.",
+      "Protocol": "Protocol layer canisters managing mAIner registries, challenge distribution, scoring, and reward distribution.",
+      "Challenger LLM": "Large Language Model that generates challenges/prompts for mAIner agents to respond to in the PoAIW competition.",
+      "Judge LLMs": "On-chain LLMs that evaluate and score mAIner responses. Multiple judges provide decentralized, tamper-proof scoring.",
+      "mAIner LLMs": "Large Language Models powering the mAIner AI agents. These LLMs generate responses to challenges and compete for rewards.",
+      "DeAI Manifesto": "Canisters hosting the DeAI Manifesto, a declaration of principles for decentralized AI development on ICP.",
+      "IConfucius": "On-chain AI chatbot using Qwen 2.5 model, themed as Confucius. Generates philosophical quotes and wisdom.",
+      "DeVinci": "Browser-based AI chatbot served from ICP. Runs LLM locally in user's browser for privacy-preserving AI conversations.",
+      "ICGPT": "On-chain ChatGPT-like application using llama_cpp_canister. Runs LLMs fully on-chain for decentralized AI chat.",
+      "DeAIssemblyline": "Factory canisters for creating and deploying autonomous AI agents on the Internet Computer.",
+      "Bitcoin Donation": "Canisters handling Bitcoin donations using ICP's native BTC integration."
+    }
   },
   {
     "name": "Genesis Token",

@@ -648,7 +648,7 @@
                 <td class="project">
                   <div class="project-cell">
                     <span class="expand-icon" class:expanded={expandedProjects.has(entry.project)}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="9 18 15 12 9 6"></polyline>
                       </svg>
                     </span>
@@ -710,9 +710,21 @@
                 {:else}
                   {#each getGroupedProjectCanisters(entry.project) as [subcategory, canisters]}
                     {#if subcategory}
+                      {@const description = entry.subcategory_descriptions?.[subcategory]}
                       <tr class="sub-row subcategory-header">
                         <td class="rank sub-rank"></td>
-                        <td colspan="8" class="subcategory-label">{subcategory}</td>
+                        <td colspan="8" class="subcategory-label">
+                          {subcategory}
+                          {#if description}
+                            <span class="subcategory-info tooltip" data-tip={description}>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                              </svg>
+                            </span>
+                          {/if}
+                        </td>
                       </tr>
                     {/if}
                     {#each canisters as canister, j}

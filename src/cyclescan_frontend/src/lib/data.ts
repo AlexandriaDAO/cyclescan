@@ -33,6 +33,7 @@ export interface CanisterRegistry {
 export interface ProjectMeta {
   name: string;
   website: string[] | null;
+  subcategory_descriptions?: Record<string, string>;
 }
 
 export type { BurnRateData, ProjectRateData, IntervalData };
@@ -53,6 +54,7 @@ export interface ProjectEntry {
   canister_count: bigint;
   total_balance: bigint;
   website: string[] | null;
+  subcategory_descriptions?: Record<string, string>;
   recent_rate: ProjectRateData | null;
   short_term_rate: ProjectRateData | null;
   long_term_rate: ProjectRateData | null;
@@ -164,6 +166,7 @@ export async function loadData(): Promise<{
       canister_count: agg.count,
       total_balance: agg.balance,
       website: meta?.website || null,
+      subcategory_descriptions: meta?.subcategory_descriptions,
       recent_rate: aggregateProjectRate(agg.recentRates),
       short_term_rate: aggregateProjectRate(agg.shortTermRates),
       long_term_rate: aggregateProjectRate(agg.longTermRates),
