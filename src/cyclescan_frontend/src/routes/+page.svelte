@@ -345,10 +345,11 @@
 
   // Get sparkline data for a project (with caching)
   function getProjectSparklineData(projectName) {
-    if (!projectSparklineCache.has(projectName)) {
-      projectSparklineCache.set(projectName, getProjectSparklineIntervals(projectName, 7 * DAY_MS));
+    const cacheKey = `${projectName}:${includeCycleTransfers}`;
+    if (!projectSparklineCache.has(cacheKey)) {
+      projectSparklineCache.set(cacheKey, getProjectSparklineIntervals(projectName, 7 * DAY_MS, !includeCycleTransfers));
     }
-    return projectSparklineCache.get(projectName);
+    return projectSparklineCache.get(cacheKey);
   }
 
   // Get sparkline data for a canister (with caching)
@@ -805,5 +806,5 @@
 {/if}
 
 {#if selectedProjectName}
-  <ProjectDetailModal projectName={selectedProjectName} onClose={closeProjectModal} />
+  <ProjectDetailModal projectName={selectedProjectName} onClose={closeProjectModal} excludeTransferCanisters={!includeCycleTransfers} />
 {/if}

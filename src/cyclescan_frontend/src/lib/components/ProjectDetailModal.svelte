@@ -5,6 +5,7 @@
 
   export let projectName;
   export let onClose;
+  export let excludeTransferCanisters = false;
 
   let data = null;
   let loading = true;
@@ -128,7 +129,7 @@
 
     // Get aggregated intervals for the project
     const rangeMs = TIME_RANGES[timeRange];
-    const intervals = getProjectChartIntervals(projectName, rangeMs);
+    const intervals = getProjectChartIntervals(projectName, rangeMs, excludeTransferCanisters);
 
     if (intervals.length === 0) return;
 

@@ -271,15 +271,18 @@ export async function getProjectDetail(projectName: string): Promise<ProjectDeta
   };
 }
 
-export function getProjectChartIntervals(projectName: string, windowMs: number): IntervalData[] {
+export function getProjectChartIntervals(projectName: string, windowMs: number, excludeTransferCanisters = false): IntervalData[] {
   // Alias for getProjectSparklineIntervals - same aggregation logic works for charts
-  return getProjectSparklineIntervals(projectName, windowMs);
+  return getProjectSparklineIntervals(projectName, windowMs, excludeTransferCanisters);
 }
 
-export function getProjectSparklineIntervals(projectName: string, windowMs: number): IntervalData[] {
+export function getProjectSparklineIntervals(projectName: string, windowMs: number, excludeTransferCanisters = false): IntervalData[] {
   if (!cachedData) return [];
 
-  const projectCanisters = cachedData.canisters.filter(c => c.project?.[0] === projectName);
+  let projectCanisters = cachedData.canisters.filter(c => c.project?.[0] === projectName);
+  if (excludeTransferCanisters) {
+    projectCanisters = projectCanisters.filter(c => c.valid);
+  }
   if (projectCanisters.length === 0) return [];
 
   const snapshots = cachedData.snapshots.snapshots;

@@ -68,8 +68,8 @@ const snsRootIdl = ({ IDL }) => {
 function loadCanisters() {
   const canistersPath = join(DATA_DIR, 'archive', 'canisters_backup.json');
   const data = JSON.parse(readFileSync(canistersPath, 'utf-8'));
-  // Filter to only valid canisters
-  return data.filter(c => c.valid !== false);
+  // Return all canisters - the valid flag is used for frontend display filtering only
+  return data;
 }
 
 function loadExistingSnapshots() {
