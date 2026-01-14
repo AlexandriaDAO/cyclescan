@@ -53,7 +53,24 @@ Uses `daopad` identity for frontend deployment only.
 - **Blackhole**: `canister_status(canister_id)` - one call per canister
 - **SNS Root**: `get_sns_canisters_summary()` - one call returns all SNS canisters
 
-Uses **anonymous principal** - no identity or secrets needed for collection.
+Collects **all canisters** in the registry regardless of `valid` flag. Uses **anonymous principal** - no identity or secrets needed.
+
+## Burn Rate Calculations
+
+**Canister types** (set via `valid` field in `canisters_backup.json`):
+- `valid: true` (default) - Normal cycle-burning canister
+- `valid: false` - Cycle transfer canister (primary purpose is moving cycles, not burning)
+
+**"Include cycle transfers" toggle** (default: OFF):
+- **OFF**: Excludes `valid: false` canisters from all calculations (project totals, network burn, sparklines)
+- **ON**: Includes all canisters in calculations
+
+**Inferred burn values**: For normal canisters (`valid: true`) that receive top-ups, we can't directly measure burn during those intervals since balance increased. Instead, we calculate the average burn rate from non-top-up intervals and apply it to top-up intervals. This gives accurate burn estimates for canisters that burn cycles but also receive periodic top-ups.
+
+Key files:
+- `regression.ts` - Burn rate calculation with top-up detection and inferred values
+- `+page.svelte` - Toggle logic and adjusted project calculations
+- `data.ts` - Data loading and sparkline aggregation with transfer canister filtering
 
 ## GitHub Actions
 
