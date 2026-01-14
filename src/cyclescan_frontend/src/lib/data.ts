@@ -10,7 +10,6 @@ import {
   type IntervalData,
 } from './regression';
 
-// GitHub raw content base URL
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/AlexandriaDAO/cyclescan/master/data';
 
 export interface Snapshot {
@@ -35,10 +34,8 @@ export interface ProjectMeta {
   website: string[] | null;
 }
 
-// Re-export types for external use
 export type { BurnRateData, ProjectRateData, IntervalData };
 
-// Canister entry with burn rates
 export interface CanisterEntry {
   canister_id: string;
   project: string[] | null;
@@ -49,7 +46,6 @@ export interface CanisterEntry {
   long_term_rate: BurnRateData | null;
 }
 
-// Project entry with aggregated rates
 export interface ProjectEntry {
   project: string;
   canister_count: bigint;
@@ -60,14 +56,12 @@ export interface ProjectEntry {
   long_term_rate: ProjectRateData | null;
 }
 
-// Global stats
 export interface Stats {
   canister_count: bigint;
   snapshot_count: number;
   last_updated: Date | null;
 }
 
-// Cache for loaded data
 let cachedData: {
   snapshots: SnapshotsData;
   canisters: CanisterRegistry[];
@@ -77,7 +71,6 @@ let cachedData: {
   stats: Stats;
 } | null = null;
 
-// Time constants
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
 
@@ -87,7 +80,6 @@ export async function loadData(): Promise<{
   stats: Stats;
   rawSnapshots: Array<{ timestamp: number }>;
 }> {
-  // Return cached data if available
   if (cachedData) {
     return {
       entries: cachedData.entries,
@@ -97,7 +89,6 @@ export async function loadData(): Promise<{
     };
   }
 
-  // Fetch data from GitHub
   const cacheBust = `?t=${Math.floor(Date.now() / 60000)}`;
   const [snapshotsRes, canistersRes, projectsRes] = await Promise.all([
     fetch(`${GITHUB_RAW_BASE}/live/snapshots.json${cacheBust}`),
@@ -111,7 +102,6 @@ export async function loadData(): Promise<{
 
   const { snapshots } = snapshotsData;
 
-  // Build project metadata lookup
   const projectMetaMap = new Map<string, ProjectMeta>();
   for (const p of projectsMeta) {
     projectMetaMap.set(p.name, p);
@@ -120,7 +110,6 @@ export async function loadData(): Promise<{
   const currentSnapshot = snapshots[0] || { balances: {}, timestamp: Date.now() };
   const now = currentSnapshot.timestamp;
 
-  // Build canister entries with burn rates
   const entries: CanisterEntry[] = [];
   const projectAggregates = new Map<string, {
     count: bigint;
@@ -135,13 +124,11 @@ export async function loadData(): Promise<{
     if (!balanceStr) continue;
 
     const balance = BigInt(balanceStr);
-
-    // Calculate burn rates using simplified algorithm
     const recentRate = calculateBurnRate(snapshots, 2 * HOUR_MS, now, canister.canister_id);
     const shortTermRate = calculateBurnRate(snapshots, 36 * HOUR_MS, now, canister.canister_id);
     const longTermRate = calculateBurnRate(snapshots, 7 * DAY_MS, now, canister.canister_id);
 
-    const entry: CanisterEntry = {
+    entries.push({
       canister_id: canister.canister_id,
       project: canister.project,
       balance,
@@ -149,21 +136,13 @@ export async function loadData(): Promise<{
       recent_rate: recentRate,
       short_term_rate: shortTermRate,
       long_term_rate: longTermRate,
-    };
-    entries.push(entry);
+    });
 
-    // Aggregate by project
     const projectName = canister.project?.[0];
     if (projectName) {
       let agg = projectAggregates.get(projectName);
       if (!agg) {
-        agg = {
-          count: 0n,
-          balance: 0n,
-          recentRates: [],
-          shortTermRates: [],
-          longTermRates: [],
-        };
+        agg = { count: 0n, balance: 0n, recentRates: [], shortTermRates: [], longTermRates: [] };
         projectAggregates.set(projectName, agg);
       }
       agg.count += 1n;
@@ -174,11 +153,9 @@ export async function loadData(): Promise<{
     }
   }
 
-  // Build project entries
   const projectEntries: ProjectEntry[] = [];
   for (const [projectName, agg] of projectAggregates) {
     const meta = projectMetaMap.get(projectName);
-
     projectEntries.push({
       project: projectName,
       canister_count: agg.count,
@@ -190,7 +167,6 @@ export async function loadData(): Promise<{
     });
   }
 
-  // Sort by short-term rate descending
   projectEntries.sort((a, b) => {
     const aRate = a.short_term_rate?.rate ?? -1n;
     const bRate = b.short_term_rate?.rate ?? -1n;
@@ -205,66 +181,37 @@ export async function loadData(): Promise<{
     last_updated: snapshots[0] ? new Date(snapshots[0].timestamp) : null,
   };
 
-  // Cache the data
-  cachedData = {
-    snapshots: snapshotsData,
-    canisters: canistersRegistry,
-    projects: projectsMeta,
-    entries,
-    projectEntries,
-    stats,
-  };
+  cachedData = { snapshots: snapshotsData, canisters: canistersRegistry, projects: projectsMeta, entries, projectEntries, stats };
 
-  return {
-    entries,
-    projectEntries,
-    stats,
-    rawSnapshots: snapshots.map(s => ({ timestamp: s.timestamp })),
-  };
+  return { entries, projectEntries, stats, rawSnapshots: snapshots.map(s => ({ timestamp: s.timestamp })) };
 }
 
 export async function getProjectCanisters(projectName: string): Promise<CanisterEntry[]> {
-  if (!cachedData) {
-    await loadData();
-  }
-  if (!cachedData) return [];
-  return cachedData.entries.filter(e => e.project?.[0] === projectName);
+  if (!cachedData) await loadData();
+  return cachedData?.entries.filter(e => e.project?.[0] === projectName) ?? [];
 }
 
-// Canister detail for the modal
 export interface CanisterDetail {
   project: string[] | null;
   current_balance: bigint;
   recent_rate: BurnRateData | null;
   short_term_rate: BurnRateData | null;
   long_term_rate: BurnRateData | null;
-  // Raw snapshots for chart
   snapshots: Array<{ timestamp: bigint; cycles: bigint }>;
 }
 
 export async function getCanisterDetail(canisterId: string): Promise<CanisterDetail | null> {
-  if (!cachedData) {
-    await loadData();
-  }
+  if (!cachedData) await loadData();
   if (!cachedData) return null;
 
   const { snapshots } = cachedData.snapshots;
   const canisterRegistry = cachedData.canisters.find(c => c.canister_id === canisterId);
-
   if (!canisterRegistry) return null;
 
   const currentBalanceStr = snapshots[0]?.balances[canisterId];
   if (!currentBalanceStr) return null;
 
-  const currentBalance = BigInt(currentBalanceStr);
   const now = snapshots[0].timestamp;
-
-  // Calculate rates
-  const recentRate = calculateBurnRate(snapshots, 2 * HOUR_MS, now, canisterId);
-  const shortTermRate = calculateBurnRate(snapshots, 36 * HOUR_MS, now, canisterId);
-  const longTermRate = calculateBurnRate(snapshots, 7 * DAY_MS, now, canisterId);
-
-  // Build snapshots array for chart
   const snapshotHistory: Array<{ timestamp: bigint; cycles: bigint }> = [];
   for (const snapshot of snapshots) {
     const cyclesStr = snapshot.balances[canisterId];
@@ -278,20 +225,14 @@ export async function getCanisterDetail(canisterId: string): Promise<CanisterDet
 
   return {
     project: canisterRegistry.project,
-    current_balance: currentBalance,
-    recent_rate: recentRate,
-    short_term_rate: shortTermRate,
-    long_term_rate: longTermRate,
+    current_balance: BigInt(currentBalanceStr),
+    recent_rate: calculateBurnRate(snapshots, 2 * HOUR_MS, now, canisterId),
+    short_term_rate: calculateBurnRate(snapshots, 36 * HOUR_MS, now, canisterId),
+    long_term_rate: calculateBurnRate(snapshots, 7 * DAY_MS, now, canisterId),
     snapshots: snapshotHistory,
   };
 }
 
-// Get raw snapshots for chart interval analysis
-export function getRawSnapshots(): Snapshot[] {
-  return cachedData?.snapshots.snapshots ?? [];
-}
-
-// Get interval data for chart visualization
 export function getChartIntervals(canisterId: string, windowMs: number): IntervalData[] {
   if (!cachedData) return [];
   const snapshots = cachedData.snapshots.snapshots;
@@ -299,15 +240,12 @@ export function getChartIntervals(canisterId: string, windowMs: number): Interva
   return getIntervalsForChart(snapshots, windowMs, now, canisterId);
 }
 
-// Get sparkline intervals for a project (aggregated from all canisters)
 export function getProjectSparklineIntervals(projectName: string, windowMs: number): IntervalData[] {
   if (!cachedData) return [];
 
-  // Get all canister IDs for this project
   const projectCanisters = cachedData.canisters.filter(c => c.project?.[0] === projectName);
   if (projectCanisters.length === 0) return [];
 
-  // Get intervals for each canister
   const snapshots = cachedData.snapshots.snapshots;
   const now = snapshots[0]?.timestamp ?? Date.now();
 
@@ -315,13 +253,7 @@ export function getProjectSparklineIntervals(projectName: string, windowMs: numb
     getIntervalsForChart(snapshots, windowMs, now, c.canister_id)
   );
 
-  // Aggregate intervals
-  return aggregateSparklineIntervals(canisterIntervals);
-}
-
-// Aggregate sparkline intervals from multiple canisters
-function aggregateSparklineIntervals(canisterIntervals: IntervalData[][]): IntervalData[] {
-  // Collect all unique timestamps
+  // Aggregate intervals from all canisters
   const allTimestamps = new Set<number>();
   for (const intervals of canisterIntervals) {
     for (const interval of intervals) {
@@ -330,32 +262,19 @@ function aggregateSparklineIntervals(canisterIntervals: IntervalData[][]): Inter
     }
   }
 
-  // Sort timestamps
   const sortedTimestamps = [...allTimestamps].sort((a, b) => a - b);
   if (sortedTimestamps.length < 2) return [];
 
-  // For each timestamp pair, sum burns across all canisters
   const aggregated: IntervalData[] = [];
-
   for (let i = 1; i < sortedTimestamps.length; i++) {
     const startTime = sortedTimestamps[i - 1];
     const endTime = sortedTimestamps[i];
-
-    let totalActualBurn = 0;
-    let totalInferredBurn = 0;
-    let totalTopUpAmount = 0;
-    let hasTopUp = false;
+    let totalActualBurn = 0, totalInferredBurn = 0, totalTopUpAmount = 0, hasTopUp = false;
 
     for (const intervals of canisterIntervals) {
-      // Find interval that overlaps with this time range
-      const match = intervals.find(
-        int => int.startTime <= startTime && int.endTime >= endTime
-      );
+      const match = intervals.find(int => int.startTime <= startTime && int.endTime >= endTime);
       if (match) {
-        // Prorate the burn based on duration overlap
-        const overlapDuration = endTime - startTime;
-        const ratio = match.duration > 0 ? overlapDuration / match.duration : 0;
-
+        const ratio = match.duration > 0 ? (endTime - startTime) / match.duration : 0;
         totalActualBurn += match.actualBurn * ratio;
         totalInferredBurn += match.inferredBurn * ratio;
         totalTopUpAmount += match.topUpAmount * ratio;
@@ -375,8 +294,4 @@ function aggregateSparklineIntervals(canisterIntervals: IntervalData[][]): Inter
   }
 
   return aggregated;
-}
-
-export function clearCache() {
-  cachedData = null;
 }

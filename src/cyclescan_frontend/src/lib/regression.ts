@@ -137,30 +137,6 @@ export function calculateBurnRate(
 }
 
 /**
- * Calculate burn rates for all three time windows.
- */
-export function calculateAllBurnRates(
-  snapshots: Array<{ timestamp: number; balances: Record<string, string> }>,
-  canisterId: string
-): {
-  recent: BurnRateData | null;
-  shortTerm: BurnRateData | null;
-  longTerm: BurnRateData | null;
-} {
-  const now = snapshots[0]?.timestamp ?? Date.now();
-
-  const HOUR = 3600000;
-  const DAY = 24 * HOUR;
-  const WEEK = 7 * DAY;
-
-  return {
-    recent: calculateBurnRate(snapshots, 2 * HOUR, now, canisterId),
-    shortTerm: calculateBurnRate(snapshots, 36 * HOUR, now, canisterId),
-    longTerm: calculateBurnRate(snapshots, WEEK, now, canisterId),
-  };
-}
-
-/**
  * Aggregate project rates from canister rates.
  */
 export interface ProjectRateData {

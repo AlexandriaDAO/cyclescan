@@ -1,12 +1,10 @@
 <script>
-  import { onMount, onDestroy, createEventDispatcher } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import { getCanisterDetail, getChartIntervals } from "$lib/data";
   import { createChart, HistogramSeries, LineSeries } from "lightweight-charts";
 
   export let canisterId;
   export let onClose;
-
-  const dispatch = createEventDispatcher();
 
   let data = null;
   let loading = true;

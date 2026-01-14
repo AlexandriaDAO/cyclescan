@@ -39,6 +39,11 @@
   const SECONDS_PER_DAY = 86400;
   const DAY_MS = 24 * 60 * 60 * 1000;
 
+  // Runway threshold constants (in days)
+  const RUNWAY_CRITICAL_DAYS = 30;
+  const RUNWAY_WARNING_DAYS = 90;
+  const RUNWAY_OK_DAYS = 365;
+
   function formatCycles(value) {
     if (value === null || value === undefined) return null;
     const n = BigInt(value);
@@ -75,26 +80,28 @@
     return { value: formatted, isNegative };
   }
 
-  // Format rate data for display in table - simplified
+  // Format rate data for display in table
   function formatRateCell(rateData) {
-    if (!rateData) {
-      return { text: "-", class: "no-data" };
-    }
+    const noData = { text: "-", class: "no-data" };
+
+    if (!rateData) return noData;
 
     const formatted = formatRate(rateData.rate);
-    if (!formatted) {
-      return { text: "-", class: "no-data" };
-    }
+    if (!formatted) return noData;
 
-    let displayClass = "positive";
+    let displayClass;
     if (formatted.isNegative) {
       displayClass = "gaining";
     } else if (rateData.rate === 0n) {
       displayClass = "zero";
+    } else {
+      displayClass = "positive";
     }
 
+    const text = formatted.isNegative ? `+${formatted.value}` : formatted.value;
+
     return {
-      text: formatted.isNegative ? `+${formatted.value}` : formatted.value,
+      text,
       class: displayClass,
       dataPoints: rateData.dataPoints,
       hasInferred: rateData.hasInferredData
@@ -115,28 +122,31 @@
   // Format runway for display
   function formatRunway(days) {
     if (days === null) {
-      return { text: "∞", class: "runway-infinite" };
+      return { text: "\u221E", class: "runway-infinite" };
     }
-    if (days < 30) {
+
+    if (days < RUNWAY_CRITICAL_DAYS) {
       return { text: `${Math.round(days)}d`, class: "runway-critical" };
-    } else if (days < 90) {
-      return { text: `${Math.round(days)}d`, class: "runway-warning" };
-    } else if (days < 365) {
-      return { text: `${Math.round(days / 30)}mo`, class: "runway-ok" };
-    } else {
-      const years = days / 365;
-      return { text: years >= 10 ? `${Math.round(years)}y` : `${years.toFixed(1)}y`, class: "runway-good" };
     }
+
+    if (days < RUNWAY_WARNING_DAYS) {
+      return { text: `${Math.round(days)}d`, class: "runway-warning" };
+    }
+
+    if (days < RUNWAY_OK_DAYS) {
+      const months = Math.round(days / 30);
+      return { text: `${months}mo`, class: "runway-ok" };
+    }
+
+    const years = days / 365;
+    const formattedYears = years >= 10 ? `${Math.round(years)}y` : `${years.toFixed(1)}y`;
+    return { text: formattedYears, class: "runway-good" };
   }
 
   function shortenCanisterId(id) {
     const s = id.toString();
     if (s.length <= 15) return s;
     return s.slice(0, 5) + "..." + s.slice(-3);
-  }
-
-  function dashboardUrl(id) {
-    return `https://dashboard.internetcomputer.org/canister/${id}`;
   }
 
   function getLogoPath(project) {
@@ -148,15 +158,6 @@
   function handleLogoError(project) {
     failedLogos.add(project);
     failedLogos = failedLogos;
-  }
-
-  async function copyToClipboard(text, event) {
-    event.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
   }
 
   function sortBy(column) {
@@ -176,21 +177,32 @@
   }
   $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
+  // Helper to get effective balance (adjusted takes precedence)
+  function getEffectiveBalance(entry) {
+    return entry.adj_total_balance ?? entry.total_balance ?? entry.balance ?? 0n;
+  }
+
+  // Helper to get effective rate (adjusted takes precedence)
+  function getEffectiveRate(entry, rateType) {
+    const adjKey = `adj_${rateType}`;
+    return entry[adjKey] ?? entry[rateType];
+  }
+
   // Get rate value for sorting
   function getRateValue(entry, col) {
     switch (col) {
       case "total_balance":
       case "balance":
-        return entry.adj_total_balance ?? entry.total_balance ?? entry.balance ?? 0n;
+        return getEffectiveBalance(entry);
       case "recent_rate":
-        return entry.recent_rate?.rate ?? entry.adj_recent_rate?.rate ?? -1n;
+        return getEffectiveRate(entry, "recent_rate")?.rate ?? -1n;
       case "short_term_rate":
-        return entry.short_term_rate?.rate ?? entry.adj_short_term_rate?.rate ?? -1n;
+        return getEffectiveRate(entry, "short_term_rate")?.rate ?? -1n;
       case "long_term_rate":
-        return entry.long_term_rate?.rate ?? entry.adj_long_term_rate?.rate ?? -1n;
+        return getEffectiveRate(entry, "long_term_rate")?.rate ?? -1n;
       case "runway": {
-        const balance = entry.adj_total_balance ?? entry.total_balance ?? entry.balance;
-        const rate = entry.adj_short_term_rate ?? entry.short_term_rate;
+        const balance = getEffectiveBalance(entry);
+        const rate = getEffectiveRate(entry, "short_term_rate");
         const days = calcRunway(balance, rate);
         return days === null ? Infinity : days;
       }
@@ -203,10 +215,30 @@
     }
   }
 
+  // Build a map of project -> canister IDs for search
+  $: projectCanisterIds = (() => {
+    const map = new Map();
+    for (const entry of entries) {
+      const project = entry.project?.[0];
+      if (!project) continue;
+      if (!map.has(project)) map.set(project, []);
+      map.get(project).push(entry.canister_id?.toString().toLowerCase() || '');
+    }
+    return map;
+  })();
+
   $: filteredProjectEntries = adjustedProjectEntries.filter(e => {
+    // Hide projects with no valid canisters when cycle transfers excluded
+    if (!includeCycleTransfers && (e.adj_canister_count === 0n || e.adj_canister_count === 0)) {
+      return false;
+    }
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
-    return e.project.toLowerCase().includes(q);
+    // Match project name
+    if (e.project.toLowerCase().includes(q)) return true;
+    // Match any canister ID in this project
+    const ids = projectCanisterIds.get(e.project) || [];
+    return ids.some(id => id.includes(q));
   });
 
   $: sortedProjectEntries = [...filteredProjectEntries].sort((a, b) => {
@@ -434,37 +466,31 @@
   <header class="page-header">
     <div class="header-left">
       <div class="header-row-top">
-        <div class="header-brand" title="Cycles burn leaderboard for ICP">
+        <div class="header-brand tooltip" data-tip="Cycles burn leaderboard for ICP">
           <img src="/cyclescan_canister.png" alt="CycleScan" class="header-logo" />
           <span class="brand-name">CycleScan</span>
         </div>
         <div class="meta-stats">
-          <span class="meta-item" title="Number of canisters being tracked">
+          <span class="meta-item tooltip" data-tip="Number of canisters being tracked">
             {stats ? formatNumber(stats.canister_count) : '—'} canisters
           </span>
           <span class="meta-sep">·</span>
-          <span class="meta-item" title={`Coverage: ${coveragePercent?.toFixed(1) ?? '—'}% of total IC network cycle burn is tracked by CycleScan`}>
+          <span class="meta-item tooltip" data-tip={`${coveragePercent?.toFixed(1) ?? '—'}% of total IC cycle burn is tracked`}>
             {#if loading || networkBurnLoading}—{:else if coveragePercent !== null}{coveragePercent.toFixed(1)}% coverage{:else}—{/if}
           </span>
           <span class="meta-sep">·</span>
-          <span class="meta-item highlight" title={`Tracked burn: ${formatCycles(trackedBurn24h)}/day (${formatUsd(cyclesToUsd(trackedBurn24h))} USD at 1T cycles = $${xdrToUsd.toFixed(2)})`}>
+          <span class="meta-item highlight tooltip" data-tip={`${formatCycles(trackedBurn24h)} cycles/day`}>
             {#if loading}—{:else}{formatUsd(cyclesToUsd(trackedBurn24h))}/day burn{/if}
           </span>
           <span class="meta-sep">·</span>
-          <a href="/about" class="meta-link" title="How it works">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-              <line x1="12" y1="17" x2="12.01" y2="17"></line>
-            </svg>
-          </a>
+          <a href="/about" class="about-btn">How it works</a>
         </div>
       </div>
       <div class="header-row-bottom">
         <input
           type="text"
           class="search"
-          placeholder="Search projects..."
+          placeholder="Search projects or canister IDs..."
           bind:value={searchQuery}
         />
         <label class="toggle-label">
@@ -577,10 +603,11 @@
           </thead>
           <tbody>
             {#each paginatedProjectEntries as entry, i}
-              {@const recentCell = formatRateCell(entry.adj_recent_rate ?? entry.recent_rate)}
-              {@const shortTermCell = formatRateCell(entry.adj_short_term_rate ?? entry.short_term_rate)}
-              {@const longTermCell = formatRateCell(entry.adj_long_term_rate ?? entry.long_term_rate)}
-              {@const runwayDays = calcRunway(entry.adj_total_balance ?? entry.total_balance, entry.adj_short_term_rate ?? entry.short_term_rate)}
+              {@const effectiveBalance = getEffectiveBalance(entry)}
+              {@const recentCell = formatRateCell(getEffectiveRate(entry, "recent_rate"))}
+              {@const shortTermCell = formatRateCell(getEffectiveRate(entry, "short_term_rate"))}
+              {@const longTermCell = formatRateCell(getEffectiveRate(entry, "long_term_rate"))}
+              {@const runwayDays = calcRunway(effectiveBalance, getEffectiveRate(entry, "short_term_rate"))}
               {@const runwayCell = formatRunway(runwayDays)}
               <tr class="project-row clickable" class:expanded={expandedProjects.has(entry.project)} on:click={() => toggleProjectExpanded(entry.project)}>
                 <td class="rank">{startIndex + i + 1}</td>
@@ -612,7 +639,7 @@
                   </div>
                 </td>
                 <td class="canister-count">{Number(entry.adj_canister_count ?? entry.canister_count).toLocaleString()}</td>
-                <td class="cycles">{formatCycles(entry.adj_total_balance ?? entry.total_balance)}</td>
+                <td class="cycles">{formatCycles(effectiveBalance)}</td>
                 <td class="burn {recentCell.class}">
                   <span class="rate-value" title={recentCell.dataPoints ? `${recentCell.dataPoints} data points` : ''}>
                     {recentCell.text}

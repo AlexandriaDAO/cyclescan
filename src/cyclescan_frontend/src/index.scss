@@ -20,17 +20,23 @@
   --purple: #a371f7;
 
   /* Data freshness indicator colors */
-  --color-full: #4ade80;      /* Green - complete data */
-  --color-mostly: #a3e635;    /* Light green - mostly complete */
-  --color-partial: #fbbf24;   /* Yellow - partial data */
-  --color-sparse: #f87171;    /* Red - sparse/missing */
-  --color-empty: #333;        /* Dark - no data */
-  --color-primary: #4ade80;   /* Primary accent for data freshness */
-  --border-subtle: #333;      /* Subtle border color */
-  --bg-hover: rgba(255,255,255,0.05);
+  --color-full: #4ade80;
+  --color-mostly: #a3e635;
+  --color-partial: #fbbf24;
+  --color-sparse: #f87171;
+  --color-empty: #333;
+  --color-primary: #4ade80;
+  --border-subtle: #333;
+  --bg-hover: rgba(255, 255, 255, 0.05);
   --bg-selected: rgba(74, 222, 128, 0.1);
   --text-primary: #fff;
   --text-secondary: #aaa;
+
+  /* Sparkline / Trend colors */
+  --color-burn: #4ade80;
+  --color-inferred: #fbbf24;
+  --color-trend-up: #f87171;
+  --color-trend-down: #4ade80;
 }
 
 body {
@@ -70,13 +76,7 @@ body {
   min-width: 0;
 }
 
-.header-row-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
+.header-row-top,
 .header-row-bottom {
   display: flex;
   align-items: center;
@@ -144,8 +144,27 @@ body {
   color: var(--accent);
 }
 
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.about-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .search {
-  width: 200px;
+  width: 280px;
   padding: 6px 10px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
@@ -238,15 +257,6 @@ th.sorted .sort-arrow {
   opacity: 1;
 }
 
-/* Honest labels - time delta in headers */
-th .time-delta {
-  font-weight: 400;
-  font-size: 10px;
-  color: var(--accent);
-  text-transform: none;
-  letter-spacing: 0;
-}
-
 tr:hover {
   background: rgba(255, 255, 255, 0.02);
 }
@@ -300,55 +310,12 @@ th.col-burn {
   white-space: nowrap;
 }
 
-.canister-id {
-  font-family: "SF Mono", Monaco, Consolas, monospace;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-.canister-id a,
-.canister-id .canister-link {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.canister-id a:hover {
-  text-decoration: underline;
-}
-
-.copy-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s ease;
-  flex-shrink: 0;
-}
-
-.copy-btn:hover {
-  background: var(--bg-tertiary);
-  color: var(--accent);
-}
-
 .project-logo {
   width: 20px;
   height: 20px;
   border-radius: 4px;
   object-fit: cover;
   flex-shrink: 0;
-}
-
-.project.empty {
-  color: var(--text-muted);
-  font-style: italic;
 }
 
 .canister-count {
@@ -377,12 +344,12 @@ th.col-burn {
   color: var(--red);
 }
 
-.burn.zero {
+.burn.zero,
+.burn.no-data {
   color: var(--text-muted);
 }
 
 .burn.no-data {
-  color: var(--text-muted);
   font-style: italic;
 }
 
@@ -649,39 +616,12 @@ footer a:hover {
   font-weight: 400;
 }
 
-/* Top-up badge */
-.topup-badge {
-  display: inline-block;
-  margin-left: 4px;
-  color: var(--orange);
-  font-size: 11px;
-  font-weight: 600;
-}
-
-/* Low confidence styling */
-.burn.low-confidence {
-  opacity: 0.7;
-}
-
-.burn.low-confidence .rate-value::after {
-  content: "~";
-  margin-left: 1px;
-  color: var(--text-muted);
-}
-
 /* Gaining (negative burn) styling */
 .burn.gaining {
   color: #3b82f6;  /* Blue for gaining */
 }
 
 /* Sparkline / Trend column */
-:root {
-  --color-burn: #4ade80;       /* Green - actual burn */
-  --color-inferred: #fbbf24;   /* Orange/yellow - inferred burn */
-  --color-trend-up: #f87171;   /* Red - increasing (warning) */
-  --color-trend-down: #4ade80; /* Green - decreasing (good) */
-}
-
 .col-trend {
   width: 100px;
   text-align: center;
@@ -696,6 +636,39 @@ td.trend {
 
 td.trend.sub-trend {
   padding: 2px 8px;
+}
+
+/* Instant tooltips */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease, visibility 0.1s ease;
+  pointer-events: none;
+  z-index: 1000;
+  margin-bottom: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Responsive: hide trend column on small screens */
