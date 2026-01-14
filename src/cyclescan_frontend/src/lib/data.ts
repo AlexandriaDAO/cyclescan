@@ -24,6 +24,7 @@ export interface SnapshotsData {
 export interface CanisterRegistry {
   canister_id: string;
   project: string[] | null;
+  subcategory?: string;
   proxy_id: string;
   proxy_type: { Blackhole: null } | { SnsRoot: null };
   valid: boolean;
@@ -39,6 +40,7 @@ export type { BurnRateData, ProjectRateData, IntervalData };
 export interface CanisterEntry {
   canister_id: string;
   project: string[] | null;
+  subcategory?: string;
   balance: bigint;
   valid: boolean;
   recent_rate: BurnRateData | null;
@@ -131,6 +133,7 @@ export async function loadData(): Promise<{
     entries.push({
       canister_id: canister.canister_id,
       project: canister.project,
+      subcategory: canister.subcategory,
       balance,
       valid: canister.valid,
       recent_rate: recentRate,

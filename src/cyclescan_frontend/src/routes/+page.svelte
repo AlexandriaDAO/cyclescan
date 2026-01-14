@@ -310,6 +310,29 @@
     return canisters.filter(c => c.valid);
   }
 
+  // Group canisters by subcategory for organized display
+  function getGroupedProjectCanisters(projectName) {
+    const canisters = getVisibleProjectCanisters(projectName);
+    const groups = new Map();
+
+    for (const canister of canisters) {
+      const subcategory = canister.subcategory || null;
+      if (!groups.has(subcategory)) {
+        groups.set(subcategory, []);
+      }
+      groups.get(subcategory).push(canister);
+    }
+
+    // Sort groups: named subcategories first (alphabetically), then null
+    const sortedGroups = [...groups.entries()].sort((a, b) => {
+      if (a[0] === null) return 1;
+      if (b[0] === null) return -1;
+      return a[0].localeCompare(b[0]);
+    });
+
+    return sortedGroups;
+  }
+
   // Get sparkline data for a project (with caching)
   function getProjectSparklineData(projectName) {
     if (!projectSparklineCache.has(projectName)) {
@@ -671,54 +694,62 @@
                     <td colspan="9" class="loading-cell">Loading canisters...</td>
                   </tr>
                 {:else}
-                  {#each getVisibleProjectCanisters(entry.project) as canister, j}
-                    {@const canRecentCell = formatRateCell(canister.recent_rate)}
-                    {@const canShortTermCell = formatRateCell(canister.short_term_rate)}
-                    {@const canLongTermCell = formatRateCell(canister.long_term_rate)}
-                    {@const canRunwayDays = calcRunway(canister.balance, canister.short_term_rate)}
-                    {@const canRunwayCell = formatRunway(canRunwayDays)}
-                    <tr class="sub-row clickable" on:click|stopPropagation={() => openModal(canister.canister_id)}>
-                      <td class="rank sub-rank"></td>
-                      <td class="project sub-project">
-                        <div class="project-cell sub-cell">
-                          <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
-                          {#if !canister.valid}
-                            <span class="transfers-flag" title="This canister transfers cycles rather than burns them">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-                                <line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="2"></line>
-                              </svg>
-                            </span>
-                          {/if}
-                        </div>
-                      </td>
-                      <td class="canister-count"></td>
-                      <td class="cycles">{formatCycles(canister.balance)}</td>
-                      <td class="burn {canRecentCell.class}">
-                        <span class="rate-value">
-                          {canRecentCell.text}
-                          {#if canRecentCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
-                        </span>
-                      </td>
-                      <td class="burn {canShortTermCell.class}">
-                        <span class="rate-value">
-                          {canShortTermCell.text}
-                          {#if canShortTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
-                        </span>
-                      </td>
-                      <td class="burn {canLongTermCell.class}">
-                        <span class="rate-value">
-                          {canLongTermCell.text}
-                          {#if canLongTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
-                        </span>
-                      </td>
-                      <td class="runway {canRunwayCell.class}">
-                        {canRunwayCell.text}
-                      </td>
-                      <td class="trend sub-trend">
-                        <Sparkline intervals={getCanisterSparklineData(canister.canister_id)} width={60} height={16} />
-                      </td>
-                    </tr>
+                  {#each getGroupedProjectCanisters(entry.project) as [subcategory, canisters]}
+                    {#if subcategory}
+                      <tr class="sub-row subcategory-header">
+                        <td class="rank sub-rank"></td>
+                        <td colspan="8" class="subcategory-label">{subcategory}</td>
+                      </tr>
+                    {/if}
+                    {#each canisters as canister, j}
+                      {@const canRecentCell = formatRateCell(canister.recent_rate)}
+                      {@const canShortTermCell = formatRateCell(canister.short_term_rate)}
+                      {@const canLongTermCell = formatRateCell(canister.long_term_rate)}
+                      {@const canRunwayDays = calcRunway(canister.balance, canister.short_term_rate)}
+                      {@const canRunwayCell = formatRunway(canRunwayDays)}
+                      <tr class="sub-row clickable" on:click|stopPropagation={() => openModal(canister.canister_id)}>
+                        <td class="rank sub-rank"></td>
+                        <td class="project sub-project">
+                          <div class="project-cell sub-cell">
+                            <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
+                            {#if !canister.valid}
+                              <span class="transfers-flag" title="This canister transfers cycles rather than burns them">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                  <line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="2"></line>
+                                </svg>
+                              </span>
+                            {/if}
+                          </div>
+                        </td>
+                        <td class="canister-count"></td>
+                        <td class="cycles">{formatCycles(canister.balance)}</td>
+                        <td class="burn {canRecentCell.class}">
+                          <span class="rate-value">
+                            {canRecentCell.text}
+                            {#if canRecentCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
+                          </span>
+                        </td>
+                        <td class="burn {canShortTermCell.class}">
+                          <span class="rate-value">
+                            {canShortTermCell.text}
+                            {#if canShortTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
+                          </span>
+                        </td>
+                        <td class="burn {canLongTermCell.class}">
+                          <span class="rate-value">
+                            {canLongTermCell.text}
+                            {#if canLongTermCell.text !== "-"}<span class="rate-suffix">/day</span>{/if}
+                          </span>
+                        </td>
+                        <td class="runway {canRunwayCell.class}">
+                          {canRunwayCell.text}
+                        </td>
+                        <td class="trend sub-trend">
+                          <Sparkline intervals={getCanisterSparklineData(canister.canister_id)} width={60} height={16} />
+                        </td>
+                      </tr>
+                    {/each}
                   {/each}
                 {/if}
               {/if}
