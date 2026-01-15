@@ -763,6 +763,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "Logger",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -1603,7 +1604,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "cs76l-giaaa-aaaac-qadwq-cai",
@@ -4782,7 +4784,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "js6yw-cyaaa-aaaag-aaa5q-cai",
@@ -7665,6 +7668,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "Token Wrapper",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -9891,7 +9895,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "kgal4-lqaaa-aaaai-q4elq-cai",
@@ -9902,7 +9907,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "hp3ve-5iaaa-aaaai-q4fba-cai",
@@ -9968,13 +9974,15 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Asset Canister"
   },
   {
     "canister_id": "fxmww-qiaaa-aaaaj-azu7a-cai",
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "DKIM Oracle",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -12099,6 +12107,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "Token Wrapper",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -12132,6 +12141,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "Minting Manager",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -12143,6 +12153,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "Rewards Distributor",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -19929,6 +19940,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "DKIM Oracle",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -21733,6 +21745,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "Bitcoin Runes Orchestrator",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -22595,7 +22608,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICDex Validator"
   },
   {
     "canister_id": "zgfl7-pqaaa-aaaap-accpa-cai",
@@ -24846,7 +24860,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Root"
   },
   {
     "canister_id": "hodlf-miaaa-aaaaq-aackq-cai",
@@ -24857,7 +24872,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Governance"
   },
   {
     "canister_id": "hhaaz-2aaaa-aaaaq-aacla-cai",
@@ -24868,7 +24884,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICL Ledger"
   },
   {
     "canister_id": "habgn-xyaaa-aaaaq-aaclq-cai",
@@ -24879,7 +24896,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Index Canister"
   },
   {
     "canister_id": "gnpcd-yqaaa-aaaaq-aacma-cai",
@@ -24890,7 +24908,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Swap"
   },
   {
     "canister_id": "gkoex-viaaa-aaaaq-aacmq-cai",
@@ -24956,7 +24975,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICL Archive"
   },
   {
     "canister_id": "gyito-zyaaa-aaaaq-aacpq-cai",
@@ -26606,7 +26626,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "u637p-5aaaa-aaaaq-qaaca-cai",
@@ -26679,6 +26700,7 @@
     "project": [
       "Logger Canister"
     ],
+    "subcategory": "ckBTC Minter",
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
@@ -26694,7 +26716,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "nbsys-saaaa-aaaar-qaaga-cai",
@@ -26716,7 +26739,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Liquidity Mining"
   },
   {
     "canister_id": "i2ied-uqaaa-aaaar-qaaza-cai",
@@ -26727,7 +26751,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "DEX Aggregator"
   },
   {
     "canister_id": "i5jcx-ziaaa-aaaar-qaazq-cai",
@@ -26738,7 +26763,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICDex Router"
   },
   {
     "canister_id": "grghe-syaaa-aaaar-qabyq-cai",
@@ -26884,7 +26910,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Trader Canister"
   },
   {
     "canister_id": "3jd4g-jyaaa-aaaar-qaeba-cai",
@@ -26895,7 +26922,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Trader Canister"
   },
   {
     "canister_id": "2notu-qyaaa-aaaar-qaeha-cai",
@@ -26939,7 +26967,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Hub"
   },
   {
     "canister_id": "7rvjr-3qaaa-aaaar-qaeyq-cai",
@@ -26950,7 +26979,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Bitcoin Runes Chain"
   },
   {
     "canister_id": "7ywcn-nyaaa-aaaar-qaeza-cai",
@@ -26961,7 +26991,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Route"
   },
   {
     "canister_id": "77xez-aaaaa-aaaar-qaezq-cai",
@@ -27129,7 +27160,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "EVM Chain"
   },
   {
     "canister_id": "hnznr-jyaaa-aaaar-qagba-cai",
@@ -27254,7 +27286,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "fmazi-nqaaa-aaaar-qagmq-cai",
@@ -27309,7 +27342,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "a6zof-5iaaa-aaaar-qagsa-cai",
@@ -27364,7 +27398,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "doked-biaaa-aaaar-qag2a-cai",
@@ -27408,7 +27443,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "j2tuh-yqaaa-aaaar-qahcq-cai",
@@ -27430,7 +27466,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "iq4w5-2aaaa-aaaar-qahfq-cai",
@@ -27576,7 +27613,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Customs"
   },
   {
     "canister_id": "ncfbq-kyaaa-aaaar-qah3a-cai",
@@ -27719,7 +27757,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "EVM Chain"
   },
   {
     "canister_id": "3qgfz-2qaaa-aaaar-qaipq-cai",
@@ -27961,7 +28000,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Dogecoin Chain"
   },
   {
     "canister_id": "ma6uo-piaaa-aaaar-qammq-cai",
@@ -28170,7 +28210,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Runes Indexer"
   },
   {
     "canister_id": "kqs64-paaaa-aaaar-qamza-cai",
@@ -28181,7 +28222,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Transaction Orchestrator"
   },
   {
     "canister_id": "kmwen-yaaaa-aaaar-qam3a-cai",
@@ -28192,7 +28234,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "DEX/AMM"
   },
   {
     "canister_id": "lgzgx-2qaaa-aaaar-qam4a-cai",
@@ -28577,7 +28620,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "EVM Chain"
   },
   {
     "canister_id": "tgryg-7yaaa-aaaar-qaohq-cai",

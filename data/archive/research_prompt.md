@@ -27,5 +27,6 @@ Identify what each canister does and add subcategory metadata to the JSON files.
 - Only label canisters you identify with certainty
 - Skip unknown canisters (no subcategory field)
 - Descriptions: one static line, no changing values
+- Use the Edit tool for JSON modifications - do NOT use jq with temp files
 
 See "Researching Canister Functions" section in CLAUDE.md for full methodology and examples.

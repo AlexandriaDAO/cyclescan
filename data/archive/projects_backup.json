@@ -313,7 +313,21 @@
     "name": "ICLighthouse DAO",
     "website": [
       "https://iclight.house"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "SNS Root": "Manages SNS canisters and dapp registrations for the ICLighthouse DAO governance system",
+      "SNS Governance": "Handles proposals, voting, and neuron management for ICLighthouse DAO",
+      "ICL Ledger": "ICRC-1 token ledger for ICL governance token transactions",
+      "Index Canister": "Indexes ICL token transactions for efficient account history queries",
+      "SNS Swap": "Manages token swap sale for ICLighthouse DAO decentralization launch",
+      "ICL Archive": "Stores historical ICL token ledger blocks and transaction records",
+      "ICDex Router": "Factory that creates trading pairs and manages automated market makers (OAMM)",
+      "ICDex Validator": "Validates trading operations and manages DEX pair configurations across the platform",
+      "DEX Aggregator": "Aggregates DEX pairs from multiple sources and manages marketplace listings with NFT staking",
+      "Liquidity Mining": "Distributes trading and liquidity mining rewards with NFT-based acceleration",
+      "Trader Canister": "Manages trader accounts, order execution, and liquidity positions across DEX pairs",
+      "Asset Canister": "Frontend hosting for ICLighthouse trading interface"
+    }
   },
   {
     "name": "ICP Index",
@@ -365,7 +379,10 @@
     "name": "ICRC Index",
     "website": [
       "https://internetcomputer.org/docs/current/developer-docs/defi/tokens/indexes"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "Ledger Index": "Indexes and stores transaction history from ICRC-1 token ledgers for efficient account lookups"
+    }
   },
   {
     "name": "ICRC Token",
@@ -421,7 +438,16 @@
   },
   {
     "name": "Logger Canister",
-    "website": []
+    "website": [],
+    "subcategory_descriptions": {
+      "Logger": "Simple log storage canister with append, view, and statistics capabilities.",
+      "Token Wrapper": "Token management canister with mint, burn, and transfer capabilities.",
+      "DKIM Oracle": "DKIM signing and revocation service for email verification.",
+      "Minting Manager": "Manages neuron-based token minting process with fee calculation.",
+      "Rewards Distributor": "Distributes neuron staking rewards to token holders based on snapshots.",
+      "Bitcoin Runes Orchestrator": "Orchestrates Bitcoin transactions involving Runes tokens.",
+      "ckBTC Minter": "Standard ckBTC minter for converting between BTC and ckBTC."
+    }
   },
   {
     "name": "Mimic Clay",
@@ -554,7 +580,18 @@
     "name": "OmniBTC",
     "website": [
       "https://www.omnibtc.finance"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "Hub": "Central routing hub managing cross-chain tickets, tokens, chains, and Runes protocol integration.",
+      "Bitcoin Runes Chain": "Bitcoin chain handler for Runes token transactions, etching, and cross-chain bridging.",
+      "ICP Route": "Manages ICRC token ledgers and ICP-based cross-chain routing.",
+      "ICP Customs": "Handles ckBTC and ICP chain-key token bridging between ICP and other chains.",
+      "EVM Chain": "Bridges tokens between ICP and EVM-compatible chains using threshold ECDSA.",
+      "Dogecoin Chain": "Dogecoin chain handler for DOGE-based cross-chain token bridging.",
+      "Runes Indexer": "Queries Bitcoin Runes balances and metadata from on-chain data.",
+      "Transaction Orchestrator": "Orchestrates PSBT signing, transaction broadcasting, and multi-pool coordination.",
+      "DEX/AMM": "Decentralized exchange with automated market maker for token swaps and liquidity pools."
+    }
   },
   {
     "name": "Omnity",
