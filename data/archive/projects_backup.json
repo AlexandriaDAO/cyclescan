@@ -439,7 +439,18 @@
     "name": "Neutrinite",
     "website": [
       "https://neutrinite.io"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "DeFi Pylon": "Hosts automated DeFi vectors (DCA, liquidity, exchange) with built-in DEX swap functionality.",
+      "NTC Relay": "Processes NTC (wrapped cycles) minting and canister top-up relay.",
+      "DeFi Aggregator": "Price oracle aggregating token and pair data from DEXes.",
+      "NTN Archive": "ICRC-3 archive storing NTN token transaction history.",
+      "DeVeFi Root": "Factory that creates and manages DeFi Vector trading pairs.",
+      "Neuron Pylon": "Hosts ICP/SNS neuron staking automation and NTC minting vectors.",
+      "Ledger Deployer": "Factory for deploying and upgrading ICRC-1 token ledgers.",
+      "Liquid Staking": "Manages neuron balance and mint ratio for liquid staking token.",
+      "Asset Canister": "Frontend hosting for ICPCoins and related UIs."
+    }
   },
   {
     "name": "NFID Wallet",

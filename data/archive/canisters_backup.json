@@ -9992,6 +9992,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "Neuron Pylon",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -16724,6 +16725,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "Ledger Deployer",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -16735,6 +16737,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "Asset Canister",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -16790,6 +16793,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "DeVeFi Root",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -16900,6 +16904,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "DeFi Pylon",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -17329,6 +17334,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "Liquid Staking",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -17571,6 +17577,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "NTC Relay",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -17802,6 +17809,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "DeFi Aggregator",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -17835,6 +17843,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "Asset Canister",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -24732,6 +24741,7 @@
     "project": [
       "Neutrinite"
     ],
+    "subcategory": "NTN Archive",
     "proxy_id": "extk7-gaaaa-aaaaq-aacda-cai",
     "proxy_type": {
       "SnsRoot": null
@@ -34622,7 +34632,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "rtoqq-yyaaa-aaaaa-qanba-cai",
@@ -34634,7 +34644,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "rilmv-caaaa-aaaaa-qandq-cai",
@@ -34658,7 +34668,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "474n2-qiaaa-aaaaf-qasoq-cai",
@@ -34694,7 +34704,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "vofho-bqaaa-aaaac-qalyq-cai",
