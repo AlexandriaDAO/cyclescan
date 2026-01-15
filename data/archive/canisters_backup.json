@@ -34632,7 +34632,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": false
+    "valid": true
   },
   {
     "canister_id": "qbhxa-ziaaa-aaaaa-qbqza-cai",
