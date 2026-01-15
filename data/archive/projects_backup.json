@@ -63,7 +63,10 @@
     "name": "BoB (Burn or Burn)",
     "website": [
       "https://bob.fun"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "Mining Canister": "Proof-of-burn mining system where users spawn miners to burn cycles and compete for block rewards"
+    }
   },
   {
     "name": "BOB Token",
@@ -146,7 +149,16 @@
     "name": "CHAT",
     "website": [
       "https://oc.app"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "SNS Root": "Manages SNS canisters and dapp registrations for OpenChat governance system",
+      "SNS Governance": "Handles proposals, voting, and neuron management for CHAT DAO",
+      "CHAT Ledger": "ICRC-1/2/3 token ledger for CHAT governance token transactions",
+      "Index Canister": "Indexes CHAT token transactions for efficient account history queries",
+      "SNS Swap": "Managed token swap sale for OpenChat decentralization launch",
+      "CHAT Archive": "Stores historical CHAT token ledger blocks and transaction records",
+      "Asset Canister": "Frontend hosting for OpenChat web interface"
+    }
   },
   {
     "name": "CLOUD Index",
@@ -434,7 +446,18 @@
     "name": "KongSwap",
     "website": [
       "https://kongswap.io"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "SIWS Authentication": "Sign-In With Solana authentication for Solana wallet integration",
+      "SNS Root": "Root canister managing SNS infrastructure and dapp canisters",
+      "SNS Governance": "Governance canister handling proposals, neurons, and voting",
+      "KNG Ledger": "ICRC-1/2 compliant ledger for KNG token transfers and approvals",
+      "SNS Swap": "Token swap canister for SNS decentralization sale",
+      "KNG Index": "ICRC-3 index for querying historical KNG token transactions",
+      "KNG Archive": "Archive canister storing historical KNG token transaction data",
+      "DEX Backend": "Core DEX logic handling liquidity pools, swaps, and trading",
+      "Frontend": "Web interface hosting for KongSwap application"
+    }
   },
   {
     "name": "Logger Canister",
@@ -552,7 +575,24 @@
     "name": "Nuance",
     "website": [
       "https://www.home.nuance.xyz"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "PostCore": "Main content management system for creating and publishing blog posts",
+      "Content Search": "Full-text search engine for posts and tags",
+      "User Management": "User profiles, following, and subscription management",
+      "NFT Factory": "Creates NFT canisters for tokenizing premium articles",
+      "Publication Factory": "Creates multi-author publication canisters",
+      "Cycles Dispenser": "Automated cycle management and canister top-ups",
+      "Metrics": "Canister metrics collection and monitoring",
+      "Email Opt-In": "Email notification subscription management",
+      "Frontend": "Web application hosting",
+      "SNS Governance": "Proposal and voting system",
+      "SNS Root": "SNS canister registry and management",
+      "SNS Swap": "Token sale and distribution",
+      "NUA Token Ledger": "ICRC-1/2 token for platform rewards",
+      "Token Index": "Transaction indexing for NUA token",
+      "Archive": "Historical transaction storage"
+    }
   },
   {
     "name": "ODIN.fun",
@@ -603,17 +643,12 @@
     "name": "Orbit",
     "website": [
       "https://orbit.global"
-    ]
-  },
-  {
-    "name": "Orbit Station",
-    "website": [
-      "https://orbit.global"
-    ]
-  },
-  {
-    "name": "Orbit Upgrader",
-    "website": []
+    ],
+    "subcategory_descriptions": {
+      "Core": "Main Orbit platform canister for DAO mission control and management.",
+      "Station": "Individual user station canisters providing DAO tooling and governance.",
+      "Upgrader": "Infrastructure canisters managing automated canister upgrades and version control."
+    }
   },
   {
     "name": "Ordi Trade",
@@ -780,7 +815,21 @@
   },
   {
     "name": "Unidentified",
-    "website": []
+    "website": [],
+    "subcategory_descriptions": {
+      "Neuron Manager": "Manages ICP/SNS neuron operations and permissions",
+      "Equipment Tracker": "Equipment loan and inventory management system",
+      "Social Platform": "Social platform with proposal and Twitter integration",
+      "DAO Governance": "Governance system with voting and token transfers",
+      "NFT Platform": "NFT marketplace or collection interface",
+      "HTTP Request Builder": "Builds and signs HTTP outcalls to external services",
+      "Ledger Manager": "Manages ledger accounts and balance tracking",
+      "Todo App": "Task and todo list management application",
+      "Invoice Verifier": "Invoice verification and payment processing",
+      "Mission Control": "Admin platform with authentication and notifications",
+      "DeFi Savings": "Savings and compound interest canister for token management",
+      "Asset Canister": "Frontend hosting for web interfaces"
+    }
   },
   {
     "name": "Unidentified (deleted)",
