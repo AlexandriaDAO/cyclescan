@@ -6388,7 +6388,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Asset Canister"
   },
   {
     "canister_id": "udtw4-baaaa-aaaah-abc3q-cai",
@@ -6531,7 +6532,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "LBP Factory"
   },
   {
     "canister_id": "ltj2f-gaaaa-aaaah-adnea-cai",
@@ -6542,7 +6544,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Status Monitor"
   },
   {
     "canister_id": "eayyd-iiaaa-aaaah-adtea-cai",
@@ -6564,7 +6567,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Airdrop Manager"
   },
   {
     "canister_id": "ev7jo-jaaaa-aaaah-adthq-cai",
@@ -7411,7 +7415,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "DEX"
   },
   {
     "canister_id": "cusyh-iyaaa-aaaah-qcpba-cai",
@@ -18849,7 +18854,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Asset Canister"
   },
   {
     "canister_id": "gz3ih-qiaaa-aaaam-qap2q-cai",
@@ -24470,7 +24476,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Root"
   },
   {
     "canister_id": "qgj7v-3qaaa-aaaaq-aabwa-cai",
@@ -24481,7 +24488,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Governance"
   },
   {
     "canister_id": "qbizb-wiaaa-aaaaq-aabwq-cai",
@@ -24492,7 +24500,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Token Ledger"
   },
   {
     "canister_id": "qils5-aaaaa-aaaaq-aabxa-cai",
@@ -24503,7 +24512,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Swap"
   },
   {
     "canister_id": "qpkuj-nyaaa-aaaaq-aabxq-cai",
@@ -24514,7 +24524,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Index"
   },
   {
     "canister_id": "ssx2b-6qaaa-aaaaq-aabya-cai",
@@ -24536,7 +24547,8 @@
     "proxy_type": {
       "SnsRoot": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "SNS Archive"
   },
   {
     "canister_id": "sjsge-eiaaa-aaaaq-aab2q-cai",

@@ -664,7 +664,20 @@
     "name": "Sonic",
     "website": [
       "https://sonic.ooo"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "DEX": "Main decentralized exchange for token swaps, liquidity pools, and DeFi operations.",
+      "LBP Factory": "Creates and manages Liquidity Bootstrapping Pools for fair token launches.",
+      "Airdrop Manager": "Handles token airdrops and vesting schedules with time-locked releases.",
+      "Status Monitor": "Simple liveness checking canister for system health monitoring.",
+      "SNS Root": "Manages SNS canisters and dapp registrations for decentralized governance.",
+      "SNS Governance": "Handles proposals, voting, and neuron management for SNS.",
+      "SNS Token Ledger": "ICRC-1/2/3 compliant ledger for SNS governance token transactions.",
+      "SNS Swap": "Manages token swap sales during SNS decentralization launch.",
+      "SNS Index": "Indexes token transactions for efficient account history queries.",
+      "SNS Archive": "Stores historical ledger blocks for long-term transaction records.",
+      "Asset Canister": "Frontend hosting for web interfaces and static assets."
+    }
   },
   {
     "name": "Squirrel (SNS Aggregator)",
