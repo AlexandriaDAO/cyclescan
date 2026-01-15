@@ -52,7 +52,7 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": false
   },
   {
     "canister_id": "rno2w-sqaaa-aaaaa-aaacq-cai",
