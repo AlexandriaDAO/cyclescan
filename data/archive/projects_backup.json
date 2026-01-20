@@ -144,7 +144,16 @@
       "ckEURC Index": "Transaction history lookups for ckEURC (Euro stablecoin) accounts.",
       "ckXAUT Index": "Transaction history lookups for ckXAUT (Tether Gold) accounts.",
       "ckBTC Minter": "Mints ckBTC when users deposit Bitcoin, burns ckBTC when processing withdrawal requests. Bridges BTC between Bitcoin and ICP.",
-      "Bitcoin Runes Orchestrator": "Handles Bitcoin Runes protocol operations on ICP, managing UTXO-based Runes token exchanges and transfers."
+      "Bitcoin Runes Orchestrator": "Handles Bitcoin Runes protocol operations on ICP, managing UTXO-based Runes token exchanges and transfers.",
+      "ckBTC Ledger": "Records ckBTC token transactions and account balances",
+      "ckPEPE Ledger": "Records ckPEPE token transactions and account balances",
+      "ckSHIB Ledger": "Records ckSHIB token transactions and account balances",
+      "ckWBTC Ledger": "Records ckWBTC token transactions and account balances",
+      "ckUSDT Ledger": "Records ckUSDT token transactions and account balances",
+      "ckWSTETH Ledger": "Records ckWSTETH token transactions and account balances",
+      "ckUNI Ledger": "Records ckUNI token transactions and account balances",
+      "ckEURC Ledger": "Records ckEURC token transactions and account balances",
+      "ckXAUT Ledger": "Records ckXAUT token transactions and account balances"
     }
   },
   {
@@ -455,16 +464,12 @@
     }
   },
   {
-    "name": "Logger Canister",
-    "website": [],
+    "name": "ZK Email",
+    "website": [
+      "https://zk.email/"
+    ],
     "subcategory_descriptions": {
-      "Logger": "Simple log storage canister with append, view, and statistics capabilities.",
-      "Token Wrapper": "Token management canister with mint, burn, and transfer capabilities.",
-      "DKIM Oracle": "DKIM signing and revocation service for email verification.",
-      "Minting Manager": "Manages neuron-based token minting process with fee calculation.",
-      "Rewards Distributor": "Distributes neuron staking rewards to token holders based on snapshots.",
-      "Bitcoin Runes Orchestrator": "Orchestrates Bitcoin transactions involving Runes tokens.",
-      "ckBTC Minter": "Standard ckBTC minter for converting between BTC and ckBTC."
+      "DKIM Oracle": "Signs and verifies DKIM public keys for zero-knowledge email proofs, enabling privacy-preserving verification of email ownership and content."
     }
   },
   {
@@ -827,7 +832,11 @@
       "Invoice Verifier": "Invoice verification and payment processing",
       "Mission Control": "Admin platform with authentication and notifications",
       "DeFi Savings": "Savings and compound interest canister for token management",
-      "Asset Canister": "Frontend hosting for web interfaces"
+      "Asset Canister": "Frontend hosting for web interfaces",
+      "Logger": "Simple log storage canister with append, view, and statistics capabilities.",
+      "Token Wrapper": "Token management canister with mint, burn, and transfer capabilities.",
+      "Minting Manager": "Manages neuron-based token minting process with fee calculation.",
+      "Rewards Distributor": "Distributes neuron staking rewards to token holders based on snapshots."
     }
   },
   {
@@ -852,7 +861,14 @@
   },
   {
     "name": "Unknown Token",
-    "website": []
+    "website": [],
+    "subcategory_descriptions": {
+      "Test Token": "Test or development token created for testing purposes",
+      "ICP Rune": "Bitcoin Runes bridged to ICP using the RUNE standard",
+      "Meme Token": "Community or meme token with no known project association",
+      "Frozen Token": "Token canister that has run out of cycles and is frozen",
+      "Error Token": "Token canister that could not be queried"
+    }
   },
   {
     "name": "vyt Token",

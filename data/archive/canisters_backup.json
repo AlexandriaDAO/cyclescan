@@ -696,7 +696,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "po5ew-zqaaa-aaaaa-qbnwa-cai",
@@ -802,7 +803,7 @@
   {
     "canister_id": "huh2c-uqaaa-aaaab-aabaq-cai",
     "project": [
-      "Logger Canister"
+      "Unidentified"
     ],
     "subcategory": "Logger",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -903,7 +904,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "xq6ov-yaaaa-aaaab-aafqa-cai",
@@ -926,7 +928,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ejbeo-lyaaa-aaaab-aaguq-cai",
@@ -948,7 +951,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "67bot-eaaaa-aaaab-aaxiq-cai",
@@ -1193,7 +1197,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "fjkbk-saaaa-aaaab-qb2ca-cai",
@@ -1204,7 +1209,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "irarj-qqaaa-aaaab-qb4wq-cai",
@@ -1907,7 +1913,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "tmnok-kiaaa-aaaac-qbola-cai",
@@ -2464,7 +2471,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6gocj-6aaaa-aaaad-aaopa-cai",
@@ -2486,7 +2494,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "znkqy-oqaaa-aaaad-aawga-cai",
@@ -2508,7 +2517,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "6qi6e-bqaaa-aaaad-aawua-cai",
@@ -3421,7 +3431,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "33tnr-7iaaa-aaaae-acxoq-cai",
@@ -4111,7 +4122,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "s67ty-qiaaa-aaaae-qfxgq-cai",
@@ -4911,7 +4923,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "5vtpa-syaaa-aaaaf-qasjq-cai",
@@ -5711,7 +5724,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4uvvy-caaaa-aaaag-at2tq-cai",
@@ -6295,7 +6309,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "72bzj-jyaaa-aaaag-aucua-cai",
@@ -6677,7 +6692,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "hfwkg-3qaaa-aaaag-qjzua-cai",
@@ -6688,7 +6704,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "34ovl-syaaa-aaaag-qkanq-cai",
@@ -6922,7 +6939,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "eo2vl-tyaaa-aaaah-adtfa-cai",
@@ -6978,7 +6996,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "6f7n5-4iaaa-aaaah-adwpq-cai",
@@ -7033,7 +7052,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "bpsjh-6yaaa-aaaah-adyjq-cai",
@@ -7099,7 +7119,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "xtiit-kqaaa-aaaah-aq2wq-cai",
@@ -7143,7 +7164,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "5yc3e-4qaaa-aaaah-aq4ra-cai",
@@ -7154,7 +7176,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "uoow7-vyaaa-aaaah-aq5cq-cai",
@@ -7198,7 +7221,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ayvfb-fqaaa-aaaah-aq6xa-cai",
@@ -7220,7 +7244,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "vjaac-vaaaa-aaaah-araza-cai",
@@ -7567,7 +7592,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "nw35a-7qaaa-aaaah-arf5q-cai",
@@ -8055,7 +8081,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "zf4eh-hyaaa-aaaah-qddgq-cai",
@@ -8071,7 +8098,7 @@
   {
     "canister_id": "zm7p3-rqaaa-aaaah-qddha-cai",
     "project": [
-      "Logger Canister"
+      "Unidentified"
     ],
     "subcategory": "Token Wrapper",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -8582,7 +8609,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "4o3ca-3yaaa-aaaah-qqc4a-cai",
@@ -8639,7 +8667,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4ribt-uaaaa-aaaah-qqfda-cai",
@@ -8698,7 +8727,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ockk2-xaaaa-aaaai-aaaua-cai",
@@ -9231,7 +9261,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "57yxc-oiaaa-aaaai-atjhq-cai",
@@ -9288,7 +9319,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "n7ib3-4qaaa-aaaai-qagnq-cai",
@@ -9321,7 +9353,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ys7ac-hyaaa-aaaai-qibga-cai",
@@ -9420,7 +9453,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "dlssx-hqaaa-aaaai-qpiqa-cai",
@@ -9431,7 +9465,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "dfq77-4aaaa-aaaai-qpira-cai",
@@ -9442,7 +9477,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "dxwig-qqaaa-aaaai-qpisa-cai",
@@ -9453,7 +9489,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "dzufo-laaaa-aaaai-qpita-cai",
@@ -9464,7 +9501,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ct3hu-jqaaa-aaaai-qpiua-cai",
@@ -9475,7 +9513,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ci63r-tiaaa-aaaai-qpiwq-cai",
@@ -9508,7 +9547,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "a3byr-3qaaa-aaaai-qpiya-cai",
@@ -9519,7 +9559,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "bejlg-yiaaa-aaaai-qpi4q-cai",
@@ -9530,7 +9571,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "pbffj-fqaaa-aaaai-qpj4a-cai",
@@ -9541,7 +9583,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "pphib-6aaaa-aaaai-qpj5a-cai",
@@ -9552,7 +9595,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ptdsq-jaaaa-aaaai-qpj7a-cai",
@@ -9563,7 +9607,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "yam2f-eaaaa-aaaai-qpkba-cai",
@@ -9574,7 +9619,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "yskn4-iqaaa-aaaai-qpkca-cai",
@@ -9585,7 +9631,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "y4iau-taaaa-aaaai-qpkda-cai",
@@ -9596,7 +9643,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "3q7qd-yaaaa-aaaai-qpkja-cai",
@@ -9607,7 +9655,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "3m3ks-paaaa-aaaai-qpkla-cai",
@@ -9618,7 +9667,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "2guii-nqaaa-aaaai-qpkma-cai",
@@ -9629,7 +9679,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "2iwfa-waaaa-aaaai-qpkna-cai",
@@ -9640,7 +9691,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "7bkoi-4aaaa-aaaai-qpkra-cai",
@@ -9651,7 +9703,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "7tmzr-qqaaa-aaaai-qpksa-cai",
@@ -9662,7 +9715,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "75ouz-laaaa-aaaai-qpkta-cai",
@@ -9673,7 +9727,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6xbwd-jqaaa-aaaai-qpkua-cai",
@@ -9684,7 +9739,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6zd3l-saaaa-aaaai-qpkva-cai",
@@ -9695,7 +9751,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6lfms-6qaaa-aaaai-qpkwa-cai",
@@ -9706,7 +9763,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6fhb2-faaaa-aaaai-qpkxa-cai",
@@ -9717,7 +9775,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "473jg-3qaaa-aaaai-qpkya-cai",
@@ -9739,7 +9798,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "hf2ke-4qaaa-aaaai-q3jzq-cai",
@@ -9750,7 +9810,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "7qvfy-yqaaa-aaaai-q3lbq-cai",
@@ -9761,7 +9822,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "5wnxv-raaaa-aaaai-q3lmq-cai",
@@ -9783,7 +9845,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ynxle-xqaaa-aaaai-q3ltq-cai",
@@ -9794,7 +9857,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "zj2ew-oqaaa-aaaai-q3lvq-cai",
@@ -9816,7 +9880,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "zv66h-zqaaa-aaaai-q3lxq-cai",
@@ -9838,7 +9903,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "2lpzj-6aaaa-aaaai-q3l6q-cai",
@@ -9849,7 +9915,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4nt3u-hyaaa-aaaai-q3mvq-cai",
@@ -10432,7 +10499,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "upbga-5yaaa-aaaai-q4kla-cai",
@@ -10495,7 +10563,7 @@
   {
     "canister_id": "fxmww-qiaaa-aaaaj-azu7a-cai",
     "project": [
-      "Logger Canister"
+      "ZK Email"
     ],
     "subcategory": "DKIM Oracle",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -10547,7 +10615,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ppxoa-3qaaa-aaaaj-azzkq-cai",
@@ -10558,7 +10627,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ynjio-cyaaa-aaaaj-az5kq-cai",
@@ -10569,7 +10639,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "57q7d-saaaa-aaaaj-az5ua-cai",
@@ -12645,7 +12716,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "yeslq-eyaaa-aaaak-qc24q-cai",
@@ -12717,7 +12789,7 @@
   {
     "canister_id": "klszn-dqaaa-aaaak-qdd5q-cai",
     "project": [
-      "Logger Canister"
+      "Unidentified"
     ],
     "subcategory": "Token Wrapper",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -12751,7 +12823,7 @@
   {
     "canister_id": "kqxfi-ziaaa-aaaak-qdd7a-cai",
     "project": [
-      "Logger Canister"
+      "Unidentified"
     ],
     "subcategory": "Minting Manager",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -12763,7 +12835,7 @@
   {
     "canister_id": "kxwd4-uqaaa-aaaak-qdd7q-cai",
     "project": [
-      "Logger Canister"
+      "Unidentified"
     ],
     "subcategory": "Rewards Distributor",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -12858,7 +12930,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "emmm6-kaaaa-aaaak-qlnwa-cai",
@@ -12891,7 +12964,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "cpjtn-2yaaa-aaaak-qtywq-cai",
@@ -12902,7 +12976,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "a4wqn-saaaa-aaaak-qtyya-cai",
@@ -12913,7 +12988,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "a3xwz-7yaaa-aaaak-qtyyq-cai",
@@ -12924,7 +13000,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "avv3r-eiaaa-aaaak-qtyzq-cai",
@@ -12935,7 +13012,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "aask4-faaaa-aaaak-qty2a-cai",
@@ -12946,7 +13024,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "by377-laaaa-aaaak-qty6a-cai",
@@ -12957,7 +13036,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "b72zl-gyaaa-aaaak-qty6q-cai",
@@ -12968,7 +13048,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "bwzsx-qqaaa-aaaak-qty7a-cai",
@@ -13001,7 +13082,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "lxht6-iaaaa-aaaak-qtzea-cai",
@@ -13012,7 +13094,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "nhlzm-iiaaa-aaaak-qtzrq-cai",
@@ -13034,7 +13117,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "mydk3-lqaaa-aaaak-qtzva-cai",
@@ -13045,7 +13129,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "puu2m-aqaaa-aaaak-qtz7a-cai",
@@ -13067,7 +13152,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "zdw5l-uqaaa-aaaak-qt2ha-cai",
@@ -13078,7 +13164,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "3zkvx-kaaaa-aaaak-qt2ia-cai",
@@ -13100,7 +13187,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "22g4r-6yaaa-aaaak-qt2oq-cai",
@@ -13111,7 +13199,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "4ei3l-faaaa-aaaak-qt22a-cai",
@@ -13155,7 +13244,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "wluxk-gaaaa-aaaak-qt3aa-cai",
@@ -13166,7 +13256,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "wcx4w-qiaaa-aaaak-qt3bq-cai",
@@ -13188,7 +13279,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "xt5cj-iaaaa-aaaak-qt3ea-cai",
@@ -13199,7 +13291,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "xiy6m-syaaa-aaaak-qt3gq-cai",
@@ -13210,7 +13303,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "vhdh5-naaaa-aaaak-qt3ka-cai",
@@ -13221,7 +13315,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "vjbkv-wqaaa-aaaak-qt3la-cai",
@@ -13232,7 +13327,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "uepo3-zyaaa-aaaak-qt3mq-cai",
@@ -13243,7 +13339,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "uri7w-yqaaa-aaaak-qt3pa-cai",
@@ -13254,7 +13351,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "reqop-fqaaa-aaaak-qt3ra-cai",
@@ -13309,7 +13407,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "tqol3-aqaaa-aaaak-qt37a-cai",
@@ -13320,7 +13419,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "tp5ii-piaaa-aaaak-qt4aa-cai",
@@ -13375,7 +13475,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "uv6aa-nqaaa-aaaak-qt4sq-cai",
@@ -13386,7 +13487,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "vyqeo-cyaaa-aaaak-qt4va-cai",
@@ -13397,7 +13499,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "veu67-vyaaa-aaaak-qt4xa-cai",
@@ -13408,7 +13511,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "wtgsn-eaaaa-aaaak-qt47q-cai",
@@ -13419,7 +13523,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "5krgh-sqaaa-aaaak-qt5aq-cai",
@@ -13430,7 +13535,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "5etlp-jaaaa-aaaak-qt5bq-cai",
@@ -13441,7 +13547,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "5wv4w-fqaaa-aaaak-qt5cq-cai",
@@ -13452,7 +13559,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4vzvq-riaaa-aaaak-qt5ea-cai",
@@ -13496,7 +13604,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "7zofh-2iaaa-aaaak-qt5oa-cai",
@@ -13507,7 +13616,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "2qsop-qiaaa-aaaak-qt5sa-cai",
@@ -13518,7 +13628,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "2zrft-gaaaa-aaaak-qt5tq-cai",
@@ -13529,7 +13640,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "325mv-syaaa-aaaak-qt5va-cai",
@@ -13540,7 +13652,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "3p25y-tqaaa-aaaak-qt5wq-cai",
@@ -13551,7 +13664,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "zvgve-naaaa-aaaak-qt5zq-cai",
@@ -13562,7 +13676,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "zodjb-xyaaa-aaaak-qt53a-cai",
@@ -13573,7 +13688,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "y7jx6-pqaaa-aaaak-qt56q-cai",
@@ -13584,7 +13700,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "yrl2w-uaaaa-aaaak-qt57q-cai",
@@ -13595,7 +13712,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "pqcf2-vqaaa-aaaak-qt6cq-cai",
@@ -13606,7 +13724,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "otom4-biaaa-aaaak-qt6ea-cai",
@@ -13617,7 +13736,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "mvw6r-iyaaa-aaaak-qt6ja-cai",
@@ -13628,7 +13748,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "n7z4l-kiaaa-aaaak-qt6oa-cai",
@@ -13639,7 +13760,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "inalg-2qaaa-aaaak-qt6qq-cai",
@@ -13650,7 +13772,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "i7g47-waaaa-aaaak-qt6tq-cai",
@@ -13661,7 +13784,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "j3ltn-paaaa-aaaak-qt6vq-cai",
@@ -13672,7 +13796,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "lpvwz-kaaaa-aaaak-qt63q-cai",
@@ -13683,7 +13808,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "kz6os-7qaaa-aaaak-qt66q-cai",
@@ -13694,7 +13820,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "bolxq-sqaaa-aaaak-qt7aq-cai",
@@ -13705,7 +13832,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "bvolv-iiaaa-aaaak-qt7ca-cai",
@@ -13716,7 +13844,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "dpsdj-wyaaa-aaaak-qt7na-cai",
@@ -13727,7 +13856,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "hqfqk-jiaaa-aaaak-qt7ua-cai",
@@ -13738,7 +13868,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "hlamp-tqaaa-aaaak-qt7wq-cai",
@@ -13749,7 +13880,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "eouxe-oyaaa-aaaak-qt75a-cai",
@@ -13760,7 +13892,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "esqnv-zyaaa-aaaak-qt77a-cai",
@@ -13771,7 +13904,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "gs54i-fqaaa-aaaak-quaca-cai",
@@ -13793,7 +13927,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "hewed-qaaaa-aaaak-quaha-cai",
@@ -13804,7 +13939,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "fxjhd-yyaaa-aaaak-quajq-cai",
@@ -13815,7 +13951,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "fmm3g-caaaa-aaaak-quala-cai",
@@ -13826,7 +13963,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "eufof-maaaa-aaaak-quapa-cai",
@@ -13837,7 +13975,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "bi6ua-hiaaa-aaaak-quaqq-cai",
@@ -13848,7 +13987,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "bt3if-5qaaa-aaaak-quasa-cai",
@@ -13859,7 +13999,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "b2ydz-lyaaa-aaaak-quatq-cai",
@@ -13870,7 +14011,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "afqqo-iaaaa-aaaak-quaxa-cai",
@@ -13881,7 +14023,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "icwdk-zaaaa-aaaak-qubba-cai",
@@ -13892,7 +14035,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "jizbq-3qaaa-aaaak-qubga-cai",
@@ -13903,7 +14047,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "lobt5-saaaa-aaaak-qubla-cai",
@@ -13914,7 +14059,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "keorh-qqaaa-aaaak-qubma-cai",
@@ -13925,7 +14071,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "kdpxt-5iaaa-aaaak-qubmq-cai",
@@ -13936,7 +14083,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "k7lnc-kiaaa-aaaak-quboq-cai",
@@ -13947,7 +14095,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "os2jy-ziaaa-aaaak-qubuq-cai",
@@ -13958,7 +14107,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "mtd5b-5aaaa-aaaak-qubza-cai",
@@ -13969,7 +14119,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "mphhq-kaaaa-aaaak-qub3a-cai",
@@ -13980,7 +14131,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "nlkic-taaaa-aaaak-qub5a-cai",
@@ -14003,7 +14155,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "2whn7-fqaaa-aaaak-qucca-cai",
@@ -14062,7 +14215,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "7e62s-viaaa-aaaak-quc4q-cai",
@@ -14097,7 +14251,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "7y2ad-ciaaa-aaaak-quc6q-cai",
@@ -14132,7 +14287,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "uukfe-vqaaa-aaaak-qudca-cai",
@@ -14143,7 +14299,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "utldq-yiaaa-aaaak-qudcq-cai",
@@ -14154,7 +14311,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Error Token"
   },
   {
     "canister_id": "u5joy-dyaaa-aaaak-quddq-cai",
@@ -14165,7 +14323,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "v6fh6-xaaaa-aaaak-qudfa-cai",
@@ -14198,7 +14357,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "xezpc-jqaaa-aaaak-qudka-cai",
@@ -14209,7 +14369,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "xn2e6-7yaaa-aaaak-qudlq-cai",
@@ -14220,7 +14381,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "whvge-5iaaa-aaaak-qudmq-cai",
@@ -14231,7 +14393,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "sycvh-cyaaa-aaaak-qudvq-cai",
@@ -14242,7 +14405,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "qz3b6-gqaaa-aaaak-qudya-cai",
@@ -14308,7 +14472,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ulzgx-2iaaa-aaaak-que5a-cai",
@@ -14390,7 +14555,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Error Token"
   },
   {
     "canister_id": "nuzlr-4yaaa-aaaak-qugca-cai",
@@ -14423,7 +14589,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "mftvo-eqaaa-aaaak-qughq-cai",
@@ -14570,7 +14737,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "gdmst-ryaaa-aaaak-quh4a-cai",
@@ -14581,7 +14749,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "tp6ru-gaaaa-aaaak-quibq-cai",
@@ -14627,7 +14796,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "wuenf-aqaaa-aaaak-qui6q-cai",
@@ -14638,7 +14808,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "mvvhn-bqaaa-aaaak-qukiq-cai",
@@ -14671,7 +14842,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "l2r6i-caaaa-aaaak-qukzq-cai",
@@ -14682,7 +14854,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "cf6yp-5aaaa-aaaak-qullq-cai",
@@ -14741,7 +14914,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "y4ldc-yaaaa-aaaak-qurhq-cai",
@@ -18254,7 +18428,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "u5bjq-eaaaa-aaaal-qsq4a-cai",
@@ -18276,7 +18451,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "uigy5-fiaaa-aaaal-qsq7q-cai",
@@ -18287,7 +18463,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "7wqkd-6aaaa-aaaal-qsraa-cai",
@@ -18415,7 +18592,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ojxsv-eiaaa-aaaal-qssjq-cai",
@@ -18664,7 +18842,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "7s35u-taaaa-aaaam-ab52a-cai",
@@ -18675,7 +18854,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "74zq4-iqaaa-aaaam-ab53a-cai",
@@ -18697,7 +18877,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6yu7o-rqaaa-aaaam-ab55a-cai",
@@ -18719,7 +18900,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6ksix-5aaaa-aaaam-ab56a-cai",
@@ -18741,7 +18923,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6eqf7-gqaaa-aaaam-ab57a-cai",
@@ -18763,7 +18946,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "j64gw-5yaaa-aaaam-ab6aq-cai",
@@ -19508,7 +19692,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "jdjr5-4yaaa-aaaam-aelya-cai",
@@ -19589,7 +19774,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "w5uys-oiaaa-aaaam-aeomq-cai",
@@ -20263,7 +20449,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Error Token"
   },
   {
     "canister_id": "7a4x6-fiaaa-aaaam-qdw6q-cai",
@@ -20285,7 +20472,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "7um2l-viaaa-aaaam-qd5ma-cai",
@@ -20296,7 +20484,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "7tn47-yqaaa-aaaam-qd5mq-cai",
@@ -20766,7 +20955,7 @@
   {
     "canister_id": "mr5zg-riaaa-aaaan-qeiqa-cai",
     "project": [
-      "Logger Canister"
+      "ZK Email"
     ],
     "subcategory": "DKIM Oracle",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -20828,7 +21017,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "nzvn6-iyaaa-aaaan-qlmya-cai",
@@ -20861,7 +21051,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4crha-iyaaa-aaaan-qmdia-cai",
@@ -21665,7 +21856,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "jz6vw-gaaaa-aaaan-qz4ua-cai",
@@ -21676,7 +21868,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "jc3jt-4yaaa-aaaan-qz4wq-cai",
@@ -22630,7 +22823,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ucnmh-wqaaa-aaaao-a4weq-cai",
@@ -23174,7 +23368,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "y6t7m-baaaa-aaaao-qkc2q-cai",
@@ -23208,7 +23403,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "ybciq-jyaaa-aaaao-qlaaq-cai",
@@ -23219,7 +23415,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "eq7ik-iqaaa-aaaao-qlcda-cai",
@@ -24036,7 +24233,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "6gdk3-2aaaa-aaaap-qa5ma-cai",
@@ -24706,7 +24904,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "nxpe4-4iaaa-aaaap-qp53a-cai",
@@ -24717,7 +24916,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "xla3d-zaaaa-aaaap-qqb5a-cai",
@@ -27723,13 +27923,14 @@
   {
     "canister_id": "mxzaz-hqaaa-aaaar-qaada-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckBTC Ledger"
   },
   {
     "canister_id": "mqygn-kiaaa-aaaar-qaadq-cai",
@@ -28282,13 +28483,14 @@
   {
     "canister_id": "etik7-oiaaa-aaaar-qagia-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckPEPE Ledger"
   },
   {
     "canister_id": "eujml-dqaaa-aaaar-qagiq-cai",
@@ -28362,13 +28564,14 @@
   {
     "canister_id": "fxffn-xiaaa-aaaar-qagoa-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckSHIB Ledger"
   },
   {
     "canister_id": "fqedz-2qaaa-aaaar-qagoq-cai",
@@ -28418,13 +28621,14 @@
   {
     "canister_id": "bptq2-faaaa-aaaar-qagxq-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckWBTC Ledger"
   },
   {
     "canister_id": "dso6s-wiaaa-aaaar-qagya-cai",
@@ -28463,13 +28667,14 @@
   {
     "canister_id": "cngnf-vqaaa-aaaar-qag4q-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckUSDT Ledger"
   },
   {
     "canister_id": "cefgz-dyaaa-aaaar-qag5a-cai",
@@ -28486,13 +28691,14 @@
   {
     "canister_id": "j2tuh-yqaaa-aaaar-qahcq-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckWSTETH Ledger"
   },
   {
     "canister_id": "jtq73-oyaaa-aaaar-qahda-cai",
@@ -28531,13 +28737,14 @@
   {
     "canister_id": "ilzky-ayaaa-aaaar-qahha-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckUNI Ledger"
   },
   {
     "canister_id": "imymm-naaaa-aaaar-qahhq-cai",
@@ -28576,13 +28783,14 @@
   {
     "canister_id": "pe5t5-diaaa-aaaar-qahwa-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckEURC Ledger"
   },
   {
     "canister_id": "pd4vj-oqaaa-aaaar-qahwq-cai",
@@ -28621,13 +28829,14 @@
   {
     "canister_id": "nza5v-qaaaa-aaaar-qahzq-cai",
     "project": [
-      "Unknown Token"
+      "Chain Fusion"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ckXAUT Ledger"
   },
   {
     "canister_id": "nmhmy-riaaa-aaaar-qah2a-cai",
@@ -28929,7 +29138,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ih3ck-syaaa-aaaar-qalka-cai",
@@ -28940,7 +29150,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ia2e6-7aaaa-aaaar-qalkq-cai",
@@ -28951,7 +29162,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "nafek-diaaa-aaaar-qalxa-cai",
@@ -28995,7 +29207,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "n7whz-mqaaa-aaaar-qamia-cai",
@@ -29006,7 +29219,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "nyxbn-biaaa-aaaar-qamiq-cai",
@@ -29017,7 +29231,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "net34-wiaaa-aaaar-qamkq-cai",
@@ -29051,7 +29266,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "mo4zg-uyaaa-aaaar-qamnq-cai",
@@ -29062,7 +29278,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "m42o7-yiaaa-aaaar-qamoq-cai",
@@ -29073,7 +29290,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jodzs-iqaaa-aaaar-qamqa-cai",
@@ -29095,7 +29313,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jabu2-taaaa-aaaar-qamra-cai",
@@ -29106,7 +29325,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jhaso-6yaaa-aaaar-qamrq-cai",
@@ -29128,7 +29348,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jvgfx-siaaa-aaaar-qamsq-cai",
@@ -29139,7 +29360,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "j4fol-eaaaa-aaaar-qamta-cai",
@@ -29150,7 +29372,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "j3ei7-jyaaa-aaaar-qamtq-cai",
@@ -29161,7 +29384,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "iwkmr-gqaaa-aaaar-qamua-cai",
@@ -29172,7 +29396,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "irlkf-liaaa-aaaar-qamuq-cai",
@@ -29183,7 +29408,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "iyibz-5aaaa-aaaar-qamva-cai",
@@ -29194,7 +29420,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "i7jhn-qyaaa-aaaar-qamvq-cai",
@@ -29205,7 +29432,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "ikowa-rqaaa-aaaar-qamwa-cai",
@@ -29216,7 +29444,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "inpqu-4iaaa-aaaar-qamwq-cai",
@@ -29285,7 +29514,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "l542s-aiaaa-aaaar-qam6q-cai",
@@ -29307,7 +29537,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "lt6x2-3yaaa-aaaar-qam7q-cai",
@@ -29318,7 +29549,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "adkim-3aaaa-aaaar-qanba-cai",
@@ -29362,7 +29594,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "gtgc6-3iaaa-aaaar-qanuq-cai",
@@ -29373,7 +29606,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "g5epw-ayaaa-aaaar-qanvq-cai",
@@ -29384,7 +29618,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "gid63-bqaaa-aaaar-qanwa-cai",
@@ -29395,7 +29630,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "gpcyp-miaaa-aaaar-qanwq-cai",
@@ -29406,7 +29642,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "ggbtt-2aaaa-aaaar-qanxa-cai",
@@ -29417,7 +29654,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "gbavh-xyaaa-aaaar-qanxq-cai",
@@ -29428,7 +29666,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "e3453-jiaaa-aaaar-qanyq-cai",
@@ -29439,7 +29678,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "eazb6-tqaaa-aaaar-qan2a-cai",
@@ -29461,7 +29701,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "eo3mw-iaaaa-aaaar-qan3a-cai",
@@ -29472,7 +29713,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "ej2kc-fyaaa-aaaar-qan3q-cai",
@@ -29483,7 +29725,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "feuom-kqaaa-aaaar-qan4a-cai",
@@ -29648,7 +29891,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "tbq6s-saaaa-aaaar-qaoha-cai",
@@ -29726,7 +29970,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "u3tw2-qyaaa-aaaar-qaovq-cai",
@@ -31233,7 +31478,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "xpuxf-6yaaa-aaaar-qbmfa-cai",
@@ -31244,7 +31490,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "x5sa4-siaaa-aaaar-qbmga-cai",
@@ -31266,7 +31513,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "xtqnu-jyaaa-aaaar-qbmha-cai",
@@ -31277,7 +31525,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "r7y5x-6qaaa-aaaar-qbmqq-cai",
@@ -31409,7 +31658,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "7ptcv-caaaa-aaaar-qbntq-cai",
@@ -31442,7 +31692,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Test Token"
   },
   {
     "canister_id": "6m7lt-wyaaa-aaaar-qbnva-cai",
@@ -31574,7 +31825,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "kgac4-rqaaa-aaaar-qbocq-cai",
@@ -31585,7 +31837,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "kicpu-kaaaa-aaaar-qbodq-cai",
@@ -31596,7 +31849,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "lfml2-fiaaa-aaaar-qboea-cai",
@@ -31607,7 +31861,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "lcnno-iqaaa-aaaar-qboeq-cai",
@@ -31618,7 +31873,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "llogs-6yaaa-aaaar-qbofa-cai",
@@ -31629,7 +31885,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "lzirl-siaaa-aaaar-qboga-cai",
@@ -31640,7 +31897,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "l6jx7-7qaaa-aaaar-qbogq-cai",
@@ -31651,7 +31909,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "lxk4d-jyaaa-aaaar-qboha-cai",
@@ -31662,7 +31921,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "lql2x-eaaaa-aaaar-qbohq-cai",
@@ -31673,7 +31933,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jnwu7-xiaaa-aaaar-qboia-cai",
@@ -31684,7 +31945,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jkxsl-2qaaa-aaaar-qboiq-cai",
@@ -31695,7 +31957,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jduzx-myaaa-aaaar-qboja-cai",
@@ -31706,7 +31969,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jev7d-baaaa-aaaar-qbojq-cai",
@@ -31717,7 +31981,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jwti2-nqaaa-aaaar-qbokq-cai",
@@ -31728,7 +31993,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "j7qdg-3yaaa-aaaar-qbola-cai",
@@ -31761,7 +32027,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "is6hi-uqaaa-aaaar-qbomq-cai",
@@ -31772,7 +32039,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "i35mu-cyaaa-aaaar-qbona-cai",
@@ -31783,7 +32051,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "i44ka-paaaa-aaaar-qbonq-cai",
@@ -31981,7 +32250,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "ekphp-2aaaa-aaaar-qbpdq-cai",
@@ -32025,7 +32295,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "cgrdo-liaaa-aaaar-qbqrq-cai",
@@ -32168,7 +32439,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "lmzue-vaaaa-aaaar-qbraa-cai",
@@ -32366,7 +32638,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jkbgj-4qaaa-aaaar-qbrna-cai",
@@ -32377,7 +32650,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jnaa5-riaaa-aaaar-qbrnq-cai",
@@ -32388,7 +32662,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "jyhrq-qaaaa-aaaar-qbroa-cai",
@@ -33103,7 +33378,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "qjfr6-naaaa-aaaar-qbtqa-cai",
@@ -33323,7 +33599,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "suy7w-6iaaa-aaaar-qbt7q-cai",
@@ -33334,7 +33611,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "sll4f-rqaaa-aaaar-qbuaq-cai",
@@ -33367,7 +33645,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "ttcjg-7qaaa-aaaar-qbueq-cai",
@@ -33378,7 +33657,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "t2bc2-jyaaa-aaaar-qbufa-cai",
@@ -33389,7 +33669,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "t5aeo-eaaaa-aaaar-qbufq-cai",
@@ -33400,7 +33681,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "tihvd-fiaaa-aaaar-qbuga-cai",
@@ -33411,7 +33693,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "tbe67-taaaa-aaaar-qbuhq-cai",
@@ -33422,7 +33705,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "rs357-3yaaa-aaaar-qbuja-cai",
@@ -33532,7 +33816,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "vwjsz-6qaaa-aaaar-qbusq-cai",
@@ -33576,7 +33861,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "wb36l-piaaa-aaaar-qbu2a-cai",
@@ -33587,7 +33873,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "wpztd-uyaaa-aaaar-qbu3a-cai",
@@ -33851,7 +34138,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "76uym-qiaaa-aaaar-qbvia-cai",
@@ -33917,7 +34205,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "6g5np-6iaaa-aaaar-qbvma-cai",
@@ -33928,7 +34217,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "6b4l3-tqaaa-aaaar-qbvmq-cai",
@@ -33939,7 +34229,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "32gxk-vaaaa-aaaar-qbvtq-cai",
@@ -35171,7 +35462,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "wnzwz-5iaaa-aaaar-qbyxa-cai",
@@ -35182,7 +35474,8 @@
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "ICP Rune"
   },
   {
     "canister_id": "uxf6f-dyaaa-aaaar-qbyya-cai",
