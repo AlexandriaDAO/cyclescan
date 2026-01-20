@@ -72,6 +72,42 @@ Key files:
 - `+page.svelte` - Toggle logic and adjusted project calculations
 - `data.ts` - Data loading and sparkline aggregation with transfer canister filtering
 
+## API-Sourced Projects
+
+Some projects (like FunnAI) have complex cycle flows that make per-canister tracking inaccurate. These projects provide their own API for aggregate burn data.
+
+**How it works:**
+1. Project is removed from `canisters_backup.json` (no individual canisters tracked)
+2. Project metadata in `projects_backup.json` has an `api_source` field
+3. Collection script queries the project's API and stores aggregate data as `{projectname}-aggregate`
+4. Burn rates from APIs are stored directly in `burn_rates` field (not calculated from balance diffs)
+5. Frontend shows explanatory notice instead of canister list when expanded
+
+**Adding a new API-sourced project:**
+
+1. Add `api_source` to `projects_backup.json`:
+```json
+{
+  "name": "ProjectName",
+  "api_source": {
+    "canister_id": "xxxxx-xxxxx-cai",
+    "method": "getMetrics",
+    "description": "Short explanation shown to users",
+    "details": "Longer explanation of why per-canister tracking doesn't work"
+  }
+}
+```
+
+2. Add query function in `collect_snapshots.mjs` (see `queryFunnaiApi` as example)
+
+3. Store both balance and burn rate:
+```javascript
+finalBalances[AGGREGATE_ID] = data.totalCycles;
+burnRates[AGGREGATE_ID] = data.hourlyBurnRate;
+```
+
+4. Frontend automatically detects `api_source` projects and handles them appropriately
+
 ## GitHub Actions
 
 `.github/workflows/collect-snapshots.yml` runs hourly at :05:
@@ -79,6 +115,31 @@ Key files:
 2. Commit updated snapshots.json to repo
 
 That's it - no deployment step. Frontend reads from GitHub directly.
+
+## Avoiding Merge Conflicts
+
+**The problem:** `data/live/snapshots.json` is a "hot file" - it's auto-updated hourly by GitHub Actions. If you're working locally and the hourly action runs, you'll get merge conflicts when pushing.
+
+**Best practices:**
+
+1. **Separate code from data commits:**
+   - Push code changes first (scripts, frontend, registry files) - these rarely conflict
+   - Don't run local collection unless necessary - let GitHub Actions handle data updates
+   - The next hourly run will use your updated code automatically
+
+2. **If you must update snapshots.json locally:**
+   - Push immediately after the hourly run (e.g., at :10) to maximize time before next conflict
+   - Or run collection AND push in quick succession
+
+3. **When conflicts happen:**
+   - For `snapshots.json` conflicts, **don't try to merge** - just re-run collection locally
+   - `cd scripts && npm run collect` takes ~5 min but guarantees correct data
+   - Then commit and push the fresh snapshot
+
+4. **For major data changes** (like adding API integrations):
+   - Push code changes first, verify they work
+   - The data will self-correct on the next hourly GitHub Actions run
+   - No need to fight with merge conflicts for data files
 
 ## Key Canister IDs
 
