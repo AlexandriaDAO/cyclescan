@@ -225,13 +225,17 @@ async function queryFunnaiApi(agent) {
         // daily_burn_rate.cycles is also in trillions
         const dailyBurnTrillion = BigInt(metrics.system_metrics.daily_burn_rate.cycles);
 
+        // Convert daily burn to per-hour for consistency with our rate calculations
+        const dailyBurnCycles = dailyBurnTrillion * TRILLION;
+        const hourlyBurnCycles = dailyBurnCycles / 24n;
+
         console.log(`  FunnAI mAIners: ${metrics.mainers.totals.active} active / ${metrics.mainers.totals.created} total`);
         console.log(`  Total cycles: ${totalCyclesTrillion}T`);
         console.log(`  Daily burn: ${dailyBurnTrillion}T cycles/day`);
 
         return {
           totalCycles: totalCycles.toString(),
-          dailyBurn: dailyBurnTrillion.toString(),
+          hourlyBurnRate: hourlyBurnCycles.toString(),  // Store hourly rate for consistency
           activeMainers: Number(metrics.mainers.totals.active),
           totalMainers: Number(metrics.mainers.totals.created),
         };
@@ -392,13 +396,20 @@ async function main() {
   // -------------------------------------------------------------------------
   // Query FunnAI API for aggregate mAIner data
   // -------------------------------------------------------------------------
+  const burnRates = {};  // Store API-provided burn rates (per hour)
   const funnaiData = await queryFunnaiApi(agent);
   if (funnaiData) {
     finalBalances[FUNNAI_AGGREGATE_ID] = funnaiData.totalCycles;
-    console.log(`  Added FunnAI aggregate: ${funnaiData.totalCycles}`);
+    burnRates[FUNNAI_AGGREGATE_ID] = funnaiData.hourlyBurnRate;
+    console.log(`  Added FunnAI aggregate: ${funnaiData.totalCycles} (burn: ${funnaiData.hourlyBurnRate}/hr)`);
   } else if (lastKnownBalances[FUNNAI_AGGREGATE_ID]) {
     // Fallback to last known value
     finalBalances[FUNNAI_AGGREGATE_ID] = lastKnownBalances[FUNNAI_AGGREGATE_ID];
+    // Also try to get last known burn rate
+    const lastBurnRates = existing.snapshots[0]?.burn_rates || {};
+    if (lastBurnRates[FUNNAI_AGGREGATE_ID]) {
+      burnRates[FUNNAI_AGGREGATE_ID] = lastBurnRates[FUNNAI_AGGREGATE_ID];
+    }
     console.log(`  FunnAI aggregate: using last known value`);
   }
 
@@ -410,6 +421,7 @@ async function main() {
   const newSnapshot = {
     timestamp: Date.now(),
     balances: finalBalances,
+    ...(Object.keys(burnRates).length > 0 && { burn_rates: burnRates }),
   };
 
   // Prepend to snapshots array, keep only MAX_SNAPSHOTS
