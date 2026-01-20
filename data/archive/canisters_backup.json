@@ -7932,6 +7932,7 @@
     "project": [
       "Canister Status Query"
     ],
+    "subcategory": "Status Proxy",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -9417,6 +9418,7 @@
     "project": [
       "Canister Status Query"
     ],
+    "subcategory": "Status Proxy",
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
@@ -25127,7 +25129,7 @@
   {
     "canister_id": "3r4gx-wqaaa-aaaaq-aaaia-cai",
     "project": [
-      "Squirrel (SNS Aggregator)"
+      "SNS Aggregator"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {

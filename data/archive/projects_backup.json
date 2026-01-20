@@ -90,7 +90,10 @@
   },
   {
     "name": "Canister Status Query",
-    "website": []
+    "website": [],
+    "subcategory_descriptions": {
+      "Status Proxy": "Public proxy that allows anyone to query canister status (cycles, memory, module hash) without being a controller"
+    }
   },
   {
     "name": "Canister Upgrader",
@@ -675,8 +678,10 @@
     }
   },
   {
-    "name": "Squirrel (SNS Aggregator)",
-    "website": []
+    "name": "SNS Aggregator",
+    "website": [
+      "https://3r4gx-wqaaa-aaaaq-aaaia-cai.ic0.app/"
+    ]
   },
   {
     "name": "Swampies",
