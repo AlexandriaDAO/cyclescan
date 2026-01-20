@@ -156,10 +156,6 @@
     }
   },
   {
-    "name": "CLOUD Index",
-    "website": []
-  },
-  {
     "name": "Cycle Manager",
     "website": []
   },
@@ -314,19 +310,7 @@
     }
   },
   {
-    "name": "ICP Index",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai"
-    ]
-  },
-  {
     "name": "ICP Ledger",
-    "website": [
-      "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
-    ]
-  },
-  {
-    "name": "ICP Ledger Archive",
     "website": [
       "https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai"
     ]
@@ -357,13 +341,14 @@
   },
   {
     "name": "ICRC Archive",
-    "website": []
+    "website": [],
+    "subcategory_descriptions": {
+      "Ledger Archive": "Stores historical transaction blocks from ICRC token ledgers"
+    }
   },
   {
     "name": "ICRC Index",
-    "website": [
-      "https://internetcomputer.org/docs/current/developer-docs/defi/tokens/indexes"
-    ],
+    "website": [],
     "subcategory_descriptions": {
       "Ledger Index": "Indexes and stores transaction history from ICRC-1 token ledgers for efficient account lookups"
     }
@@ -373,12 +358,15 @@
     "website": []
   },
   {
-    "name": "ICRC-1 Archive",
-    "website": []
-  },
-  {
-    "name": "ICRC-3 Archive",
-    "website": []
+    "name": "ICRC-1 Tokens",
+    "website": [],
+    "subcategory_descriptions": {
+      "Test Token": "Test or development token created for testing purposes",
+      "ICP Rune": "Bitcoin Runes bridged to ICP using the RUNE standard",
+      "Meme Token": "Community or meme token with no known project association",
+      "Frozen Token": "Token canister that has run out of cycles and is frozen",
+      "Error Token": "Token canister that could not be queried"
+    }
   },
   {
     "name": "ICTO",
@@ -425,15 +413,6 @@
       "KNG Archive": "Archive canister storing historical KNG token transaction data",
       "DEX Backend": "Core DEX logic handling liquidity pools, swaps, and trading",
       "Frontend": "Web interface hosting for KongSwap application"
-    }
-  },
-  {
-    "name": "ZK Email",
-    "website": [
-      "https://zk.email/"
-    ],
-    "subcategory_descriptions": {
-      "DKIM Oracle": "Signs and verifies DKIM public keys for zero-knowledge email proofs, enabling privacy-preserving verification of email ownership and content."
     }
   },
   {
@@ -575,10 +554,6 @@
     ]
   },
   {
-    "name": "OHSHII Index",
-    "website": []
-  },
-  {
     "name": "Oisy",
     "website": [
       "https://oisy.com"
@@ -643,18 +618,10 @@
     ]
   },
   {
-    "name": "RON Index",
-    "website": []
-  },
-  {
     "name": "RunicSwap",
     "website": [
       "https://github.com/buriburizaemonnn/RunicSwap"
     ]
-  },
-  {
-    "name": "SHOW Index",
-    "website": []
   },
   {
     "name": "Sneed DAO",
@@ -796,17 +763,6 @@
     "website": []
   },
   {
-    "name": "ICRC-1 Tokens",
-    "website": [],
-    "subcategory_descriptions": {
-      "Test Token": "Test or development token created for testing purposes",
-      "ICP Rune": "Bitcoin Runes bridged to ICP using the RUNE standard",
-      "Meme Token": "Community or meme token with no known project association",
-      "Frozen Token": "Token canister that has run out of cycles and is frozen",
-      "Error Token": "Token canister that could not be queried"
-    }
-  },
-  {
     "name": "WaterNeuron",
     "website": [
       "https://waterneuron.fi"
@@ -823,5 +779,14 @@
     "website": [
       "https://yuku.app"
     ]
+  },
+  {
+    "name": "ZK Email",
+    "website": [
+      "https://zk.email/"
+    ],
+    "subcategory_descriptions": {
+      "DKIM Oracle": "Signs and verifies DKIM public keys for zero-knowledge email proofs, enabling privacy-preserving verification of email ownership and content."
+    }
   }
 ]
