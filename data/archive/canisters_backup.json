@@ -679,13 +679,14 @@
   {
     "canister_id": "4qxiu-gqaaa-aaaaa-qausq-cai",
     "project": [
-      "ToKeN Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "bzx5a-iyaaa-aaaaa-qbmvq-cai",
@@ -9414,7 +9415,7 @@
   {
     "canister_id": "gjnxz-siaaa-aaaai-qpebq-cai",
     "project": [
-      "Unknown"
+      "Canister Status Query"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
@@ -9781,13 +9782,14 @@
   {
     "canister_id": "473jg-3qaaa-aaaai-qpkya-cai",
     "project": [
-      "GoldFish Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "eom4h-2iaaa-aaaai-q3jta-cai",
@@ -10598,13 +10600,14 @@
   {
     "canister_id": "pttur-mqaaa-aaaaj-azziq-cai",
     "project": [
-      "Alice Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "p2q7n-2yaaa-aaaaj-azzja-cai",
@@ -13135,13 +13138,14 @@
   {
     "canister_id": "puu2m-aqaaa-aaaak-qtz7a-cai",
     "project": [
-      "Bitcoin Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "zytbo-oiaaa-aaaak-qt2fq-cai",
@@ -13170,13 +13174,14 @@
   {
     "canister_id": "3zkvx-kaaaa-aaaak-qt2ia-cai",
     "project": [
-      "Trump Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "2bdau-eaaaa-aaaak-qt2ma-cai",
@@ -13205,24 +13210,26 @@
   {
     "canister_id": "4ei3l-faaaa-aaaak-qt22a-cai",
     "project": [
-      "Butten Bun Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4dj57-iyaaa-aaaak-qt22q-cai",
     "project": [
-      "Hell O Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4kkwd-6qaaa-aaaak-qt23a-cai",
@@ -13357,35 +13364,38 @@
   {
     "canister_id": "reqop-fqaaa-aaaak-qt3ra-cai",
     "project": [
-      "Cardano Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "rrx7c-eyaaa-aaaak-qt3sq-cai",
     "project": [
-      "TRON Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "r7vsk-7iaaa-aaaak-qt3tq-cai",
     "project": [
-      "polkadot Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "spgym-diaaa-aaaak-qt33q-cai",
@@ -13436,35 +13446,38 @@
   {
     "canister_id": "sqv37-mqaaa-aaaak-qt4eq-cai",
     "project": [
-      "Kaspa Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "smrbo-3qaaa-aaaak-qt4gq-cai",
     "project": [
-      "Sachin Tendulkar Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "rjf2f-gyaaa-aaaak-qt4na-cai",
     "project": [
-      "Granny VS Internet Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "uj22r-2qaaa-aaaak-qt4qq-cai",
@@ -13565,13 +13578,14 @@
   {
     "canister_id": "4vzvq-riaaa-aaaak-qt5ea-cai",
     "project": [
-      "XRP Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "4426m-haaaa-aaaak-qt5fq-cai",
@@ -13587,13 +13601,14 @@
   {
     "canister_id": "4a6e5-qaaaa-aaaak-qt5hq-cai",
     "project": [
-      "vyt Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "7clzc-aqaaa-aaaak-qt5mq-cai",
@@ -14433,13 +14448,14 @@
   {
     "canister_id": "sos5i-3iaaa-aaaak-quela-cai",
     "project": [
-      "WaterMelon Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "xapqu-4qaaa-aaaak-quexq-cai",
@@ -14641,13 +14657,14 @@
   {
     "canister_id": "ko2dz-6aaaa-aaaak-qugqq-cai",
     "project": [
-      "RONJU Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "lyr3s-lqaaa-aaaak-qugvq-cai",
@@ -18376,13 +18393,14 @@
   {
     "canister_id": "qqgzi-raaaa-aaaal-qspdq-cai",
     "project": [
-      "TST15 Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "sey44-uaaaa-aaaal-qspnq-cai",
@@ -22199,13 +22217,14 @@
   {
     "canister_id": "7a6j3-uqaaa-aaaao-a2g5q-cai",
     "project": [
-      "GoldSlice Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Meme Token"
   },
   {
     "canister_id": "hcwsq-yiaaa-aaaao-a2ika-cai",

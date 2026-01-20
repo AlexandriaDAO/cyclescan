@@ -16,10 +16,6 @@
     ]
   },
   {
-    "name": "Alice Token",
-    "website": []
-  },
-  {
     "name": "Analytics Service",
     "website": []
   },
@@ -52,10 +48,6 @@
     "website": []
   },
   {
-    "name": "Bitcoin Token",
-    "website": []
-  },
-  {
     "name": "Blackhole (ninegua)",
     "website": []
   },
@@ -81,10 +73,6 @@
     ]
   },
   {
-    "name": "Butten Bun Token",
-    "website": []
-  },
-  {
     "name": "CanDB Storage",
     "website": [
       "https://www.canscale.dev"
@@ -106,10 +94,6 @@
   },
   {
     "name": "Canister Upgrader",
-    "website": []
-  },
-  {
-    "name": "Cardano Token",
     "website": []
   },
   {
@@ -292,26 +276,10 @@
     ]
   },
   {
-    "name": "GoldFish Token",
-    "website": []
-  },
-  {
-    "name": "GoldSlice Token",
-    "website": []
-  },
-  {
-    "name": "Granny VS Internet Token",
-    "website": []
-  },
-  {
     "name": "GRAVE Token",
     "website": [
       "https://xc3mi-sqaaa-aaaaj-a2mhq-cai.icp0.io"
     ]
-  },
-  {
-    "name": "Hell O Token",
-    "website": []
   },
   {
     "name": "ICExplorer",
@@ -435,10 +403,6 @@
     "website": [
       "https://juno.build"
     ]
-  },
-  {
-    "name": "Kaspa Token",
-    "website": []
   },
   {
     "name": "KINIC",
@@ -679,15 +643,7 @@
     ]
   },
   {
-    "name": "polkadot Token",
-    "website": []
-  },
-  {
     "name": "RON Index",
-    "website": []
-  },
-  {
-    "name": "RONJU Token",
     "website": []
   },
   {
@@ -695,10 +651,6 @@
     "website": [
       "https://github.com/buriburizaemonnn/RunicSwap"
     ]
-  },
-  {
-    "name": "Sachin Tendulkar Token",
-    "website": []
   },
   {
     "name": "SHOW Index",
@@ -796,26 +748,10 @@
     ]
   },
   {
-    "name": "ToKeN Token",
-    "website": []
-  },
-  {
     "name": "TRAX",
     "website": [
       "https://trax.so"
     ]
-  },
-  {
-    "name": "TRON Token",
-    "website": []
-  },
-  {
-    "name": "Trump Token",
-    "website": []
-  },
-  {
-    "name": "TST15 Token",
-    "website": []
   },
   {
     "name": "Unidentified",
@@ -871,14 +807,6 @@
     }
   },
   {
-    "name": "vyt Token",
-    "website": []
-  },
-  {
-    "name": "WaterMelon Token",
-    "website": []
-  },
-  {
     "name": "WaterNeuron",
     "website": [
       "https://waterneuron.fi"
@@ -889,10 +817,6 @@
     "website": [
       "https://windoge98.com"
     ]
-  },
-  {
-    "name": "XRP Token",
-    "website": []
   },
   {
     "name": "Yuku AI",
