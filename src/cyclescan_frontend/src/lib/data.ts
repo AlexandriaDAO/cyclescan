@@ -15,6 +15,7 @@ const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/AlexandriaDAO/cyclesc
 export interface Snapshot {
   timestamp: number;
   balances: Record<string, string>;
+  burn_rates?: Record<string, string>;  // API-provided burn rates (per hour)
 }
 
 export interface SnapshotsData {
@@ -105,8 +106,8 @@ export async function loadData(): Promise<{
   const cacheBust = `?t=${Math.floor(Date.now() / 60000)}`;
   const [snapshotsRes, canistersRes, projectsRes] = await Promise.all([
     fetch(`${GITHUB_RAW_BASE}/live/snapshots.json${cacheBust}`),
-    fetch(`${GITHUB_RAW_BASE}/archive/canisters_backup.json`),
-    fetch(`${GITHUB_RAW_BASE}/archive/projects_backup.json`),
+    fetch(`${GITHUB_RAW_BASE}/archive/canisters_backup.json${cacheBust}`),
+    fetch(`${GITHUB_RAW_BASE}/archive/projects_backup.json${cacheBust}`),
   ]);
 
   const snapshotsData: SnapshotsData = await snapshotsRes.json();
@@ -193,9 +194,29 @@ export async function loadData(): Promise<{
 
       if (balanceStr) {
         const balance = BigInt(balanceStr);
-        const recentRate = calculateBurnRate(snapshots, 2 * HOUR_MS, now, aggregateId);
-        const shortTermRate = calculateBurnRate(snapshots, 36 * HOUR_MS, now, aggregateId);
-        const longTermRate = calculateBurnRate(snapshots, 7 * DAY_MS, now, aggregateId);
+
+        // Check if we have an API-provided burn rate (stored per hour)
+        const storedBurnRateStr = currentSnapshot.burn_rates?.[aggregateId];
+        let burnRate: BurnRateData | null = null;
+
+        if (storedBurnRateStr) {
+          // Use the API-provided burn rate directly
+          // The stored rate is per hour, which matches our internal rate format
+          burnRate = {
+            rate: BigInt(storedBurnRateStr),
+            dataPoints: 1,
+            hasInferredData: false,
+          };
+        } else {
+          // Fall back to calculation if no stored rate (shouldn't happen for API sources)
+          burnRate = calculateBurnRate(snapshots, 36 * HOUR_MS, now, aggregateId);
+        }
+
+        // Use the same rate for all time windows since it comes from the API
+        // The API provides the current burn rate which is valid across all windows
+        const recentRate = burnRate;
+        const shortTermRate = burnRate;
+        const longTermRate = burnRate;
 
         // Also add a synthetic canister entry so getProjectCanisters works
         entries.push({
