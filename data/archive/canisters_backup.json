@@ -9417,9 +9417,8 @@
   {
     "canister_id": "gjnxz-siaaa-aaaai-qpebq-cai",
     "project": [
-      "Blackhole"
+      "Unidentified (no candid)"
     ],
-    "subcategory": "Status Proxy",
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
