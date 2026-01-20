@@ -6755,8 +6755,9 @@
   {
     "canister_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "project": [
-      "Blackhole (ninegua)"
+      "Blackhole"
     ],
+    "subcategory": "ninegua Blackhole",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
@@ -7930,7 +7931,7 @@
   {
     "canister_id": "uiffe-faaaa-aaaah-qc7ra-cai",
     "project": [
-      "Canister Status Query"
+      "Blackhole"
     ],
     "subcategory": "Status Proxy",
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
@@ -9416,7 +9417,7 @@
   {
     "canister_id": "gjnxz-siaaa-aaaai-qpebq-cai",
     "project": [
-      "Canister Status Query"
+      "Blackhole"
     ],
     "subcategory": "Status Proxy",
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",

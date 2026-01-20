@@ -48,8 +48,14 @@
     "website": []
   },
   {
-    "name": "Blackhole (ninegua)",
-    "website": []
+    "name": "Blackhole",
+    "website": [
+      "https://github.com/AegonCommunity/ic-blackhole"
+    ],
+    "subcategory_descriptions": {
+      "ninegua Blackhole": "The original community blackhole canister - self-controlled, immutable, used by hundreds of projects as their controller",
+      "Status Proxy": "Public proxy that allows anyone to query canister status (cycles, memory, module hash) without being a controller"
+    }
   },
   {
     "name": "BoB (Burn or Burn)",
@@ -87,13 +93,6 @@
   {
     "name": "Canister Monitor",
     "website": []
-  },
-  {
-    "name": "Canister Status Query",
-    "website": [],
-    "subcategory_descriptions": {
-      "Status Proxy": "Public proxy that allows anyone to query canister status (cycles, memory, module hash) without being a controller"
-    }
   },
   {
     "name": "Canister Upgrader",
