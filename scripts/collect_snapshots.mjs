@@ -31,6 +31,89 @@ const blackholeIdl = ({ IDL }) => {
   });
 };
 
+// FunnAI API getDailyMetrics interface (query method)
+const funnaiApiIdl = ({ IDL }) => {
+  const TierBreakdown = IDL.Record({
+    low: IDL.Nat,
+    custom: IDL.Nat,
+    high: IDL.Nat,
+    very_high: IDL.Nat,
+    medium: IDL.Nat,
+  });
+  const MainerTotals = IDL.Record({
+    created: IDL.Nat,
+    active: IDL.Nat,
+    total_cycles: IDL.Nat,
+    paused: IDL.Nat,
+  });
+  const DailyBurnRate = IDL.Record({
+    usd: IDL.Float64,
+    cycles: IDL.Nat,
+  });
+  const SystemMetrics = IDL.Record({
+    funnai_index: IDL.Float64,
+    daily_burn_rate: DailyBurnRate,
+  });
+  const DailyMetric = IDL.Record({
+    mainers: IDL.Record({
+      totals: MainerTotals,
+      breakdown_by_tier: IDL.Record({
+        active: TierBreakdown,
+        paused: TierBreakdown,
+      }),
+    }),
+    system_metrics: SystemMetrics,
+    metadata: IDL.Record({
+      updated_at: IDL.Text,
+      date: IDL.Text,
+      created_at: IDL.Text,
+    }),
+    derived_metrics: IDL.Record({
+      avg_cycles_per_mainer: IDL.Float64,
+      paused_percentage: IDL.Float64,
+      tier_distribution: IDL.Record({
+        low: IDL.Float64,
+        custom: IDL.Float64,
+        high: IDL.Float64,
+        very_high: IDL.Float64,
+        medium: IDL.Float64,
+      }),
+      burn_rate_per_active_mainer: IDL.Float64,
+      active_percentage: IDL.Float64,
+    }),
+  });
+  const GetDailyMetricsResponse = IDL.Variant({
+    Ok: IDL.Record({
+      period: IDL.Record({
+        end_date: IDL.Text,
+        total_days: IDL.Nat,
+        start_date: IDL.Text,
+      }),
+      daily_metrics: IDL.Vec(DailyMetric),
+    }),
+    Err: IDL.Variant({
+      FailedOperation: IDL.Null,
+      InvalidId: IDL.Null,
+      ZeroAddress: IDL.Null,
+      Unauthorized: IDL.Null,
+      StatusCode: IDL.Nat16,
+      Other: IDL.Text,
+      InsuffientCycles: IDL.Nat,
+    }),
+  });
+  return IDL.Service({
+    getDailyMetrics: IDL.Func(
+      [IDL.Opt(IDL.Record({
+        end_date: IDL.Opt(IDL.Text),
+        limit: IDL.Opt(IDL.Nat),
+        start_date: IDL.Opt(IDL.Text),
+      }))],
+      [GetDailyMetricsResponse],
+      ['query']
+    ),
+  });
+};
+
 // SNS Root get_sns_canisters_summary interface
 // Note: This is an update call, not a query
 const snsRootIdl = ({ IDL }) => {
@@ -111,6 +194,55 @@ async function queryBlackhole(agent, proxyId, canisterId) {
     console.error(`  Failed to query ${canisterId} via ${proxyId}: ${e.message}`);
     return null;
   }
+}
+
+// FunnAI API canister ID
+const FUNNAI_API_CANISTER = 'bgm6p-5aaaa-aaaaf-qbzda-cai';
+const FUNNAI_AGGREGATE_ID = 'funnai-aggregate';
+const TRILLION = 1_000_000_000_000n;
+
+async function queryFunnaiApi(agent) {
+  try {
+    console.log(`\nQuerying FunnAI API (${FUNNAI_API_CANISTER})...`);
+    const actor = Actor.createActor(funnaiApiIdl, {
+      agent,
+      canisterId: FUNNAI_API_CANISTER,
+    });
+
+    const result = await withTimeout(
+      actor.getDailyMetrics([]),
+      30000,
+      'Timeout querying FunnAI API'
+    );
+
+    if ('Ok' in result) {
+      const metrics = result.Ok.daily_metrics[0]; // Get latest
+      if (metrics) {
+        // total_cycles is in trillions, convert to raw cycles
+        const totalCyclesTrillion = BigInt(metrics.mainers.totals.total_cycles);
+        const totalCycles = totalCyclesTrillion * TRILLION;
+
+        // daily_burn_rate.cycles is also in trillions
+        const dailyBurnTrillion = BigInt(metrics.system_metrics.daily_burn_rate.cycles);
+
+        console.log(`  FunnAI mAIners: ${metrics.mainers.totals.active} active / ${metrics.mainers.totals.created} total`);
+        console.log(`  Total cycles: ${totalCyclesTrillion}T`);
+        console.log(`  Daily burn: ${dailyBurnTrillion}T cycles/day`);
+
+        return {
+          totalCycles: totalCycles.toString(),
+          dailyBurn: dailyBurnTrillion.toString(),
+          activeMainers: Number(metrics.mainers.totals.active),
+          totalMainers: Number(metrics.mainers.totals.created),
+        };
+      }
+    } else {
+      console.error(`  FunnAI API returned error:`, result.Err);
+    }
+  } catch (e) {
+    console.error(`  Failed to query FunnAI API: ${e.message}`);
+  }
+  return null;
 }
 
 async function querySnsRoot(agent, snsRootId) {
@@ -257,9 +389,22 @@ async function main() {
     }
   }
 
+  // -------------------------------------------------------------------------
+  // Query FunnAI API for aggregate mAIner data
+  // -------------------------------------------------------------------------
+  const funnaiData = await queryFunnaiApi(agent);
+  if (funnaiData) {
+    finalBalances[FUNNAI_AGGREGATE_ID] = funnaiData.totalCycles;
+    console.log(`  Added FunnAI aggregate: ${funnaiData.totalCycles}`);
+  } else if (lastKnownBalances[FUNNAI_AGGREGATE_ID]) {
+    // Fallback to last known value
+    finalBalances[FUNNAI_AGGREGATE_ID] = lastKnownBalances[FUNNAI_AGGREGATE_ID];
+    console.log(`  FunnAI aggregate: using last known value`);
+  }
+
   console.log(`\nFinal balances: ${Object.keys(finalBalances).length} canisters`);
   console.log(`  - Fresh queries: ${currentBalances.size}`);
-  console.log(`  - From last known: ${Object.keys(finalBalances).length - currentBalances.size}`);
+  console.log(`  - From last known: ${Object.keys(finalBalances).length - currentBalances.size - (funnaiData ? 1 : 0)}`);
 
   // Create new snapshot
   const newSnapshot = {

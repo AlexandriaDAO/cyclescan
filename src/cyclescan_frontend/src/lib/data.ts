@@ -30,10 +30,18 @@ export interface CanisterRegistry {
   valid: boolean;
 }
 
+export interface ApiSource {
+  canister_id: string;
+  method: string;
+  description: string;
+  details: string;
+}
+
 export interface ProjectMeta {
   name: string;
   website: string[] | null;
   subcategory_descriptions?: Record<string, string>;
+  api_source?: ApiSource;
 }
 
 export type { BurnRateData, ProjectRateData, IntervalData };
@@ -55,6 +63,7 @@ export interface ProjectEntry {
   total_balance: bigint;
   website: string[] | null;
   subcategory_descriptions?: Record<string, string>;
+  api_source?: ApiSource;
   recent_rate: ProjectRateData | null;
   short_term_rate: ProjectRateData | null;
   long_term_rate: ProjectRateData | null;
@@ -167,10 +176,52 @@ export async function loadData(): Promise<{
       total_balance: agg.balance,
       website: meta?.website || null,
       subcategory_descriptions: meta?.subcategory_descriptions,
+      api_source: meta?.api_source,
       recent_rate: aggregateProjectRate(agg.recentRates),
       short_term_rate: aggregateProjectRate(agg.shortTermRates),
       long_term_rate: aggregateProjectRate(agg.longTermRates),
     });
+  }
+
+  // Handle API-sourced projects (like FunnAI) that have no canisters in registry
+  // but have aggregate data in snapshots
+  for (const meta of projectsMeta) {
+    if (meta.api_source && !projectAggregates.has(meta.name)) {
+      // This project uses an external API - look for synthetic aggregate ID
+      const aggregateId = `${meta.name.toLowerCase().replace(/[^a-z0-9]/g, '')}-aggregate`;
+      const balanceStr = currentSnapshot.balances[aggregateId];
+
+      if (balanceStr) {
+        const balance = BigInt(balanceStr);
+        const recentRate = calculateBurnRate(snapshots, 2 * HOUR_MS, now, aggregateId);
+        const shortTermRate = calculateBurnRate(snapshots, 36 * HOUR_MS, now, aggregateId);
+        const longTermRate = calculateBurnRate(snapshots, 7 * DAY_MS, now, aggregateId);
+
+        // Also add a synthetic canister entry so getProjectCanisters works
+        entries.push({
+          canister_id: aggregateId,
+          project: [meta.name],
+          subcategory: 'API Aggregate',
+          balance,
+          valid: true,
+          recent_rate: recentRate,
+          short_term_rate: shortTermRate,
+          long_term_rate: longTermRate,
+        });
+
+        projectEntries.push({
+          project: meta.name,
+          canister_count: 1n, // Synthetic aggregate counts as 1
+          total_balance: balance,
+          website: meta.website || null,
+          subcategory_descriptions: meta.subcategory_descriptions,
+          api_source: meta.api_source,
+          recent_rate: recentRate ? { rate: recentRate.rate, dataPoints: recentRate.dataPoints, hasInferredData: recentRate.hasInferredData } : null,
+          short_term_rate: shortTermRate ? { rate: shortTermRate.rate, dataPoints: shortTermRate.dataPoints, hasInferredData: shortTermRate.hasInferredData } : null,
+          long_term_rate: longTermRate ? { rate: longTermRate.rate, dataPoints: longTermRate.dataPoints, hasInferredData: longTermRate.hasInferredData } : null,
+        });
+      }
+    }
   }
 
   projectEntries.sort((a, b) => {

@@ -703,7 +703,31 @@
                 </td>
               </tr>
               {#if expandedProjects.has(entry.project)}
-                {#if loadingProjects.has(entry.project)}
+                {#if entry.api_source}
+                  <tr class="sub-row api-source-row">
+                    <td class="rank sub-rank"></td>
+                    <td colspan="8" class="api-source-cell">
+                      <div class="api-source-notice">
+                        <div class="api-source-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                          </svg>
+                        </div>
+                        <div class="api-source-content">
+                          <p class="api-source-description">{entry.api_source.description}</p>
+                          <p class="api-source-details">{entry.api_source.details}</p>
+                          <p class="api-source-canister">
+                            Data source:
+                            <a href="https://dashboard.internetcomputer.org/canister/{entry.api_source.canister_id}" target="_blank" rel="noopener noreferrer" on:click|stopPropagation>
+                              {entry.api_source.canister_id}
+                            </a>
+                            <span class="api-method">({entry.api_source.method})</span>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {:else if loadingProjects.has(entry.project)}
                   <tr class="sub-row loading-row">
                     <td colspan="9" class="loading-cell">Loading canisters...</td>
                   </tr>
