@@ -91,6 +91,16 @@
     ]
   },
   {
+    "name": "CanisterGeek",
+    "website": [
+      "https://canistergeek.app"
+    ],
+    "subcategory_descriptions": {
+      "Analytics Platform": "Core analytics service for tracking canister metrics, user sessions, and events",
+      "Analytics Receiver": "Distributed analytics data receiver and storage node"
+    }
+  },
+  {
     "name": "Canister Monitor",
     "website": []
   },

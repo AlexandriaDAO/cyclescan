@@ -35985,5 +35985,41 @@
       "Blackhole": null
     },
     "valid": true
+  },
+  {
+    "canister_id": "r2n22-2yaaa-aaaah-qbpfa-cai",
+    "project": [
+      "CanisterGeek"
+    ],
+    "subcategory": "Analytics Platform",
+    "proxy_id": "uiffe-faaaa-aaaah-qc7ra-cai",
+    "proxy_type": {
+      "Blackhole": null
+    },
+    "valid": true
+  },
+  {
+    "canister_id": "rtorg-mqaaa-aaaah-qbpeq-cai",
+    "project": [
+      "CanisterGeek"
+    ],
+    "subcategory": "Analytics Receiver",
+    "proxy_id": "uiffe-faaaa-aaaah-qc7ra-cai",
+    "proxy_type": {
+      "Blackhole": null
+    },
+    "valid": true
+  },
+  {
+    "canister_id": "rp3de-uqaaa-aaaah-qc7ma-cai",
+    "project": [
+      "CanisterGeek"
+    ],
+    "subcategory": "Analytics Receiver",
+    "proxy_id": "uiffe-faaaa-aaaah-qc7ra-cai",
+    "proxy_type": {
+      "Blackhole": null
+    },
+    "valid": true
   }
 ]
