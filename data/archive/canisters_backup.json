@@ -5311,7 +5311,7 @@
   {
     "canister_id": "y26ux-qiaaa-aaaag-aap3q-cai",
     "project": [
-      "Forum/Board"
+      "Abandoned"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -6687,7 +6687,7 @@
   {
     "canister_id": "ayue2-uqaaa-aaaag-qjzga-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -6699,7 +6699,7 @@
   {
     "canister_id": "hfwkg-3qaaa-aaaag-qjzua-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -7821,17 +7821,6 @@
     "canister_id": "fbbjb-oyaaa-aaaah-qaojq-cai",
     "project": [
       "Asset Canister"
-    ],
-    "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
-    "proxy_type": {
-      "Blackhole": null
-    },
-    "valid": true
-  },
-  {
-    "canister_id": "rtorg-mqaaa-aaaah-qbpeq-cai",
-    "project": [
-      "Analytics Service"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -11149,13 +11138,14 @@
   {
     "canister_id": "m3dtd-5qaaa-aaaaj-a2ovq-cai",
     "project": [
-      "Abandoned"
+      "ICRC Index"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "zv6cp-siaaa-aaaaj-qahba-cai",
@@ -12941,7 +12931,7 @@
   {
     "canister_id": "emmm6-kaaaa-aaaak-qlnwa-cai",
     "project": [
-      "Social Platform"
+      "Abandoned"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
@@ -14428,7 +14418,7 @@
   {
     "canister_id": "qz3b6-gqaaa-aaaak-qudya-cai",
     "project": [
-      "ICRC Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
@@ -14671,7 +14661,7 @@
   {
     "canister_id": "lyr3s-lqaaa-aaaak-qugvq-cai",
     "project": [
-      "Social Platform"
+      "Abandoned"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
@@ -17825,7 +17815,7 @@
   {
     "canister_id": "vil43-piaaa-aaaal-qsibq-cai",
     "project": [
-      "Unidentified (empty service)"
+      "Abandoned"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -18407,7 +18397,7 @@
   {
     "canister_id": "sey44-uaaaa-aaaal-qspnq-cai",
     "project": [
-      "ICRC Token"
+      "ICRC-1 Tokens"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -18618,13 +18608,14 @@
   {
     "canister_id": "ojxsv-eiaaa-aaaal-qssjq-cai",
     "project": [
-      "Abandoned"
+      "ICRC Index"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "ossoq-6qaaa-aaaal-qssla-cai",
@@ -19915,7 +19906,7 @@
   {
     "canister_id": "6owwo-2yaaa-aaaam-qbelq-cai",
     "project": [
-      "Social/Forum App"
+      "Abandoned"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
@@ -20510,13 +20501,14 @@
   {
     "canister_id": "7tn47-yqaaa-aaaam-qd5mq-cai",
     "project": [
-      "Abandoned"
+      "ICRC Index"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "7c7ly-fqaaa-aaaam-qeota-cai",
@@ -20545,13 +20537,14 @@
   {
     "canister_id": "wix4s-3yaaa-aaaam-qepcq-cai",
     "project": [
-      "Abandoned"
+      "ICRC Index"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Ledger Index"
   },
   {
     "canister_id": "feztg-piaaa-aaaam-qetaa-cai",
@@ -21741,24 +21734,26 @@
   {
     "canister_id": "t4zai-saaaa-aaaan-qzz7q-cai",
     "project": [
-      "Bitcoin Runes Etching"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Bitcoin Runes Etching"
   },
   {
     "canister_id": "e2rzq-6iaaa-aaaan-qz2ca-cai",
     "project": [
-      "Bitcoin Runes Etching"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Bitcoin Runes Etching"
   },
   {
     "canister_id": "hkctw-ciaaa-aaaan-qz2ka-cai",
@@ -23372,13 +23367,14 @@
   {
     "canister_id": "ix77r-oyaaa-aaaao-qkbwa-cai",
     "project": [
-      "NFT Runes Exchange"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "NFT Runes Exchange"
   },
   {
     "canister_id": "33heh-4iaaa-aaaao-qkcra-cai",
@@ -27889,13 +27885,14 @@
   {
     "canister_id": "u637p-5aaaa-aaaaq-qaaca-cai",
     "project": [
-      "Unidentified (deleted)"
+      "NNS Root"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
       "Blackhole": null
     },
-    "valid": true
+    "valid": true,
+    "subcategory": "Rate Limiting"
   },
   {
     "canister_id": "uz2z3-qyaaa-aaaaq-qaacq-cai",
@@ -29142,7 +29139,7 @@
   {
     "canister_id": "c2bzs-5iaaa-aaaar-qakta-cai",
     "project": [
-      "Unidentified (deleted)"
+      "Abandoned"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29222,7 +29219,7 @@
   {
     "canister_id": "pmjez-eiaaa-aaaar-qamgq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29234,7 +29231,7 @@
   {
     "canister_id": "n7whz-mqaaa-aaaar-qamia-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29246,7 +29243,7 @@
   {
     "canister_id": "nyxbn-biaaa-aaaar-qamiq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29281,7 +29278,7 @@
   {
     "canister_id": "ma6uo-piaaa-aaaar-qammq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29293,7 +29290,7 @@
   {
     "canister_id": "mo4zg-uyaaa-aaaar-qamnq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29305,7 +29302,7 @@
   {
     "canister_id": "m42o7-yiaaa-aaaar-qamoq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29328,7 +29325,7 @@
   {
     "canister_id": "jjc7g-fiaaa-aaaar-qamqq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29340,7 +29337,7 @@
   {
     "canister_id": "jabu2-taaaa-aaaar-qamra-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29363,7 +29360,7 @@
   {
     "canister_id": "jshdd-7qaaa-aaaar-qamsa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29375,7 +29372,7 @@
   {
     "canister_id": "jvgfx-siaaa-aaaar-qamsq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29387,7 +29384,7 @@
   {
     "canister_id": "j4fol-eaaaa-aaaar-qamta-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29399,7 +29396,7 @@
   {
     "canister_id": "j3ei7-jyaaa-aaaar-qamtq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29411,7 +29408,7 @@
   {
     "canister_id": "iwkmr-gqaaa-aaaar-qamua-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29423,7 +29420,7 @@
   {
     "canister_id": "irlkf-liaaa-aaaar-qamuq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29435,7 +29432,7 @@
   {
     "canister_id": "iyibz-5aaaa-aaaar-qamva-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29447,7 +29444,7 @@
   {
     "canister_id": "i7jhn-qyaaa-aaaar-qamvq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29459,7 +29456,7 @@
   {
     "canister_id": "ikowa-rqaaa-aaaar-qamwa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29529,7 +29526,7 @@
   {
     "canister_id": "lgzgx-2qaaa-aaaar-qam4a-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29552,7 +29549,7 @@
   {
     "canister_id": "lu7ro-waaaa-aaaar-qam7a-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29564,7 +29561,7 @@
   {
     "canister_id": "lt6x2-3yaaa-aaaar-qam7q-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29609,7 +29606,7 @@
   {
     "canister_id": "hzjae-zyaaa-aaaar-qantq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29621,7 +29618,7 @@
   {
     "canister_id": "gtgc6-3iaaa-aaaar-qanuq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29633,7 +29630,7 @@
   {
     "canister_id": "g5epw-ayaaa-aaaar-qanvq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29645,7 +29642,7 @@
   {
     "canister_id": "gid63-bqaaa-aaaar-qanwa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29657,7 +29654,7 @@
   {
     "canister_id": "gpcyp-miaaa-aaaar-qanwq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29669,7 +29666,7 @@
   {
     "canister_id": "ggbtt-2aaaa-aaaar-qanxa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29681,7 +29678,7 @@
   {
     "canister_id": "gbavh-xyaaa-aaaar-qanxq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29693,7 +29690,7 @@
   {
     "canister_id": "e3453-jiaaa-aaaar-qanyq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29716,7 +29713,7 @@
   {
     "canister_id": "ehyhk-6iaaa-aaaar-qan2q-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29728,7 +29725,7 @@
   {
     "canister_id": "eo3mw-iaaaa-aaaar-qan3a-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29740,7 +29737,7 @@
   {
     "canister_id": "ej2kc-fyaaa-aaaar-qan3q-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -29906,7 +29903,7 @@
   {
     "canister_id": "tpst2-jqaaa-aaaar-qaoga-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31097,7 +31094,7 @@
   {
     "canister_id": "tghme-zyaaa-aaaar-qarca-cai",
     "project": [
-      "Unidentified (deleted)"
+      "Abandoned"
     ],
     "proxy_id": "r7inp-6aaaa-aaaaa-aaabq-cai",
     "proxy_type": {
@@ -31493,7 +31490,7 @@
   {
     "canister_id": "xgx4z-iqaaa-aaaar-qbmeq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31505,7 +31502,7 @@
   {
     "canister_id": "xpuxf-6yaaa-aaaar-qbmfa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31528,7 +31525,7 @@
   {
     "canister_id": "x2tgi-7qaaa-aaaar-qbmgq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31540,7 +31537,7 @@
   {
     "canister_id": "xtqnu-jyaaa-aaaar-qbmha-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31673,7 +31670,7 @@
   {
     "canister_id": "7iseb-pyaaa-aaaar-qbnta-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31840,7 +31837,7 @@
   {
     "canister_id": "kbbei-4iaaa-aaaar-qboca-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31852,7 +31849,7 @@
   {
     "canister_id": "kgac4-rqaaa-aaaar-qbocq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31876,7 +31873,7 @@
   {
     "canister_id": "lfml2-fiaaa-aaaar-qboea-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31888,7 +31885,7 @@
   {
     "canister_id": "lcnno-iqaaa-aaaar-qboeq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31900,7 +31897,7 @@
   {
     "canister_id": "llogs-6yaaa-aaaar-qbofa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31912,7 +31909,7 @@
   {
     "canister_id": "lzirl-siaaa-aaaar-qboga-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31924,7 +31921,7 @@
   {
     "canister_id": "l6jx7-7qaaa-aaaar-qbogq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31936,7 +31933,7 @@
   {
     "canister_id": "lxk4d-jyaaa-aaaar-qboha-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31948,7 +31945,7 @@
   {
     "canister_id": "lql2x-eaaaa-aaaar-qbohq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31960,7 +31957,7 @@
   {
     "canister_id": "jnwu7-xiaaa-aaaar-qboia-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31972,7 +31969,7 @@
   {
     "canister_id": "jkxsl-2qaaa-aaaar-qboiq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31984,7 +31981,7 @@
   {
     "canister_id": "jduzx-myaaa-aaaar-qboja-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -31996,7 +31993,7 @@
   {
     "canister_id": "jev7d-baaaa-aaaar-qbojq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32008,7 +32005,7 @@
   {
     "canister_id": "jwti2-nqaaa-aaaar-qbokq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32042,7 +32039,7 @@
   {
     "canister_id": "iv7b4-ziaaa-aaaar-qboma-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32054,7 +32051,7 @@
   {
     "canister_id": "is6hi-uqaaa-aaaar-qbomq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32066,7 +32063,7 @@
   {
     "canister_id": "i35mu-cyaaa-aaaar-qbona-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32310,7 +32307,7 @@
   {
     "canister_id": "hp34e-hiaaa-aaaar-qbpia-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32454,7 +32451,7 @@
   {
     "canister_id": "avoao-dqaaa-aaaar-qbq7a-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32653,7 +32650,7 @@
   {
     "canister_id": "iomj3-fqaaa-aaaar-qbrla-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32665,7 +32662,7 @@
   {
     "canister_id": "jkbgj-4qaaa-aaaar-qbrna-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -32677,7 +32674,7 @@
   {
     "canister_id": "jnaa5-riaaa-aaaar-qbrnq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33393,7 +33390,7 @@
   {
     "canister_id": "vs7np-lqaaa-aaaar-qbtpa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33614,7 +33611,7 @@
   {
     "canister_id": "stzzc-tqaaa-aaaar-qbt7a-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33626,7 +33623,7 @@
   {
     "canister_id": "suy7w-6iaaa-aaaar-qbt7q-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33660,7 +33657,7 @@
   {
     "canister_id": "tudps-siaaa-aaaar-qbuea-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33672,7 +33669,7 @@
   {
     "canister_id": "ttcjg-7qaaa-aaaar-qbueq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33684,7 +33681,7 @@
   {
     "canister_id": "t2bc2-jyaaa-aaaar-qbufa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33696,7 +33693,7 @@
   {
     "canister_id": "t5aeo-eaaaa-aaaar-qbufq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33708,7 +33705,7 @@
   {
     "canister_id": "tihvd-fiaaa-aaaar-qbuga-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33720,7 +33717,7 @@
   {
     "canister_id": "tbe67-taaaa-aaaar-qbuhq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33831,7 +33828,7 @@
   {
     "canister_id": "vnmo4-eiaaa-aaaar-qbuqa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33876,7 +33873,7 @@
   {
     "canister_id": "wt5js-dyaaa-aaaar-qbuza-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -33888,7 +33885,7 @@
   {
     "canister_id": "wb36l-piaaa-aaaar-qbu2a-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -34153,7 +34150,7 @@
   {
     "canister_id": "5djwe-daaaa-aaaar-qbvhq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -34220,7 +34217,7 @@
   {
     "canister_id": "7ltjb-raaaa-aaaar-qbvlq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -34232,7 +34229,7 @@
   {
     "canister_id": "6g5np-6iaaa-aaaar-qbvma-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -34244,7 +34241,7 @@
   {
     "canister_id": "6b4l3-tqaaa-aaaar-qbvmq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -35477,7 +35474,7 @@
   {
     "canister_id": "we25f-laaaa-aaaar-qbywq-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {
@@ -35489,7 +35486,7 @@
   {
     "canister_id": "wnzwz-5iaaa-aaaar-qbyxa-cai",
     "project": [
-      "ICRC-1 Tokens"
+      "ODIN.fun"
     ],
     "proxy_id": "e3mmv-5qaaa-aaaah-aadma-cai",
     "proxy_type": {

@@ -16,7 +16,6 @@
   let searchQuery = "";
   let sortColumn = "short_term_rate";
   let sortDirection = "desc";
-  let currentPage = 1;
   let selectedCanisterId = null;
   let selectedProjectName = null;
   let expandedProjects = new Set();
@@ -34,7 +33,6 @@
   let networkBurnLoading = true;
   let xdrToUsd = 1.35;
 
-  const ITEMS_PER_PAGE = 100;
   const TRILLION = 1_000_000_000_000n;
   const BILLION = 1_000_000_000n;
   const MILLION = 1_000_000n;
@@ -151,6 +149,10 @@
     return s.slice(0, 5) + "..." + s.slice(-3);
   }
 
+  function dashboardUrl(id) {
+    return `https://dashboard.internetcomputer.org/canister/${id}`;
+  }
+
   function getLogoPath(project) {
     if (!project) return null;
     const filename = project.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
@@ -170,14 +172,6 @@
       sortDirection = "desc";
     }
   }
-
-  $: {
-    searchQuery;
-    sortColumn;
-    sortDirection;
-    currentPage = 1;
-  }
-  $: startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
   // Helper to get effective balance (adjusted takes precedence)
   function getEffectiveBalance(entry) {
@@ -255,15 +249,6 @@
     }
     return sortDirection === "desc" ? -cmp : cmp;
   });
-
-  $: totalProjectPages = Math.ceil(sortedProjectEntries.length / ITEMS_PER_PAGE);
-  $: paginatedProjectEntries = sortedProjectEntries.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-  function goToPage(page) {
-    if (page >= 1 && page <= totalProjectPages) {
-      currentPage = page;
-    }
-  }
 
   function formatNumber(n) {
     return Number(n).toLocaleString();
@@ -636,7 +621,7 @@
             </tr>
           </thead>
           <tbody>
-            {#each paginatedProjectEntries as entry, i}
+            {#each sortedProjectEntries as entry, i}
               {@const effectiveBalance = getEffectiveBalance(entry)}
               {@const recentCell = formatRateCell(getEffectiveRate(entry, "recent_rate"))}
               {@const shortTermCell = formatRateCell(getEffectiveRate(entry, "short_term_rate"))}
@@ -761,7 +746,7 @@
                         <td class="rank sub-rank"></td>
                         <td class="project sub-project">
                           <div class="project-cell sub-cell">
-                            <span class="sub-canister-id">{shortenCanisterId(canister.canister_id)}</span>
+                            <a class="sub-canister-id canister-link" href={dashboardUrl(canister.canister_id)} target="_blank" rel="noopener noreferrer" on:click|stopPropagation title="View on IC Dashboard">{shortenCanisterId(canister.canister_id)}</a>
                             {#if !canister.valid}
                               <span class="transfers-flag" title="This canister transfers cycles rather than burns them">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -808,26 +793,6 @@
         </table>
       </div>
     {/if}
-  {/if}
-
-  <!-- Pagination -->
-  {#if !loading && !error && totalProjectPages > 1}
-    <div class="pagination">
-      <button class="page-btn" disabled={currentPage === 1} on:click={() => goToPage(1)}>First</button>
-      <button class="page-btn" disabled={currentPage === 1} on:click={() => goToPage(currentPage - 1)}>Prev</button>
-      <div class="page-numbers">
-        {#each Array.from({ length: totalProjectPages }, (_, i) => i + 1) as page}
-          {#if page === 1 || page === totalProjectPages || (page >= currentPage - 2 && page <= currentPage + 2)}
-            <button class="page-num" class:active={page === currentPage} on:click={() => goToPage(page)}>{page}</button>
-          {:else if page === currentPage - 3 || page === currentPage + 3}
-            <span class="ellipsis">...</span>
-          {/if}
-        {/each}
-      </div>
-      <button class="page-btn" disabled={currentPage === totalProjectPages} on:click={() => goToPage(currentPage + 1)}>Next</button>
-      <button class="page-btn" disabled={currentPage === totalProjectPages} on:click={() => goToPage(totalProjectPages)}>Last</button>
-      <span class="page-info">{startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, sortedProjectEntries.length)} of {sortedProjectEntries.length.toLocaleString()}</span>
-    </div>
   {/if}
 
   <footer>

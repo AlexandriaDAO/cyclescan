@@ -16,10 +16,6 @@
     ]
   },
   {
-    "name": "Analytics Service",
-    "website": []
-  },
-  {
     "name": "Aptos Token",
     "website": []
   },
@@ -42,10 +38,6 @@
     "website": [
       "https://internetcomputer.org/bitcoin-integration"
     ]
-  },
-  {
-    "name": "Bitcoin Runes Etching",
-    "website": []
   },
   {
     "name": "Blackhole",
@@ -200,12 +192,6 @@
     ]
   },
   {
-    "name": "DEX",
-    "website": [
-      "https://www.icpswap.com"
-    ]
-  },
-  {
     "name": "Discord Bot",
     "website": []
   },
@@ -254,10 +240,6 @@
     "website": [
       "https://fomowell.com"
     ]
-  },
-  {
-    "name": "Forum/Board",
-    "website": []
   },
   {
     "name": "funnAI",
@@ -366,15 +348,10 @@
     }
   },
   {
-    "name": "ICRC Token",
-    "website": []
-  },
-  {
     "name": "ICRC-1 Tokens",
     "website": [],
     "subcategory_descriptions": {
       "Test Token": "Test or development token created for testing purposes",
-      "ICP Rune": "Bitcoin Runes bridged to ICP using the RUNE standard",
       "Meme Token": "Community or meme token with no known project association",
       "Frozen Token": "Token canister that has run out of cycles and is frozen",
       "Error Token": "Token canister that could not be queried"
@@ -473,10 +450,6 @@
     ]
   },
   {
-    "name": "NFT Runes Exchange",
-    "website": []
-  },
-  {
     "name": "NNS Canister Migration",
     "website": [
       "https://dashboard.internetcomputer.org/canister/sbzkb-zqaaa-aaaaa-aaaiq-cai"
@@ -516,7 +489,10 @@
     "name": "NNS Root",
     "website": [
       "https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "Rate Limiting": "Manages rate limiting rules and incident configurations for network protection"
+    }
   },
   {
     "name": "NNS Subnet Management",
@@ -557,7 +533,12 @@
     "name": "ODIN.fun",
     "website": [
       "https://odin.fun"
-    ]
+    ],
+    "subcategory_descriptions": {
+      "ICP Rune": "Bitcoin Runes bridged to ICP through the ODIN.fun platform",
+      "Bitcoin Runes Etching": "Canisters handling Bitcoin Runes etching operations",
+      "NFT Runes Exchange": "NFT marketplace for Bitcoin Runes"
+    }
   },
   {
     "name": "OHSHII",
@@ -660,14 +641,6 @@
     ]
   },
   {
-    "name": "Social Platform",
-    "website": []
-  },
-  {
-    "name": "Social/Forum App",
-    "website": []
-  },
-  {
     "name": "Sonic",
     "website": [
       "https://sonic.ooo"
@@ -755,14 +728,6 @@
       "Minting Manager": "Manages neuron-based token minting process with fee calculation.",
       "Rewards Distributor": "Distributes neuron staking rewards to token holders based on snapshots."
     }
-  },
-  {
-    "name": "Unidentified (deleted)",
-    "website": []
-  },
-  {
-    "name": "Unidentified (empty service)",
-    "website": []
   },
   {
     "name": "Unidentified (minimal interface)",

@@ -271,6 +271,7 @@ export async function getProjectCanisters(projectName: string): Promise<Canister
 
 export interface CanisterDetail {
   project: string[] | null;
+  subcategory?: string;
   current_balance: bigint;
   recent_rate: BurnRateData | null;
   short_term_rate: BurnRateData | null;
@@ -303,6 +304,7 @@ export async function getCanisterDetail(canisterId: string): Promise<CanisterDet
 
   return {
     project: canisterRegistry.project,
+    subcategory: canisterRegistry.subcategory,
     current_balance: BigInt(currentBalanceStr),
     recent_rate: calculateBurnRate(snapshots, 2 * HOUR_MS, now, canisterId),
     short_term_rate: calculateBurnRate(snapshots, 36 * HOUR_MS, now, canisterId),

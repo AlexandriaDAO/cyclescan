@@ -91,6 +91,13 @@
     return `https://dashboard.internetcomputer.org/canister/${id}`;
   }
 
+  function frontendUrl(id) {
+    return `https://${id}.icp0.io/`;
+  }
+
+  // Check if this canister hosts a frontend
+  $: isAssetCanister = data?.subcategory === 'Asset Canister' || data?.project?.[0] === 'Asset Canister';
+
   async function copyToClipboard(text) {
     try {
       await navigator.clipboard.writeText(text);
@@ -148,20 +155,24 @@
       width: chartContainer.clientWidth,
       height: 300,
       layout: {
-        background: { color: "#1a1918" },
-        textColor: "#f0ede6",
+        background: { color: "#0a0a0f" },
+        textColor: "#7fdbca",
       },
       grid: {
-        vertLines: { color: "#3a3836" },
-        horzLines: { color: "#3a3836" },
+        vertLines: { color: "rgba(0, 255, 200, 0.08)" },
+        horzLines: { color: "rgba(0, 255, 200, 0.08)" },
       },
       timeScale: {
         timeVisible: true,
         secondsVisible: false,
-        borderColor: "#4a4740",
+        borderColor: "rgba(0, 255, 200, 0.3)",
       },
       rightPriceScale: {
-        borderColor: "#4a4740",
+        borderColor: "rgba(0, 255, 200, 0.3)",
+      },
+      crosshair: {
+        vertLine: { color: "rgba(0, 255, 200, 0.4)", width: 1, style: 2 },
+        horzLine: { color: "rgba(0, 255, 200, 0.4)", width: 1, style: 2 },
       },
     });
 
@@ -175,36 +186,36 @@
 
       if (interval.isTopUp) {
         // For top-up intervals, show two bars:
-        // 1. The inferred burn (positive, orange)
-        // 2. The top-up amount (negative, below zero, red)
+        // 1. The inferred burn (positive, neon magenta)
+        // 2. The top-up amount (negative, below zero, neon red)
 
         const inferredBurnPerHour = interval.inferredBurn / interval.duration * HOUR_MS;
         if (inferredBurnPerHour > 0) {
           chartData.push({
             time: midTime,
             value: inferredBurnPerHour / 1e12, // Convert to T
-            color: "#f97316", // Orange for inferred
+            color: "#ff00ff", // Neon magenta for inferred
             isInferred: true,
           });
         }
 
-        // Show top-up as negative bar
+        // Show top-up as negative bar (neon red)
         const topUpPerHour = interval.topUpAmount / interval.duration * HOUR_MS;
         if (topUpPerHour > 0) {
           chartData.push({
             time: midTime + 1, // Offset by 1 second to avoid overlap
             value: -topUpPerHour / 1e12, // Negative for top-up
-            color: "#f85149", // Red for top-up (shows below zero)
+            color: "#ff3366", // Neon red for top-up
             isTopUp: true,
           });
         }
       } else {
-        // Regular burn interval - green bar
+        // Regular burn interval - neon cyan bar
         const burnPerHour = interval.actualBurn / interval.duration * HOUR_MS;
         chartData.push({
           time: midTime,
           value: burnPerHour / 1e12, // Convert to T
-          color: "#4ade80", // Green for actual burn
+          color: "#00ffc8", // Neon cyan for actual burn
           isActual: true,
         });
       }
@@ -249,8 +260,8 @@
 
     // Create line series for average
     const lineSeries = chartInstance.addSeries(LineSeries, {
-      color: 'rgba(249, 115, 22, 0.7)',  // Orange, semi-transparent
-      lineWidth: 2,
+      color: '#ffff00',  // Neon yellow
+      lineWidth: 1,
       lineStyle: 2,  // Dashed
       lastValueVisible: false,
       priceLineVisible: false,
@@ -420,6 +431,12 @@
       </div>
 
       <div class="external-links">
+        {#if isAssetCanister}
+          <a href={frontendUrl(canisterId)} target="_blank" rel="noopener noreferrer">
+            Visit Frontend &rarr;
+          </a>
+          <span class="link-separator">|</span>
+        {/if}
         <a href={dashboardUrl(canisterId)} target="_blank" rel="noopener noreferrer">
           View on IC Dashboard &rarr;
         </a>
@@ -526,17 +543,21 @@
   }
 
   .chart-title {
-    font-size: 12px;
-    color: var(--text-muted, #a19b88);
+    font-size: 11px;
+    color: #7fdbca;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.5px;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
   }
 
   .chart-legend {
     display: flex;
     gap: 12px;
-    font-size: 11px;
-    color: var(--text-muted, #a19b88);
+    font-size: 10px;
+    color: #7fdbca;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    letter-spacing: 0.5px;
   }
 
   .legend-item {
@@ -552,23 +573,49 @@
   }
 
   .legend-dot.actual {
-    background: var(--color-burn, #4ade80);
+    background: #00ffc8;
+    box-shadow: 0 0 6px #00ffc8;
   }
 
   .legend-dot.inferred {
-    background: var(--color-inferred, #fbbf24);
+    background: #ff00ff;
+    box-shadow: 0 0 6px #ff00ff;
   }
 
   .legend-dot.topup {
-    background: var(--red, #f85149);
+    background: #ff3366;
+    box-shadow: 0 0 6px #ff3366;
   }
 
   .chart-container {
-    background: var(--bg, #1a1918);
-    border: 1px solid var(--border, #4a4740);
+    background: #0a0a0f;
+    border: 1px solid rgba(0, 255, 200, 0.3);
     border-radius: 8px;
     margin-bottom: 16px;
     min-height: 300px;
+    position: relative;
+    box-shadow:
+      0 0 20px rgba(0, 255, 200, 0.1),
+      inset 0 0 60px rgba(0, 255, 200, 0.03);
+    overflow: hidden;
+  }
+
+  .chart-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 200, 0.015) 2px,
+      rgba(0, 255, 200, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
   }
 
   .chart-controls {
@@ -586,39 +633,45 @@
   }
 
   .control-label {
-    color: var(--text-muted, #a19b88);
-    font-size: 12px;
+    color: #7fdbca;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.5px;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
   }
 
   .range-buttons {
     display: flex;
-    background: var(--bg-tertiary, #2c2a28);
-    border: 1px solid var(--border, #4a4740);
-    border-radius: 6px;
+    background: #0a0a0f;
+    border: 1px solid rgba(0, 255, 200, 0.3);
+    border-radius: 4px;
     padding: 2px;
   }
 
   .range-btn {
     background: transparent;
     border: none;
-    color: var(--text-muted, #a19b88);
-    padding: 6px 12px;
-    border-radius: 4px;
+    color: #5a9a8a;
+    padding: 6px 14px;
+    border-radius: 3px;
     cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    letter-spacing: 1px;
     transition: all 0.15s ease;
   }
 
   .range-btn:hover {
-    color: var(--text, #f0ede6);
+    color: #00ffc8;
+    text-shadow: 0 0 8px rgba(0, 255, 200, 0.6);
   }
 
   .range-btn.active {
-    background: var(--accent, #f97316);
-    color: #000;
+    background: rgba(0, 255, 200, 0.15);
+    color: #00ffc8;
+    text-shadow: 0 0 10px rgba(0, 255, 200, 0.8);
+    box-shadow: inset 0 0 10px rgba(0, 255, 200, 0.1);
   }
 
   .stats-panel {
@@ -676,17 +729,26 @@
 
   .external-links {
     text-align: center;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
   }
 
   .external-links a {
-    color: var(--accent, #f97316);
+    color: #00ffc8;
     text-decoration: none;
-    transition: opacity 0.15s ease;
+    transition: all 0.15s ease;
+    text-shadow: 0 0 8px rgba(0, 255, 200, 0.3);
   }
 
   .external-links a:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+    color: #7fffdf;
+    text-shadow: 0 0 12px rgba(0, 255, 200, 0.6);
+  }
+
+  .link-separator {
+    color: rgba(0, 255, 200, 0.3);
+    margin: 0 12px;
   }
 
   .modal-loading,
