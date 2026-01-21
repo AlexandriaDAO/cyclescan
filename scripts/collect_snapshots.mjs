@@ -395,22 +395,52 @@ async function main() {
 
   // -------------------------------------------------------------------------
   // Query FunnAI API for aggregate mAIner data
+  // Synthesize declining balance from burn rate so sparklines work
   // -------------------------------------------------------------------------
   const burnRates = {};  // Store API-provided burn rates (per hour)
   const funnaiData = await queryFunnaiApi(agent);
   if (funnaiData) {
-    finalBalances[FUNNAI_AGGREGATE_ID] = funnaiData.totalCycles;
-    burnRates[FUNNAI_AGGREGATE_ID] = funnaiData.hourlyBurnRate;
-    console.log(`  Added FunnAI aggregate: ${funnaiData.totalCycles} (burn: ${funnaiData.hourlyBurnRate}/hr)`);
-  } else if (lastKnownBalances[FUNNAI_AGGREGATE_ID]) {
-    // Fallback to last known value
-    finalBalances[FUNNAI_AGGREGATE_ID] = lastKnownBalances[FUNNAI_AGGREGATE_ID];
-    // Also try to get last known burn rate
-    const lastBurnRates = existing.snapshots[0]?.burn_rates || {};
-    if (lastBurnRates[FUNNAI_AGGREGATE_ID]) {
-      burnRates[FUNNAI_AGGREGATE_ID] = lastBurnRates[FUNNAI_AGGREGATE_ID];
+    const hourlyBurn = BigInt(funnaiData.hourlyBurnRate);
+    const previousBalance = lastKnownBalances[FUNNAI_AGGREGATE_ID]
+      ? BigInt(lastKnownBalances[FUNNAI_AGGREGATE_ID])
+      : null;
+
+    let syntheticBalance;
+    if (previousBalance !== null) {
+      // Subtract hourly burn from previous balance to create declining trend
+      syntheticBalance = previousBalance - hourlyBurn;
+      // Don't let it go negative
+      if (syntheticBalance < 0n) syntheticBalance = 0n;
+      console.log(`  FunnAI synthetic balance: ${previousBalance} - ${hourlyBurn} = ${syntheticBalance}`);
+    } else {
+      // First run: use API's total_cycles as starting point
+      syntheticBalance = BigInt(funnaiData.totalCycles);
+      console.log(`  FunnAI initial balance from API: ${syntheticBalance}`);
     }
-    console.log(`  FunnAI aggregate: using last known value`);
+
+    finalBalances[FUNNAI_AGGREGATE_ID] = syntheticBalance.toString();
+    burnRates[FUNNAI_AGGREGATE_ID] = funnaiData.hourlyBurnRate;
+    console.log(`  FunnAI burn rate: ${funnaiData.hourlyBurnRate}/hr`);
+  } else if (lastKnownBalances[FUNNAI_AGGREGATE_ID]) {
+    // API failed - use last known values and continue declining
+    const lastBurnRates = existing.snapshots[0]?.burn_rates || {};
+    const lastBurnRate = lastBurnRates[FUNNAI_AGGREGATE_ID];
+
+    if (lastBurnRate) {
+      // Continue declining with last known burn rate
+      const previousBalance = BigInt(lastKnownBalances[FUNNAI_AGGREGATE_ID]);
+      const hourlyBurn = BigInt(lastBurnRate);
+      let syntheticBalance = previousBalance - hourlyBurn;
+      if (syntheticBalance < 0n) syntheticBalance = 0n;
+
+      finalBalances[FUNNAI_AGGREGATE_ID] = syntheticBalance.toString();
+      burnRates[FUNNAI_AGGREGATE_ID] = lastBurnRate;
+      console.log(`  FunnAI (API failed): ${previousBalance} - ${hourlyBurn} = ${syntheticBalance}`);
+    } else {
+      // No burn rate available, keep last balance
+      finalBalances[FUNNAI_AGGREGATE_ID] = lastKnownBalances[FUNNAI_AGGREGATE_ID];
+      console.log(`  FunnAI aggregate: using last known value (no burn rate)`);
+    }
   }
 
   console.log(`\nFinal balances: ${Object.keys(finalBalances).length} canisters`);

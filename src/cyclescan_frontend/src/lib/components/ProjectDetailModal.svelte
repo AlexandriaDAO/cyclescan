@@ -137,20 +137,20 @@
       width: chartContainer.clientWidth,
       height: 300,
       layout: {
-        background: { color: "#1a1a2e" },
-        textColor: "#d1d5db",
+        background: { color: "#1a1918" },
+        textColor: "#f0ede6",
       },
       grid: {
-        vertLines: { color: "#2d2d44" },
-        horzLines: { color: "#2d2d44" },
+        vertLines: { color: "#3a3836" },
+        horzLines: { color: "#3a3836" },
       },
       timeScale: {
         timeVisible: true,
         secondsVisible: false,
-        borderColor: "#2d2d44",
+        borderColor: "#4a4740",
       },
       rightPriceScale: {
-        borderColor: "#2d2d44",
+        borderColor: "#4a4740",
       },
     });
 
@@ -189,7 +189,7 @@
         chartData.push({
           time: midTime,
           value: burnPerHour / 1e12, // Convert to T
-          color: "#00d395", // Green for actual burn
+          color: "#4ade80", // Green for actual burn
           isActual: true,
         });
       }
@@ -417,7 +417,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -425,7 +425,8 @@
   }
 
   .modal-content {
-    background: #1a1a2e;
+    background: var(--bg, #1a1918);
+    border: 1px solid var(--border, #4a4740);
     border-radius: 16px;
     width: 90%;
     max-width: 800px;
@@ -433,6 +434,7 @@
     overflow-y: auto;
     padding: 24px;
     position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   }
 
   .modal-header {
@@ -440,13 +442,13 @@
   }
 
   .modal-header h2 {
-    color: #fff;
+    color: var(--text, #f0ede6);
     font-size: 24px;
     margin: 0 0 8px 0;
   }
 
   .project-meta {
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
     font-size: 14px;
     margin: 0;
     display: flex;
@@ -455,14 +457,14 @@
   }
 
   .website-link {
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
     display: inline-flex;
     align-items: center;
     transition: color 0.15s ease;
   }
 
   .website-link:hover {
-    color: #00d395;
+    color: var(--accent, #f97316);
   }
 
   .close-btn {
@@ -471,17 +473,18 @@
     right: 16px;
     background: none;
     border: none;
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
     font-size: 28px;
     cursor: pointer;
     line-height: 1;
     padding: 0;
     width: 32px;
     height: 32px;
+    transition: color 0.15s ease;
   }
 
   .close-btn:hover {
-    color: #fff;
+    color: var(--text, #f0ede6);
   }
 
   .chart-header {
@@ -495,7 +498,7 @@
 
   .chart-title {
     font-size: 12px;
-    color: #6b7280;
+    color: var(--text-muted, #a19b88);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -504,7 +507,7 @@
     display: flex;
     gap: 12px;
     font-size: 11px;
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
   }
 
   .legend-item {
@@ -520,19 +523,20 @@
   }
 
   .legend-dot.actual {
-    background: #00d395;
+    background: var(--color-burn, #4ade80);
   }
 
   .legend-dot.inferred {
-    background: #f97316;
+    background: var(--color-inferred, #fbbf24);
   }
 
   .legend-dot.topup {
-    background: #f85149;
+    background: var(--red, #f85149);
   }
 
   .chart-container {
-    background: #1a1a2e;
+    background: var(--bg, #1a1918);
+    border: 1px solid var(--border, #4a4740);
     border-radius: 8px;
     margin-bottom: 16px;
     min-height: 300px;
@@ -553,7 +557,7 @@
   }
 
   .control-label {
-    color: #6b7280;
+    color: var(--text-muted, #a19b88);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -561,7 +565,8 @@
 
   .range-buttons {
     display: flex;
-    background: #2d2d44;
+    background: var(--bg-tertiary, #2c2a28);
+    border: 1px solid var(--border, #4a4740);
     border-radius: 6px;
     padding: 2px;
   }
@@ -569,7 +574,7 @@
   .range-btn {
     background: transparent;
     border: none;
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
@@ -579,16 +584,17 @@
   }
 
   .range-btn:hover {
-    color: #fff;
+    color: var(--text, #f0ede6);
   }
 
   .range-btn.active {
-    background: #00d395;
+    background: var(--accent, #f97316);
     color: #000;
   }
 
   .stats-panel {
-    background: #2d2d44;
+    background: var(--bg-tertiary, #2c2a28);
+    border: 1px solid var(--border, #4a4740);
     border-radius: 8px;
     padding: 16px;
     margin-bottom: 16px;
@@ -599,7 +605,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 8px 0;
-    border-bottom: 1px solid #3d3d54;
+    border-bottom: 1px solid var(--border, #4a4740);
     gap: 16px;
   }
 
@@ -608,22 +614,22 @@
   }
 
   .stat-divider {
-    border-bottom: 2px solid #3d3d54;
+    border-bottom: 2px solid var(--border, #4a4740);
     margin: 4px 0;
   }
 
   .stat-label {
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
     white-space: nowrap;
   }
 
   .stat-label .time-delta {
-    color: #f97316;
+    color: var(--accent, #f97316);
     font-size: 12px;
   }
 
   .stat-value {
-    color: #fff;
+    color: var(--text, #f0ede6);
     font-family: monospace;
     text-align: right;
   }
@@ -634,7 +640,7 @@
 
   .rate-meta {
     font-size: 11px;
-    color: #6b7280;
+    color: var(--text-muted, #a19b88);
     margin-left: 4px;
     font-family: sans-serif;
   }
@@ -643,10 +649,10 @@
   .modal-error {
     text-align: center;
     padding: 60px 20px;
-    color: #9ca3af;
+    color: var(--text-muted, #a19b88);
   }
 
   .modal-error {
-    color: #f85149;
+    color: var(--red, #f85149);
   }
 </style>
