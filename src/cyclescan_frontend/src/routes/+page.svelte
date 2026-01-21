@@ -629,7 +629,7 @@
               {@const runwayDays = calcRunway(effectiveBalance, getEffectiveRate(entry, "short_term_rate"))}
               {@const runwayCell = formatRunway(runwayDays)}
               <tr class="project-row clickable" class:expanded={expandedProjects.has(entry.project)} on:click={() => toggleProjectExpanded(entry.project)}>
-                <td class="rank">{startIndex + i + 1}</td>
+                <td class="rank">{i + 1}</td>
                 <td class="project">
                   <div class="project-cell">
                     <span class="expand-icon" class:expanded={expandedProjects.has(entry.project)}>
