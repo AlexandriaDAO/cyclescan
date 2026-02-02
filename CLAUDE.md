@@ -120,21 +120,43 @@ That's it - no deployment step. Frontend reads from GitHub directly.
 
 **The problem:** `data/live/snapshots.json` is a "hot file" - it's auto-updated hourly by GitHub Actions. If you're working locally and the hourly action runs, you'll get merge conflicts when pushing.
 
+**⚠️ CRITICAL: Never use `git checkout --theirs` for snapshots.json**
+
+When resolving merge conflicts on `snapshots.json`, **DO NOT** use `git checkout --theirs` or `git checkout --ours`. Both versions may have different subsets of data, and choosing one discards the other entirely. This can wipe out days/weeks of accumulated hourly snapshots, breaking all burn rate calculations and sparklines on the site.
+
+**What happened once:** During a rebase conflict, `--theirs` was used to take the "remote" version. But the remote had OLD data (from before recent hourly updates). Result: 12 days of continuous hourly data was replaced with stale disconnected snapshots, breaking the entire site until data rebuilt over the following week.
+
 **Best practices:**
 
-1. **Separate code from data commits:**
-   - Push code changes first (scripts, frontend, registry files) - these rarely conflict
-   - Don't run local collection unless necessary - let GitHub Actions handle data updates
+1. **Don't include snapshots.json in your commits at all:**
+   - Push code changes only (scripts, frontend, registry files)
+   - Let GitHub Actions handle all snapshots.json updates
    - The next hourly run will use your updated code automatically
+   - This is the safest approach - no conflicts possible
 
-2. **If you must update snapshots.json locally:**
+2. **If you get a conflict on snapshots.json during rebase:**
+   - **Option A (recommended):** Abort the rebase, exclude snapshots.json from your commit, try again
+     ```bash
+     git rebase --abort
+     git reset HEAD~1  # undo commit but keep changes
+     git checkout data/live/snapshots.json  # discard local snapshot changes
+     git add <your-code-files-only>  # re-add only code changes
+     git commit -m "Your message"
+     git push
+     ```
+   - **Option B:** Re-run collection to generate fresh data that includes everything
+     ```bash
+     git rebase --abort
+     cd scripts && npm run collect  # ~5 min, gets fresh data
+     git add data/live/snapshots.json
+     git commit -m "Your message"
+     git pull --rebase  # should merge cleanly now or be ahead
+     git push
+     ```
+
+3. **If you must update snapshots.json locally:**
    - Push immediately after the hourly run (e.g., at :10) to maximize time before next conflict
    - Or run collection AND push in quick succession
-
-3. **When conflicts happen:**
-   - For `snapshots.json` conflicts, **don't try to merge** - just re-run collection locally
-   - `cd scripts && npm run collect` takes ~5 min but guarantees correct data
-   - Then commit and push the fresh snapshot
 
 4. **For major data changes** (like adding API integrations):
    - Push code changes first, verify they work
