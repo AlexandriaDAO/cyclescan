@@ -31,7 +31,7 @@ const blackholeIdl = ({ IDL }) => {
   });
 };
 
-// FunnAI API getDailyMetrics interface (query method)
+// FunnAI API getLatestDailyMetric interface (query method)
 const funnaiApiIdl = ({ IDL }) => {
   const TierBreakdown = IDL.Record({
     low: IDL.Nat,
@@ -50,9 +50,19 @@ const funnaiApiIdl = ({ IDL }) => {
     usd: IDL.Float64,
     cycles: IDL.Nat,
   });
+  const CycleAmount = IDL.Record({
+    usd: IDL.Float64,
+    cycles: IDL.Nat,
+  });
+  const TotalCycles = IDL.Record({
+    all: CycleAmount,
+    mainers: CycleAmount,
+    protocol: CycleAmount,
+  });
   const SystemMetrics = IDL.Record({
     funnai_index: IDL.Float64,
     daily_burn_rate: DailyBurnRate,
+    total_cycles: IDL.Opt(TotalCycles),
   });
   const DailyMetric = IDL.Record({
     mainers: IDL.Record({
@@ -82,33 +92,23 @@ const funnaiApiIdl = ({ IDL }) => {
       active_percentage: IDL.Float64,
     }),
   });
-  const GetDailyMetricsResponse = IDL.Variant({
-    Ok: IDL.Record({
-      period: IDL.Record({
-        end_date: IDL.Text,
-        total_days: IDL.Nat,
-        start_date: IDL.Text,
-      }),
-      daily_metrics: IDL.Vec(DailyMetric),
-    }),
-    Err: IDL.Variant({
-      FailedOperation: IDL.Null,
-      InvalidId: IDL.Null,
-      ZeroAddress: IDL.Null,
-      Unauthorized: IDL.Null,
-      StatusCode: IDL.Nat16,
-      Other: IDL.Text,
-      InsuffientCycles: IDL.Nat,
-    }),
+  const ApiError = IDL.Variant({
+    FailedOperation: IDL.Null,
+    InvalidId: IDL.Null,
+    ZeroAddress: IDL.Null,
+    Unauthorized: IDL.Null,
+    StatusCode: IDL.Nat16,
+    Other: IDL.Text,
+    InsuffientCycles: IDL.Nat,
+  });
+  const DailyMetricResult = IDL.Variant({
+    Ok: DailyMetric,
+    Err: ApiError,
   });
   return IDL.Service({
-    getDailyMetrics: IDL.Func(
-      [IDL.Opt(IDL.Record({
-        end_date: IDL.Opt(IDL.Text),
-        limit: IDL.Opt(IDL.Nat),
-        start_date: IDL.Opt(IDL.Text),
-      }))],
-      [GetDailyMetricsResponse],
+    getLatestDailyMetric: IDL.Func(
+      [],
+      [DailyMetricResult],
       ['query']
     ),
   });
@@ -210,36 +210,41 @@ async function queryFunnaiApi(agent) {
     });
 
     const result = await withTimeout(
-      actor.getDailyMetrics([]),
+      actor.getLatestDailyMetric(),
       30000,
       'Timeout querying FunnAI API'
     );
 
     if ('Ok' in result) {
-      const metrics = result.Ok.daily_metrics[0]; // Get latest
-      if (metrics) {
-        // total_cycles is in trillions, convert to raw cycles
-        const totalCyclesTrillion = BigInt(metrics.mainers.totals.total_cycles);
-        const totalCycles = totalCyclesTrillion * TRILLION;
+      const metrics = result.Ok;
 
-        // daily_burn_rate.cycles is also in trillions
-        const dailyBurnTrillion = BigInt(metrics.system_metrics.daily_burn_rate.cycles);
-
-        // Convert daily burn to per-hour for consistency with our rate calculations
-        const dailyBurnCycles = dailyBurnTrillion * TRILLION;
-        const hourlyBurnCycles = dailyBurnCycles / 24n;
-
-        console.log(`  FunnAI mAIners: ${metrics.mainers.totals.active} active / ${metrics.mainers.totals.created} total`);
-        console.log(`  Total cycles: ${totalCyclesTrillion}T`);
-        console.log(`  Daily burn: ${dailyBurnTrillion}T cycles/day`);
-
-        return {
-          totalCycles: totalCycles.toString(),
-          hourlyBurnRate: hourlyBurnCycles.toString(),  // Store hourly rate for consistency
-          activeMainers: Number(metrics.mainers.totals.active),
-          totalMainers: Number(metrics.mainers.totals.created),
-        };
+      // Get mAIners cycles from new total_cycles field in system_metrics
+      // Falls back to mainers.totals.total_cycles if total_cycles not present
+      let totalCyclesTrillion;
+      if (metrics.system_metrics.total_cycles?.[0]?.mainers) {
+        totalCyclesTrillion = BigInt(metrics.system_metrics.total_cycles[0].mainers.cycles);
+      } else {
+        totalCyclesTrillion = BigInt(metrics.mainers.totals.total_cycles);
       }
+      const totalCycles = totalCyclesTrillion * TRILLION;
+
+      // daily_burn_rate.cycles is in trillions
+      const dailyBurnTrillion = BigInt(metrics.system_metrics.daily_burn_rate.cycles);
+
+      // Convert daily burn to per-hour for consistency with our rate calculations
+      const dailyBurnCycles = dailyBurnTrillion * TRILLION;
+      const hourlyBurnCycles = dailyBurnCycles / 24n;
+
+      console.log(`  FunnAI mAIners: ${metrics.mainers.totals.active} active / ${metrics.mainers.totals.created} total`);
+      console.log(`  mAIner cycles: ${totalCyclesTrillion}T`);
+      console.log(`  Daily burn: ${dailyBurnTrillion}T cycles/day`);
+
+      return {
+        totalCycles: totalCycles.toString(),
+        hourlyBurnRate: hourlyBurnCycles.toString(),  // Store hourly rate for consistency
+        activeMainers: Number(metrics.mainers.totals.active),
+        totalMainers: Number(metrics.mainers.totals.created),
+      };
     } else {
       console.error(`  FunnAI API returned error:`, result.Err);
     }

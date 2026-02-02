@@ -356,7 +356,8 @@ export function getProjectChartIntervals(projectName: string, windowMs: number, 
 export function getProjectSparklineIntervals(projectName: string, windowMs: number, excludeTransferCanisters = false): IntervalData[] {
   if (!cachedData) return [];
 
-  let projectCanisters = cachedData.canisters.filter(c => c.project?.[0] === projectName);
+  // Use entries (not canisters registry) to include synthetic aggregates for API-sourced projects
+  let projectCanisters = cachedData.entries.filter(c => c.project?.[0] === projectName);
   if (excludeTransferCanisters) {
     projectCanisters = projectCanisters.filter(c => c.valid);
   }
